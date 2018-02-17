@@ -1,0 +1,40 @@
+1) Finish database structure  for the discounts
+
+
+1) Spell check options for managing different packages
+2) Service name will be unique to a package
+3) A lot of package names are incorrect 
+
+Immediate stuff needed to be done.
+0) Pending API for the mobile API
+		0.1) Vendor login incorrect credentials ( password validation tbd) -- Chiddu
+		0.2) Vendor accepts order -- mail sent to server
+		0.3) if rejected , then till no vendor is there , we select the next vendor
+		0.4) If timeout , we take it as a reject
+
+		0.5Vendor App : Updating Order Status in the Vendor App. (Done)
+		--------------------------------------------------------
+		0.6) Add happy bar, etc in the custmer app request (will be added to the package) hapy bar, TTS (time to serve0
+
+
+Payment gateway details. We need to integrate with Pay-u-money. Design(db) + development
+Server urls need to be search engine friendly
+We need to download and install https
+		
+1) Service unit independent of vendor. One package can be linked to multiple vendors
+2) 
+
+
+=============19th August EOD=============================================
+1) Url rewriting  -- Koti
+2) Password validation for vendor login
+3) Service unit independent of vendor. One package can be linked to multiple vendors // basic changes
+4) Geo fencing api  ( to be completed )
+5) one package /many vendors;
+
+
+
+		0.7) Get Vendor Profile (for the mobile)
+
+		Method Type : Http.POST
+		Request URL : https://............../
