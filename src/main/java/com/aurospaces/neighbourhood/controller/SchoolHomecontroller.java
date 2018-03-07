@@ -299,7 +299,7 @@ e.printStackTrace();
 			id = objClassBean.getId();
 			 classbean=	objClassCreation.getExistingOrNot(objClassBean);
 			 if(id != 0 ){
-				 session.setAttribute("message", "Sucessfully Class is Updated");
+				 session.setAttribute("message", "Successfully Class is Updated");
 				 objClassCreation.save(objClassBean);
 			 }else{
 			if(classbean == null ){
@@ -419,7 +419,7 @@ e.printStackTrace();
 			classbean=	objAddedClass.getExistingOrNot(objClassBean);
 			if(id != 0 )
 			{
-				session.setAttribute("message", "Class Updated Sucessfully");
+				session.setAttribute("message", "Class Updated Successfully");
 				objAddedClass.save(objClassBean);
 			}
 			else
@@ -535,7 +535,7 @@ e.printStackTrace();
 			id = objClassBean.getId();
 			 classbean=	objSectionDao.getExistingOrNot(objClassBean);
 			 if(id != 0 ){
-				 session.setAttribute("message", "Section Updated Sucessfully");
+				 session.setAttribute("message", "Section Updated Successfully");
 				 objSectionDao.save(objClassBean);
 			 }else{
 			if(classbean == null ){

@@ -1,7 +1,7 @@
 package com.aurospaces.neighbourhood.bean;
 
 public class UserBean {
-	protected int id   = 0;
+   protected int id   = 0;
    private String name;
    private String password;
    private String rolId;
