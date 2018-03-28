@@ -174,7 +174,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Terms</span></a></li>
 							
 							<li><a href='#' onclick="#"><span>Exam Common Types</span></a></li>
-							 <li><a href='#' onclick="#"><span>Exam Types</span></a></li>
+							 <li><a href='#' id="" onclick="examType()"><span>Exam Types</span></a></li>
 							<li><a href='#' onclick="#"><span>Grade Systems</span></a></li> 
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Subject Areas</span></a></li>
 							
@@ -305,6 +305,12 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 		var getUrl = window.location;
 		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 		window.location.href = baseUrl+'/subjectHome';
+	}
+	
+	function examType(){
+		var getUrl = window.location;
+		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+		window.location.href = baseUrl+'/examType';
 	}
 	
 	

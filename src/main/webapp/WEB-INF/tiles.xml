@@ -313,6 +313,10 @@
 	<definition name="subjectHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/subjectCreation.jsp" />
 	</definition>
+	<definition name="examType" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examType.jsp" />
+	</definition>
+	
 	<definition name="boardHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/boardCreation.jsp" />
 	</definition>
