@@ -1903,9 +1903,8 @@ e.printStackTrace();
 
 	}
 	@RequestMapping(value = "/getMedium")
-	public @ResponseBody String getMedium(
-			HttpServletResponse response, HttpServletRequest request,
-			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
+	public @ResponseBody String getMedium(HttpServletResponse response, HttpServletRequest request,	HttpSession objSession) throws 
+	JsonGenerationException, JsonMappingException, IOException {
 		List<FacultyBean> listServiceUnit1=null;
 		String json="";
 		String mediumId = request.getParameter("mediumId");
@@ -2516,6 +2515,8 @@ e.printStackTrace();
 		}
 		return statesMap;
 	}
+	
+	
 	
 }
 

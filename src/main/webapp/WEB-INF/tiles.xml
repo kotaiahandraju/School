@@ -327,7 +327,9 @@
 		<put-attribute name="body" value="/WEB-INF/pages/medium.jsp" />
 	</definition>
 	
-	
+	<definition name="examMarks" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examMarks.jsp" />
+	</definition>
 </tiles-definitions>
 
 
