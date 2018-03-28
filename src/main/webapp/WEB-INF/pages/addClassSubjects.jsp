@@ -19,7 +19,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Class Creation</div>
+				<div class="page-title" id="headId">Class Subjects</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -124,7 +124,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
-										<h4>List of Classes</h4>
+										<h4>List of Class Subjects</h4>
 									</div>
 									<div class="blog-body">
 										<div class="table-responsive">
