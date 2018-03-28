@@ -19,7 +19,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Class Creation</div>
+				<div class="page-title" id="headId"> Add Class</div>
 			</div>
 			<!-- Top Bar ends -->
 
