@@ -961,7 +961,7 @@ aside#sidebar {
             border-bottom: 10px solid transparent;
             content: ""; }
       aside#sidebar #menu ul ul a {
-        padding: 10px 10px 10px 45px;
+        padding: 10px 10px 10px 33px;
         display: block;
         color: #999999 !important;
         font-size: 12px;

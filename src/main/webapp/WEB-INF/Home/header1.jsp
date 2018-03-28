@@ -167,6 +167,32 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='#' onclick="viewEvents()"><span>View Notifications</span></a></li> 
 						</ul>
 					</li>
+					
+					<li class='has-sub'>
+						<a href='#'><i class="fa fa-clipboard"></i><span>Exams</span></a>
+						<ul>
+							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Terms</span></a></li>
+							
+							<li><a href='#' onclick="#"><span>Exam Common Types</span></a></li>
+							 <li><a href='#' onclick="#"><span>Exam Types</span></a></li>
+							<li><a href='#' onclick="#"><span>Grade Systems</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick="#"><span>Subject Areas</span></a></li>
+							
+							<li><a href='#' onclick="#"><span>Exam Systems</span></a></li>
+							 <li><a href='#' onclick="#"><span>Exams</span></a></li>
+							<li><a href='#' onclick="#"><span>Exam Marks</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Subject Area Marks</span></a></li>
+							
+							<li><a href='#' onclick="#"><span>Co-Scholastic Areas</span></a></li>
+							 <li><a href='#' onclick="#"><span>Co-Scholastic Grade Systems</span></a></li>
+							<li><a href='#' onclick="#"><span>Co-Scholastic Marks</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick="#"><span>Hall Tickets</span></a></li>
+							
+							<li><a href='#' onclick="#"><span>Progress Report</span></a></li>
+							 <li><a href='#' onclick="#"><span>Promote Exam Structure</span></a></li>
+							<li><a href='#' onclick="#"><span>Online Exam</span></a></li> 
+						</ul>
+					</li>
 <!-- 					<li><a href='#' onclick="backUpdata()"><i class="fa fa-database"></i><span>BackupData</span></a></li> -->
 				</ul>
 		  </div>
