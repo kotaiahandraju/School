@@ -1,0 +1,121 @@
+$( document ).ready(function() {
+    $("#fee").val("");
+
+$("#cls-form").validate(
+		{
+			errorElement: 'span',
+		    errorClass: 'has-error',
+			rules:
+			{
+				boardId: {required: true},
+			    mediumId: {required: true},
+				className: {required: true},
+			    section: {required: true},
+			    fee: {required: true, number: true},
+			},
+			messages:
+			{
+				boardId: {required: 'Please Choose Board'},
+				mediumId: {required: 'Please Choose Medium'},
+				className: {required: 'Please Choose Class'},
+				section: {required: 'Please Choose Section'},
+				fee: {required: 'Please Enter Fee Amount', number: 'Please Enter Numeric Characters'},
+			},
+			errorPlacement: function(error, element)
+			{
+			      if(element.attr("name") == "className")
+			        error.insertAfter(".className_error").css("color", "red");
+			      else if(element.attr("name") == "boardId")
+			        error.insertAfter(".boardId_error").css("color", "red"); 
+			       else if(element.attr("name") == "mediumId")
+			        error.insertAfter(".mediumId_error").css("color", "red");
+			       else if(element.attr("name") == "section")
+			        error.insertAfter(".section_error").css("color", "red");
+			       else if(element.attr("name") == "fee")
+				        error.insertAfter(".fee_error").css("color", "red");
+			      else
+			        error.insertAfter(element);
+			}	
+		});
+
+			  $('#cancel').click(function () {
+			    $("#cls-form").validate().resetForm();
+			    $("#cls-form").removeClass("has-error");6
+			    $("#boardId").val('');
+			    $("#mediumId").val('');
+			    $("#className").val('');
+			    $("#section").val('');
+			    $("#fee").val('');
+			    $("#cls-form").addClass('form-horizontal');
+			  });
+});
+
+
+
+function displayTable(listOrders) {
+			$("#basicExample tr td").remove();
+			$("#basicExample td").remove();
+			serviceUnitArray = {};
+			$
+					.each(
+							listOrders,
+							function(i, orderObj) {
+								serviceUnitArray[orderObj.id] = orderObj;
+								var tblRow = "<tr align='center' role='row' class='odd'>" 
+										+ "<td  title='"+orderObj.boardName+"'>"
+										+ orderObj.boardName
+										+ "</td>"
+										+ "<td  title='"+orderObj.className+"'>"
+										+ orderObj.className
+										+ "</td>"
+										+ "<td  title='"+orderObj.subjectName+"'>"
+										+ orderObj.subjectName
+										+ "</td>"
+										+ "<td>"
+										+ '<a href="javascript:void(0)" onclick=editPack('
+										+ orderObj.id+ ')'
+										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>' + '&nbsp; | &nbsp;'
+										+ '<a style="color: red;" href="javascript:void(0)" onclick=deleteClass('
+										+ orderObj.id+ ')'
+										+ '  ><i class="fa fa-trash-o"></i></a>' + '</td>'
+									
+										+ '</tr>';
+								$(tblRow).appendTo("#basicExample");
+							});
+	}
+	function editPack(id) {
+		$("#id").val(id)
+		$('#boardId').val(serviceUnitArray[id].boardId);
+		$('#classId').val(serviceUnitArray[id].classId);
+		$('#subjectId').val(serviceUnitArray[id].subjectId);
+		$('#subjectId').trigger("chosen:updated");
+		$('#boardId').trigger("chosen:updated");
+		$('#classId').trigger("chosen:updated");
+		$("#submitId").val("Update");
+		$("#headId").text("Edit Class");
+	}
+	
+	
+	function deleteClass(id){
+		var count = 0;
+		var checkstr =  confirm('Are you sure you want to delete this?');
+		if(checkstr == true){
+		  
+		  $.ajax({
+					type : "POST",
+					url : "deleteClassSubject.json",
+					data : "id=" + id ,
+					success : function(response) {
+						displayTable(response);
+//						$('#loadAjax').hide();
+//						window.location.href='HomeControl1';
+					},
+					error : function(e) {
+					}
+				});
+		
+			
+		}else{
+		return false;
+		}
+	}

@@ -326,6 +326,9 @@
 	<definition name="mediumHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/medium.jsp" />
 	</definition>
+	<definition name="classSubjects" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/addClassSubjects.jsp" />
+	</definition>
 	
 	
 </tiles-definitions>
