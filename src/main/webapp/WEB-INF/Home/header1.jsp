@@ -144,6 +144,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='#' id="addfaculty" onclick="addFaculty()"><span>Add Faculty</span></a></li>
 							<li><a href='#' id="addfacultySubjects" onclick="addFacultySubjects()"><span>Add Faculty Subjects</span></a></li>
 							<li><a href='#' id="subjectHome" onclick="subjectHome()"><span>Add  Subjects</span></a></li>
+							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 						</ul>
 					</li>
 					<li class='has-sub'>
@@ -311,7 +312,6 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 		var getUrl = window.location;
 		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 		window.location.href = baseUrl+'/examType';
-	}
 	
 	
  	function searchTable() {
