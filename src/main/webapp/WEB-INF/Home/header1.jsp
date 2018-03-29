@@ -172,29 +172,36 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-clipboard"></i><span>Exams</span></a>
 						<ul>
-							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Terms</span></a></li>
+							<li><a href='#' id="messageDisplayId" onclick=""><span>Exam Terms</span></a></li>
 							
+<<<<<<< HEAD
+							<li><a href='#' onclick=""><span>Exam Common Types</span></a></li>
+							 <li><a href='#' onclick=""><span>Exam Types</span></a></li>
+							<li><a href='#' onclick=""><span>Grade Systems</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick=""><span>Subject Areas</span></a></li>
+=======
 							<li><a href='#' onclick="#"><span>Exam Common Types</span></a></li>
 							 <li><a href='#' id="" onclick="examType()"><span>Exam Types</span></a></li>
 							<li><a href='#' onclick="#"><span>Grade Systems</span></a></li> 
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Subject Areas</span></a></li>
+>>>>>>> refs/remotes/origin/master
 							
-							<li><a href='#' onclick="#"><span>Exam Systems</span></a></li>
-							 <li><a href='#' onclick="#"><span>Exams</span></a></li>
-							<li><a href='#' onclick="#"><span>Exam Marks</span></a></li> 
-							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Subject Area Marks</span></a></li>
+							<li><a href='#' onclick=""><span>Exam Systems</span></a></li>
+							 <li><a href='#' onclick=" "><span>Exams</span></a></li>
+							<li><a href='#' onclick="examMarks()"><span>Exam Marks</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick=""><span>Exam Subject Area Marks</span></a></li>
 							
-							<li><a href='#' onclick="#"><span>Co-Scholastic Areas</span></a></li>
-							 <li><a href='#' onclick="#"><span>Co-Scholastic Grade Systems</span></a></li>
-							<li><a href='#' onclick="#"><span>Co-Scholastic Marks</span></a></li> 
-							<li><a href='#' id="messageDisplayId" onclick="#"><span>Hall Tickets</span></a></li>
+							<li><a href='#' onclick=""><span>Co-Scholastic Areas</span></a></li>
+							 <li><a href='#' onclick=""><span>Co-Scholastic Grade Systems</span></a></li>
+							<li><a href='#' onclick=""><span>Co-Scholastic Marks</span></a></li> 
+							<li><a href='#' id="messageDisplayId" onclick=""><span>Hall Tickets</span></a></li>
 							
-							<li><a href='#' onclick="#"><span>Progress Report</span></a></li>
-							 <li><a href='#' onclick="#"><span>Promote Exam Structure</span></a></li>
-							<li><a href='#' onclick="#"><span>Online Exam</span></a></li> 
+							<li><a href='#' onclick=""><span>Progress Report</span></a></li>
+							 <li><a href='#' onclick=""><span>Promote Exam Structure</span></a></li>
+							<li><a href='#' onclick=""><span>Online Exam</span></a></li> 
 						</ul>
 					</li>
-<!-- 					<li><a href='#' onclick="backUpdata()"><i class="fa fa-database"></i><span>BackupData</span></a></li> -->
+<!-- <li><a href='#' onclick="backUpdata()"><i class="fa fa-database"></i><span>BackupData</span></a></li> -->
 				</ul>
 		  </div>
 			<!-- Menu End -->
@@ -307,12 +314,20 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 		window.location.href = baseUrl+'/subjectHome';
 	}
+<<<<<<< HEAD
+	function examMarks(){
+		var getUrl = window.location;
+		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+		window.location.href = baseUrl+'/examMarks';
+	}
+=======
 	
 	function examType(){
 		var getUrl = window.location;
 		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 		window.location.href = baseUrl+'/examType';
 	
+>>>>>>> refs/remotes/origin/master
 	
  	function searchTable() {
  	    var input, filter, found, table, tr, td, i, j;
