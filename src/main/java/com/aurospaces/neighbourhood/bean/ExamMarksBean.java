@@ -2,35 +2,22 @@ package com.aurospaces.neighbourhood.bean;
 
 import java.util.Date;
 
-public class ClassSubjectBean {
+public class ExamMarksBean {
 
 	 private int id=0;
-	 private String boardId;
+	 private String boardId,classId,subjectId,examtypeId,maxMarks,subjectName;
 	 protected Date createdTime ;
 	 protected Date updatedTime ;
-	 private String classId;
-	 private String subjectId,boardName,className,subjectName;
 	 
 	 
-	 
-	public String getBoardName() {
-		return boardName;
-	}
-	public void setBoardName(String boardName) {
-		this.boardName = boardName;
-	}
-	public String getClassName() {
-		return className;
-	}
-	public void setClassName(String className) {
-		this.className = className;
-	}
-	public String getSubjectName() {
+	 public String getSubjectName() {
 		return subjectName;
 	}
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
+	
+	 
 	public String getBoardId() {
 		return boardId;
 	}
@@ -49,6 +36,24 @@ public class ClassSubjectBean {
 	public void setSubjectId(String subjectId) {
 		this.subjectId = subjectId;
 	}
+	public String getExamtypeId() {
+		return examtypeId;
+	}
+	public void setExamtypeId(String examtypeId) {
+		this.examtypeId = examtypeId;
+	}
+	public String getMaxMarks() {
+		return maxMarks;
+	}
+	public void setMaxMarks(String maxMarks) {
+		this.maxMarks = maxMarks;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Date getCreatedTime() {
 		return createdTime;
 	}
@@ -61,20 +66,6 @@ public class ClassSubjectBean {
 	public void setUpdatedTime(Date updatedTime) {
 		this.updatedTime = updatedTime;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	@Override
-	public String toString() {
-		return "ClassSubjectBean [id=" + id + ", boardId=" + boardId + ", createdTime=" + createdTime + ", updatedTime="
-				+ updatedTime + ", classId=" + classId + ", subjectId=" + subjectId + ", boardName=" + boardName
-				+ ", className=" + className + ", subjectName=" + subjectName + "]";
-	}
-	
-	
 
 	
 }

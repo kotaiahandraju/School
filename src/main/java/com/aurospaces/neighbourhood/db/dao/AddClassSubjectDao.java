@@ -25,14 +25,14 @@ public class AddClassSubjectDao extends AddClassSubjectBaseDao {
 
 		return retlist;
 	}
-	public List<ClassSubjectBean> duplecateCheck(ClassSubjectBean classSubjectBean) {
+	public ClassSubjectBean duplecateCheck(ClassSubjectBean classSubjectBean) {
 		 //jdbcTemplate = custom.getJdbcTemplate();
 			String sql = "SELECT * from classsubjects where boardId = ? and classId =? and subjectId =?";
 			List<ClassSubjectBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{classSubjectBean.getBoardId(),classSubjectBean.getClassId(),classSubjectBean.getSubjectId()},
 			ParameterizedBeanPropertyRowMapper.newInstance(ClassSubjectBean.class));
 			if(retlist.size() > 0)
-				return retlist;
+				return retlist.get(0);
 			return null;
 		}
 }

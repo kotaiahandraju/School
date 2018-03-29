@@ -67,6 +67,8 @@ import com.aurospaces.neighbourhood.bean.AttendanceBean;
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.ClassBean;
 import com.aurospaces.neighbourhood.bean.ClassCreationBean;
+import com.aurospaces.neighbourhood.bean.ClassSubjectBean;
+import com.aurospaces.neighbourhood.bean.ExamMarksBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.bean.MediumBean;
@@ -1821,6 +1823,23 @@ e.printStackTrace();
 		filterBean =  objClassCreation.getClassName1(boardId);
 		ObjectMapper objmapper=new ObjectMapper();
 		json=objmapper.writeValueAsString(filterBean);
+		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());
+		request.setAttribute("seviceList", json);
+	  return json;
+
+
+	}
+	@RequestMapping(value = "/getSubjects")
+	public @ResponseBody String getSubjects(
+			HttpServletResponse response, HttpServletRequest request,
+			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
+		String json="";
+		String boardId = request.getParameter("boardId");
+		String classid = request.getParameter("classId");
+		System.out.println("listServiceUnit1.size()==="+boardId+"hjskjhskjskj"+classid);
+		List<ExamMarksBean> result =  objClassCreation.getSubjects(boardId,classid);
+		ObjectMapper objmapper=new ObjectMapper();
+		json=objmapper.writeValueAsString(result);
 		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());
 		request.setAttribute("seviceList", json);
 	  return json;

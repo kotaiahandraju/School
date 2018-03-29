@@ -8,13 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.aurospaces.neighbourhood.bean.ExamMarksBean;
+
 @Controller public class ExamMarksController {
 	@Autowired private SchoolHomecontroller schoolHomecontroller;
 	@RequestMapping(value = "/examMarks")
-	public String examMarksHome(@ModelAttribute("examMarkscmd") String name,Model model)  {
+	public String examMarksHome(@ModelAttribute("examMarkscmd") ExamMarksBean examMarksBean,Model model )  {
 		
-		
-		model.addAttribute("classNames", schoolHomecontroller.populateallClasses()) ;
+		model.addAttribute("board", schoolHomecontroller.populate()) ;
 		model.addAttribute("sections", schoolHomecontroller.populateallSection()) ;
 		return "examMarks";
 	}

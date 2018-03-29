@@ -7,7 +7,8 @@ import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.ClassBean;
-import com.aurospaces.neighbourhood.bean.FacultyBean;
+import com.aurospaces.neighbourhood.bean.ClassSubjectBean;
+import com.aurospaces.neighbourhood.bean.ExamMarksBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseClassCreationDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
@@ -58,6 +59,17 @@ public class ClassCreationDao extends BaseClassCreationDao{
 			 System.out.println(query);
 	     
 			 return handler;
+	  }
+		public List<ExamMarksBean> getSubjects(String boardId,String classId)
+		{
+
+			String query = "select cs.*, s.name as subjectName from classsubjects cs,subject s where cs.subjectId=s.id and cs.boardId=? and cs.classId=? group by cs.id ";
+			System.out.println(query);
+//			String result = jdbcTemplate.queryForObject(query,String.class,new Object[]{boardId,classId});
+			List<ExamMarksBean> result = jdbcTemplate.query(query, new Object[]{boardId,classId},ParameterizedBeanPropertyRowMapper.newInstance(ExamMarksBean.class));
+			 System.out.println(result);
+	     
+			 return result;
 	  }
 		public List<FilterBean> getSectionFilter(String boardId,String classId)
 		{

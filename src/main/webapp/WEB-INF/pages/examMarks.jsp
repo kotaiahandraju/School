@@ -8,7 +8,7 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-	<script type="text/javascript" src="js/boardCreation.js"></script>
+	<script type="text/javascript" src="js/examMarks.js"></script>
 	<style>
 	.btnsm {
 	margin:0.5px;
@@ -49,28 +49,31 @@
 			
 									<form:form action="addBoard.htm" commandName="examMarkscmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group row">
-											    <span class="col-md-4"><label class="control-label">Class:</label><span >
-											    <select class="padd">
-											    	
-														<option value="" > -- Select Class -- </option>
-														<c:forEach var="className" items="${classNames}">
-															<option value="">${className.value}</option>
-													 	</c:forEach>
-														    
-											    </select>
-											    </span>
-											     </span>
-											    <span class="col-md-4"><label class="control-label">Section:</label><span >
-											    <select class="padd">
-											    	 
-													    <option value="" > -- Select Section -- </option>
-													    <c:forEach var="sections" items="${sections}">
-													    	<option value="">${sections.value} </option>
+											<div class="col-md-3"><label class="control-label">Board Name:</label><div >
+											    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
+														<form:option value="">-- Choose Board --</form:option>
+														<c:forEach var="board" items="${board}">
+													    	<option  value="${board.key}">${board.value}</option>
 													  	</c:forEach>
-												 </select>
-											    </span>
-											     </span>
-											    <span class="col-md-4"><label class="control-label">Exam Type:</label><span >
+													</form:select>
+											    </div>
+											     </div>
+											    <div class="col-md-3"><label class="control-label">Class:</label><div >
+											    	 <form:select path="classId" tabindex="2" class="form-control" required="true" onchange="getSubjects(this.id);">
+														<form:option value="">--Choose Class--</form:option>
+<%-- 														<form:options items="${subject}" ></form:options> --%>
+													</form:select>
+														    
+											    </div>
+											     </div>
+											    <div class="col-md-3"><label class="control-label">Subject:</label><div >
+											      <form:select path="subjectId" tabindex="1" class="form-control" required="true">
+													    <option value="" > -- Select Section -- </option>
+													    <form:option value="">--Choose Class--</form:option>
+												 </form:select>
+											    </div>
+											     </div>
+											    <div class="col-md-3"><label class="control-label">Exam Type:</label><div >
 											    <select class="padd">
 												    <option value="0" selected="selected" label="FA-1"></option>
 												    <option value="1" selected="selected" label="FA-2"></option>
@@ -80,8 +83,8 @@
 												    <option value="5" selected="selected" label="SA-2"></option>
 												    <option value="6" selected="selected" label="SA-3"></option>
 											    </select>
-											    </span>
-											    </span>
+											    </div>
+											    </div>
 											</div>
 <%-- 											<form:hidden path="id"/> --%>
 												

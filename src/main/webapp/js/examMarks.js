@@ -60,23 +60,35 @@ function displayTable(listOrders) {
 					.each(
 							listOrders,
 							function(i, orderObj) {
-								serviceUnitArray[orderObj.id] = orderObj;
-								var tblRow = "<tr align='center' role='row' class='odd'>" 
-										+ "<td  title='"+orderObj.boardName+"'>"
-										+ orderObj.boardName
+								serviceUnitArray[orderObj.classId] = orderObj;
+								var id = '"' + orderObj.classId + '"';
+								var tblRow = "<tr align='center' role='row' class='odd'>" + "<td'><a  id='"
+										+ orderObj.classId
+										+ "' href='javascript:forOrderDetails("
+										+ id
+										+ ")' style='font-color:red'>"
+										+ orderObj.orderId
+										+ "</a></td>"
+										+ "<td  title='"+orderObj.bordName+"'>"
+										+ orderObj.bordName
 										+ "</td>"
-										+ "<td  title='"+orderObj.className+"'>"
-										+ orderObj.className
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.medium+"'>"
+										+ orderObj.medium
 										+ "</td>"
-										+ "<td  title='"+orderObj.subjectName+"'>"
-										+ orderObj.subjectName
+										+ "<td title='"+orderObj.cname+"'>"
+										+ orderObj.cname
 										+ "</td>"
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sname+"' >"
+										+ orderObj.sname
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fee+"' >"
+										+ orderObj.fee
+										+ "/-</td>"
 										+ "<td>"
 										+ '<a href="javascript:void(0)" onclick=editPack('
-										+ orderObj.id+ ')'
+										+ orderObj.classId + ')'
 										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>' + '&nbsp; | &nbsp;'
 										+ '<a style="color: red;" href="javascript:void(0)" onclick=deleteClass('
-										+ orderObj.id+ ')'
+										+ orderObj.classId + ')'
 										+ '  ><i class="fa fa-trash-o"></i></a>' + '</td>'
 									
 										+ '</tr>';
@@ -84,39 +96,59 @@ function displayTable(listOrders) {
 							});
 	}
 	function editPack(id) {
-		$("#id").val(id)
-		$('#boardId').val(serviceUnitArray[id].boardId);
-		var optionsForClass = "";
-		optionsForClass = $("#classId").empty();
-//		optionsForClass.append(new Option("-- Choose Class --", ""));
-		optionsForClass.append(new Option(serviceUnitArray[id].className, serviceUnitArray[id].classId));
-		$('#subjectId').val(serviceUnitArray[id].subjectId);
-		$('#subjectId').trigger("chosen:updated");
+		var transactionId = serviceUnitArray[id].classId;
+		$("#id").val(serviceUnitArray[id].classId)
+		$('#boardId').val(serviceUnitArray[id].borderId);
 		$('#boardId').trigger("chosen:updated");
-		$('#classId').trigger("chosen:updated");
+		$('#className').val(serviceUnitArray[id].className);
+		$('#className').trigger("chosen:updated");
+		$('#mediumId').val(serviceUnitArray[id].mediamId);
+		$('#mediumId').trigger("chosen:updated");
+		$('#section').val(serviceUnitArray[id].section);
+		$('#section').trigger("chosen:updated");
+		$('#fee').val(serviceUnitArray[id].fee);
 		$("#submitId").val("Update");
 		$("#headId").text("Edit Class");
 	}
 	
 	
 	function deleteClass(id){
+		var classId = id;
 		var count = 0;
 		var checkstr =  confirm('Are you sure you want to delete this?');
 		if(checkstr == true){
+		  // do your code
+//			$('#loadAjax').show();
 		  
 		  $.ajax({
 					type : "POST",
-					url : "deleteClassSubject.json",
-					data : "id=" + id ,
+					url : "deleteClass.json",
+					data : "classId=" + classId ,
 					success : function(response) {
 						displayTable(response);
 //						$('#loadAjax').hide();
-//						window.location.href='HomeControl1';
+						window.location.href='HomeControl1';
 					},
 					error : function(e) {
+//						$('#loadAjax').hide();
 					}
 				});
 		
+		/* 	$.ajax({
+				type : "POST",
+				url : "deleteClass.htm",
+				data : "classId=" + classId ,
+				dataType : "json",
+				success : function(response) {
+					alert(response);
+					if (response != "") {
+						displayTable(response);
+					}
+				
+				},
+				error : function(e) {
+				}
+			}); */
 			
 		}else{
 		return false;
@@ -130,7 +162,7 @@ function displayTable(listOrders) {
 			$('#loadAjax').show();
 		$.ajax({
 			type : "POST",
-			url : "getClassNameFilter.json",
+			url : "getClassNameFilter1.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
 			success : function(response) {
@@ -160,3 +192,41 @@ function displayTable(listOrders) {
 
 		}
 	} 
+	
+	function getSubjects(id){
+		var boardId = $("#boardId").val();
+		var classId = $("#classId").val();
+		if(boardId.length !=0 && classId.length != 0){
+			$('#loadAjax').show();
+		$.ajax({
+			type : "POST",
+			url : "getSubjects.json",
+			data : "boardId="+boardId+"&classId="+classId,
+			dataType : "json",
+			success : function(response) {
+				console.log(response);
+				 /* alert(response); */  
+				var optionsForClass = "";
+				optionsForClass = $("#subjectId").empty();
+				$.each(response, function(i, tests) {
+					var id=tests.id;
+					var className=tests.subjectName;
+					optionsForClass.append(new Option(className, id));
+				});
+				$('#loadAjax').hide();
+				$('#subjectId').trigger("chosen:updated");
+			},
+			error : function(e) {
+				$('#loadAjax').hide();
+			},
+			statusCode : {
+				406 : function() {
+					$('#loadAjax').hide();
+			
+				}
+			}
+		});
+		$('#loadAjax').hide();
+
+		}
+	}
