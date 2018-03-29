@@ -1810,6 +1810,22 @@ e.printStackTrace();
 
 
 	}
+	@RequestMapping(value = "/getClassNameFilter1")
+	public @ResponseBody String getClassNameFilter1(
+			HttpServletResponse response, HttpServletRequest request,
+			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
+		List<FilterBean> filterBean=null;
+		String json="";
+		String boardId = request.getParameter("boardId");
+		filterBean =  objClassCreation.getClassName1(boardId);
+		ObjectMapper objmapper=new ObjectMapper();
+		json=objmapper.writeValueAsString(filterBean);
+		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());
+		request.setAttribute("seviceList", json);
+	  return json;
+
+
+	}
 	@RequestMapping(value = "/getSectionFilter")
 	public @ResponseBody String getSectionFilter(
 			HttpServletResponse response, HttpServletRequest request,

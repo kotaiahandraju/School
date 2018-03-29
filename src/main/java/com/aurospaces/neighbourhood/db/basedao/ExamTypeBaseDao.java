@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,7 +82,16 @@ public class ExamTypeBaseDao {
 
 	}
 	
-	
+	 public ExamTypeBean recordExistOrNot(ExamTypeBean examTypeBean) {
+			String sql = "SELECT * from exam_type where examType=? ";
+			List<ExamTypeBean> retlist = jdbcTemplate.query(sql,
+			new Object[]{examTypeBean.getExamType()},
+			ParameterizedBeanPropertyRowMapper.newInstance(ExamTypeBean.class));
+			if(retlist.size() > 0)
+				return retlist.get(0);
+			return null;
+		}
+ 
 	
 
 }

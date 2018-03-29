@@ -49,6 +49,16 @@ public class ClassCreationDao extends BaseClassCreationDao{
 	     
 			 return handler;
 	  }
+		public List<FilterBean> getClassName1(String boardId)
+		{
+
+			String query = "select ct.id,ct.name as className from boardname bn,classtable ct where bn.id =ct.boardId and bn.id=? group by ct.id";
+			System.out.println(query);
+			List<FilterBean> handler = jdbcTemplate.query(query, new Object[]{boardId},ParameterizedBeanPropertyRowMapper.newInstance(FilterBean.class));
+			 System.out.println(query);
+	     
+			 return handler;
+	  }
 		public List<FilterBean> getSectionFilter(String boardId,String classId)
 		{
 

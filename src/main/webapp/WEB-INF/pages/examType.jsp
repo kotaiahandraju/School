@@ -9,6 +9,15 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script type="text/javascript" src="js/examType.js"></script>
+	
+	<script>
+	window.setTimeout(function() {
+		$(".msgcss").fadeTo(500, 0).slideUp(500, function() {
+			$(this).remove();
+		});
+	}, 5000);
+</script>
+	
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
@@ -41,7 +50,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Subject</label>
 											    <div class="col-lg-4 col-md-4 col-sm-8">
-													<form:input path="examType" class="form-control onlyCharacters" tabindex="1" placeholder="Enter Type Name" required="true"/>
+													<form:input path="examType" class="form-control" tabindex="1" placeholder="Enter Type Name" required="true"/>
 													<span class="name_error" id="name_error"></span>
 												</div>
 											</div>
@@ -52,19 +61,15 @@
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
 													</div>
 												</div>
-												<div class="form-group">
-													<div class="col-sm-8 col-sm-offset-4">
-													<%
-														String message = null;
-														message=(String)session.getAttribute("message");
-												        if(message!=null)
-												        {
-															out.println("<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
-															session.setAttribute("message", null);
-														}
-											        %>
+											<c:if test="${not empty msg}">
+												<div class="msgcss row">
+													<div class="col-sm-4 col-sm-offset-4">
+														<div class="form-group">
+															<div class="alert alert-${cssMsg} fadeIn animated">${msg}</div>
+														</div>
 													</div>
 												</div>
+											</c:if>
 									</form:form>
 									</div>
 									

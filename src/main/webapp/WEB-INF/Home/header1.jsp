@@ -140,32 +140,32 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>
-							<li><a href="#" id="addClass" onclick="addclass();"><span>Add Class</span></a></li>
-							<li><a href='#' id="addfaculty" onclick="addFaculty()"><span>Add Faculty</span></a></li>
-							<li><a href='#' id="addfacultySubjects" onclick="addFacultySubjects()"><span>Add Faculty Subjects</span></a></li>
-							<li><a href='#' id="subjectHome" onclick="subjectHome()"><span>Add  Subjects</span></a></li>
+							<li><a href="HomeControl1" id="addClass"><span>Add Class</span></a></li>
+							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
+							<li><a href='facultySubject' id="addfacultySubjects" ><span>Add Faculty Subjects</span></a></li>
+							<li><a href='subjectHome' id="subjectHome" ><span>Add  Subjects</span></a></li>
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 						</ul>
 					</li>
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-users"></i><span>Student Details </span></a>
 						<ul>
-							<li><a href='#' id="addStudent" onclick="addStudent();"><span>Add Student</span></a></li>
-							<li><a href='#' id="viewStudent" onclick="viewStudent();"><span>View Student</span></a></li>
-							<li><a href='#' onclick="studentFee();"><span>Student Fee</span></a></li>
-							<li><a href='#' onclick="viewStudentFee();"><span> View Student Fee</span></a></li>
-							<li><a href='#' onclick="importStudent();"><span>Import Student</span></a></li>
-							<li><a href='#' onclick="exportStudent();"><span>Export Student</span></a></li>
+							<li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
+							<li><a href='viewStudent' id="viewStudent" ><span>View Student</span></a></li>
+							<li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
+							<li><a href='viewStudentFee' ><span> View Student Fee</span></a></li>
+							<li><a href='importStudent' ><span>Import Student</span></a></li>
+							<li><a href='exportStudent' ><span>Export Student</span></a></li>
 						</ul>
 					</li>
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-envelope-open-o"></i><span>Message</span></a>
 						<ul>
-							<li><a href='#' id="messageDisplayId" onclick="messageDisplay()"><span>Attendance</span></a></li>
+							<li><a href='attendanceHome' id="messageDisplayId" ><span>Attendance</span></a></li>
 							
-							<li><a href='#' onclick="viewAttendanceHome()"><span>View Attendance</span></a></li>
-							 <li><a href='#' onclick="eventHome()"><span>Notifications</span></a></li>
-							<li><a href='#' onclick="viewEvents()"><span>View Notifications</span></a></li> 
+							<li><a href='viewAttendanceHome' ><span>View Attendance</span></a></li>
+							 <li><a href='eventsHome' ><span>Notifications</span></a></li>
+							<li><a href='viewEvents' ><span>View Notifications</span></a></li> 
 						</ul>
 					</li>
 					
@@ -175,7 +175,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Exam Terms</span></a></li>
 							
 							<li><a href='#' onclick="#"><span>Exam Common Types</span></a></li>
-							 <li><a href='#' id="" onclick="examType()"><span>Exam Types</span></a></li>
+							 <li><a href='examType' id="" onclick="examType()"><span>Exam Types</span></a></li>
 							<li><a href='#' onclick="#"><span>Grade Systems</span></a></li> 
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Subject Areas</span></a></li>
 							
