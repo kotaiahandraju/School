@@ -48,7 +48,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 											    <div class="col-sm-8">
-												    <form:select path="boardId" tabindex="1" class="form-control" required="true" >
+												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -62,7 +62,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="classId" tabindex="3" class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="className" class="form-control" tabindex="3" placeholder="Enter Class/Branch" required="true"/> --%>
 													<span class="className_error" id="className_error"></span>

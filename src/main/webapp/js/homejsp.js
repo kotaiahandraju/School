@@ -154,3 +154,41 @@ function displayTable(listOrders) {
 		return false;
 		}
 	}
+	
+	
+	function classNameFilter(id){
+		var boardId = $("#boardId").val();
+		if(boardId.length !=0){
+			$('#loadAjax').show();
+		$.ajax({
+			type : "POST",
+			url : "getClassNameFilter1.json",
+			data : "boardId=" + boardId,
+			dataType : "json",
+			success : function(response) {
+				 /* alert(response); */  
+				var optionsForClass = "";
+				optionsForClass = $("#className").empty();
+				optionsForClass.append(new Option("-- Choose Class --", ""));
+				$.each(response, function(i, tests) {
+					var id=tests.id;
+					var className=tests.className;
+					optionsForClass.append(new Option(className, id));
+				});
+				$('#loadAjax').hide();
+				$('#className').trigger("chosen:updated");
+			},
+			error : function(e) {
+				$('#loadAjax').hide();
+			},
+			statusCode : {
+				406 : function() {
+					$('#loadAjax').hide();
+			
+				}
+			}
+		});
+		$('#loadAjax').hide();
+
+		}
+	} 
