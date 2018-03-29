@@ -86,10 +86,7 @@ function displayTable(listOrders) {
 	function editPack(id) {
 		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
-		var optionsForClass = "";
-		optionsForClass = $("#classId").empty();
-//		optionsForClass.append(new Option("-- Choose Class --", ""));
-		optionsForClass.append(new Option(serviceUnitArray[id].className, serviceUnitArray[id].classId));
+		$('#classId').val(serviceUnitArray[id].classId);
 		$('#subjectId').val(serviceUnitArray[id].subjectId);
 		$('#subjectId').trigger("chosen:updated");
 		$('#boardId').trigger("chosen:updated");

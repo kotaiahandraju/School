@@ -174,7 +174,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 						<ul>
 							<li><a href='#' id="messageDisplayId" onclick=""><span>Exam Terms</span></a></li>
 							<li><a href='#' onclick="#"><span>Exam Common Types</span></a></li>
-							 <li><a href='examType' ><span>Exam Types</span></a></li>
+							 <li><a href='examType' id="" onclick="examType()"><span>Exam Types</span></a></li>
 							<li><a href='#' onclick="#"><span>Grade Systems</span></a></li> 
 							<li><a href='#' id="messageDisplayId" onclick="#"><span>Subject Areas</span></a></li>
 							<li><a href='#' onclick=""><span>Exam Systems</span></a></li>
