@@ -333,7 +333,15 @@
 	<definition name="classSubjects" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/addClassSubjects.jsp" />
 	</definition>
-	
+	<definition name="examMarks" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examMarks.jsp" />
+	</definition>
+	<definition name="hallticket" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/hallticket.jsp" />
+	</definition>
+	<definition name="studentMarks" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studentMarks.jsp" />
+	</definition>
 	
 </tiles-definitions>
 

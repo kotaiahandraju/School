@@ -182,3 +182,4 @@
 	
 
 </script>
+>>>>>>> branch 'master' of https://github.com/kotaiahandraju/School.git

@@ -1076,7 +1076,7 @@ footer {
 .panel-body {
   padding: 15px;
   position: relative;
-  border: 1px solid #ededed; }
+  border: 0px solid #ededed; }
 
 .panel-heading {
   position: relative;
@@ -1943,11 +1943,14 @@ ul.recent-tweets {
   border-radius: 0;
   box-shadow: none;
   -webkit-box-shadow: none;
-  border: 1px solid #d9d9d9; }
+  border: 1px solid #d9d9d9; 
+   width:auto !important;
+       border-radius: 7px;}
   .form-control:focus {
     border: 1px solid #a4c2dc;
     box-shadow: none;
-    -webkit-box-shadow: none; }
+    -webkit-box-shadow: none;
+    }
 
 .form-control-feedback {
   top: 33px;
@@ -3693,5 +3696,12 @@ a.list-group-item-primary {
 .table-no-border > tbody > tr > td, .table-no-border > tbody > tr > th, .table-no-border > tfoot > tr > td, .table-no-border > tfoot > tr > th, .table-no-border > thead > tr > td, .table-no-border > thead > tr > th {
   border: none;
   padding: 9px 0px; }
-
+.padd {
+	    padding: 5px !important;
+    border-radius: 5px !important;
+}
+.blog-body1 {
+	    padding: 15px 5px 0px 25px !important;
+	        border: 1px solid #ededed !important;
+}
 /*# sourceMappingURL=main.css.map */

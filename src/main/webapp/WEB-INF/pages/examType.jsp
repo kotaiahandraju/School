@@ -23,7 +23,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Exam Type</div>
+				<div class="page-title" id="headId">ExamType</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -48,9 +48,9 @@
 			
 									<form:form action="savedata" commandName="examTypecmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Subject</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Exam Type</label>
 											    <div class="col-lg-4 col-md-4 col-sm-8">
-													<form:input path="examType" class="form-control" tabindex="1" placeholder="Enter Type Name" required="true"/>
+													<form:input path="examType" class="form-control" tabindex="1" placeholder="Enter Type of Exam" required="true"/>
 													<span class="name_error" id="name_error"></span>
 												</div>
 											</div>
@@ -84,7 +84,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="blog">
 									<div class="blog-header">
-										<h4>List of Exams</h4>
+										<h4>List of ExamType</h4>
 									</div>
 									<div class="blog-body">
 										<div class="table-responsive">
@@ -94,7 +94,7 @@
  														<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
 															<thead>
 																<tr role="row">
-																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Subject Name</th>
+																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">ExamType Name</th>
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>
