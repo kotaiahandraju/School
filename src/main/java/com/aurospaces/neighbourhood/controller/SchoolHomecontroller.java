@@ -41,7 +41,6 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -66,15 +65,16 @@ import com.aurospaces.neighbourhood.bean.AttendanceBean;
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.ClassBean;
 import com.aurospaces.neighbourhood.bean.ClassCreationBean;
+import com.aurospaces.neighbourhood.bean.ExamMarksBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.bean.MediumBean;
 import com.aurospaces.neighbourhood.bean.SectionCreationBean;
 import com.aurospaces.neighbourhood.bean.StudentBean;
 import com.aurospaces.neighbourhood.bean.StudentFeeBean;
-import com.aurospaces.neighbourhood.bean.UserBean;
 import com.aurospaces.neighbourhood.bean.UsersBean;
 import com.aurospaces.neighbourhood.db.dao.AddBoardDao;
+import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
 import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
 import com.aurospaces.neighbourhood.db.dao.BirthDayNotificationDao;
 import com.aurospaces.neighbourhood.db.dao.ClassCreation1Dao;
@@ -126,7 +126,7 @@ public class SchoolHomecontroller {
 	@Autowired SectionDao objSectionDao;
 	@Autowired MediumDao objMediumDao;
 	/*LoginHome1*/
-	
+	@Autowired AddClassSubjectDao objAddClassSubjectDao;
 	private Logger logger = Logger.getLogger(SchoolHomecontroller.class);
 	@RequestMapping(value = "/HomePage")
 	public String HomePage(@ModelAttribute("packCmd") UsersBean objUsersBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -1826,11 +1826,11 @@ e.printStackTrace();
 
 
 	}
-	@RequestMapping(value = "/getSectionFilter")
-	public @ResponseBody String getSectionFilter(
+	@RequestMapping(value = "/getSubjectFilter")
+	public @ResponseBody String getSubjectFilter(
 			HttpServletResponse response, HttpServletRequest request,
 			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
-		List<FilterBean> filterBean=null;
+		List<ExamMarksBean> filterBean=null;
 		String json="";
 		String boardId = null;
 		String classId = null;
@@ -1838,7 +1838,8 @@ e.printStackTrace();
 		 boardId = request.getParameter("boardId");
 		 classId = request.getParameter("classId");
 		
-		filterBean =  objClassCreation.getSectionFilter(boardId,classId);
+		//filterBean =  objClassCreation.getSectionFilter(boardId,classId);
+		 filterBean =  objAddClassSubjectDao.getAllClassSubjectsName(boardId,classId);
 		ObjectMapper objmapper=new ObjectMapper();
 		json=objmapper.writeValueAsString(filterBean);
 		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());

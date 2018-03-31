@@ -200,7 +200,7 @@ function displayTable(listOrders) {
 			$('#loadAjax').show();
 		$.ajax({
 			type : "POST",
-			url : "getSubjects.json",
+			url : "getSubjectFilter.json",
 			data : "boardId="+boardId+"&classId="+classId,
 			dataType : "json",
 			success : function(response) {
@@ -208,10 +208,19 @@ function displayTable(listOrders) {
 				 /* alert(response); */  
 				var optionsForClass = "";
 				optionsForClass = $("#subjectId").empty();
+				//optionsForClass.append(new Option("-- Choose Subject --", ""));
 				$.each(response, function(i, tests) {
-					var id=tests.id;
-					var className=tests.subjectName;
-					optionsForClass.append(new Option(className, id));
+					var id=tests.subjectId;
+
+					var subjectName=tests.subjectName;
+					$('#subjectDiv').append(
+							'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
+							+ ' </label>' 
+							+'<br>'
+							+'<input path=" '+ id+'" type="number" class="form-control" tabindex="1"	placeholder="Enter Maximum Marks"/>');
+						
+					$('#subjectDiv').append();
+					//optionsForClass.append(new Option(className, id));
 				});
 				$('#loadAjax').hide();
 				$('#subjectId').trigger("chosen:updated");

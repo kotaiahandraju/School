@@ -25,6 +25,7 @@ import com.aurospaces.neighbourhood.bean.ClassCreationBean;
 import com.aurospaces.neighbourhood.bean.ClassSubjectBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FacultySubjectsBean;
+import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
 import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
 import com.aurospaces.neighbourhood.db.dao.StudentDao;
@@ -69,6 +70,8 @@ public class ClassSubjectsController {
 		}
 		return "classSubjects";
 	}
+	
+	
 	
 	@RequestMapping(value = "/saveClassSubject")
 	public String saveClassSubject(@ModelAttribute("classSubjectCmd") ClassSubjectBean classSubjectBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException

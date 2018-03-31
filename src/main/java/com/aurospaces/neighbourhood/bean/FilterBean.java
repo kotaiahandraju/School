@@ -6,7 +6,15 @@ private String className;
 private String boardName;
 private String sectionName;
 private String mediumName;
-String studentName;
+private String studentName;
+private String subjectName;
+
+public String getSubjectName() {
+	return subjectName;
+}
+public void setSubjectName(String subjectName) {
+	this.subjectName = subjectName;
+}
 public String getStudentName() {
 	return studentName;
 }
