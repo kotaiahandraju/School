@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.ClassBean;
-import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseClassCreationDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;

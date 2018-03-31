@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.ClassSubjectBean;
+import com.aurospaces.neighbourhood.bean.ExamMarksBean;
+import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.db.basedao.AddClassSubjectBaseDao;
 
 @Repository(value="addClassSubjectDao")
@@ -25,14 +27,27 @@ public class AddClassSubjectDao extends AddClassSubjectBaseDao {
 
 		return retlist;
 	}
-	public List<ClassSubjectBean> duplecateCheck(ClassSubjectBean classSubjectBean) {
+	
+	
+	public List<ExamMarksBean> getAllClassSubjectsName(String boardId,String classId)
+	{
+		//This method is to get All Subject Names in examMarks.jsp field name "Subject" via Board and Class....
+
+		String query = "select cs.subjectId,sb.name as subjectName from classsubjects cs ,subject  sb  where  cs.subjectId = sb.id  and cs.classId = ? and cs.boardId = ? ";
+		System.out.println(query);
+		List<ExamMarksBean> handler = jdbcTemplate.query(query, new Object[]{boardId,classId},ParameterizedBeanPropertyRowMapper.newInstance(ExamMarksBean.class));
+		 System.out.println(query);
+     
+		 return handler;
+  }
+	public ClassSubjectBean duplecateCheck(ClassSubjectBean classSubjectBean) {
 		 //jdbcTemplate = custom.getJdbcTemplate();
 			String sql = "SELECT * from classsubjects where boardId = ? and classId =? and subjectId =?";
 			List<ClassSubjectBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{classSubjectBean.getBoardId(),classSubjectBean.getClassId(),classSubjectBean.getSubjectId()},
 			ParameterizedBeanPropertyRowMapper.newInstance(ClassSubjectBean.class));
 			if(retlist.size() > 0)
-				return retlist;
+				return retlist.get(0);
 			return null;
 		}
 }

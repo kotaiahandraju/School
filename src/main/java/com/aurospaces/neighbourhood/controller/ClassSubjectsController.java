@@ -25,6 +25,7 @@ import com.aurospaces.neighbourhood.bean.ClassCreationBean;
 import com.aurospaces.neighbourhood.bean.ClassSubjectBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FacultySubjectsBean;
+import com.aurospaces.neighbourhood.bean.FilterBean;
 import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
 import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
 import com.aurospaces.neighbourhood.db.dao.StudentDao;
@@ -70,21 +71,23 @@ public class ClassSubjectsController {
 		return "classSubjects";
 	}
 	
-	@SuppressWarnings("unused")
+	
+	
 	@RequestMapping(value = "/saveClassSubject")
 	public String saveClassSubject(@ModelAttribute("classSubjectCmd") ClassSubjectBean classSubjectBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException
 	{
-		List<ClassSubjectBean> listOrderBeans = null;
+		ClassSubjectBean listOrderBeans = null;
 		try {
 			
-			
+			System.out.println("---list---"+classSubjectBean);
 			listOrderBeans = objAddClassSubjectDao.duplecateCheck(classSubjectBean);
-			System.out.println("---list---"+listOrderBeans.size());
-			if(listOrderBeans !=null || listOrderBeans.size()>0) {
+//			System.out.println("---list---"+listOrderBeans.size());
+			if(listOrderBeans !=null ) {
 				
 				session.setAttribute("message", "Record already exist.");
 				
 			}else {
+				System.out.println("------------------------"+classSubjectBean.getId());
 				if(classSubjectBean.getId()==0) {
 					objAddClassSubjectDao.save(classSubjectBean);
 					session.setAttribute("message", "Section Created Successfully.");
@@ -95,6 +98,7 @@ public class ClassSubjectsController {
 			}
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 		return "redirect:classSubjects";
