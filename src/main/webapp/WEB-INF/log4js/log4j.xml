@@ -2,7 +2,7 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-	<appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender">
+	<!-- <appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="D:\\SalesLog.txt" />
 		<param name="MaxFileSize" value="5MB" />
 		<param name="MaxBackupIndex" value="5" />
@@ -10,7 +10,7 @@
 			<param name="ConversionPattern" value="[%d][%p][%c][%m]%n" />
 		</layout>
 
-	</appender>
+	</appender> -->
 <!-- Appenders -->
 
 
