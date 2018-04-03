@@ -10,7 +10,7 @@
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 <script
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-<script type="text/javascript" src="js/examMarks.js"></script>
+<script type="text/javascript" src="js/studentMarks.js"></script>
 <style>
 .btnsm {
 	margin: 0.5px;
@@ -47,54 +47,65 @@
 							<div class="blog-body1">
 								<%-- 									<%${message} %> --%>
 
-								<form:form action="#" commandName="studentMarksCmd" 
+								<form:form action="#" commandName="studentMarksCmd"
 									method="post" id="cls-form" class="form-horizontal">
 									<div class="form-group row">
-										<div class="col-md-3">
+										<div class="col-md-2">
 											<label class="control-label">Board Name:</label>
-											<div>
-												<form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
+												<form:select path="boardId" tabindex="1"
+													class="form-control" required="true"
+													onchange="classNameFilter(this.id);">
 													<form:option value="">-- Choose Board --</form:option>
-													<form:options items="${board}"/>
+													<form:options items="${board}" />
 												</form:select>
-											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-2">
 											<label class="control-label">Class:</label>
-											<div>
 												<form:select path="classId" tabindex="2"
 													class="form-control" required="true"
-													onchange="getSubjects(this.id);">
+													onchange="getClassBySection(this.id);">
 													<form:option value="">--Choose Class--</form:option>
 													<%-- <form:options items="${subject}" ></form:options> --%>
 												</form:select>
 
-											</div>
 										</div>
-										<div class="col-md-3">
-											<label class="control-label">Student:</label>
-											<div>
-												<form:select path="subjectId" tabindex="1"
+										<div class="col-md-2">
+											<label class="control-label">Section:</label>
+												<form:select path="sectionId" tabindex="2"
 													class="form-control" required="true"
-													onchange="getClassSubjects(this.id);">
-													<option value="">-- Select Student --</option>
-													<form:option value="">--Choose Class--</form:option>
+													onchange="getClassBySectionByStudent(this.id);">
+													<form:option value="">--Choose Section--</form:option>
+													<%-- <form:options items="${subject}" ></form:options> --%>
 												</form:select>
-											</div>
+
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-2">
+											<label class="control-label">Student:</label>
+												<form:select path="studentId" tabindex="1"
+													class="form-control" required="true"
+													onchange="getClassBySectionByStudentByExamType(this.id);">
+												<!-- 	<option value="">-- Select Student --</option> -->
+													<form:option value="">--Select Student--</form:option>
+<%-- 													<form:options items="${allStudents}"></form:options> --%>
+												</form:select>
+										</div>
+										<div class="col-md-2">
 											<label class="control-label">Exam Type:</label>
-											<div>
 												<form:select path="examTypeId" tabindex="1"
 													class="form-control" required="true">
 													<form:option value="">-- Exam Type --</form:option>
-													<c:forEach var="exampType" items="${exampType}">
+													<form:options items="${examType}"></form:options>
+													<%-- <c:forEach var="exampType" items="${exampType}">
 														<option value="${exampType.key}">${exampType.value}</option>
-													</c:forEach>
+													</c:forEach> --%>
 												</form:select>
 											</div>
 										</div>
 									</div>
+									
+									
+									
+									
 									<%-- 											<form:hidden path="id"/> --%>
 
 									<div class="form-group">
@@ -111,6 +122,22 @@
 											%>
 										</div>
 									</div>
+									
+									
+									<div class="row">
+										<div class="col-sm-8 col-sm-offset-4">
+											<form:hidden path="id" />
+											<div class="form-group">
+												<div class="col-sm-8 col-sm-offset-2">
+													<input type="submit" id="submitId" onsubmit="getExamList" value="Enter Student Marks"
+														class="btn btn-success" tabindex="6" />
+													<button type="button" class="btn btn-danger" id="cancel"
+														tabindex="7">Reset</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									
 								</form:form>
 							</div>
 

@@ -53,7 +53,9 @@
 										<div class="col-md-3">
 											<label class="control-label">Board Name:</label>
 											<div>
-												<form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
+												<form:select path="boardId" tabindex="1"
+													class="form-control" required="true"
+													onchange="classNameFilter(this.id);">
 													<form:option value="">-- Choose Board --</form:option>
 													<c:forEach var="board" items="${board}">
 														<option value="${board.key}">${board.value}</option>
@@ -64,29 +66,32 @@
 										<div class="col-md-3">
 											<label class="control-label">Class:</label>
 											<div>
-												<form:select path="classId" tabindex="2" class="form-control" required="true"	onchange="getSubjects(this.id);">
+												<form:select path="classId" tabindex="2"
+													class="form-control" required="true"
+													onchange="getSubjects(this.id);">
 													<form:option value="">--Choose Class--</form:option>
 													<%-- <form:options items="${subject}" ></form:options> --%>
 												</form:select>
 
 											</div>
 										</div>
-										
-										<div class="col-md-3" >
+
+										<div class="col-md-3">
 											<label class="control-label">Exam Type:</label>
 											<div>
-												<form:select path="examtypeId" tabindex="1" class="form-control" required="true" >
+												<form:select path="examtypeId" tabindex="1"
+													class="form-control" required="true">
 													<form:option value="">-- Exam Type --</form:option>
-													<c:forEach var="exampType" items="${exampType}">
-														<option value="${exampType.key}">${exampType.value}</option>
+													<c:forEach var="examType" items="${examType}">
+														<option value="${examType.key}">${examType.value}</option>
 													</c:forEach>
 												</form:select>
 											</div>
 										</div>
-										
-										<div class="col-md-3" >
+
+										<div class="col-md-3">
 											<!-- <label class="control-label">Subject:</label> -->
-											<div id = "subjectDiv">
+											<div id="subjectDiv">
 												<%-- <form:select path="subjectId" tabindex="1"	class="form-control" required="true" onchange="getClassSubjects(this.id);">
 													<option value="">-- Select Section --</option>
 													<form:option value="">--Choose Class--</form:option>
@@ -99,17 +104,18 @@
 									<div class="form-group">
 										<div class="col-sm-8 col-sm-offset-4">
 											<%
-														String message = null;
-														message=(String)session.getAttribute("message");
-												        if(message!=null)
-												        {
-															out.println("<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
-															session.setAttribute("message", null);
-														}
-											        %>
+												String message = null;
+													message = (String) session.getAttribute("message");
+													if (message != null) {
+														out.println(
+																"<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"
+																		+ message + "</span>");
+														session.setAttribute("message", null);
+													}
+											%>
 										</div>
 									</div>
-									
+
 									<div class="row">
 										<div class="col-sm-8 col-sm-offset-4">
 											<form:hidden path="id" />
@@ -271,12 +277,14 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
-var listOrders1 = ${allOrders1};
-if (listOrders1 != "") {
-	displayTable(listOrders1);
-}else{
-	$("#emptyMessageId").val("No Results Found");
-}	
+	var listOrders1 = $
+	{
+		allOrders1
+	};
+	if (listOrders1 != "") {
+		displayTable(listOrders1);
+	} else {
+		$("#emptyMessageId").val("No Results Found");
+	}
 </script>
 >>>>>>> 2c35141635c7acaeab3b4aea0ad80abfc9ee09bb
