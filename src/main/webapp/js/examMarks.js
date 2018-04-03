@@ -210,14 +210,16 @@ function displayTable(listOrders) {
 				optionsForClass = $("#subjectId").empty();
 				//optionsForClass.append(new Option("-- Choose Subject --", ""));
 				$.each(response, function(i, tests) {
-					var id=tests.subjectId;
+					var subjectId =tests.subjectId;
 
 					var subjectName=tests.subjectName;
-					$('#subjectDiv').append(
-							'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
+					$('#subjectDiv').append('<div class="col-md-4" style= "float:left;">'
+							+'<input  class="subjectId" id="'+subjectId+'" type="hidden" />'
+							+'<label  for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
 							+ ' </label>' 
-							+'<br>'
-							+'<input path=" '+ id+'" type="number" class="form-control" tabindex="1"	placeholder="Enter Maximum Marks"/>');
+							
+							+'<input name="" id="marks_'+ subjectId +'" type="number" class="form-control maxMarks" tabindex="1"	placeholder="Enter Maximum Marks"/>'
+							+'</div>');
 						
 					$('#subjectDiv').append();
 					//optionsForClass.append(new Option(className, id));
@@ -239,3 +241,67 @@ function displayTable(listOrders) {
 
 		}
 	}
+	
+	
+	function examMarksSubmission(){
+		var boardId = $("#boardId").val();
+		var classId = $("#classId").val();
+		var examtypeId = $("#examtypeId").val();
+		
+		var subjectMarksMap = new Map();
+		subjectMarksMap.set($("#subjectId"), $("#maxMarks").val());
+		//if(boardId.length !=0){
+		//	$('#loadAjax').show();
+		console.log(subjectMarksMap);
+		
+		var subjects = $.makeArray($('.subjectId').map(function() {
+			return this.id;
+		}));
+		var marks = $.makeArray($('.maxMarks').map(function() {
+			return this.id;
+			
+		}));
+		console.log(subjects);
+		allsubjectsMarks=[];
+		$.each(subjects,function(v,k){
+			allsubjectsMarks.push(subjects[v]+': '+$("#marks_"+subjects[v]).val());
+		});
+		
+		
+		examdetails={boardId:boardId,classId:classId,examtypeId:examtypeId };
+		
+		var data={examd:examdetails,allsub:allsubjectsMarks};
+		console.log(data);
+		return false;
+		$.ajax({
+			type : "POST",
+			url : "addexamMarks.json",
+			//data :"boardId="+boardId+"&classId="+classId+"&examtypeId="+examtypeId+"&allsubjectsMarks="+allsubjectsMarks,
+			data :JSON.stringfy(data),
+			//dataType : "json",
+			success : function(response) {
+				 /* alert(response); */  
+				var optionsForClass = "";
+				$.each(response, function(i, tests) {
+					var id=tests.id;
+					var className=tests.className;
+					optionsForClass.append(new Option(className, id));
+				});
+				$('#loadAjax').hide();
+				$('#classId').trigger("chosen:updated");
+			},
+			error : function(e) {
+				$('#loadAjax').hide();
+			},
+			statusCode : {
+				406 : function() {
+					$('#loadAjax').hide();
+			
+				}
+			}
+		
+		});
+		//$('#loadAjax').hide();
+
+		
+	} 
