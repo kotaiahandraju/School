@@ -6,21 +6,26 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.StudentMarksBean;
+import com.aurospaces.neighbourhood.db.dao.ClassCreationDao;
+import com.aurospaces.neighbourhood.db.dao.ExamTypeDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 
 @Controller
 public class StudentMarksController {
-	@Autowired usersDao1 usesDao1;
+	@Autowired
+	usersDao1 usesDao1;
+	@Autowired
+	ClassCreationDao objClassCreation;
+	@Autowired  ExamTypeDao  examTypeDao;
 	@RequestMapping("/studentMarks")
-	public String studentMarksPage(@ModelAttribute("studentMarksCmd") StudentMarksBean studentMarksBean) {
-		
-		
-		
+	public String studentMarksPage(@ModelAttribute("studentMarksCmd") StudentMarksBean studentMarksBean,Model model) {
+		model.addAttribute("examType", examTypeDao.getAllExamType()) ;
 		return "studentMarks";
 	}
 

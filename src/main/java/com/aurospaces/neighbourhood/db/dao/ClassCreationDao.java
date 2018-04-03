@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.ClassBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
+import com.aurospaces.neighbourhood.bean.StudentMarksBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseClassCreationDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 
@@ -58,6 +59,30 @@ public class ClassCreationDao extends BaseClassCreationDao{
 	     
 			 return handler;
 	  }
+		
+		public List<StudentMarksBean> getClassBySectionByStudentDao(String classId,String boardId,String sectionId)
+		{
+
+			String query = "select s.id,s.name as studentname from student s where boardName=? and className=? and section=? group by s.id";
+			System.out.println(query);
+			List<StudentMarksBean> handler = jdbcTemplate.query(query, new Object[]{classId,boardId,sectionId},ParameterizedBeanPropertyRowMapper.newInstance(StudentMarksBean.class));
+			 System.out.println(handler.size());
+	     
+			 return handler;
+	  }
+		
+		
+		
+		public List<StudentMarksBean> getClassBySectionDao(String classId,String boardId)
+		{
+
+			String query = "select st.id,st.name as sectionname from sectiontable st where boardid=? and classid=? group by st.id";
+			System.out.println(query);
+			List<StudentMarksBean> handler = jdbcTemplate.query(query, new Object[]{classId,boardId},ParameterizedBeanPropertyRowMapper.newInstance(StudentMarksBean.class));
+			 System.out.println(handler.size());
+	     
+			 return handler;
+	  }
 		public List<FilterBean> getSectionFilter(String boardId,String classId)
 		{
 
@@ -81,5 +106,7 @@ public class ClassCreationDao extends BaseClassCreationDao{
 	     
 			 return handler;
 	  }
+
+		
 }
 
