@@ -48,7 +48,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 											    <div class="col-sm-8">
-												    <form:select path="boardId" tabindex="1" class="form-control" required="true">
+												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange='classNameFilter(this.id);'>
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -73,7 +73,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class/Branch</label>
 											    <div class="col-sm-8">
-												    <form:select path="className" tabindex="3" class="form-control" required="true" onclick=" classNameFilter(this.id);">
+												    <form:select path="className" tabindex="3" class="form-control" required="true" onchange="sectionFilter();">
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
@@ -90,7 +90,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="section" tabindex="4" class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-														<form:options items="${allSection}"></form:options>
+<%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="section" class="form-control" tabindex="4" placeholder="Enter Section" required="true"/> --%>
 													<span class="section_error" id="section_error"></span>

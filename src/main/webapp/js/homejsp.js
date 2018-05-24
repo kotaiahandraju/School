@@ -193,3 +193,39 @@ function displayTable(listOrders) {
 
 		}
 	} 
+	function sectionFilter(){
+		var boardId = $("#boardId").val();
+		var classId = $("#className").val();
+		if(boardId.length !=0 && classId.length != 0){
+			$('#loadAjax').show();
+		$.ajax({
+			type : "POST",
+			url : "getSectionFilter.json",
+			data : "boardId=" + boardId+"&classId="+classId,
+			dataType : "json",
+			success : function(response) {
+				 /* alert(response); */  
+				var optionsForClass = "";
+				optionsForClass = $("#section").empty();
+				optionsForClass.append(new Option("-- Choose Section --", ""));
+				$.each(response, function(i, tests) {
+					var id=tests.id;
+					var sectionName=tests.sectionName;
+					optionsForClass.append(new Option(sectionName, id));
+				});
+				$('#loadAjax').hide();
+				$('#section').trigger("chosen:updated");
+			},
+			error : function(e) {
+				$('#loadAjax').hide();
+			},
+			statusCode : {
+				406 : function() {
+					$('#loadAjax').hide();
+			
+				}
+			}
+		});
+		$('#loadAjax').hide();
+		}
+	} 

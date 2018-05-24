@@ -1842,7 +1842,7 @@ e.printStackTrace();
 		 boardId = request.getParameter("boardId");
 		 classId = request.getParameter("classId");
 		
-		//filterBean =  objClassCreation.getSectionFilter(boardId,classId);
+//		filterBean =  objClassCreation.getSectionFilter(boardId,classId);
 		 filterBean =  objAddClassSubjectDao.getAllClassSubjectsName(boardId,classId);
 		ObjectMapper objmapper=new ObjectMapper();
 		json=objmapper.writeValueAsString(filterBean);
@@ -1858,6 +1858,35 @@ e.printStackTrace();
 
 
 	}
+	
+	@RequestMapping(value = "/getSectionFilter")
+	public @ResponseBody String getSectionFilter(
+			HttpServletResponse response, HttpServletRequest request,
+			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
+		List<FilterBean> filterBean=null;
+		String json="";
+		String boardId = null;
+		String classId = null;
+		try{
+		 boardId = request.getParameter("boardId");
+		 classId = request.getParameter("classId");
+		
+		filterBean =  objClassCreation.getSectionFilter(boardId,classId);
+		ObjectMapper objmapper=new ObjectMapper();
+		json=objmapper.writeValueAsString(filterBean);
+		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());
+		}catch(Exception e){
+e.printStackTrace();
+	System.out.println(e);
+			logger.error(e);
+			logger.fatal("error in userLogin method in school Homecontroller class getSectionFilter method");
+		}
+	  return json;
+
+
+	}
+	
+	
 	@RequestMapping(value = "/getMediumFilter")
 	public @ResponseBody String getMediumFilter(
 			HttpServletResponse response, HttpServletRequest request,

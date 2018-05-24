@@ -170,7 +170,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 						</ul>
 					</li>
 					
-					<li class='has-sub'>
+					<!-- <li class='has-sub'>
 						<a href='#'><i class="fa fa-clipboard"></i><span>Exams</span></a>
 						<ul>
 							<li><a href='#' id="messageDisplayId"><span>Exam Terms</span></a></li>
@@ -196,7 +196,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='#' onclick=""><span>Online Exam</span></a></li> 
 							 
 						</ul>
-					</li>
+					</li> -->
 <!-- <li><a href='#' onclick="backUpdata()"><i class="fa fa-database"></i><span>BackupData</span></a></li> -->
 				</ul>
 		  </div>

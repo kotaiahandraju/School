@@ -1,10 +1,10 @@
 /**
  * 
- */
-/**
+ *//*
+*//**
  * @author yogi
  *
- */
+ *//*
 package com.aurospaces.neighbourhood.filter;
 
 
@@ -66,9 +66,9 @@ public void doFilter (ServletRequest request,
                 ((HttpServletResponse) response).setHeader( "Expires", o );
                 
                 // Set the Cache-Control and Expires header
-               /* httpresponse.setHeader("Cache-Control", "private") ;
+                httpresponse.setHeader("Cache-Control", "private") ;
                 Date expiresDate = new Date(new Date().getTime() + 3600*1000*500); 
-                ((HttpServletResponse) response).setHeader("Set-Cookie", "Expires=" + DateUtil.formatDate(expiresDate) + ";");*/
+                ((HttpServletResponse) response).setHeader("Set-Cookie", "Expires=" + DateUtil.formatDate(expiresDate) + ";");
                // httpresponse.setHeader("Expires", "60*60*24*365") ;
                 // Print out the URL we're filtering
                 String name = ((HttpServletRequest)request).getRequestURI();
@@ -82,4 +82,4 @@ public void doFilter (ServletRequest request,
         e.printStackTrace() ;
     }
 }
-}
+}*/
