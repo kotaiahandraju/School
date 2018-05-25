@@ -25,8 +25,15 @@ public class StudentFeeBean {
 	private double hostelFee;
 	private double stationaryFee;
 	private String feeType;
+	private double dueFee1;
 	
 	
+	public double getDueFee1() {
+		return dueFee1;
+	}
+	public void setDueFee1(double dueFee1) {
+		this.dueFee1 = dueFee1;
+	}
 	public String getFeeType() {
 		return feeType;
 	}

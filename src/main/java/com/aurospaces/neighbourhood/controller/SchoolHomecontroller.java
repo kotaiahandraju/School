@@ -1089,7 +1089,11 @@ e.printStackTrace();
 		try{
 			double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
 			
+			StudentBean objStudent = studentDao.getById(Integer.parseInt(objStudentFeeBean.getStudentId()));
+			
 			objStudentFeeBean.setFee(fee);
+				double dueFee1=objStudent.getNetFee()-fee;
+				objStudentFeeBean.setDueFee1(dueFee1);
 			objStudentFeeDao.save(objStudentFeeBean);
 			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {

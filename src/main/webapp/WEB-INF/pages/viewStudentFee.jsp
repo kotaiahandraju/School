@@ -265,10 +265,10 @@ $(document).ready(function ()
 										+ orderObj.netFee
 										+ "</td>"
 										+ "<td title='"+orderObj.paidFee+"' >"
-										+ orderObj.paidFee
+										+ orderObj.fee
 										+ "</td>"
 										+ "<td title='"+orderObj.remainBal+"' >"
-										+ orderObj.remainBal
+										+ orderObj.dueFee
 										+ "</td>"
 										+ '</tr>';
 								$(tblRow).appendTo("#basicExample tbody");
