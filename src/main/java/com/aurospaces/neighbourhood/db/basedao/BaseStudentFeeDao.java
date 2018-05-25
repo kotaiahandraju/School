@@ -81,7 +81,7 @@ System.out.println(ps);
 		else
 		{
 		 
-			String sql = "UPDATE studentfee  set studentId = ?  ,fee = ? "
+			String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? "
 					+ " where id = ? ";
 	
 			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getId()});

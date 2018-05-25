@@ -191,7 +191,7 @@ width:200px !important;
 											<form:hidden path="id" tabindex="1" />
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
-													<input type="submit" value="Submit" class="btn btn-success"
+													<input type="submit" id="submitId" value="Submit" class="btn btn-success"
 														tabindex="8" />
 													<button type="button" class="btn btn-danger" id="cancel"
 														tabindex="9">Reset</button>
@@ -400,6 +400,7 @@ width:200px !important;
 		$("#stationaryFee").val('');
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
+		 $("#submitId").val("Submit");
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
@@ -470,19 +471,19 @@ width:200px !important;
 										+ orderObj.sectionName
 										+ "</td>"
 										+ "<td class='hidden-sm hidden-xs'>"
-										+ ''
-										+ "</td>"
+										+ orderObj.admissionFee							
+										+ "</td>"																		    
 										+ "<td class='hidden-sm hidden-xs'>"
-										+ '' 
+										+ orderObj.tutionFee		
 										+ '</td>'
 										+ "<td class='hidden-sm hidden-xs'>"
-										+ '' 
+										+ orderObj.transportationFee		
 										+ '</td>'
 										+ "<td class='hidden-sm hidden-xs'>"
-										+ '' 
+										+ orderObj.hostelFee		
 										+ '</td>'
 										+ "<td class='hidden-sm hidden-xs'>"
-										+ '' 
+										+ orderObj.stationaryFee		
 										+ '</td>'
 										+ "<td title='"+orderObj.fee+"' >"
 										+ orderObj.fee
@@ -550,7 +551,12 @@ width:200px !important;
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
 		$('#fee').val(serviceUnitArray[id].fee);
-		$('#feeType').val(serviceUnitArray[id].feeType);
+		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
+		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
+		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
+		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
+		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
+		$("#submitId").val("Update");
 	}
 
 	function serviceFilter(id) {
@@ -803,7 +809,11 @@ var stockInformation1 = "<table align='center' class='table table-stripped table
 
 + "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
 
-+ "<tr style='height: 35px;'><td align='center'>Fee Type</td><td align='center'>"+ tests.feeType+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
 + "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
 + "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
 // + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"

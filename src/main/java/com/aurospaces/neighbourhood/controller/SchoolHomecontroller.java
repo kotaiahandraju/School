@@ -1087,6 +1087,9 @@ e.printStackTrace();
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
+			double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
+			
+			objStudentFeeBean.setFee(fee);
 			objStudentFeeDao.save(objStudentFeeBean);
 			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
