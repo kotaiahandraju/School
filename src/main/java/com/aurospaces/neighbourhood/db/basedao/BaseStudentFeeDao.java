@@ -23,7 +23,7 @@ public class BaseStudentFeeDao{
 @Autowired public JdbcTemplate jdbcTemplate;
 
  
-	public final String INSERT_SQL = "INSERT INTO studentfee( created_time, updated_time, studentId, fee,feeType) values (?, ?, ?, ?,?)";
+	public final String INSERT_SQL = "INSERT INTO studentfee( created_time, updated_time, studentId, fee,admissionFee, tutionFee, transportationFee, hostelFee, stationaryFee) values (?,?,?,?,?,?, ?, ?,?)";
  
 
 
@@ -62,7 +62,11 @@ public class BaseStudentFeeDao{
 ps.setTimestamp(2, updatedTime);
 ps.setString(3, studentFeeBean.getStudentId());
 ps.setDouble(4, studentFeeBean.getFee());
-ps.setString(5, studentFeeBean.getFeeType());
+ps.setDouble(5, studentFeeBean.getAdmissionFee());
+ps.setDouble(6, studentFeeBean.getTutionFee());
+ps.setDouble(7, studentFeeBean.getTransportationFee());
+ps.setDouble(8, studentFeeBean.getHostelFee());
+ps.setDouble(9, studentFeeBean.getTransportationFee());
 System.out.println(ps);
 							return ps;
 						}
@@ -77,10 +81,10 @@ System.out.println(ps);
 		else
 		{
 		 
-			String sql = "UPDATE studentfee  set studentId = ?  ,fee = ? ,feeType=? "
+			String sql = "UPDATE studentfee  set studentId = ?  ,fee = ? "
 					+ " where id = ? ";
 	
-			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getFeeType(),studentFeeBean.getId()});
+			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getId()});
 		}
 	}
 		

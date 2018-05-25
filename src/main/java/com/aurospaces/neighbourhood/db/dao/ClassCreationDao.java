@@ -17,11 +17,11 @@ public class ClassCreationDao extends BaseClassCreationDao{
 	  public List<Map<String, String>> getClassCreationData(){
 			
 			String sql ="select cr.id as classId,bn.name as bordName,m.name as medium,cr.className ,cr.section,bn.id as borderId,m.id as mediamId,"
-					+ " ct.name as cname,st.name as sname,cr.fee from classcreation cr,boardname bn,mediam m,classtable ct,sectiontable st where "
+					+ " ct.name as cname,st.name as sname,cr.fee,cr.admissionFee ,cr.tutionFee ,cr.transportationFee ,cr.hostelFee ,cr.stationaryFee  from classcreation cr,boardname bn,mediam m,classtable ct,sectiontable st where "
 					+ "cr.boardId=bn.id and cr.mediamId=m.id and cr.className=ct.id and st.id=cr.section" ;
 
 			//System.out.println(sql);
-			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "classId","bordName","medium","className","section","borderId","mediamId","cname","sname","fee"});
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "classId","bordName","medium","className","section","borderId","mediamId","cname","sname","fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee" });
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
 			return result;
@@ -41,8 +41,7 @@ public class ClassCreationDao extends BaseClassCreationDao{
 		public List<FilterBean> getClassName(String boardId)
 		{
 
-			String query = "select ct.id,ct.name as className from classcreation cc ,classtable ct,boardname bn  "+
-                          " where cc.boardId = bn.id and ct.id =cc.className and bn.id= ? group by ct.id ";
+			String query = "select *,name as className from classtable where boardid=?";
 			System.out.println(query);
 			List<FilterBean> handler = jdbcTemplate.query(query, new Object[]{boardId},ParameterizedBeanPropertyRowMapper.newInstance(FilterBean.class));
 			 System.out.println(query);
@@ -83,11 +82,10 @@ public class ClassCreationDao extends BaseClassCreationDao{
 	     
 			 return handler;
 	  }
-		public List<FilterBean> getSectionFilter(String boardId,String classId)
+		public List<FilterBean> getSectionFilter(String classId,String boardId)
 		{
 
-			String query = "select st.id,st.name as sectionName from classcreation cc ,classtable ct,boardname bn, sectiontable st "
-                            +"  where cc.boardId = bn.id and ct.id =cc.className and st.id = cc.section and bn.id= ? and ct.id = ? group by st.id";
+			String query = "select *,name as sectionName from sectiontable where classid=? and boardid=?";
 			System.out.println(query);
 			List<FilterBean> handler = jdbcTemplate.query(query, new Object[]{boardId,classId},ParameterizedBeanPropertyRowMapper.newInstance(FilterBean.class));
 			 System.out.println(query);

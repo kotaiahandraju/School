@@ -13,6 +13,11 @@ $(function(){
 	
 	$("#totalFee").val("");
 	$("#discountFee1").val("");
+	 $("#admissionFee").val("");
+	   $("#tutionFee").val("");
+	   $("#transportationFee").val("");
+	   $("#hostelFee").val("");
+	   $("#stationaryFee").val("");
 	/*$('input[type=file]').change(function () 
 	{
 		var val = $(this).val().toLowerCase();
@@ -71,6 +76,11 @@ $(function(){
 		    previousInstitue:{lettersonly: true},
 //		    fileImage:{extension: "png|jpg"},
 		    email:{email: true},
+		    admissionFee: {required: true, number: true},
+		    tutionFee: {required: true, number: true},
+		    transportationFee: {required: true, number: true},
+		    hostelFee: {required: true, number: true},
+		    stationaryFee: {required: true, number: true},
 	/*	    bgroup:{required: true},
 		    religion:{required: true},
 		    caste:{required: true},
@@ -98,6 +108,11 @@ $(function(){
 		    altmobile:{number: 'Please Enter only numbers'},
 		    email:{email: 'Please Enter Valid Email'},
 		    previousInstitue:{lettersonly: 'Please Enter Previous Institute Name'},
+		    admissionFee: {required: 'Please Enter AdmissionFee Amount', number: 'Please Enter Numeric Characters'},
+			tutionFee: {required: 'Please Enter Tution Fee Amount', number: 'Please Enter Numeric Characters'},
+			transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
+			hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
+			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
 //		    fileImage:{extension: 'Please Choose Only .png or .jpg'},
 	/* 		bgroup:{required: 'Please Enter Blood Group'},
 		    religion:{required: 'Please Choose Religion'},
@@ -155,7 +170,13 @@ $(function(){
 	    $('#busroute').val("");
 	    $("#totalFee").val("");
 		$("#discountFee1").val("");
+		$("#admissionFee").val('');
+		$("#tutionFee").val('');
+		$("#transportationFee").val('');
+		$("#hostelFee").val('');
+		$("#stationaryFee").val('');
 	    $("#student-form").addClass('form-horizontal');
+	    $("#submitId").val("Register");
 	});
 	    
 });
@@ -253,6 +274,11 @@ $(function(){
 			$("#totalFee").val(serviceUnitArray[id].totalFee);
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
 			$('#blah').attr('src',''+serviceUnitArray[id].imagePath+'');
+			$('#admissionFee').val(serviceUnitArray[id].admissionFee);
+			$('#tutionFee').val(serviceUnitArray[id].tutionFee);
+			$('#transportationFee').val(serviceUnitArray[id].transportationFee);
+			$('#hostelFee').val(serviceUnitArray[id].hostelFee);
+			$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Student");
 		} 
@@ -403,6 +429,11 @@ $(function(){
 					/* alert(response); */
 					if(response!=""){
 					$("#totalFee").val(response.fee);
+					$("#admissionFee").val(response.admissionFee);  
+					$("#tutionFee").val(response.tutionFee);
+					$("#transportationFee").val(response.transportationFee);
+					$("#hostelFee").val(response.hostelFee);
+					$("#stationaryFee").val(response.stationaryFee);
 					}
 				},
 				error : function(e) {
@@ -417,7 +448,8 @@ $(function(){
 			});
 		 $('#loadAjax').hide();
 	}
-
+	
+	
 	function getApplicant(id)
 	{
 		var image = null; image = serviceUnitArray[id].imagePath;

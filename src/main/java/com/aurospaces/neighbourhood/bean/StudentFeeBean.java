@@ -19,6 +19,11 @@ public class StudentFeeBean {
 	private String medium;
 	private String section;
 	private String dueFee;
+	private double admissionFee;
+	private double tutionFee;
+	private double transportationFee;
+	private double hostelFee;
+	private double stationaryFee;
 	private String feeType;
 	
 	
@@ -28,6 +33,37 @@ public class StudentFeeBean {
 	public void setFeeType(String feeType) {
 		this.feeType = feeType;
 	}
+	public double getAdmissionFee() {
+		return admissionFee;
+	}
+	public void setAdmissionFee(double admissionFee) {
+		this.admissionFee = admissionFee;
+	}
+	public double getTutionFee() {
+		return tutionFee;
+	}
+	public void setTutionFee(double tutionFee) {
+		this.tutionFee = tutionFee;
+	}
+	public double getTransportationFee() {
+		return transportationFee;
+	}
+	public void setTransportationFee(double transportationFee) {
+		this.transportationFee = transportationFee;
+	}
+	public double getHostelFee() {
+		return hostelFee;
+	}
+	public void setHostelFee(double hostelFee) {
+		this.hostelFee = hostelFee;
+	}
+	public double getStationaryFee() {
+		return stationaryFee;
+	}
+	public void setStationaryFee(double stationaryFee) {
+		this.stationaryFee = stationaryFee;
+	}
+	
 	public String getDueFee() {
 		return dueFee;
 	}

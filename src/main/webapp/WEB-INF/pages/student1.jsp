@@ -105,20 +105,20 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="totalFee" placeholder="Enter Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="totalFee" placeholder="Enter Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
 													</div>
 											  	</div>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<%-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											   	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Discount </label>
 												    <div class="col-sm-8">
 														<form:input path="discountFee1" placeholder="Enter Discount Fee Amount" class="form-control numericOnly" tabindex="7"/>
 													</div>
 											  	</div>
-											</div>
+											</div> --%>
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
@@ -135,8 +135,8 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
+									
+									
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Father Name <span style="color: red;">*</span></label>
@@ -145,6 +145,8 @@
 													</div>
 											  	</div>
 											</div>
+										</div>
+											<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Mobile <span style="color: red;">*</span></label>
@@ -161,8 +163,7 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
+										
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
@@ -171,6 +172,8 @@
 													</div>
 											  	</div>
 											</div>
+											</div>
+											<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Blood Group</label>
@@ -202,8 +205,8 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
+									
+									
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Date of Birth <span style="color: red;">*</span></label>
@@ -213,6 +216,8 @@
 													</div>
 											  	</div>
 											</div>
+												</div>
+													<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Religion</label>
@@ -239,8 +244,8 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
+									
+									
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Previous Institute</label>
@@ -249,6 +254,8 @@
 													</div>
 											  	</div>
 											</div>
+												</div>
+													<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Caste</label>
@@ -276,8 +283,8 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
+										
+										
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Facility</label>
@@ -290,6 +297,8 @@
 													</div>
 											  	</div>
 											</div>
+											</div>
+											<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Route</label>
@@ -298,6 +307,54 @@
 													</div>
 											  	</div>
 											</div>
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-8">
+														<form:input path="admissionFee" placeholder="Enter Admission Fee Amount" class="form-control numericOnly" tabindex="6" />
+													</div>
+											  	</div>
+											</div>
+											
+											
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-8">
+														<form:input path="tutionFee" placeholder="Enter Tution Fee Amount" class="form-control numericOnly" tabindex="6" />
+													</div>
+											  	</div>
+											</div>
+											</div>
+											<div class="row">
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-8">
+														<form:input path="transportationFee" placeholder="Enter Transportation Fee Amount" class="form-control numericOnly" tabindex="6" />
+													</div>
+											  	</div>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-8">
+														<form:input path="hostelFee" placeholder="Enter Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
+													</div>
+											  	</div>
+											</div>
+										
+										
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-8">
+														<form:input path="stationaryFee" placeholder="Enter Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
+													</div>
+											  	</div>
+											</div>
+												</div>
+													<div class="row" style='align:left'>
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<div class="form-group">
 											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Image</label>
@@ -308,7 +365,7 @@
 											  	</div>
 											</div>
 										</div>
-										<div class="row">
+										
 											<div class="col-sm-8 col-sm-offset-4">
 												<form:hidden path="id" /><br>
 											  	<div class="form-group">

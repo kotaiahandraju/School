@@ -1,6 +1,9 @@
-
 $( document ).ready(function() {
-    $("#fee").val("");
+   $("#admissionFee").val("");
+   $("#tutionFee").val("");
+   $("#transportationFee").val("");
+   $("#hostelFee").val("");
+   $("#stationaryFee").val("");
 
 $("#cls-form").validate(
 		{
@@ -12,7 +15,11 @@ $("#cls-form").validate(
 			    mediumId: {required: true},
 				className: {required: true},
 			    section: {required: true},
-			    fee: {required: true, number: true},
+			    admissionFee: {required: true, number: true},
+			    tutionFee: {required: true, number: true},
+			    transportationFee: {required: true, number: true},
+			    hostelFee: {required: true, number: true},
+			    stationaryFee: {required: true, number: true},
 			},
 			messages:
 			{
@@ -20,7 +27,11 @@ $("#cls-form").validate(
 				mediumId: {required: 'Please Choose Medium'},
 				className: {required: 'Please Choose Class'},
 				section: {required: 'Please Choose Section'},
-				fee: {required: 'Please Enter Fee Amount', number: 'Please Enter Numeric Characters'},
+				admissionFee: {required: 'Please Enter AdmissionFee Amount', number: 'Please Enter Numeric Characters'},
+				tutionFee: {required: 'Please Enter Tution Fee Amount', number: 'Please Enter Numeric Characters'},
+				transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
+				hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
+				stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
 			},
 			errorPlacement: function(error, element)
 			{
@@ -32,8 +43,7 @@ $("#cls-form").validate(
 			        error.insertAfter(".mediumId_error").css("color", "red");
 			       else if(element.attr("name") == "section")
 			        error.insertAfter(".section_error").css("color", "red");
-			       else if(element.attr("name") == "fee")
-				        error.insertAfter(".fee_error").css("color", "red");
+			      
 			      else
 			        error.insertAfter(element);
 			}	
@@ -41,13 +51,18 @@ $("#cls-form").validate(
 
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
-			    $("#cls-form").removeClass("has-error");6
+			    $("#cls-form").removeClass("has-error");
 			    $("#boardId").val('');
 			    $("#mediumId").val('');
 			    $("#className").val('');
 			    $("#section").val('');
-			    $("#fee").val('');
+			    $("#admissionFee").val('');
+			    $("#tutionFee").val('');
+			    $("#transportationFee").val('');
+			    $("#hostelFee").val('');
+			    $("#stationaryFee").val('');
 			    $("#cls-form").addClass('form-horizontal');
+			    $("#submitId").val("Submit");
 			  });
 });
 
@@ -82,6 +97,21 @@ function displayTable(listOrders) {
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sname+"' >"
 										+ orderObj.sname
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fee+"' >"
+										+ orderObj.admissionFee
+										+ "/-</td>"
+										+ "<td  class='hidden-sm hidden-xs'>"
+										+ orderObj.tutionFee
+										+  "/-</td>"
+										+ "<td  class='hidden-sm hidden-xs'>"
+										+ orderObj.transportationFee
+										+  "/-</td>"
+										+ "<td  class='hidden-sm hidden-xs'>"
+										+ orderObj.hostelFee
+										+  "/-</td>"
+										+ "<td  class='hidden-sm hidden-xs'>"
+										+ orderObj.stationaryFee
+										+  "/-</td>"
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fee+"' >"
 										+ orderObj.fee
 										+ "/-</td>"
 										+ "<td>"
@@ -107,7 +137,11 @@ function displayTable(listOrders) {
 		$('#mediumId').trigger("chosen:updated");
 		$('#section').val(serviceUnitArray[id].section);
 		$('#section').trigger("chosen:updated");
-		$('#fee').val(serviceUnitArray[id].fee);
+		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
+		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
+		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
+		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
+		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#submitId").val("Update");
 		$("#headId").text("Edit Class");
 	}
@@ -163,7 +197,7 @@ function displayTable(listOrders) {
 			$('#loadAjax').show();
 		$.ajax({
 			type : "POST",
-			url : "getClassNameFilter1.json",
+			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
 			success : function(response) {
@@ -192,7 +226,8 @@ function displayTable(listOrders) {
 		$('#loadAjax').hide();
 
 		}
-	} 
+	}
+	
 	function sectionFilter(){
 		var boardId = $("#boardId").val();
 		var classId = $("#className").val();

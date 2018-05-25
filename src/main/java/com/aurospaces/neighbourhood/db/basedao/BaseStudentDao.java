@@ -26,7 +26,7 @@ public class BaseStudentDao{
  
 	public final String INSERT_SQL = "INSERT INTO student( created_time, updated_time, name,boardName,medium,className,section,rollNum,admissionNum,fatherName,mobile,"
 			+ "alternativeMobile,email,blodgroup,gender,dob,region,address,"
-			+ "previousInstitue,caste,acomitation,buspesility,busroute,religion,totalFee,imagePath,discountFee,netFee) values (?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "previousInstitue,caste,acomitation,buspesility,busroute,religion,totalFee,imagePath,discountFee,netFee,admissionFee, tutionFee, transportationFee, hostelFee, stationaryFee ) values (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
 
 
@@ -99,6 +99,11 @@ ps.setDouble(25, studentBean.getTotalFee());
 ps.setString(26, studentBean.getImagePath());
 ps.setDouble(27, studentBean.getDiscountFee());
 ps.setDouble(28, studentBean.getNetFee());
+ps.setDouble(29, studentBean.getAdmissionFee());
+ps.setDouble(30, studentBean.getTutionFee());
+ps.setDouble(31, studentBean.getTransportationFee());
+ps.setDouble(32, studentBean.getHostelFee());
+ps.setDouble(33, studentBean.getStationaryFee());
 System.out.println(ps);
 							return ps;
 						}
@@ -115,15 +120,16 @@ System.out.println(ps);
 		 
 			String sql = "UPDATE student  set name=?,boardName=?,medium=?,className=?,section=?,rollNum=?,admissionNum=?,fatherName=?,mobile=?,"
 					+ " alternativeMobile=?,email=?,blodgroup=?,gender=?,region=?,address=?,previousInstitue=?,caste=?,acomitation=?,"
-					+ " buspesility=?,busroute=?,religion=?,totalFee=?,imagePath=?,discountFee=?,netFee=?,dob=?  "
+					+ " buspesility=?,busroute=?,religion=?,totalFee=?,imagePath=?,discountFee=?,netFee=?,dob=?,admissionFee = ?, tutionFee = ?, transportationFee = ?, hostelFee= ?, stationaryFee = ?  "
 					+ " where id = ? ";
 	
 			jdbcTemplate.update(sql, new Object[]{studentBean.getName(),studentBean.getBoardName(),studentBean.getMedium(),studentBean.getClassName(),
 					studentBean.getSection(),studentBean.getRollNum(),studentBean.getAdmissionNum(),studentBean.getFatherName(),studentBean.getMobile(),
 					studentBean.getAlternativeMobile(),studentBean.getEmail(),studentBean.getBlodgroup(),studentBean.getGender(),
 					studentBean.getRegion(),studentBean.getAddress(),studentBean.getPreviousInstitue(),studentBean.getCaste(),studentBean.getAcomitation(),
-					studentBean.getBuspesility(),studentBean.getBusroute(),studentBean.getReligion(),studentBean.getTotalFee(),studentBean.getImagePath(),studentBean.getDiscountFee(),studentBean.getNetFee(),studentBean.getDob(),
-					studentBean.getId()});
+					studentBean.getBuspesility(),studentBean.getBusroute(),studentBean.getReligion(),studentBean.getTotalFee(),studentBean.getImagePath(),
+					studentBean.getDiscountFee(),studentBean.getNetFee(),studentBean.getDob(),studentBean.getAdmissionFee(),studentBean.getTutionFee(),studentBean.getTransportationFee(),
+					studentBean.getHostelFee(),studentBean.getStationaryFee(),studentBean.getId()});
 		}
 	insert= true;
 		}catch(Exception e){

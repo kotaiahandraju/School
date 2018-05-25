@@ -16,11 +16,11 @@ public class StudentDao  extends BaseStudentDao{
 	 public List<Map<String, String>> getallStudentDetails(String boardName,String medium,String className,String section,String email,	String caste,String admissionNum,String studentName,String mobile){
 		 StringBuffer objStringBuffer = new StringBuffer();
 		 objStringBuffer.append("select distinct(s.id ) as studentId, DATE_FORMAT( Date(s.dob),'%d-%M-%Y') as dob ,s.name as studentName,bn.name as boardName,m.name as mediumName,s.rollNum,s.admissionNum, "
-								+" s.fatherName,s.mobile,s.alternativeMobile,s.email,s.blodgroup,s.gender,s.region,s.address,s.previousInstitue, "
-								+" s.caste,s.acomitation,s.buspesility,s.busroute,s.religion,s.totalFee,s.discountFee,m.id as mediumId,bn.id as boardId,imagePath,"
-								+ "ct.name as className,se.name as sectionName,ct.id as classId,se.id as sectionId  from "
-								+" student s,boardname bn,mediam m,sectiontable se,classtable ct where "
-								+" s.boardName=bn.id and s.medium=m.id and s.className=ct.id and s.section = se.id ");
+					+" s.fatherName,s.mobile,s.alternativeMobile,s.email,s.blodgroup,s.gender,s.region,s.address,s.previousInstitue, "
+					+" s.caste,s.acomitation,s.buspesility,s.busroute,s.admissionFee,s.tutionFee,s.transportationFee,s.hostelFee,s.stationaryFee,s.religion,s.totalFee,s.discountFee,m.id as mediumId,bn.id as boardId,imagePath,"
+					+ "ct.name as className,se.name as sectionName,ct.id as classId,se.id as sectionId  from "
+					+" student s,boardname bn,mediam m,sectiontable se,classtable ct where "
+					+" s.boardName=bn.id and s.medium=m.id and s.className=ct.id and s.section = se.id ");
 		if (StringUtils.isNotBlank(boardName)) {
 			objStringBuffer.append(" and bn.id=" + boardName);
 		}
@@ -52,8 +52,8 @@ public class StudentDao  extends BaseStudentDao{
 String sql = objStringBuffer.toString();
 			System.out.println(sql);
 			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "studentId","dob","studentName","boardName","mediumName","rollNum","admissionNum",
-					"fatherName","mobile","alternativeMobile","email","blodgroup","gender","region"
-					,"address","previousInstitue","caste","acomitation","buspesility","busroute","religion","totalFee","discountFee","mediumId","boardId","imagePath","className","sectionName","classId","sectionId"});
+					"fatherName","mobile","alternativeMobile","email","blodgroup","gender","region"																																													
+					,"address","previousInstitue","caste","acomitation","buspesility","busroute","religion","totalFee","discountFee","mediumId","boardId","imagePath","className","sectionName","classId","sectionId","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee"});
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
 			return result;

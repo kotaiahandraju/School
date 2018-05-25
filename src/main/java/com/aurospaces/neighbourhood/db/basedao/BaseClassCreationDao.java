@@ -21,7 +21,7 @@ public class BaseClassCreationDao{
 @Autowired public JdbcTemplate jdbcTemplate;
 
  
-	public final String INSERT_SQL = "INSERT INTO classcreation( created_time, updated_time, boardId, mediamId, className,section,fee) values (?, ?, ?, ?, ?,?,?)"; 
+	public final String INSERT_SQL = "INSERT INTO classcreation( created_time, updated_time, boardId, mediamId, className,section,admissionFee,tutionFee,transportationFee,hostelFee,stationaryFee ,fee) values (?, ?, ?, ?,?, ?, ?, ?, ?,?,?,?)"; 
 
 
 
@@ -61,7 +61,12 @@ ps.setString(3, objClassBean.getBoardId());
 ps.setString(4, objClassBean.getMediumId());
 ps.setString(5, objClassBean.getClassName());
 ps.setString(6, objClassBean.getSection());
-ps.setDouble(7, objClassBean.getFee());
+ps.setDouble(7, objClassBean.getAdmissionFee());
+ps.setDouble(8, objClassBean.getTutionFee());
+ps.setDouble(9, objClassBean.getTransportationFee());
+ps.setDouble(10, objClassBean.getHostelFee());
+ps.setDouble(11, objClassBean.getStationaryFee());
+ps.setDouble(12, objClassBean.getFee());
 
 							return ps;
 						}
@@ -76,9 +81,9 @@ ps.setDouble(7, objClassBean.getFee());
 		else
 		{
 
-			String sql = "UPDATE classcreation  set boardId = ? ,mediamId = ? ,className = ?,section=?,fee=?  where id = ? ";
+			String sql = "UPDATE classcreation  set boardId = ? ,mediamId = ? ,className = ?,section=?, admissionFee = ?, tutionFee = ?, transportationFee = ?, hostelFee= ?, stationaryFee = ?,fee=?  where id = ? ";
 	
-			jdbcTemplate.update(sql, new Object[]{objClassBean.getBoardId(),objClassBean.getMediumId(),objClassBean.getClassName(),objClassBean.getSection(),objClassBean.getFee(),objClassBean.getId()});
+			jdbcTemplate.update(sql, new Object[]{objClassBean.getBoardId(),objClassBean.getMediumId(),objClassBean.getClassName(),objClassBean.getSection(),objClassBean.getAdmissionFee(),objClassBean.getTutionFee(),objClassBean.getTransportationFee(),objClassBean.getHostelFee(),objClassBean.getStationaryFee(),objClassBean.getFee(),objClassBean.getId()});
 		}
 	}
 		

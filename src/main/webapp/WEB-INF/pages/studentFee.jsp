@@ -14,6 +14,9 @@
     top: -5em;
     display: block;
 }*/
+.form-control {
+width:200px !important;
+}
 </style>
 
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> -->
@@ -131,27 +134,54 @@
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Fee
-													Type</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 												<div class="col-sm-8">
-													<form:input path="feeType" class="form-control"
-														tabindex="6" placeholder="Enter Fee Type" required="true" />
+													<form:input path="admissionFee" class="form-control"
+														tabindex="6" placeholder="Enter AdmissionFee Type" required="true" />
+												</div>
+											</div>
+										</div>
+										</div>
+										<div class="row">
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
+												<div class="col-sm-8">
+													<form:input path="tutionFee" class="form-control"
+														tabindex="6" placeholder="Enter Tution Fee Type" required="true" />
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Fee</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 												<div class="col-sm-8">
-													<form:input path="fee" class="form-control numericOnly"
-														tabindex="7" placeholder="Enter Fee Amount"
-														required="true" />
-													<span class="fee_error" id="fee_error"></span>
+													<form:input path="transportationFee" class="form-control"
+														tabindex="6" placeholder="Enter Transportation Fee Type" required="true" />
 												</div>
 											</div>
 										</div>
-									</div>
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
+												<div class="col-sm-8">
+													<form:input path="hostelFee" class="form-control"
+														tabindex="6" placeholder="Enter Hostel Fee Type" required="true" />
+												</div>
+											</div>
+										</div>
+										</div>
 									<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
+												<div class="col-sm-8">
+													<form:input path="stationaryFee" class="form-control"
+														tabindex="6" placeholder="Enter Stationary Fee Type" required="true" />
+												</div>
+											</div>
+										</div>
+									
 										<div class="col-sm-8 col-sm-offset-4">
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
@@ -251,7 +281,11 @@
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Fee Type</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>
@@ -294,7 +328,11 @@
 	$(document).ready(function() {
 		$("#fee").val("");
 	});
-
+	 $("#admissionFee").val("");
+	   $("#tutionFee").val("");
+	   $("#transportationFee").val("");
+	   $("#hostelFee").val("");
+	   $("#stationaryFee").val("");
 	jQuery.validator.addMethod('lettersonly', function(value, element) {
 		return this.optional(element)
 				|| /^[a-z. ·„‚‰‡ÈÍÎËÌÓÔÏÛıÙˆÚ˙˚¸˘ÁÒ]+$/i.test(value);
@@ -324,24 +362,26 @@
 			feeType : {
 				required : true
 			},
+			 admissionFee: {required: true, number: true},
+			    tutionFee: {required: true, number: true},
+			    transportationFee: {required: true, number: true},
+			    hostelFee: {required: true, number: true},
+			    stationaryFee: {required: true, number: true},
 		},
 		messages : {
 			/* boardName:{required:'Please Choose Board'},
 			className:{required:'Please Choose Class'},
 			section:{required:'Please Choose Section'},
 			medium:{required:'Please Choose Medium'}, */
-			studentId : {
-				required : 'Please Choose Student Name'
-			},
-			fee : {
-				required : 'Please Enter Fee Amount',
-				number : 'Please Enter Fee Amount'
-			},
-			feeType : {
-				required : 'Please Enter Fee Type'
-			},
+			studentId : {required : 'Please Choose Student Name'},
+			fee : {required : 'Please Enter Fee Amount',number : 'Please Enter Fee Amount'},
+			feeType : {required : 'Please Enter Fee Type'},
+		    admissionFee: {required: 'Please Enter AdmissionFee Amount', number: 'Please Enter Numeric Characters'},
+			tutionFee: {required: 'Please Enter Tution Fee Amount', number: 'Please Enter Numeric Characters'},
+			transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
+			hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
+			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
 		},
-
 	});
 
 	$('#cancel').click(function() {
@@ -353,6 +393,12 @@
 		$("#medium").val('');
 		$("#studentId").val('');
 		$("#fee").val('');
+		$("#admissionFee").val('');
+		$("#tutionFee").val('');
+		$("#transportationFee").val('');
+		$("#hostelFee").val('');
+		$("#stationaryFee").val('');
+		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
 	});
 	var listOrders1 = ${allOrders1};
@@ -374,7 +420,11 @@
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Fee Type</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>'
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>'
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>'
@@ -407,7 +457,6 @@
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mobile+"'>"
 										+ orderObj.mobile
 										+ "</td>"
-
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
 										+ orderObj.boardName
 										+ "</td>"
@@ -420,9 +469,21 @@
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.feeType+"'>"
-										+ orderObj.feeType
+										+ "<td class='hidden-sm hidden-xs'>"
+										+ ''
 										+ "</td>"
+										+ "<td class='hidden-sm hidden-xs'>"
+										+ '' 
+										+ '</td>'
+										+ "<td class='hidden-sm hidden-xs'>"
+										+ '' 
+										+ '</td>'
+										+ "<td class='hidden-sm hidden-xs'>"
+										+ '' 
+										+ '</td>'
+										+ "<td class='hidden-sm hidden-xs'>"
+										+ '' 
+										+ '</td>'
 										+ "<td title='"+orderObj.fee+"' >"
 										+ orderObj.fee
 										+ "</td>"
@@ -683,11 +744,17 @@
 			data : "studentId=" + studentId,
 			dataType : "json",
 			success : function(response) {
-				// 				 alert(response.totalFee);  
+				// 				 alert(response.totalFee); 
+				
 				if (response.dueFee == null) {
 					$("#displayId").text("Due Fee: " + response.netFee);
 				} else {
 					$("#displayId").text("Due Fee: " + response.dueFee);
+					$("#admissionFee").val(response.admissionFee);  
+					$("#tutionFee").val(response.tutionFee);
+					$("#transportationFee").val(response.transportationFee);
+					$("#hostelFee").val(response.hostelFee);
+					$("#stationaryFee").val(response.stationaryFee);
 				}
 			},
 			error : function(e) {

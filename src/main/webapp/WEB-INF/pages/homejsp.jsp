@@ -19,7 +19,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId"> Add Class</div>
+				<div class="page-title" id="headId">Class Creation</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -48,7 +48,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 											    <div class="col-sm-8">
-												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange='classNameFilter(this.id);'>
+												    <form:select path="boardId" tabindex="1" class="form-control" required="true"  onchange="classNameFilter(this.id);">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -75,7 +75,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="className" tabindex="3" class="form-control" required="true" onchange="sectionFilter();">
 														<form:option value="">-- Choose Class --</form:option>
-<%-- 														<form:options items="${allClasses}"></form:options> --%>
+														<form:options items="${allClasses}"></form:options>
 													</form:select>
 <%-- 													<form:input path="className" class="form-control" tabindex="3" placeholder="Enter Class/Branch" required="true"/> --%>
 													<span class="className_error" id="className_error"></span>
@@ -90,7 +90,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="section" tabindex="4" class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-<%-- 														<form:options items="${allSection}"></form:options> --%>
+														<form:options items="${allSection}"></form:options>
 													</form:select>
 <%-- 													<form:input path="section" class="form-control" tabindex="4" placeholder="Enter Section" required="true"/> --%>
 													<span class="section_error" id="section_error"></span>
@@ -99,9 +99,45 @@
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Fees</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="fee" class="form-control numericOnly" tabindex="5" placeholder="Enter Fee for the Class" required="true"/>
+													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Admission Fee for the Class" required="true"/>
+													<span class="fee_error" id="fee_error"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
+											    <div class="col-sm-8">
+													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Tution Fee for the Class" required="true"/>
+													<span class="fee_error" id="fee_error"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
+											    <div class="col-sm-8">
+													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Transportation Fee for the Class" required="true"/>
+													<span class="fee_error" id="fee_error"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
+											    <div class="col-sm-8">
+													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Hostel Hostel Fee for the Class" required="true"/>
+													<span class="fee_error" id="fee_error"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
+											    <div class="col-sm-8">
+													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Stationary Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -162,7 +198,12 @@
 																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
 																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
-																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fees</th>
+																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Admission Fee</th>
+																    <th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Tution Fee</th>
+																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Transportation Fee</th>
+																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Hostel Fee</th>
+																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Stationary Fee</th>
+																	<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Total Fee</th>
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>
@@ -208,4 +249,3 @@
 	
 
 </script>
->>>>>>> branch 'master' of https://github.com/kotaiahandraju/School.git

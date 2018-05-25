@@ -299,6 +299,8 @@ e.printStackTrace();
 			int id = 0;
 			id = objClassBean.getId();
 			 classbean=	objClassCreation.getExistingOrNot(objClassBean);
+			 double totalfee = objClassBean.getAdmissionFee()+objClassBean.getTransportationFee()+objClassBean.getHostelFee()+objClassBean.getTutionFee()+objClassBean.getStationaryFee();
+			 objClassBean.setFee(totalfee);
 			 if(id != 0 ){
 				 session.setAttribute("message", "Successfully Class is Updated");
 				 objClassCreation.save(objClassBean);
@@ -821,7 +823,10 @@ e.printStackTrace();
 			Date date1 = formatter.parse(objStudentBean.getDob1());
 			objStudentBean.setDob(date1);
 		}
-		objStudentBean.setNetFee((objStudentBean.getTotalFee()-objStudentBean.getDiscountFee()));
+double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objStudentBean.getTransportationFee()+objStudentBean.getHostelFee()+objStudentBean.getStationaryFee();
+		
+		objStudentBean.setNetFee(fee);
+		objStudentBean.setDiscountFee(objStudentBean.getTotalFee()-fee);
 		if (!file.isEmpty()) {
 				byte[] bytes = file.getBytes();
 				name =file.getOriginalFilename();
