@@ -63,6 +63,7 @@ $(function(){
 		    section:{required: true},
 		    totalFee: {required: true, number: true},
 		    discountFee1: {number: true},
+		    acomitation:{required: true},
 //	 	    rollNum:{required: true},
 		    admissionNum:{required: true},
 		    fatherName:{required: true, lettersonly: true},
@@ -96,6 +97,7 @@ $(function(){
 		    className:{required: 'Please Choose Class'},
 		    section:{required: 'Please Choose Section'},
 		    totalFee: {required: 'Please Choose Fees'},
+		    acomitation:{required:  'Choose Accommodation'},
 		    discountFee1: {number: 'Please Enter Discount Fee Amount (Eg: 1000,1500 etc.,)'},
 //	 	    rollNum:{required: 'Please Enter Roll Number'},
 		    admissionNum:{required: 'Please Enter Admission Number'},
@@ -178,6 +180,34 @@ $(function(){
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
 	});
+	
+	
+	//$('#hostleDiv').hide();
+	//$('#hostelFee').prop("disabled",false);
+	
+	 $('#acomitation').on('change', function() {
+		 
+		 if($(this).val() !== "Hostel" ){
+			 
+			 
+			var fee =totalfee - $('#hostelFee').val() ; 
+			 
+			$('#totalFee').val(fee);
+			
+			$('#hostelFee').prop("disabled",true);
+			$('#hostleDiv').hide();
+		 }else{
+			 
+			 
+		 $('#hostelFee').prop("disabled",false);
+		 $('#hostleDiv').show();
+		 
+		 var fee =totalfee;  
+		 
+			$('#totalFee').val(fee);
+		 }
+         //alert("You have Selected  :: "+$(this).val());
+     });
 	    
 });
 		
@@ -414,7 +444,7 @@ $(function(){
 		}
 	});
 
-
+var totalfee  =0.00;
 	function getFee(){
 		var boardId = $('#boardName').val();
 		var className = $('#className').val();
@@ -428,6 +458,7 @@ $(function(){
 				success : function(response) {
 					/* alert(response); */
 					if(response!=""){
+						totalfee = response.fee;
 					$("#totalFee").val(response.fee);
 					$("#admissionFee").val(response.admissionFee);  
 					$("#tutionFee").val(response.tutionFee);
@@ -690,3 +721,10 @@ $(function(){
 		 /* $(document).ready(function(){
 		 		$("select").chosen({allow_single_deselect:true});
 		 }); */
+
+		
+		
+		
+		
+		
+		
