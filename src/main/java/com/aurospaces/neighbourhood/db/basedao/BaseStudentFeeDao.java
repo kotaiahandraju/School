@@ -53,6 +53,8 @@ public class BaseStudentFeeDao{
 					{
 					studentFeeBean.setUpdatedTime( new Date());
 					}
+					
+					
 					java.sql.Timestamp updatedTime = 
 						new java.sql.Timestamp(studentFeeBean.getUpdatedTime().getTime()); 
 							
@@ -66,7 +68,7 @@ ps.setDouble(5, studentFeeBean.getAdmissionFee());
 ps.setDouble(6, studentFeeBean.getTutionFee());
 ps.setDouble(7, studentFeeBean.getTransportationFee());
 ps.setDouble(8, studentFeeBean.getHostelFee());
-ps.setDouble(9, studentFeeBean.getTransportationFee());
+ps.setDouble(9, studentFeeBean.getStationaryFee());
 ps.setDouble(10, studentFeeBean.getDueFee1());
 System.out.println(ps);
 							return ps;

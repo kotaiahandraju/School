@@ -1090,9 +1090,10 @@ e.printStackTrace();
 			double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
 			
 			StudentBean objStudent = studentDao.getById(Integer.parseInt(objStudentFeeBean.getStudentId()));
-			
+			StudentFeeBean studentfee = objStudentFeeDao.getTotalfee(objStudentFeeBean.getStudentId());
 			objStudentFeeBean.setFee(fee);
-				double dueFee1=objStudent.getNetFee()-fee;
+			
+				double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
 				objStudentFeeBean.setDueFee1(dueFee1);
 			objStudentFeeDao.save(objStudentFeeBean);
 			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
@@ -1115,7 +1116,7 @@ e.printStackTrace();
 	@RequestMapping(value = "/viewStudentFee")
 	public String viewStudentFee( @ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
-		List<Map<String, String>> listOrderBeans = null;
+		List<Map<String, Object>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
@@ -1143,7 +1144,7 @@ e.printStackTrace();
 	@RequestMapping(value = "/searchStudetnFee")
 	public @ResponseBody String searchStudetnFee1( ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("searchStudetnFee controller...");
-		List<Map<String, String>> listOrderBeans = null;
+		List<Map<String, Object>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		String studetnId = null;
