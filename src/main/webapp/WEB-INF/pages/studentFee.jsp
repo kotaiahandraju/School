@@ -401,6 +401,7 @@ width:200px !important;
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
 		 $("#submitId").val("Submit");
+		  $("#displayId").text('');
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
