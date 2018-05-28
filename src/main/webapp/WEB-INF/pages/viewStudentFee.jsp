@@ -134,13 +134,13 @@
 							</div>
 						</div>
 						<!-- Row Ends -->
-						<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 					<div class="modal-dialog" style="">
 
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Fee Receipt</h4>
+								<h4 class="modal-title">Student Fee History</h4>
 							</div>
 							<div class="modal-body" id='printTab'></div>
 							<!-- <div class="modal-footer">
@@ -275,8 +275,8 @@ $(document).ready(function ()
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
 										+ orderObj.boardName
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.medium+"' >"
-										+ orderObj.medium
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
+										+ orderObj.mediumName
 										+ "</td>"
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.className+"'>"
 										+ orderObj.className
@@ -322,71 +322,43 @@ $(document).ready(function ()
 						
 						$('#myModal').modal();
 
-						var tableHead = "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
+						var tableHead = "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>"
+							+ "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
 							+ '<thead>'
-							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th></tr>'
-							+'</tbody></table>';
+							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>'
+							+'</tbody></table>'
+							+ '<span id="tfoot"></span>'
+							+ '<br>'
+							+ '<br>'
+							+  "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
 							$('#printTab').html(tableHead);
 							$.each(response,function(i, tests) {
 								
 								console.log(tests+"---loop---"+i);
 								if(i==0){
-									var thead = "<tr><td colspan='2'></td><td colspan='2'><img src='img/ABV-header.png' style='height: 70px;'></td><td colspan='3'></td></tr>"
-									+ "<tr style='height: 35px;'><td colspan='8'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
-									+ "<tr style='height: 35px;'><td colspan='8'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-									+ "<tr style='height: 35px;'><td colspan='8'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-									+ "<tr style='height: 35px;'><td colspan='8'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
-									+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
-									+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
-									+ "</td></tr>"
+									var thead = /* "<tr><td colspan='1'  style='border:none;'></td><td colspan='5'  style='border:none;'></td><td colspan='1'  style='border-left:none;'></td></tr>" */
+									"<tr style='height: 35px;'><td colspan='3'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.name+ "</td><td colspan='4'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='3'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td colspan='4'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='2'><b>Class: </b>&nbsp;&nbsp;"+ tests.className+ "<td colspan='1'><b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+ "</td><td colspan='4'><b>Medium: </b>&nbsp;&nbsp;"+ tests.mediumName+ "</td></tr>"
 								}
 								
 								
-								var tbody="<tr><td>"+ tests.created_time+ "</td><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> "+ tests.stationaryFee+ "</td></tr>"
-								
+								var tbody="<tr><td>"+ tests.createdate+ "</td><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> "+ tests.stationaryFee+ "</td><td>"+tests.fee+"</td></tr>"
+
+								if(i==0){
+								var tfoot= "<tr style='height: 35px;'><td><h3>DUE Amount : </h3></td><td><h3></h3></td></tr>"
+								}
 								$(thead).appendTo("#printTab thead");
 								$(tbody).appendTo("#printTab tbody");
+								$(tfoot).appendTo("#printTab #tfoot");
 							});
 					},
 					error : function(e) {
-						// 					alert('Error: ' + e);
 					}
 				});
 	}
 						
-						
-						/* 
-						// 						alert(response);
-						 $('#myModal').modal();
-
-						var popuptitle = null;
-						
-						$.each(response,function(i, tests) {
-						               
-var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-size: 13px;'>"
-
-+ "<tr><td colspan='2'></td><td colspan='2'><img src='img/ABV-header.png' style='height: 70px;'></td><td colspan='3'></td></tr>"
-+ "<tr style='height: 35px;'><td colspan='8'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
-
-+ "<tr style='height: 35px;'><td colspan='8'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='8'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='8'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='8'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
-+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
-+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
-+ "</td></tr>"
-
-+ "<tr style='height: 35px;'><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>"
-+ "<tr><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> </td><td></td><td></td></tr>"
-/* + "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
-+ "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>" */
-// + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
-// + "</table>"
+					
 // + "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
 
 // $(stockInformation1).appendTo("#printTab");
@@ -409,7 +381,7 @@ var stockInformation1 = "<table align='center' class='table table-stripped table
 
 	function Popup(data) {
 		var mywindow = window.open('', 'new div');
-		mywindow.document.write('<html><head><title>Fees Receipt</title>');
+		mywindow.document.write('<html><head><title>Student Fee History</title>');
 		/*optional stylesheet*///mywindow.document.write('<link rel="stylesheet" href="css/main.css" type="text/css" />');
 		mywindow.document.write('</head><body >');
 		mywindow.document.write(data);
