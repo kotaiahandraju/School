@@ -10,6 +10,15 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script src="js/dropdownsearch.js"></script>
 	<link href="css/dropdownsearch.css"/>
+	<style>
+	@media only screen and (min-width: 768px) {
+.modal-dialog {
+    width: 850px;
+    margin: 30px auto;
+}
+}
+	
+	</style>
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
@@ -125,7 +134,22 @@
 							</div>
 						</div>
 						<!-- Row Ends -->
-						
+						<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog" style="">
+
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Fee Receipt</h4>
+							</div>
+							<div class="modal-body" id='printTab'></div>
+							<!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+						</div>
+
+					</div>
+				</div>
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -235,8 +259,13 @@ $(document).ready(function ()
 										+ orderObj.id
 										+ "</a></td>"
 										+ "<td title='"+orderObj.studentName+"'>"
+										+ '<a style="cursor: pointer;" title="View Student Fee History"  data-keyboard="false" data-backdrop="static" onclick=popupOpen('
+										+ orderObj.studentId
+										+ ')>'
+										+ '<b>'
 										+ orderObj.studentName
-										+ "</td>"
+										+ '</b></a>'
+										+ '</td>'
 										+ "<td title='"+orderObj.fatherName+"'>"
 										+ orderObj.fatherName
 										+ "</td>"
@@ -279,6 +308,118 @@ $(document).ready(function ()
 		}
 	}  
  	
+	
+	
+	function popupOpen(id) {
+		$('#printTab').text("");
+		var studentFeeId = id;
+		$.ajax({
+					type : "POST",
+					url : "getHistoryFee.json",
+					data : "studentFeeId=" + studentFeeId,
+					dataType : "json",
+					success : function(response) {
+						
+						$('#myModal').modal();
+
+						var tableHead = "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
+							+ '<thead>'
+							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th></tr>'
+							+'</tbody></table>';
+							$('#printTab').html(tableHead);
+							$.each(response,function(i, tests) {
+								
+								console.log(tests+"---loop---"+i);
+								if(i==0){
+									var thead = "<tr><td colspan='2'></td><td colspan='2'><img src='img/ABV-header.png' style='height: 70px;'></td><td colspan='3'></td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='8'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='8'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='8'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
+									+ "<tr style='height: 35px;'><td colspan='8'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
+									+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
+									+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
+									+ "</td></tr>"
+								}
+								
+								
+								var tbody="<tr><td>"+ tests.created_time+ "</td><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> "+ tests.stationaryFee+ "</td></tr>"
+								
+								$(thead).appendTo("#printTab thead");
+								$(tbody).appendTo("#printTab tbody");
+							});
+					},
+					error : function(e) {
+						// 					alert('Error: ' + e);
+					}
+				});
+	}
+						
+						
+						/* 
+						// 						alert(response);
+						 $('#myModal').modal();
+
+						var popuptitle = null;
+						
+						$.each(response,function(i, tests) {
+						               
+var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-size: 13px;'>"
+
++ "<tr><td colspan='2'></td><td colspan='2'><img src='img/ABV-header.png' style='height: 70px;'></td><td colspan='3'></td></tr>"
++ "<tr style='height: 35px;'><td colspan='8'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
+
++ "<tr style='height: 35px;'><td colspan='8'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
++ "<tr style='height: 35px;'><td colspan='8'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
++ "<tr style='height: 35px;'><td colspan='8'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
++ "<tr style='height: 35px;'><td colspan='8'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
++ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
++ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
++ "</td></tr>"
+
++ "<tr style='height: 35px;'><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>"
++ "<tr><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> </td><td></td><td></td></tr>"
+/* + "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
++ "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>" */
+// + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
+// + "</table>"
+// + "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
+
+// $(stockInformation1).appendTo("#printTab");
+// toWords(tests.fee);
+
+// 										});
+						// 							 $(stockInformation2).appendTo("#stockInformationTable"); 
+						// 							 $('#dial').dialog({width:799,title:popuptitle,modal: true}).dialog('open');
+
+// 					 */},
+// 					error : function(e) {
+// 						// 					alert('Error: ' + e);
+// 					}
+// 				});
+// 	}
+	function PrintElem(elem) {
+		$("#printbtn").hide();
+		Popup($(elem).html());
+	}
+
+	function Popup(data) {
+		var mywindow = window.open('', 'new div');
+		mywindow.document.write('<html><head><title>Fees Receipt</title>');
+		/*optional stylesheet*///mywindow.document.write('<link rel="stylesheet" href="css/main.css" type="text/css" />');
+		mywindow.document.write('</head><body >');
+		mywindow.document.write(data);
+		mywindow.document.write('</body></html>');
+		mywindow.print();
+		mywindow.close();
+		$("#printbtn").show();
+		return true;
+	}
+	
 	
 	function serviceFilter(id){
 		var borderId = $("#boardName").val();

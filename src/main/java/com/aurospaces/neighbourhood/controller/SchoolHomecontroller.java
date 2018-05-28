@@ -1212,6 +1212,38 @@ e.printStackTrace();
 
 		return sJson;  
 	}
+	@RequestMapping(value = "/getHistoryFee")
+	public @ResponseBody String getHistoryFee( ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+		System.out.println("Home controller...");
+		List<Map<String, Object>> listOrderBeans = null;
+		ObjectMapper objectMapper = null;
+		String sJson = "";
+		String studentFeeId = null;
+		try{
+			studentFeeId = request.getParameter("studentFeeId");
+			if(StringUtils.isNotBlank(studentFeeId)){
+			listOrderBeans = objStudentFeeDao.getHistoryFee(Integer.parseInt(studentFeeId));
+			}
+			if(listOrderBeans != null && listOrderBeans.size() > 0) {
+				  objectMapper = new ObjectMapper(); 
+				  sJson =objectMapper.writeValueAsString(listOrderBeans);
+				  request.setAttribute("allOrders1", sJson);
+				 // System.out.println(sJson); 
+			}else{
+				  objectMapper = new ObjectMapper(); 
+				  sJson =objectMapper.writeValueAsString(listOrderBeans);
+				  request.setAttribute("allOrders1", "''");
+			}
+			//studentDao.save(objClassBean);
+		}catch(Exception e){
+e.printStackTrace();
+	System.out.println(e);
+			logger.error(e);
+			logger.fatal("error in userLogin method in school Homecontroller class getPrintFee method");
+		}
+
+		return sJson;  
+	}
 	@RequestMapping(value = "/attendanceHome")
 	public String attendance(@ModelAttribute("packCmd") StudentBean objClassBean, ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");

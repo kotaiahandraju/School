@@ -115,4 +115,14 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		return result;
 
 	}
+	public List<Map<String, Object>> getHistoryFee(int studentfeeId) {
+
+		String sql ="select * from studentfee sf,student s  where sf.studentId=s.id and  studentId = ?";
+		
+		List<Map<String, Object>> retlist = jdbcTemplate.queryForList(sql, new Object[] { studentfeeId });
+		if (retlist.size() > 0)
+			return retlist;
+		return null;
+
+	}
 }
