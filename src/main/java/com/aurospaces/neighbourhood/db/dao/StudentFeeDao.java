@@ -19,7 +19,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		StringBuffer objStringBuffer = new StringBuffer();
 		objStringBuffer
 				.append("select sf.created_time as feeDate, sf.id,s.id as studentId, s.name as studentName,bn.name as boardName,st.name sectionName,m.name mediumName,"
-						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, s.netFee-(select sum(sf1.fee) from studentfee sf1 where sf.studentId =sf1.studentId) as dueFee,s.netFee"
+						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, sf.dueFee1 as dueFee,s.netFee"
 						+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.className=ct.id and st.id=s.section "
 						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id  ");
 		if (StringUtils.isNotBlank(studetnId)) {
@@ -49,12 +49,12 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 
 	}
 
-	public List<Map<String, String>> getViwStudentFee(String studentId,String boardId,String classId,String sectionId,String mediumId) {
+	public List<Map<String, Object>> getViwStudentFee(String studentId,String boardId,String classId,String sectionId,String mediumId) {
 		StringBuffer objStringBuffer = new StringBuffer();
-		objStringBuffer.append("select sf.created_time as feeDate, sf.id,s.id as studentId, s.name as studentName,bn.name as boardName,st.name sectionName,m.name mediumName,"
-								+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile,s.totalFee,s.discountFee,s.netFee-(select sum(sf1.fee) from studentfee sf1 where sf.studentId =sf1.studentId) as dueFee,s.netFee"
-								+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.className=ct.id and st.id=s.section " 
-								+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id ");
+		objStringBuffer.append("select s.id,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee,\n" + 
+				"s.tutionFee-sum(ifnull(sf.tutionFee,0)) as tutionFee,s.transportationFee-sum(ifnull(sf.transportationFee,0)) as transportationFee,  \n" + 
+				"s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name \n" + 
+				"from student s left join studentfee sf   on s.id =sf.studentId where  1=1  ");
 		if (StringUtils.isNotBlank(studentId)) {
 			objStringBuffer.append(" and s.id=" + studentId);
 		}
@@ -66,6 +66,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		}
 		if (StringUtils.isNotBlank(sectionId)) {
 			objStringBuffer.append(" and st.id=" + sectionId);
+			
 		}
 		if (StringUtils.isNotBlank(mediumId)) {
 			objStringBuffer.append(" and m.id=" + mediumId);
@@ -74,11 +75,11 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 
 		String sql = objStringBuffer.toString();
 		// System.out.println(sql);
-		RowValueCallbackHandler handler = new RowValueCallbackHandler(
-				new String[] { "feeDate", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
-							"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile", "totalFee", "discountFee","dueFee","netFee" });
-		jdbcTemplate.query(sql, handler);
-		List<Map<String, String>> result = handler.getResult();
+//		RowValueCallbackHandler handler = new RowValueCallbackHandler(
+//				new String[] { "feeDate", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
+//							"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile", "totalFee", "discountFee","dueFee","netFee" });
+		
+		List<Map<String, Object>> result = jdbcTemplate.queryForList(sql);
 		return result;
 
 	}
@@ -128,4 +129,12 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		return null;
 
 	}
+	
+	 public StudentFeeBean getTotalfee(String studentId) {
+			String sql = "select ifnull(sum(fee),0.00) as fee from studentfee where studentId =? "  ;
+			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
+			if(retlist.size() > 0)
+				return retlist.get(0);
+			return null;
+		}
 }
