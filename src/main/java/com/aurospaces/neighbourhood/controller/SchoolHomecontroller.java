@@ -181,6 +181,9 @@ e.printStackTrace();
 					}
 					if(Integer.parseInt(objuserBean.getRolId()) == 3){
 						return "redirect:parentDashboard.htm";
+						}else {
+							
+							return "redirect:studentHome";
 						}
 				}
 			}
