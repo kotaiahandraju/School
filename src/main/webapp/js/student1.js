@@ -138,11 +138,41 @@ $(function(){
 	        error.insertAfter(".fileImaged_error").css("color","red");          
 	       else if(element.attr("name") == "fileImage")
 	        error.insertAfter(".fileImage-error").css("color","red");  
+	    
 	      else
 	        error.insertAfter(element);
 	      }
+    	
 	});
 	    
+		
+	    $('#submitId').click(function(){
+	    	var admissionFee = $('#admissionFee').val();
+	    	var tutionFee   = $('#tutionFee').val();
+	    	var transportationFee = $('#transportationFee').val();
+	    	var hostelFee = $('#hostelFee').val();
+	    	var stationaryFee = $('#stationaryFee').val();
+	    		
+	    	if(admissionFee1 < admissionFee){
+		     alert("valid AdmissionFee");
+		     return false;
+		     }else if(tutionFee1 < tutionFee){
+		    	 alert("valid TutionFee");
+			     return false;
+		     }else if(transportationFee1 < transportationFee){
+		    	 alert("valid TransportationFee");
+			     return false;
+		     }else if(hostelFee1 < hostelFee){
+		    	 alert("valid HostelFee");
+			     return false;
+		     }else if(stationaryFee1 < stationaryFee){
+		    	 alert("valid StationaryFee");
+			     return false;
+		     }else {
+		    	 return true;
+		     }
+	    	
+	    });
 
 	$('#cancel').click(function () {
 	   	$('#fileImage').val("");      //image will be cleared if selected
@@ -443,8 +473,11 @@ $(function(){
 			$('#delbtn').hide();
 		}
 	});
-
-var totalfee  =0.00;
+var admissionFee1 =0.00;
+var tutionFee1 = 0.00;
+var transportationFee1 = 0.00;
+var hostelFee1 = 0.00;
+var stationaryFee1 = 0.00;
 	function getFee(){
 		var boardId = $('#boardName').val();
 		var className = $('#className').val();
@@ -461,15 +494,16 @@ var totalfee  =0.00;
 						totalfee = response.fee;
 					$("#totalFee").val(response.fee);
 					$("#admissionFee").val(response.admissionFee);  
-					$('#actuvalAdmissionFee').val(response.admissionFee);
 					$("#tutionFee").val(response.tutionFee);
-					$("#actuvalTutionFee").val(response.tutionFee);
 					$("#transportationFee").val(response.transportationFee);
-					$("#actuvalTransportationFee").val(response.transportationFee);
 					$("#hostelFee").val(response.hostelFee);
-					$("#actuvalHostelFee").val(response.hostelFee);
 					$("#stationaryFee").val(response.stationaryFee);
-					$("#actuvalStationaryFee").val(response.stationaryFee);
+					
+					admissionFee1 = response.admissionFee;
+					tutionFee1 = response.admissionFee;
+					transportationFee1 = response.admissionFee;
+					hostelFee1 = response.admissionFee;
+					stationaryFee1 = response.admissionFee;
 					}
 				},
 				error : function(e) {
@@ -485,18 +519,18 @@ var totalfee  =0.00;
 		 $('#loadAjax').hide();
 	}
 
-		/*var admissionFee=$('#admissionFee').val();
-		var actuvalAdmissionFee=$('#actuvalAdmissionFee').val();
-	
-	function admissionFee1(){
+//		var admissionFee=$('#admissionFee').val(response.admissionFee);
+//		var actuvalAdmissionFee=$('#actuvalAdmissionFee').val(response.admissionFee);
+//	
+//	function admissionFee1(){
+//		
+//		 if(admissionFee <= actuvalAdmissionFee){
+//		        alert("The paragraph was clicked.");
+//	     return false;   
+//		 }
+//		
+//	}	
 		
-		 if(admissionFee <= actuvalAdmissionFee){
-		        alert("The paragraph was clicked.");
-	     return false;   
-		 }
-		
-	}	
-		*/
 //		 $("#admFee").on('change',function(){
 //			 if(admissionFee <= actuvalAdmissionFee){
 //		        alert("The paragraph was clicked.");

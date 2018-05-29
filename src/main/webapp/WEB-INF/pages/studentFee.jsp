@@ -136,7 +136,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 												<div class="col-sm-8">
-													<form:input path="admissionFee" class="form-control"
+													<form:input path="admissionFee" class="form-control numericOnly"
 														tabindex="6" placeholder="Enter AdmissionFee Type" required="true" />
 												</div>
 											</div>
@@ -147,7 +147,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
 												<div class="col-sm-8">
-													<form:input path="tutionFee" class="form-control"
+													<form:input path="tutionFee" class="form-control numericOnly"
 														tabindex="6" placeholder="Enter Tution Fee Type" required="true" />
 												</div>
 											</div>
@@ -156,7 +156,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 												<div class="col-sm-8">
-													<form:input path="transportationFee" class="form-control"
+													<form:input path="transportationFee" class="form-control numericOnly"
 														tabindex="6" placeholder="Enter Transportation Fee Type" required="true" />
 												</div>
 											</div>
@@ -165,7 +165,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 												<div class="col-sm-8">
-													<form:input path="hostelFee" class="form-control"
+													<form:input path="hostelFee" class="form-control numericOnly"
 														tabindex="6" placeholder="Enter Hostel Fee Type" required="true" />
 												</div>
 											</div>
@@ -176,7 +176,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 												<div class="col-sm-8">
-													<form:input path="stationaryFee" class="form-control"
+													<form:input path="stationaryFee" class="form-control numericOnly"
 														tabindex="6" placeholder="Enter Stationary Fee Type" required="true" />
 												</div>
 											</div>
@@ -383,7 +383,34 @@ width:200px !important;
 			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
 		},
 	});
-
+	 $('#submitId').click(function(){
+	    	var admissionFee = $('#admissionFee').val();
+	    	var tutionFee   = $('#tutionFee').val();
+	    	var transportationFee = $('#transportationFee').val();
+	    	var hostelFee = $('#hostelFee').val();
+	    	var stationaryFee = $('#stationaryFee').val();
+	    		
+	    	if(admissionFee1 < admissionFee){
+		     alert("valid AdmissionFee");
+		     return false;
+		     }else if(tutionFee1 < tutionFee){
+		    	 alert("valid TutionFee");
+			     return false;
+		     }else if(transportationFee1 < transportationFee){
+		    	 alert("valid TransportationFee");
+			     return false;
+		     }else if(hostelFee1 < hostelFee){
+		    	 alert("valid HostelFee");
+			     return false;
+		     }else if(stationaryFee1 < stationaryFee){
+		    	 alert("valid StationaryFee");
+			     return false;
+		     }else {
+		    	 return true;
+		     }
+	    	
+	    });
+	
 	$('#cancel').click(function() {
 		$("#fee-form").validate().resetForm();
 		$("#fee-form").removeClass("has-error");
@@ -742,7 +769,11 @@ width:200px !important;
 	        }
 	    });
 	}); */
-
+	var admissionFee1 =0.00;
+	var tutionFee1 = 0.00;
+	var transportationFee1 = 0.00;
+	var hostelFee1 = 0.00;
+	var stationaryFee1 = 0.00;
 	function getDueFee() {
 		var studentId = $("#studentId").val();
 		$.ajax({
@@ -762,6 +793,12 @@ width:200px !important;
 					$("#transportationFee").val(response.transportationFee);
 					$("#hostelFee").val(response.hostelFee);
 					$("#stationaryFee").val(response.stationaryFee);
+					
+					admissionFee1 = response.admissionFee;
+					tutionFee1 = response.admissionFee;
+					transportationFee1 = response.admissionFee;
+					hostelFee1 = response.admissionFee;
+					stationaryFee1 = response.admissionFee;
 				}
 			},
 			error : function(e) {
@@ -774,6 +811,8 @@ width:200px !important;
 		});
 	}
 
+	
+	 
 	/* $(document).ready(function(){
 	$("select").chosen({allow_single_deselect:true});
 	}); */

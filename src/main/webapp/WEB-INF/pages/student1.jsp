@@ -273,7 +273,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Accommodation</label>
+												    <label for="inputPassword3" class="col-sm-4 control-label">Accommodation<span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:select path="acomitation" tabindex="21" class="form-control">
 															<form:option value="">-- Choose Accommodation --</form:option>
@@ -312,7 +312,6 @@
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:input path="admissionFee" placeholder="Enter Admission Fee Amount" onkeyup="admissionFee1();" class="form-control numericOnly" tabindex="6" />
-														<form:hidden path="" id="actuvalAdmissionFee"/>
 													</div>
 											  	</div>
 											</div>
@@ -323,7 +322,6 @@
 												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:input path="tutionFee" placeholder="Enter Tution Fee Amount" class="form-control numericOnly" tabindex="6" />
-													     <form:hidden path="" id="actuvalTutionFee"/>
 													</div>
 											  	</div>
 											</div>
@@ -334,7 +332,6 @@
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:input path="transportationFee" placeholder="Enter Transportation Fee Amount" class="form-control numericOnly" tabindex="6" />
-													    <form:hidden path="" id="actuvalTransportationFee"/>
 													</div>
 											  	</div>
 											</div>
@@ -343,7 +340,6 @@
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:input path="hostelFee" placeholder="Enter Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
-													    <form:hidden path="" id="actuvalHostelFee"/>
 													</div>
 											  	</div>
 											</div>
@@ -354,7 +350,6 @@
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:input path="stationaryFee" placeholder="Enter Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
-													     <form:hidden path="" id="actuvalStationaryFee"/>
 													</div>
 											  	</div>
 											</div>

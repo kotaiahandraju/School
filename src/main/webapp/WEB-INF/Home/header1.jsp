@@ -1,4 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +72,19 @@ th{text-align: center;}
 	</head>  
 
 	<body>
+	
+	<c:if test="${rolId=='2'}">
+ <div id='menu'>
+				<ul>
+					<li class="">
+						<a href='dashBoard'>
+							<i class="fa fa-tachometer"></i> <span>Dashboard</span>
+<!-- 							<span class="current-page"></span> -->
+						</a>
+					</li>
+				</ul>
+</div>				
+</c:if>
 <%
 String url =request.getScheme() + "://" + request.getServerName() +      ":" +   request.getServerPort() +  request.getContextPath();
 
