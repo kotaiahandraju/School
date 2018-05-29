@@ -137,7 +137,8 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 												<div class="col-sm-8">
 													<form:input path="admissionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Enter AdmissionFee Type" required="true" />
+														tabindex="6" placeholder="Enter AdmissionFee Type" onkeyup="checkadmissionFee();" required="true" />
+														<span id="erroradmissionFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -148,7 +149,8 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
 												<div class="col-sm-8">
 													<form:input path="tutionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Enter Tution Fee Type" required="true" />
+														tabindex="6" placeholder="Enter Tution Fee Type" onkeyup="checktutionFee();" required="true" />
+														<span id="errortutionFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -157,7 +159,8 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 												<div class="col-sm-8">
 													<form:input path="transportationFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Enter Transportation Fee Type" required="true" />
+														tabindex="6" placeholder="Enter Transportation Fee Type" onkeyup="checktransportationFee();" required="true" />
+														<span id="errortransportationFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -166,7 +169,8 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 												<div class="col-sm-8">
 													<form:input path="hostelFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Enter Hostel Fee Type" required="true" />
+														tabindex="6" placeholder="Enter Hostel Fee Type" onkeyup="checkhostelFee();" required="true" />
+														<span id="errorhostelFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -177,7 +181,8 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 												<div class="col-sm-8">
 													<form:input path="stationaryFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Enter Stationary Fee Type" required="true" />
+														tabindex="6" placeholder="Enter Stationary Fee Type" onkeyup="checkstationaryFee();" required="true" />
+															<span id="errorstationaryFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -391,26 +396,60 @@ width:200px !important;
 	    	var stationaryFee = $('#stationaryFee').val();
 	    		
 	    	if(admissionFee1 < admissionFee){
-		     alert("valid AdmissionFee");
+	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
 		     return false;
 		     }else if(tutionFee1 < tutionFee){
-		    	 alert("valid TutionFee");
+		    		$('#errortutionFee').text("Max Aoount is:"+tutionFee1);
 			     return false;
 		     }else if(transportationFee1 < transportationFee){
-		    	 alert("valid TransportationFee");
+		    		$('#errortransportationFee').text("Max Aoount is:"+transportationFee1);
 			     return false;
 		     }else if(hostelFee1 < hostelFee){
-		    	 alert("valid HostelFee");
+		    		$('#errorhostelFee').text("Max Aoount is:"+hostelFee1);
 			     return false;
 		     }else if(stationaryFee1 < stationaryFee){
-		    	 alert("valid StationaryFee");
+		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
 			     return false;
 		     }else {
+		    		$('#erroradmissionFee').text("");
+		    		$('#errortutionFee').text("");
+		    		$('#errortransportationFee').text("");
+		    		$('#errorhostelFee').text("");
+		    		$('#errorstationaryFee').text("");
 		    	 return true;
 		     }
 	    	
 	    });
-	
+	    function checkadmissionFee(){
+	    	var admissionFee =$("#admissionFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#erroradmissionFee').text("");
+	    		}
+	         }
+	    function checktutionFee(){
+	    	var admissionFee =$("#tutionFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errortutionFee').text("");
+	    		}
+	         }
+	    function checktransportationFee(){
+	    	var admissionFee =$("#transportationFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errortransportationFee').text("");
+	    		}
+	         }
+	    function checkhostelFee(){
+	    	var admissionFee =$("#hostelFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errorhostelFee').text("");
+	    		}
+	         }
+	    function checkstationaryFee(){
+	    	var admissionFee =$("#stationaryFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errorstationaryFee').text("");
+	    		}
+	         }
 	$('#cancel').click(function() {
 		$("#fee-form").validate().resetForm();
 		$("#fee-form").removeClass("has-error");
@@ -427,8 +466,13 @@ width:200px !important;
 		$("#stationaryFee").val('');
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
-		 $("#submitId").val("Submit");
-		  $("#displayId").text('');
+		$("#submitId").val("Submit");
+		$("#displayId").text('');
+		$('#erroradmissionFee').text("");
+  		$('#errortutionFee').text("");
+  		$('#errortransportationFee').text("");
+  		$('#errorhostelFee').text("");
+  		$('#errorstationaryFee').text("");
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {

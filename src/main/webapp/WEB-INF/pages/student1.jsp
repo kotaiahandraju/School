@@ -311,7 +311,8 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="admissionFee" placeholder="Enter Admission Fee Amount" onkeyup="admissionFee1();" class="form-control numericOnly" tabindex="6" />
+														<form:input path="admissionFee" placeholder="Enter Admission Fee Amount" onkeyup="checkadmissionFee();" class="form-control numericOnly" tabindex="6" />
+															<span id="erroradmissionFee" style="color:red"></span>
 													</div>
 											  	</div>
 											</div>
@@ -321,7 +322,8 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="tutionFee" placeholder="Enter Tution Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="tutionFee" placeholder="Enter Tution Fee Amount" onkeyup="checktutionFee();" class="form-control numericOnly" tabindex="6" />
+														<span id="errortutionFee" style="color:red"></span>
 													</div>
 											  	</div>
 											</div>
@@ -331,7 +333,8 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="transportationFee" placeholder="Enter Transportation Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="transportationFee" placeholder="Enter Transportation Fee Amount" onkeyup="checktransportationFee();" class="form-control numericOnly" tabindex="6" />
+													    <span id="errortransportationFee" style="color:red"></span>
 													</div>
 											  	</div>
 											</div>
@@ -339,7 +342,8 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="hostelFee" placeholder="Enter Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="hostelFee" placeholder="Enter Hostel Fee Amount" onkeyup="checkhostelFee();" class="form-control numericOnly" tabindex="6" />
+														<span id="errorhostelFee" style="color:red"></span>
 													</div>
 											  	</div>
 											</div>
@@ -349,7 +353,8 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="stationaryFee" placeholder="Enter Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="stationaryFee" placeholder="Enter Stationary Fee Amount" onkeyup="checkstationaryFee();" class="form-control numericOnly" tabindex="6" />
+														<span id="errorstationaryFee" style="color:red"></span>
 													</div>
 											  	</div>
 											</div>

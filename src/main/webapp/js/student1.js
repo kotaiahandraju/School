@@ -145,7 +145,6 @@ $(function(){
     	
 	});
 	    
-		
 	    $('#submitId').click(function(){
 	    	var admissionFee = $('#admissionFee').val();
 	    	var tutionFee   = $('#tutionFee').val();
@@ -154,25 +153,63 @@ $(function(){
 	    	var stationaryFee = $('#stationaryFee').val();
 	    		
 	    	if(admissionFee1 < admissionFee){
-		     alert("valid AdmissionFee");
+	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
 		     return false;
 		     }else if(tutionFee1 < tutionFee){
-		    	 alert("valid TutionFee");
+		    		$('#errortutionFee').text("Max Aoount is:"+tutionFee1);
 			     return false;
 		     }else if(transportationFee1 < transportationFee){
-		    	 alert("valid TransportationFee");
+		    		$('#errortransportationFee').text("Max Aoount is:"+transportationFee1);
 			     return false;
 		     }else if(hostelFee1 < hostelFee){
-		    	 alert("valid HostelFee");
+		    		$('#errorhostelFee').text("Max Aoount is:"+hostelFee1);
 			     return false;
 		     }else if(stationaryFee1 < stationaryFee){
-		    	 alert("valid StationaryFee");
+		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
 			     return false;
 		     }else {
+		    		$('#erroradmissionFee').text("");
+		    		$('#errortutionFee').text("");
+		    		$('#errortransportationFee').text("");
+		    		$('#errorhostelFee').text("");
+		    		$('#errorstationaryFee').text("");
 		    	 return true;
 		     }
 	    	
 	    });
+	    
+	    function checkadmissionFee(){
+	    	var admissionFee =$("#admissionFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#erroradmissionFee').text("");
+	    		}
+	         }
+	    function checktutionFee(){
+	    	var admissionFee =$("#tutionFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errortutionFee').text("");
+	    		}
+	         }
+	    function checktransportationFee(){
+	    	var admissionFee =$("#transportationFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errortransportationFee').text("");
+	    		}
+	         }
+	    function checkhostelFee(){
+	    	var admissionFee =$("#hostelFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errorhostelFee').text("");
+	    		}
+	         }
+	    function checkstationaryFee(){
+	    	var admissionFee =$("#stationaryFee").val().trim();
+	    	if(admissionFee!=''){
+	    	$('#errorstationaryFee').text("");
+	    		}
+	         }
+
+	
 
 	$('#cancel').click(function () {
 	   	$('#fileImage').val("");      //image will be cleared if selected
@@ -209,6 +246,11 @@ $(function(){
 		$("#stationaryFee").val('');
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
+	    $('#erroradmissionFee').text("");
+		$('#errortutionFee').text("");
+		$('#errortransportationFee').text("");
+		$('#errorhostelFee').text("");
+		$('#errorstationaryFee').text("");
 	});
 	
 	

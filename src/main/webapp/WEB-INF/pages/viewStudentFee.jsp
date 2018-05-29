@@ -258,12 +258,12 @@ $(document).ready(function ()
 										+ ")' style='font-color:red'>"
 										+ orderObj.id
 										+ "</a></td>"
-										+ "<td title='"+orderObj.studentName+"'>"
+										+ "<td title='"+orderObj.name+"'>"
 										+ '<a style="cursor: pointer;" title="View Student Fee History"  data-keyboard="false" data-backdrop="static" onclick=popupOpen('
-										+ orderObj.studentId
+										+ orderObj.id
 										+ ')>'
 										+ '<b>'
-										+ orderObj.studentName
+										+ orderObj.name
 										+ '</b></a>'
 										+ '</td>'
 										+ "<td title='"+orderObj.fatherName+"'>"
@@ -293,8 +293,8 @@ $(document).ready(function ()
 										+ "<td title='"+orderObj.netFee+"' >"
 										+ orderObj.netFee
 										+ "</td>"
-										+ "<td title='"+orderObj.paidFee+"' >"
-										+ orderObj.fee
+										+ "<td title='"+orderObj.paidfee+"' >"
+										+ orderObj.paidfee
 										+ "</td>"
 										+ "<td title='"+orderObj.remainBal+"' >"
 										+ orderObj.dueFee
