@@ -461,10 +461,15 @@ var totalfee  =0.00;
 						totalfee = response.fee;
 					$("#totalFee").val(response.fee);
 					$("#admissionFee").val(response.admissionFee);  
+					$('#actuvalAdmissionFee').val(response.admissionFee);
 					$("#tutionFee").val(response.tutionFee);
+					$("#actuvalTutionFee").val(response.tutionFee);
 					$("#transportationFee").val(response.transportationFee);
+					$("#actuvalTransportationFee").val(response.transportationFee);
 					$("#hostelFee").val(response.hostelFee);
+					$("#actuvalHostelFee").val(response.hostelFee);
 					$("#stationaryFee").val(response.stationaryFee);
+					$("#actuvalStationaryFee").val(response.stationaryFee);
 					}
 				},
 				error : function(e) {
@@ -479,7 +484,26 @@ var totalfee  =0.00;
 			});
 		 $('#loadAjax').hide();
 	}
+
+		/*var admissionFee=$('#admissionFee').val();
+		var actuvalAdmissionFee=$('#actuvalAdmissionFee').val();
 	
+	function admissionFee1(){
+		
+		 if(admissionFee <= actuvalAdmissionFee){
+		        alert("The paragraph was clicked.");
+	     return false;   
+		 }
+		
+	}	
+		*/
+//		 $("#admFee").on('change',function(){
+//			 if(admissionFee <= actuvalAdmissionFee){
+//		        alert("The paragraph was clicked.");
+//		     return false;   
+//			 }
+//		    });
+		
 	
 	function getApplicant(id)
 	{
