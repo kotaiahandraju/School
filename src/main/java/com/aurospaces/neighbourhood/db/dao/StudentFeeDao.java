@@ -140,4 +140,12 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 				return retlist.get(0);
 			return null;
 		}
+	 
+	 public StudentFeeBean getTotalIndividualfeeByStudentId(int studentId) {
+			String sql = "select ifnull(sum(fee),0.0) as fee,ifnull(sum(admissionFee),0.0) as admissionFee ,ifnull(sum(tutionFee),0.0) as tutionFee,ifnull(sum(transportationFee) ,0.0)as transportationFee ,ifnull(sum(hostelFee),0.0) as hostelFee,ifnull(Sum(stationaryFee),0.0) as stationaryFee, ifnull(sum(dueFee1) ,0.0)as dueFee1  from studentfee where studentId =?"  ;
+			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
+			if(retlist.size() > 0)
+				return retlist.get(0);
+			return null;
+		}
 }

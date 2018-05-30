@@ -155,10 +155,11 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 <!-- 							<span class="current-page"></span> -->
 						</a>
 					</li>
-					
+					 <c:if test="${rolId=='1' }">
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-cogs"></i><span>General Settings</span></a>
 						<ul>
+						
 							<li><a href="boardHome"><span>Add Board</span></a></li>
 							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
@@ -170,14 +171,16 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 						</ul>
 					</li>
+							 </c:if>
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-users"></i><span>Student Details </span></a>
 						<ul>
 						
 						    <c:if test="${rolId=='2' }">
   						     <li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
-						     <li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
-						  </c:if>						   
+						     <li><a href='userStudentFeeHome' ><span>Student Fee</span></a></li>
+						  </c:if>	
+						  <c:if test="${rolId=='1' }">					   
 							<li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
 							<li><a href='viewStudent' id="viewStudent" ><span>View Student</span></a></li>
 							<li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
@@ -185,8 +188,10 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='importStudent' ><span>Import Student</span></a></li>
 							<li><a href='exportStudent' ><span>Export Student</span></a></li>
 							<li><a href='studentMarks'><span>Student Marks</span></a></li>
+							 </c:if>
 						</ul>
 					</li>
+					<c:if test="${rolId=='1' }">
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-envelope-open-o"></i><span>Message</span></a>
 						<ul>
@@ -197,7 +202,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='viewEvents' ><span>View Notifications</span></a></li> 
 						</ul>
 					</li>
-					
+					  </c:if>	
 					<!-- <li class='has-sub'>
 						<a href='#'><i class="fa fa-clipboard"></i><span>Exams</span></a>
 						<ul>
