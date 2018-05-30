@@ -835,7 +835,7 @@ width:200px !important;
 										response,
 										function(i, tests) {
 
-var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: Baskerville Old Face, cursive;font-size: 20px;'>"
+var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: 'Open Sans', arial, sans-serif;font-size: 16px;'>"
 
 + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>"
 + "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
@@ -880,14 +880,32 @@ $(stockInformation1).appendTo("#printTab");
 	}
 
 	function Popup(data) {
-		var mywindow = window.open('', 'new div');
-		mywindow.document.write('<html><head><title>Fees Receipt</title>');
-		/*optional stylesheet*///mywindow.document.write('<link rel="stylesheet" href="css/main.css" type="text/css" />');
-		mywindow.document.write('</head><body >');
-		mywindow.document.write(data);
-		mywindow.document.write('</body></html>');
-		mywindow.print();
-		mywindow.close();
+		var mywindow = window.open('','new div');
+
+	    var is_chrome = Boolean(mywindow.chrome);
+	    var isPrinting = false;
+	    mywindow.document.write('<html><head><title>Lpo Details</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write(data);
+	   
+	    mywindow.document.write('</body></html>');
+	    mywindow.document.close(); // necessary for IE >= 10 and necessary before onload for chrome
+		
+	    if (is_chrome) {
+	        mywindow.onload = function() { // wait until all resources loaded 
+	            mywindow.focus(); // necessary for IE >= 10
+	            mywindow.print();  // change window to mywindow
+	            mywindow.close();// change window to mywindow
+	        };
+	    
+	    
+	   } else {
+	        mywindow.document.close(); // necessary for IE >= 10
+	        mywindow.focus(); // necessary for IE >= 10
+
+	        mywindow.print();
+	        mywindow.close();
+	   }
+		
 		$("#printbtn").show();
 		return true;
 	}

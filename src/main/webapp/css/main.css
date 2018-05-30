@@ -1944,7 +1944,7 @@ ul.recent-tweets {
   box-shadow: none;
   -webkit-box-shadow: none;
   border: 1px solid #d9d9d9; 
-   width:auto !important;
+/*    width:auto !important; */
        border-radius: 7px;}
   .form-control:focus {
     border: 1px solid #a4c2dc;
