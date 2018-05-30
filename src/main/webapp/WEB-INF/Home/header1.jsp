@@ -99,10 +99,14 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 					}else{
 						 String testId = (String)sess.getAttribute("rolId");
 						int rolid22 = Integer.parseInt(testId);
-						 if (rolid22 != 1) {
+						 if (rolid22 == 1 || rolid22 ==2) {
+							
+							 
+						}  else{
+							
 							RequestDispatcher dispatcher = request.getRequestDispatcher("/HomePage");
 							dispatcher.forward(request, response);
-						}  
+						}
 					}
 			%>  
 			
@@ -169,6 +173,11 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-users"></i><span>Student Details </span></a>
 						<ul>
+						
+						    <c:if test="${rolId=='2' }">
+  						     <li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
+						     <li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
+						  </c:if>						   
 							<li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
 							<li><a href='viewStudent' id="viewStudent" ><span>View Student</span></a></li>
 							<li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
