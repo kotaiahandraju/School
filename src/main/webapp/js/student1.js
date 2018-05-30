@@ -336,6 +336,7 @@ $(function(){
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
 			$('#blah').attr('src',''+serviceUnitArray[id].imagePath+'');
 			$('#admissionFee').val(serviceUnitArray[id].admissionFee);
+			getFee();
 			$('#tutionFee').val(serviceUnitArray[id].tutionFee);
 			$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 			$('#hostelFee').val(serviceUnitArray[id].hostelFee);
