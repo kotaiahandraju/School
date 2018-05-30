@@ -121,9 +121,9 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 	}
 	public List<Map<String, Object>> getHistoryFee(int studentfeeId) {
 
-		String sql ="select sf.*,DATE_FORMAT( Date(sf.created_time),'%d-%M-%Y') as createdate,s.name,s.fatherName,s.mobile,bn.name as boardName,st.name as sectionName," 
-				+"m.name as mediumName,sf.dueFee1,ct.name as className from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.id =sf.studentId and"  
-				+" s.className=ct.id and st.id=s.section and m.id=s.medium and bn.id=s.boardName and ct.id=s.className and s.id=?" ;
+		String sql ="select s.netFee-(select sum(sf1.fee) from studentfee sf1 where sf.studentId =sf1.studentId) as dueFee, sf.*,DATE_FORMAT( Date(sf.created_time),'%d-%M-%Y') as createdate,s.name,s.fatherName,s.mobile,bn.name as boardName,st.name as sectionName," + 
+				"m.name as mediumName,sf.dueFee1,ct.name as className from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.id =sf.studentId and " + 
+				"s.className=ct.id and st.id=s.section and m.id=s.medium and bn.id=s.boardName and ct.id=s.className and s.id=?" ;
 				
 		
 		List<Map<String, Object>> retlist = jdbcTemplate.queryForList(sql, new Object[] { studentfeeId });

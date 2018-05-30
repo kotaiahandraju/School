@@ -153,63 +153,26 @@ $(function(){
 	    	var stationaryFee = $('#stationaryFee').val();
 	    		
 	    	if(admissionFee1 < admissionFee){
-	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
+	    		alert("Maximum AdmissionFee is : "+admissionFee1);
 		     return false;
 		     }else if(tutionFee1 < tutionFee){
-		    		$('#errortutionFee').text("Max Aoount is:"+tutionFee1);
+		    	 alert("Maximum TutionFee is : "+tutionFee1);
 			     return false;
 		     }else if(transportationFee1 < transportationFee){
-		    		$('#errortransportationFee').text("Max Aoount is:"+transportationFee1);
+		    	 alert("Maximum TransportationFee is : "+transportationFee1);
 			     return false;
 		     }else if(hostelFee1 < hostelFee){
-		    		$('#errorhostelFee').text("Max Aoount is:"+hostelFee1);
+		    	 alert("Maximum HostelFee is : "+hostelFee1);
 			     return false;
 		     }else if(stationaryFee1 < stationaryFee){
-		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
+		    	 alert("Maximum StationaryFee is : "+stationaryFee1);
 			     return false;
 		     }else {
-		    		$('#erroradmissionFee').text("");
-		    		$('#errortutionFee').text("");
-		    		$('#errortransportationFee').text("");
-		    		$('#errorhostelFee').text("");
-		    		$('#errorstationaryFee').text("");
 		    	 return true;
 		     }
 	    	
 	    });
-	    
-	    function checkadmissionFee(){
-	    	var admissionFee =$("#admissionFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#erroradmissionFee').text("");
-	    		}
-	         }
-	    function checktutionFee(){
-	    	var admissionFee =$("#tutionFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errortutionFee').text("");
-	    		}
-	         }
-	    function checktransportationFee(){
-	    	var admissionFee =$("#transportationFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errortransportationFee').text("");
-	    		}
-	         }
-	    function checkhostelFee(){
-	    	var admissionFee =$("#hostelFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errorhostelFee').text("");
-	    		}
-	         }
-	    function checkstationaryFee(){
-	    	var admissionFee =$("#stationaryFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errorstationaryFee').text("");
-	    		}
-	         }
-
-	
+	  
 
 	$('#cancel').click(function () {
 	   	$('#fileImage').val("");      //image will be cleared if selected
@@ -246,11 +209,7 @@ $(function(){
 		$("#stationaryFee").val('');
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
-	    $('#erroradmissionFee').text("");
-		$('#errortutionFee').text("");
-		$('#errortransportationFee').text("");
-		$('#errorhostelFee').text("");
-		$('#errorstationaryFee').text("");
+	    
 	});
 	
 	
@@ -542,10 +501,10 @@ var stationaryFee1 = 0.00;
 					$("#stationaryFee").val(response.stationaryFee);
 					
 					admissionFee1 = response.admissionFee;
-					tutionFee1 = response.admissionFee;
-					transportationFee1 = response.admissionFee;
-					hostelFee1 = response.admissionFee;
-					stationaryFee1 = response.admissionFee;
+					tutionFee1 = response.tutionFee;
+					transportationFee1 = response.transportationFee;
+					hostelFee1 = response.hostelFee;
+					stationaryFee1 = response.stationaryFee;
 					}
 				},
 				error : function(e) {
