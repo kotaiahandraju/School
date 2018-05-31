@@ -51,10 +51,10 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 
 	public List<Map<String, Object>> getViwStudentFee(String studentId,String boardId,String classId,String sectionId,String mediumId) {
 		StringBuffer objStringBuffer = new StringBuffer();
-		objStringBuffer.append("select s.id,s.netFee,s.mobile,s.fatherName,s.totalFee,s.discountFee,bn.name as boardName,st.name as sectionName,m.name as mediumName,ct.name as className," + 
-				"sum(ifnull(sf.fee,0)) as paidfee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee," + 
+		objStringBuffer.append("select s.id,ifnull(sf.created_time,'---') as feeDate,s.netFee,s.mobile,s.fatherName,s.totalFee,s.discountFee,bn.name as boardName,st.name as sectionName,m.name as mediumName,ct.name as className," + 
+				" sum(ifnull(sf.fee,0)) as fee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0)) as admissionFee," + 
 				"	s.tutionFee-sum(ifnull(sf.tutionFee,0)) as tutionFee,s.transportationFee-sum(ifnull(sf.transportationFee,0)) as transportationFee," + 
-				"	s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name" + 
+				"	s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name as studentName" + 
 				"	from student s left join studentfee sf   on s.id =sf.studentId left join boardname bn on bn.id=s.boardName\r\n" + 
 				"	left join sectiontable st on st.id=s.section left join classtable ct on s.className=ct.id left join mediam m on s.medium=m.id" + 
 				"	where  1=1 ");
@@ -81,7 +81,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 //		RowValueCallbackHandler handler = new RowValueCallbackHandler(
 //				new String[] { "feeDate", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
 //							"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile", "totalFee", "discountFee","dueFee","netFee" });
-		
+		System.out.println(sql);
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(sql);
 		return result;
 

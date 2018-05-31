@@ -263,7 +263,7 @@ $(document).ready(function ()
 										+ orderObj.id
 										+ ')>'
 										+ '<b>'
-										+ orderObj.name
+										+ orderObj.studentName
 										+ '</b></a>'
 										+ '</td>'
 										+ "<td title='"+orderObj.fatherName+"'>"
@@ -294,7 +294,7 @@ $(document).ready(function ()
 										+ orderObj.netFee
 										+ "</td>"
 										+ "<td title='"+orderObj.paidfee+"' >"
-										+ orderObj.paidfee
+										+ orderObj.fee
 										+ "</td>"
 										+ "<td title='"+orderObj.remainBal+"' >"
 										+ orderObj.dueFee
