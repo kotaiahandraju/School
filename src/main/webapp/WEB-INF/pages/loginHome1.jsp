@@ -147,9 +147,9 @@ span.has-error, #already_exist, .subjects_error
 	},
 	messages:
    	{
-		rolId:{required: 'Please Select Role'},
-		name:{required: 'Please Enter Username'},
-		password:{required: 'Please Enter Password'},
+		rolId:{required: 'Select Role'},
+		name:{required: 'Username'},
+		password:{required: 'Password'},
 	}	
   });
   $('#cancel').click(function () {

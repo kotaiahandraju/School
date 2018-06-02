@@ -115,16 +115,16 @@ function displayTable(listOrders) {
 			if(studentId.length == 0 || message.length ==0 || notificatinId.length == 0  || absentId.length == 0){
 				
 				if(studentId.length == 0){
-					$("#studentId_error").text('Please Select atleast One Student');
+					$("#studentId_error").text('Select atleast One Student');
 				}
 				if(message.length == 0){
-					$("#messageId_error").text('Please Enter Message');
+					$("#messageId_error").text('Text Message');
 				}
 				if(notificatinId.length == 0){
-					$("#notificatinId_error").text('Please Choose Type of Notification');
+					$("#notificatinId_error").text('Choose Type of Notification');
 				}
 				if(absentId.length == 0){
-					$("#absentId_error").text('Please Choose Absent Session');
+					$("#absentId_error").text('Choose Absent Session');
 				}
 			}else{
 				 $("#sendBtn").attr("disabled",true);

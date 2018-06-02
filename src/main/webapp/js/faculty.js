@@ -2,7 +2,7 @@ $(document).ready (function(){
 	
 	jQuery.validator.addMethod('lettersonly', function(value, element) {
 	    return this.optional(element) || /^[a-z. áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i.test(value);
-	}, "Please Enter Valid Name");
+	}, "Valid Name");
 
 	jQuery.validator.addMethod("mobileNO", function(phone_number, element) {
 	   phone_number = phone_number.replace(/\s+/g, ""); 
@@ -27,15 +27,15 @@ $(document).ready (function(){
 		},
 		messages:
 	   	{
-			name:{required: 'Please Enter Faculty Name'},
-			gender:{required:'Please Choose Gender'},
+			name:{required: 'Faculty Name'},
+			gender:{required:'Choose Gender'},
 			/* boardName:{required:'Please Choose Board'},
 		    medium:{required:'Please Choose Medium'},
 		    className:{required:'Please Choose Class'},
 		    section:{required:'Please Choose Section'},
 	        subject:{required:'Please Choose Subject'}, */
-	        qualification:{required:'Please Enter Qualification'},
-	        contactNumber:{required:'Please Enter Contact Number',number:'Please Enter only numbers'},
+	        qualification:{required:'Qualification'},
+	        contactNumber:{required:'Contact Number',number:'only numbers'},
 		},
 		errorPlacement: function(error, element){
 		      if(element.attr("name") == "gender")

@@ -24,12 +24,12 @@ $(function(){
 		},
 		messages:
 	   	{
-			facultyId:{required: 'Please Choose Faculty'},
-			boardName:{required:'Please Choose Board'},
-		    medium:{required:'Please Choose Medium'},
-		    className:{required:'Please Choose Class'},
-		    section:{required:'Please Choose Section'},
-	        subject:{required:'Please Choose Subject'},
+			facultyId:{required: 'Choose Faculty'},
+			boardName:{required:'Choose Board'},
+		    medium:{required:'Choose Medium'},
+		    className:{required:'Choose Class'},
+		    section:{required:'Choose Section'},
+	        subject:{required:'Choose Subject'},
 		},
 	  });
 

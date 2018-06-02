@@ -394,7 +394,7 @@ $(document).ready(function ()
 
 	    var is_chrome = Boolean(mywindow.chrome);
 	    var isPrinting = false;
-	    mywindow.document.write('<html><head><title>Lpo Details</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write('<html><head><title>VVN School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
 	    mywindow.document.write(data);
 	   
 	    mywindow.document.write('</body></html>');

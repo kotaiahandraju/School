@@ -68,6 +68,7 @@ import com.aurospaces.neighbourhood.bean.ClassCreationBean;
 import com.aurospaces.neighbourhood.bean.ExamMarksBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FilterBean;
+import com.aurospaces.neighbourhood.bean.HalliticketBean;
 import com.aurospaces.neighbourhood.bean.MediumBean;
 import com.aurospaces.neighbourhood.bean.SectionCreationBean;
 import com.aurospaces.neighbourhood.bean.StudentBean;
@@ -2647,6 +2648,40 @@ public @ResponseBody String getClassNameFilter3( HttpServletRequest request) thr
 	request.setAttribute("seviceList", json);
 	return json;
 
+}
+
+
+@RequestMapping("/hallticket")
+public String hallticketPage(@ModelAttribute("packCmd") HalliticketBean halliticketBean,HttpServletRequest request) {
+	
+	System.out.println("Home controller...");
+	List<Map<String, Object>> listOrderBeans = null;
+	ObjectMapper objectMapper = null;
+	String sJson = "";
+	try{
+		listOrderBeans = objStudentFeeDao.getViwStudentFee(null,null,null,null,null);
+		if(listOrderBeans != null && listOrderBeans.size() > 0) {
+			  objectMapper = new ObjectMapper(); 
+			  sJson =objectMapper.writeValueAsString(listOrderBeans);
+			  request.setAttribute("allOrders1", sJson);
+			 // System.out.println(sJson); 
+		}else{
+			  objectMapper = new ObjectMapper(); 
+			  sJson =objectMapper.writeValueAsString(listOrderBeans);
+			  request.setAttribute("allOrders1", "''");
+		}
+		//studentDao.save(objClassBean);
+	}catch(Exception e){
+e.printStackTrace();
+System.out.println(e);
+		logger.error(e);
+		logger.fatal("error in userLogin method in school Homecontroller class viewStudentFee method");
+	}
+	
+	
+	
+	
+	return "hallticket";
 }
 }
 

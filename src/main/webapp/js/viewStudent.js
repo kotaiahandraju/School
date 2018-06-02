@@ -21,9 +21,9 @@ $(function(){
 			},
 		    messages:
 			{
-			    name:{lettersonly: 'Please Enter Valid Name'},
-			    mobile:{number: 'Please Enter 10 digit mobile number'},
-			    email:{email: 'Please Enter Valid Email'},
+			    name:{lettersonly: 'Valid Name'},
+			    mobile:{number: '10 digit mobile number'},
+			    email:{email: 'Valid Email'},
 			},
 			errorPlacement: function(error, element){
 				if(element.attr("name") == "name")

@@ -51,7 +51,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="name" placeholder="Enter Student Name" class="form-control onlyCharacters" tabindex="1" required="true"/>
+														<form:input path="name" placeholder="Student Name" class="form-control onlyCharacters" tabindex="1" required="true"/>
 													</div>
 												</div>
 											</div>
@@ -82,7 +82,7 @@
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Section <span style="color: red;">*</span></label>
-												    <div class="col-sm-8">
+										    <div class="col-sm-8">
 														<form:select path="section" class="form-control" tabindex="4"  onchange="mediumFilter();" quired="true">
 															<form:option value="">-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -105,7 +105,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="totalFee" placeholder="Enter Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
+														<form:input path="totalFee" placeholder="Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
 													</div>
 											  	</div>
 											</div>
@@ -123,7 +123,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
 												    <div class="col-sm-8">
-														<form:input path="rollNum" placeholder="Enter Roll Number" class="form-control nospecialCharacter" tabindex="8"/>
+														<form:input path="rollNum" placeholder="Roll Number" class="form-control nospecialCharacter" tabindex="8"/>
 													</div>
 											  	</div>
 											</div>
@@ -131,7 +131,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission No. <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="admissionNum" placeholder="Enter Admission Number" class="form-control nospecialCharacter" tabindex="9" required="true"/>
+														<form:input path="admissionNum" placeholder="Admission Number" class="form-control nospecialCharacter" tabindex="9" required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -141,7 +141,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Father Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="fatherName" placeholder="Enter Father Name" class="form-control onlyCharacters" tabindex="10" required="true"/>
+														<form:input path="fatherName" placeholder="Father Name" class="form-control onlyCharacters" tabindex="10" required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -151,7 +151,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Mobile <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="mobile" placeholder="Enter Contact Number" class="form-control numericOnly" maxlength="10" tabindex="11"/>
+														<form:input path="mobile" placeholder="Contact Number" class="form-control numericOnly" maxlength="10" tabindex="11"/>
 													</div>
 											  	</div>
 											</div>
@@ -159,7 +159,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Alternative Mobile</label>
 												    <div class="col-sm-8">
-														<form:input path="alternativeMobile" placeholder="Enter Alternate Contact Number" class="form-control numericOnly" tabindex="12"/>
+														<form:input path="alternativeMobile" placeholder="Alternate Contact Number" class="form-control numericOnly" tabindex="12"/>
 													</div>
 											  	</div>
 											</div>
@@ -168,7 +168,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
 												    <div class="col-sm-8">
-														<form:input path="email" placeholder="Enter Email-Id" class="form-control" tabindex="13"/>
+														<form:input path="email" placeholder="Email-Id" class="form-control" tabindex="13"/>
 													</div>
 											  	</div>
 											</div>
@@ -211,7 +211,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Date of Birth <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Enter Date of Birth" class="form-control" tabindex="16" required="true" readonly="true"/>
+														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Date of Birth" class="form-control" tabindex="16" required="true" readonly="true"/>
 														<span class="dob1_error" id="dob1_error"></span>
 													</div>
 											  	</div>
@@ -240,7 +240,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Address <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="address" placeholder="Enter Address" class="form-control" tabindex="18" required="true"/>
+														<form:input path="address" placeholder="Address" class="form-control" tabindex="18" required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -250,7 +250,7 @@
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Previous Institute</label>
 												    <div class="col-sm-8">
-														<form:input path="previousInstitue" placeholder="Enter Previous Institute Name" class="form-control  onlyCharacters" tabindex="19" />
+														<form:input path="previousInstitue" placeholder="Previous Institute Name" class="form-control  onlyCharacters" tabindex="19" />
 													</div>
 											  	</div>
 											</div>
@@ -287,7 +287,7 @@
 										
 											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Facility</label>
+												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Facility<span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<form:select path="buspesility" tabindex="22" class="form-control" >
 															<form:option value="">-- Choose Bus Facility --</form:option>
@@ -299,11 +299,11 @@
 											</div>
 											</div>
 											<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="busRouteDiv">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Route</label>
 												    <div class="col-sm-8">
-														<form:input path="busroute" placeholder="Enter Bus Route" class="form-control" tabindex="23" />
+														<form:input path="busroute" placeholder="Bus Route" class="form-control" tabindex="23" />
 													</div>
 											  	</div>
 											</div>
@@ -311,7 +311,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="admissionFee" placeholder="Enter Admission Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="admissionFee" placeholder="Admission Fee Amount"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -321,17 +321,17 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="tutionFee" placeholder="Enter Tution Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="tutionFee" placeholder="Tution Fee Amount"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
 											</div>
 											<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="transportationDiv">
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="transportationFee" placeholder="Enter Transportation Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="transportationFee" placeholder="Transportation Fee Amount"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -339,7 +339,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="hostelFee" placeholder="Enter Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="hostelFee" placeholder="Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -349,7 +349,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
-														<form:input path="stationaryFee" placeholder="Enter Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="stationaryFee" placeholder="Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>

@@ -203,15 +203,15 @@ $('#basicExample').dataTable();
 				
 				if(studentId.length == 0){
 // 					alert("please select student");
-					$("#studentId_error").text('Please Select atleast One Student');
+					$("#studentId_error").text('Select atleast One Student');
 				}
 				if(message.length == 0){
 // 					alert("please select message");
-					$("#messageId_error").text('Please Enter Message');
+					$("#messageId_error").text('Text Message');
 				}
 				if(notificatinId.length == 0){
 // 					alert("please select notificatinId");
-					$("#notificatinId_error").text('Please Choose Type of Notification');
+					$("#notificatinId_error").text('Choose Type of Notification');
 				}
 				
 			}else{

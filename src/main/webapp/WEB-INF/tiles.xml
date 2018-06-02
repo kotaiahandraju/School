@@ -340,7 +340,7 @@
 		<put-attribute name="body" value="/WEB-INF/pages/examMarks.jsp" />
 	</definition>
 	<definition name="hallticket" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/pages/hallticket.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/hallticket1.jsp" />
 	</definition>
 	<definition name="studentMarks" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/studentMarks.jsp" />

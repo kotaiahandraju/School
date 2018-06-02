@@ -36,7 +36,7 @@ width:200px !important;
 
 	<!-- Top Bar starts -->
 	<div class="top-bar">
-		<div class="page-title">Student Fee</div>
+		<div class="page-title">Student Hallticket</div>
 	</div>
 	<!-- Top Bar ends -->
 
@@ -125,60 +125,12 @@ width:200px !important;
 														class="form-control" required="true"
 														onchange="getDueFee(),searchStudetnFee()">
 														<form:option value="">-- Choose Student --</form:option>
-<%-- 														<form:options items="${allStudents}"></form:options> --%>
+														<form:options items="${allStudents}"></form:options>
 													</form:select>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
-												<div class="col-sm-8">
-													<form:input path="admissionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="AdmissionFee Type" required="true" />
-												</div>
-											</div>
-										</div>
-										</div>
-										<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
-												<div class="col-sm-8">
-													<form:input path="tutionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Tution Fee Type"  required="true" />
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
-												<div class="col-sm-8">
-													<form:input path="transportationFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Transportation Fee Type" required="true" />
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
-												<div class="col-sm-8">
-													<form:input path="hostelFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Hostel Fee Type" required="true" />
-												</div>
-											</div>
-										</div>
-										</div>
-									<div class="row">
-									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
-												<div class="col-sm-8">
-													<form:input path="stationaryFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Stationary Fee Type" required="true" />
-												</div>
-											</div>
-										</div>
+										
 									
 										<div class="col-sm-8 col-sm-offset-4">
 											<div class="form-group">
@@ -189,7 +141,7 @@ width:200px !important;
 											<form:hidden path="id" tabindex="1" />
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
-													<input type="submit" id="submitId" value="Submit" class="btn btn-success"
+													<input type="submit" id="submitId" value="Search" class="btn btn-success"
 														tabindex="8" />
 													<button type="button" class="btn btn-danger" id="cancel"
 														tabindex="9">Reset</button>
@@ -206,13 +158,13 @@ width:200px !important;
 
 				<!-- <a data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static">Open Modal</a> -->
 
-				<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 					<div class="modal-dialog" style="">
 
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Fee Receipt</h4>
+								<h4 class="modal-title">Download Hallticket</h4>
 							</div>
 							<div class="modal-body" id='printTab'></div>
 							<!-- <div class="modal-footer">
@@ -279,14 +231,6 @@ width:200px !important;
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>
-																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>
-																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 															</tr>
 														</thead>
@@ -323,14 +267,7 @@ width:200px !important;
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#fee").val("");
-	});
-	 $("#admissionFee").val("");
-	   $("#tutionFee").val("");
-	   $("#transportationFee").val("");
-	   $("#hostelFee").val("");
-	   $("#stationaryFee").val("");
+
 	jQuery.validator.addMethod('lettersonly', function(value, element) {
 		return this.optional(element)
 				|| /^[a-z. ·„‚‰‡ÈÍÎËÌÓÔÏÛıÙˆÚ˙˚¸˘ÁÒ]+$/i.test(value);
@@ -346,10 +283,10 @@ width:200px !important;
 		errorElement : 'span',
 		errorClass : 'has-error',
 		rules : {
-			/* boardName:{required:true},
+			 boardName:{required:true},
 			className:{required:true},  
 			section:{required:true},
-			medium:{required:true}, */
+			medium:{required:true}, 
 			studentId : {
 				required : true
 			},
@@ -360,55 +297,17 @@ width:200px !important;
 			feeType : {
 				required : true
 			},
-			 admissionFee: {required: true, number: true},
-			    tutionFee: {required: true, number: true},
-			    transportationFee: {required: true, number: true},
-			    hostelFee: {required: true, number: true},
-			    stationaryFee: {required: true, number: true},
+			
 		},
 		messages : {
-			/* boardName:{required:'Please Choose Board'},
-			className:{required:'Please Choose Class'},
-			section:{required:'Please Choose Section'},
-			medium:{required:'Please Choose Medium'}, */
+		boardName:{required:'Choose Board'},
+			className:{required:'Choose Class'},
+			section:{required:'Choose Section'},
+			medium:{required:'Choose Medium'}, 
 			studentId : {required : 'Choose Student Name'},
-			fee : {required : 'Fee Amount',number : 'Fee Amount'},
-			feeType : {required : 'Fee Type'},
-		    admissionFee: {required: 'AdmissionFee Amount', number: 'Numeric Characters'},
-			tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
-			transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
-			hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
-			stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
 		},
 	});
-	 $('#submitId').click(function(){
-	    	var admissionFee = $('#admissionFee').val();
-	    	var tutionFee   = $('#tutionFee').val();
-	    	var transportationFee = $('#transportationFee').val();
-	    	var hostelFee = $('#hostelFee').val();
-	    	var stationaryFee = $('#stationaryFee').val();
-	    		
-	    	if(admissionFee1 < admissionFee){
-	    		alert("Maximum AdmissionFee is : "+admissionFee1);
-	    		//$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
-		     return false;
-		     }else if(tutionFee1 < tutionFee){
-		    	 alert("Maximum TutionFee is : "+tutionFee1);
-			     return false;
-		     }else if(transportationFee1 < transportationFee){
-		    	 alert("Maximum TransportationFee is : "+transportationFee1);
-			     return false;
-		     }else if(hostelFee1 < hostelFee){
-		    	 alert("Maximum HostelFee is : "+hostelFee1);
-			     return false;
-		     }else if(stationaryFee1 < stationaryFee){
-		    	 alert("Maximum StationaryFee is : "+stationaryFee1);
-			     return false;
-		     }else {
-		    	 return true;
-		     }
-	    	
-	    });
+	
 	   
 	$('#cancel').click(function() {
 		$("#fee-form").validate().resetForm();
@@ -418,15 +317,8 @@ width:200px !important;
 		$("#section").val('');
 		$("#medium").val('');
 		$("#studentId").val('');
-		$("#fee").val('');
-		$("#admissionFee").val('');
-		$("#tutionFee").val('');
-		$("#transportationFee").val('');
-		$("#hostelFee").val('');
-		$("#stationaryFee").val('');
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
-		$("#submitId").val("Submit");
 		$("#displayId").text('');
 	});
 	var listOrders1 = ${allOrders1};
@@ -448,14 +340,6 @@ width:200px !important;
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>'
-					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>'
-					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>'
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>'
 					+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
 			$('#basicTable').html(tableHead);
@@ -472,11 +356,8 @@ width:200px !important;
 								var id = '"' + orderObj.id + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
 										+ "<td>"
-										+ '<a style="cursor: pointer;" title="View Fee Receipt" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('
-										+ orderObj.id
-										+ ')>'
 										+ '<b>'
-										+ orderObj.studentName
+										+ orderObj.name
 										+ '</b></a>'
 										+ '</td>'
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fatherName+"'>"
@@ -497,73 +378,14 @@ width:200px !important;
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs'>"
-										+ orderObj.admissionFee							
-										+ "</td>"																		    
-										+ "<td class='hidden-sm hidden-xs'>"
-										+ orderObj.tutionFee		
-										+ '</td>'
-										+ "<td class='hidden-sm hidden-xs'>"
-										+ orderObj.transportationFee		
-										+ '</td>'
-										+ "<td class='hidden-sm hidden-xs'>"
-										+ orderObj.hostelFee		
-										+ '</td>'
-										+ "<td class='hidden-sm hidden-xs'>"
-										+ orderObj.stationaryFee		
-										+ '</td>'
-										+ "<td title='"+orderObj.fee+"' >"
-										+ orderObj.fee
-										+ "</td>"
-										+ "<td title='"+orderObj.dueFee+"' >"
-										+ orderObj.dueFee
-										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.feeDate+"' >"
-										+ orderObj.feeDate
-										+ "</td>"
 										+ "<td align='center'>"
-										+ '<a href="javascript:void(0)" onclick=editPack('
+										+ '<a style="cursor: pointer;" title="Download Hallticket" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('
 										+ orderObj.id
-										+ ')'
-										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>'
+										+ ')>'
+										+ 'Hallticket</a>'
 										+ '</td>' + '</tr>';
 								$(tblRow).appendTo("#basicExample tbody");
 
-								//* for download PDF option
-							/* 	var tblRow1 = "<tr role='row' class='odd'><th>Student Name</th><td>"
-										+ orderObj.studentName
-										+ "</td></tr>"
-										+ "<tr><th>Father Name</th><td>"
-										+ orderObj.fatherName
-										+ "</td></tr>"
-										+ "<tr><th>Mobile</th><td>"
-										+ orderObj.mobile
-										+ "</td></tr>"
-										+ "<tr><th>Board</th><td title='"+orderObj.boardName+"'>"
-										+ orderObj.boardName
-										+ "</td></tr>"
-										+ "<tr><th>Medium</th><td title='"+orderObj.mediumName+"'>"
-										+ orderObj.mediumName
-										+ "</td></tr>"
-										+ "<tr><th>Class</th><td title='"+orderObj.className+"'>"
-										+ orderObj.className
-										+ "</td></tr>"
-										+ "<tr><th>Section</th><td title='"+orderObj.sectionName+"'>"
-										+ orderObj.sectionName
-										+ "</td></tr>"
-										+ "<tr><th>Fee Type</th><td title='"+orderObj.feeType+"'>"
-										+ orderObj.feeType
-										+ "</td></tr>"
-										+ "<tr><th>Paid Fee</th><td title='"+orderObj.fee+"'>"
-										+ orderObj.fee
-										+ "</td></tr>"
-										+ "<tr><th>Due Fee</th><td title='"+orderObj.dueFee+"'>"
-										+ orderObj.dueFee
-										+ "</td></tr>"
-										+ "<tr><th>Fee Date</th><td title='"+orderObj.feeDate+"'>"
-										+ orderObj.feeDate + "</td></tr>";
-								$(tblRow1).appendTo("#itemContainer1"); */
-								// for download PDF option */
 
 							});
 			$('#basicExample').dataTable();
@@ -571,20 +393,7 @@ width:200px !important;
 			//alert('no data to display..');
 		}
 	}
-	function editPack(id) {
-		var transactionId = serviceUnitArray[id].id;
-		$("#id").val(serviceUnitArray[id].id);
-
-		$('#studentId').val(serviceUnitArray[id].studentId);
-		$('#studentId').trigger("chosen:updated");
-		$('#fee').val(serviceUnitArray[id].fee);
-		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
-		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
-		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
-		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
-		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
-		$("#submitId").val("Update");
-	}
+	
 
 	function serviceFilter(id) {
 		var borderId = $("#boardName").val();
@@ -818,59 +627,72 @@ width:200px !important;
 	function popupOpen(id) {
 		$('#printTab').text("");
 		var studentFeeId = id;
-
-		$
-				.ajax({
+		$.ajax({
 					type : "POST",
-					url : "getPrintFee.json",
+					url : "getHistoryFee.json",
 					data : "studentFeeId=" + studentFeeId,
 					dataType : "json",
 					success : function(response) {
-						// 						alert(response);
-						var popuptitle = null;
-						$
-								.each(
-										response,
-										function(i, tests) {
+						
+						$('#myModal').modal();
 
-var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: 'Open Sans', arial, sans-serif;font-size: 16px;'>"
-
-+ "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
-
-+ "<tr style='height: 35px;'><td colspan='2'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
-+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
-+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
-+ "</td></tr>"
-
-+ "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
-
-+ "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
-+ "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
-// + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
-+ "</table>"
-+ "<span><h3>Due Fee : "+ tests.dueFee+ "</h3></span>"
-+ "<br>"
-+ "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
-
-$(stockInformation1).appendTo("#printTab");
-// toWords(tests.fee);
-
-										});
-						// 							 $(stockInformation2).appendTo("#stockInformationTable"); 
-						// 							 $('#dial').dialog({width:799,title:popuptitle,modal: true}).dialog('open');
-
+							$.each(response,function(i, tests) {
+								var tableHead = "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>"
+									+ "<h4 style='text-align:center;'>"+ tests.className+" <span style='color:red;'> "+tests.createdate+"</span></h4>"
+									+ "<h4 style='text-align:center;'>Hallticket</h4>"
+									/* + "<table style='font-size: 13px;'>"
+									+ "<thead><tr><th style='float:left;'><h4>Roll No </h4></th><td style='color:green;'><h4>xxxxxxxxxx</h4></td></tr>"
+									+ "<tr><th style='float:left;'><h4>Medium </h4></th><td style='color:green;'><h4>English</h4></td></tr>"
+									+ "<tr><th style='float:left;'><h4>Name </h4></th><td style='color:green;'><h4>xxxxxxxxxx</h4></td></tr>"
+									+ "<tr><th style='float:left;'><h4>Fathers name </h4></th><td style='color:green;'><h4>xxxxxxxxxx</h4></td></tr>"
+									+ "<tr><th style='float:left;'><h4>Address </h4></th><td style='color:green;'><h4>xxxxxxxxxx</h4></td></tr>"
+									+ "</tr></thead>"
+									+ "</table>" */
+									+ "<div class='col-md-3'>"
+									+ "<table style='font-size: 13px;'>"
+									+ "<thead>"
+									+ "<tr style='float:left;'><th><h4>Roll No</h4></th></tr>"
+									+ "<tr style='float:left;'><th><h4>Medium</h4></th></tr>"
+									+ "<tr style='float:left;'><th><h4>Student Name</h4></th></tr>"
+									+ "<tr style='float:left;'><th><h4>Father's  Name</h4></th></tr>"
+									+ "</thead>"
+									+ "</table>"
+									+ "</div>"
+									+ "<div class='col-md-6' style='border: 1px solid #188018;'>"
+									+ "<div class='bor'>"
+									+ "<table style='font-size: 13px;'>"
+									+ "<tbody>"
+									+ "<tr><td><h4 style='color:green;'>"+tests.studentId+"</h4></td></tr>"
+									+ "<tr><td><h4 style='color:green;'>"+tests.mediumName+"</h4></td></tr>"
+									+ "<tr><td><h4 style='color:green;'>"+tests.name+"</h4></td></tr>"
+									+ "<tr><td><h4 style='color:green;'>"+tests.fatherName+"</h4></td></tr>"
+									+ "</tbody>"
+									+ "</table>"
+									+ "</div>"
+									+ "</div>"
+									+ "<div class='col-md-3'>"
+									+ "<img style='width:138px; height:120px;' src='img/default.png' alt='Image' title='Student'>"
+									+ "<div class='sign' style='background:#fff; boder='1px solid #000;'>"
+									+ "</div>"
+									+ "</div>"
+									+ "<div class='clearfix'></div>"
+									+ "<div style='margin-top:30px;' class='sub'>"
+									+ "<table style='font-size: 13px;' align='center' class='table table-stripped table-bordered table-condensed'>"
+									+ "<thead>"
+									+ "<tr><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th><th>03/sep</th></tr>"
+									+ "</thead>"
+									+ "</table>"
+									+ "</div>"
+									+ '<br>'
+									+ '<br>'
+									+  "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
+									$('#printTab').html(tableHead);
+								
+							
+							});
+							
 					},
 					error : function(e) {
-						// 					alert('Error: ' + e);
 					}
 				});
 	}
@@ -884,7 +706,7 @@ $(stockInformation1).appendTo("#printTab");
 
 	    var is_chrome = Boolean(mywindow.chrome);
 	    var isPrinting = false;
-	    mywindow.document.write('<html><head><title>VVN School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write('<html><head><title>Lpo Details</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
 	    mywindow.document.write(data);
 	   
 	    mywindow.document.write('</body></html>');
@@ -974,7 +796,7 @@ $(stockInformation1).appendTo("#printTab");
 		return data;
 	}
 
-	/* function searchStudetnFee() {
+	 function searchStudetnFee() {
 		var studentId = $('#studentId').val();
 		var classId = $('#className').val();
 		var boardId = $('#boardName').val();
@@ -1001,7 +823,7 @@ $(stockInformation1).appendTo("#printTab");
 			}
 		});
 
-	} */
+	}
 	var th = ['','Thousand','million', 'billion','trillion'];
 	 //uncomment this line for English Number System
 	 //var th = ['','thousand','million', 'milliard','billion'];

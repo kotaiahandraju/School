@@ -59,7 +59,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class/Branch</label>
 											    <div class="col-sm-8">
-													<form:input path="className" class="form-control" tabindex="2" placeholder="Enter Class/Branch" required="true"/>
+													<form:input path="className" class="form-control" tabindex="2" placeholder="Class/Branch" required="true"/>
 													<span class="className_error" id="className_error"></span>
 												</div>
 											</div>

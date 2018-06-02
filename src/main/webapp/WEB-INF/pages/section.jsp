@@ -62,7 +62,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="classId" tabindex="2" class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="className" class="form-control" tabindex="3" placeholder="Enter Class/Branch" required="true"/> --%>
 													<span class="classId_error" id="classId_error"></span>
@@ -77,7 +77,7 @@
 														<form:option value="">-- Choose Section --</form:option>
 														<form:options items="${allSection}"></form:options>
 													</form:select> --%>
-													<form:input path="section" class="form-control" tabindex="3" placeholder="Enter Section" required="true"/>
+													<form:input path="section" class="form-control" tabindex="3" placeholder="Section" required="true"/>
 													<span class="section_error" id="section_error"></span>
 												</div>
 											</div>

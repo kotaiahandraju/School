@@ -41,7 +41,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Faculty Name</label>
 												    <div class="col-sm-8">											
-														<form:input path="name" tabindex="1" placeholder="Enter Faculty Name" class="form-control  onlyCharacters" required="true"/>
+														<form:input path="name" tabindex="1" placeholder="Faculty Name" class="form-control  onlyCharacters" required="true"/>
 														<span class="name_error" id="name_error"></span>
 													</div>
 												</div>
@@ -63,7 +63,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Qualification</label>
 												    <div class="col-sm-8">
-														<form:input path="qualification" tabindex="3" placeholder="Enter Qualification" class="form-control onlyCharacters" required="true"/>
+														<form:input path="qualification" tabindex="3" placeholder="Qualification" class="form-control onlyCharacters" required="true"/>
 														<span class="qualification_error" id="qualification_error"></span>
 													</div>
 												</div>
@@ -74,7 +74,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Contact Number</label>
 												    <div class="col-sm-8">
-														<form:input path="contactNumber" tabindex="4" placeholder="Enter Contact Mobile Number" class="form-control numericOnly" required="true" maxlength="10"/>
+														<form:input path="contactNumber" tabindex="4" placeholder="Contact Mobile Number" class="form-control numericOnly" required="true" maxlength="10"/>
 														<span class="contactNumber_error" id="contactNumber_error"></span>
 													</div>
 												</div>

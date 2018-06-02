@@ -52,7 +52,7 @@
 												<div class="form-group">
 											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Name</label>
 											    	<div class="col-sm-8">
-														<form:input path="name" placeholder="Enter Student Name" class="form-control onlyCharacters" tabindex="1" />
+														<form:input path="name" placeholder="Student Name" class="form-control onlyCharacters" tabindex="1" />
 													</div>
 											  	</div>
 											</div>
@@ -106,7 +106,7 @@
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
 										    		<div class="col-sm-8">
-														<form:input path="rollNum" placeholder="Enter Roll Number" class="form-control" tabindex="6" />
+														<form:input path="rollNum" placeholder="Roll Number" class="form-control" tabindex="6" />
 													</div>
 										  		</div>
 										  	</div>
@@ -116,7 +116,7 @@
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Admission No.</label>
 												    <div class="col-sm-8">
-														<form:input path="admissionNum" placeholder="Enter Admission Number" class="form-control" tabindex="7" />
+														<form:input path="admissionNum" placeholder="Admission Number" class="form-control" tabindex="7" />
 													</div>
 										  		</div>
 										  	</div>
@@ -124,7 +124,7 @@
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Mobile</label>
 										    		<div class="col-sm-8">
-														<form:input path="mobile" placeholder="Enter Contact Number" class="form-control numericOnly" maxlength="10" tabindex="8"/>
+														<form:input path="mobile" placeholder="Contact Number" class="form-control numericOnly" maxlength="10" tabindex="8"/>
 													</div>
 										  		</div>
 										  	</div>
@@ -132,7 +132,7 @@
 										  		<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
 												    <div class="col-sm-8">
-														<form:input path="email" placeholder="Enter Email-Id" class="form-control" tabindex="9"/>
+														<form:input path="email" placeholder="Email-Id" class="form-control" tabindex="9"/>
 													</div>
 										  		</div>
 										  	</div>

@@ -15,11 +15,11 @@ $("#cls-form").validate(
 			},
 			messages:
 			{
-				boardId: {required: 'Please Choose Board'},
-				mediumId: {required: 'Please Choose Medium'},
-				className: {required: 'Please Choose Class'},
-				section: {required: 'Please Choose Section'},
-				fee: {required: 'Please Enter Fee Amount', number: 'Please Enter Numeric Characters'},
+				boardId: {required: 'Choose Board'},
+				mediumId: {required: 'Choose Medium'},
+				className: {required: 'Choose Class'},
+				section: {required: 'Choose Section'},
+				fee: {required: 'Enter Fee Amount', number: 'Enter Numeric Characters'},
 			},
 			errorPlacement: function(error, element)
 			{

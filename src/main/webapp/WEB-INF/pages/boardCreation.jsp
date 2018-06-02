@@ -41,7 +41,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board</label>
 											    <div class="col-lg-4 col-md-4 col-sm-8">
-													<form:input path="name" class="form-control onlyCharacters" tabindex="1" placeholder="Enter Board Name" required="true"/>
+													<form:input path="name" class="form-control onlyCharacters" tabindex="1" placeholder="Board Name" required="true"/>
 													<span class="name_error" id="name_error"></span>
 												</div>
 											</div>

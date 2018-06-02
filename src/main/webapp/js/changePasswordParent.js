@@ -11,9 +11,9 @@ $(function(){
 		},
 		messages:
 	   	{
-			oldPassword:{required: 'Please Enter Current Password'},
-			password:{required:'Please Enter New Password'},
-	        retypePassword:{required:'Please Enter Confirm Password'},
+			oldPassword:{required: 'Current Password'},
+			password:{required:'New Password'},
+	        retypePassword:{required:'Confirm Password'},
 		},
 		errorPlacement: function(error, element){
 		      if(element.attr("name") == "oldPassword")

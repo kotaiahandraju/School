@@ -9,7 +9,7 @@ $(function(){
 				},
 				messages:
 				{
-					name: {required: 'Please Enter Subject Name'},
+					name: {required: 'Subject Name'},
 				},
 				errorPlacement: function(error, element)
 				{

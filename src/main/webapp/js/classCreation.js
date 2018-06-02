@@ -11,8 +11,8 @@ $("#cls-form").validate(
 			},
 			messages:
 			{
-				boardId: {required: 'Please Choose Board'},
-				className: {required: 'Please Enter Class Name'},
+				boardId: {required: 'Choose Board'},
+				className: {required: 'Class Name'},
 			},
 			errorPlacement: function(error, element)
 			{
@@ -97,7 +97,7 @@ function displayTable(listOrders) {
 					success : function(response) {
 						displayTable(response);
 //						$('#loadAjax').hide();
-						window.location.href='HomeControl1';
+						window.location.href='classHome';
 					},
 					error : function(e) {
 //						$('#loadAjax').hide();

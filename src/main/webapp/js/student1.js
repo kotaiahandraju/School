@@ -26,7 +26,7 @@ $(function(){
  		{
 			$(this).val('');
 			$('#blah').attr('src','upload/default.png');
-			alert('Please Select .png or .jpg format only..!');
+			alert(Select .png or .jpg format only..!');
 		} 
  	});*/
 
@@ -64,6 +64,7 @@ $(function(){
 		    totalFee: {required: true, number: true},
 		    discountFee1: {number: true},
 		    acomitation:{required: true},
+		    buspesility:{required: true},
 //	 	    rollNum:{required: true},
 		    admissionNum:{required: true},
 		    fatherName:{required: true, lettersonly: true},
@@ -91,33 +92,34 @@ $(function(){
 	    },
 		messages:
 		{
-		    name:{required: 'Please Enter Name'},
-		    boardName:{required: 'Please Select Board'},
-		    medium:{required: 'Please Choose Medium'},
-		    className:{required: 'Please Choose Class'},
-		    section:{required: 'Please Choose Section'},
-		    totalFee: {required: 'Please Choose Fees'},
+		    name:{required: 'Name'},
+		    boardName:{required: 'Choose Board'},
+		    medium:{required: 'Choose Medium'},
+		    className:{required: 'Choose Class'},
+		    section:{required: 'Choose Section'},
+		    totalFee: {required: 'Choose Fees'},
 		    acomitation:{required:  'Choose Accommodation'},
-		    discountFee1: {number: 'Please Enter Discount Fee Amount (Eg: 1000,1500 etc.,)'},
+		    buspesility:{required:  'Choose Bus Specialties'},
+		    discountFee1: {number: 'Discount Fee Amount (Eg: 1000,1500 etc.,)'},
 //	 	    rollNum:{required: 'Please Enter Roll Number'},
-		    admissionNum:{required: 'Please Enter Admission Number'},
-		    fatherName:{required: 'Please Enter Father Name'},
-		    gender:{required: 'Please Choose Gender'},
-		    dob1:{required: 'Please Enter Date Of Birth'},
-		    mobile:{required: 'Please Enter Mobile Number', number: 'Please Enter 10 digit mobile number'},
-		    address:{required: 'Please Enter Address'},
-		    fee:{required: 'Please Enter Fee Amount'},
-		    altmobile:{number: 'Please Enter only numbers'},
-		    email:{email: 'Please Enter Valid Email'},
-		    previousInstitue:{lettersonly: 'Please Enter Previous Institute Name'},
-		    admissionFee: {required: 'Please Enter AdmissionFee Amount', number: 'Please Enter Numeric Characters'},
-			tutionFee: {required: 'Please Enter Tution Fee Amount', number: 'Please Enter Numeric Characters'},
-			transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
-			hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
-			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
+		    admissionNum:{required: 'Admission Number'},
+		    fatherName:{required: 'Father Name'},
+		    gender:{required: 'Choose Gender'},
+		    dob1:{required: 'Date Of Birth'},
+		    mobile:{required: 'Mobile Number', number: '10 digit mobile number'},
+		    address:{required: 'Address'},
+		    fee:{required: 'Fee Amount'},
+		    altmobile:{number: 'only numbers'},
+		    email:{email: 'Valid Email'},
+		    previousInstitue:{lettersonly: 'Previous Institute Name'},
+		    admissionFee: {required: 'AdmissionFee Amount', number: 'Numeric Characters'},
+			tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
+			transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
+			hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
+			stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
 //		    fileImage:{extension: 'Please Choose Only .png or .jpg'},
 	/* 		bgroup:{required: 'Please Enter Blood Group'},
-		    religion:{required: 'Please Choose Religion'},
+		    religion:{required: ' Choose Religion'},
 		    caste:{required: 'Please Choose Caste'},
 		    acomitation:{required: 'Please Choose Accomodation'},
 		    buspesility:{required: 'Please Choose Bus Facility'},  
@@ -216,32 +218,55 @@ $(function(){
 	//$('#hostleDiv').hide();
 	//$('#hostelFee').prop("disabled",false);
 	
-	 $('#acomitation').on('change', function() {
-		 
-		 if($(this).val() !== "Hostel" ){
-			 
-			 
-			var fee =totalfee - $('#hostelFee').val() ; 
-			 
+
+		 $('#acomitation').on('change', function() {
+
+		if ($(this).val() !== "Hostel") {
+
+			var fee = totalfee - $('#hostelFee').val();
+
 			$('#totalFee').val(fee);
-			
-			$('#hostelFee').prop("disabled",true);
+
+			$('#hostelFee').prop("disabled", true);
 			$('#hostleDiv').hide();
-		 }else{
-			 
-			 
-		 $('#hostelFee').prop("disabled",false);
-		 $('#hostleDiv').show();
-		 
-		 var fee =totalfee;  
-		 
+		} else {
+
+			$('#hostelFee').prop("disabled", false);
+			$('#hostleDiv').show();
+
+			var fee = totalfee;
+
 			$('#totalFee').val(fee);
-		 }
-         //alert("You have Selected  :: "+$(this).val());
-     });
+		}
+		// alert("You have Selected :: "+$(this).val());
+	});
+
 	    
+		 $('#buspesility').on('change', function() {
+
+				if ($(this).val() !== "Yes") {
+
+					var fee = totalfee - $('#transportationFee').val();
+
+					$('#totalFee').val(fee);
+
+					$('#transportationDiv').hide();
+					$('#busRouteDiv').hide();
+				} else {
+
+					$('#hostelFee').prop("disabled", false);
+					$('#transportationDiv').show();
+					$('#busRouteDiv').show();
+
+					var fee = totalfee;
+
+					$('#totalFee').val(fee);
+				}
+				// alert("You have Selected :: "+$(this).val());
+			});		
+
+
 });
-		
 	 	function displayTable(listOrders) {
 			if (listOrders != null) {
 				$("#basicExample tr td").remove();
@@ -336,13 +361,20 @@ $(function(){
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
 			$('#blah').attr('src',''+serviceUnitArray[id].imagePath+'');
 			$('#admissionFee').val(serviceUnitArray[id].admissionFee);
-			getFee();
+			$('#admissionFee').trigger("chosen:updated");
 			$('#tutionFee').val(serviceUnitArray[id].tutionFee);
+			$('#tutionFee').trigger("chosen:updated");
 			$('#transportationFee').val(serviceUnitArray[id].transportationFee);
+			$('#transportationFee').trigger("chosen:updated");
 			$('#hostelFee').val(serviceUnitArray[id].hostelFee);
+			$('#hostelFee').trigger("chosen:updated");
 			$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
+			$('#stationaryFee').trigger("chosen:updated");
+			getFee1();
+			
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Student");
+			
 		} 
 		
 		function serviceFilter(id){
@@ -521,6 +553,38 @@ var stationaryFee1 = 0.00;
 		 $('#loadAjax').hide();
 	}
 
+	function getFee1(){
+		var boardId = $('#boardName').val();
+		var className = $('#className').val();
+		var mediumId = $('#medium').val();
+		var section = $('#section').val();
+		$('#loadAjax').show();
+		 $.ajax({
+				type : "POST",
+				url : "getClassFee.json",
+				data : "boardId=" + boardId+"&className="+className+"&section="+section+"&mediumId="+mediumId,
+				success : function(response) {
+					/* alert(response); */
+					if(response!=""){
+					admissionFee1 = response.admissionFee;
+					tutionFee1 = response.tutionFee;
+					transportationFee1 = response.transportationFee;
+					hostelFee1 = response.hostelFee;
+					stationaryFee1 = response.stationaryFee;
+					}
+				},
+				error : function(e) {
+					$('#loadAjax').hide();
+				},
+				statusCode : {
+					406 : function() {
+						$('#loadAjax').hide();
+				
+					}
+				}
+			});
+		 $('#loadAjax').hide();
+	}
 //		var admissionFee=$('#admissionFee').val(response.admissionFee);
 //		var actuvalAdmissionFee=$('#actuvalAdmissionFee').val(response.admissionFee);
 //	

@@ -164,7 +164,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>
-							<li><a href="HomeControl1" id="addClass"><span>Add Class</span></a></li>
+							<li><a href="HomeControl1" id="addClass"><span>Class Fee</span></a></li>
 							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
 							<li><a href='facultySubject' id="addfacultySubjects" ><span>Add Faculty Subjects</span></a></li>
 							<li><a href='subjectHome' id="subjectHome" ><span>Add  Subjects</span></a></li>
@@ -188,6 +188,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 							<li><a href='importStudent' ><span>Import Student</span></a></li>
 							<li><a href='exportStudent' ><span>Export Student</span></a></li>
 							<li><a href='studentMarks'><span>Student Marks</span></a></li>
+							<li><a href="hallticket"><span>Student Hallticket</span></a></li>
 							 </c:if>
 						</ul>
 					</li>

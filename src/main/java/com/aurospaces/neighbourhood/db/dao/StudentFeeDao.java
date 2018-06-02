@@ -103,7 +103,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		StringBuffer objStringBuffer = new StringBuffer();
 		objStringBuffer
 				.append("select  s.id,s.name as studentName,ct.name as className,st.name as sectionName,bn.name as boardName,m.name as medium,sf.fee,sf.created_time,s.totalfee, s.discountfee,s.netfee "
-						+ ",sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,s.fatherName,s.mobile from studentfee sf,boardname bn ,classtable ct,sectiontable st,mediam m ,student s where s.id=sf.studentId and ct.id = s.className and st.id=s.section "
+						+ ",sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,s.fatherName,s.mobile,sf.dueFee1 as dueFee from studentfee sf,boardname bn ,classtable ct,sectiontable st,mediam m ,student s where s.id=sf.studentId and ct.id = s.className and st.id=s.section "
 						+ " and m.id=s.medium and s.boardName =bn.id   ");
 		if (studentfeeId != 0) {
 			objStringBuffer.append(" and sf.id=" + studentfeeId);
@@ -113,7 +113,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		// System.out.println(sql);
 		RowValueCallbackHandler handler = new RowValueCallbackHandler(
 				new String[] { "id", "studentName", "className", "boardName", "sectionName", "medium", "fee",
-						"created_time", "totalfee", "discountfee", "netfee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","fatherName", "mobile" });
+						"created_time", "totalfee", "discountfee", "netfee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","fatherName", "mobile","dueFee" });
 		jdbcTemplate.query(sql, handler);
 		List<Map<String, String>> result = handler.getResult();
 		return result;

@@ -75,7 +75,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="className" tabindex="3" class="form-control" required="true" onchange="sectionFilter();">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="className" class="form-control" tabindex="3" placeholder="Enter Class/Branch" required="true"/> --%>
 													<span class="className_error" id="className_error"></span>
@@ -90,7 +90,7 @@
 											    <div class="col-sm-8">
 												    <form:select path="section" tabindex="4" class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-														<form:options items="${allSection}"></form:options>
+<%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="section" class="form-control" tabindex="4" placeholder="Enter Section" required="true"/> --%>
 													<span class="section_error" id="section_error"></span>
@@ -101,7 +101,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Admission Fee for the Class" required="true"/>
+													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Admission Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -110,7 +110,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Tution Fee for the Class" required="true"/>
+													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Tution Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -119,7 +119,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Transportation Fee for the Class" required="true"/>
+													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Transportation Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -128,7 +128,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Hostel Hostel Fee for the Class" required="true"/>
+													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Hostel Hostel Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -137,7 +137,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 											    <div class="col-sm-8">
-													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Enter Stationary Fee for the Class" required="true"/>
+													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Stationary Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>

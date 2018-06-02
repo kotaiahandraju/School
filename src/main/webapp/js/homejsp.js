@@ -23,15 +23,15 @@ $("#cls-form").validate(
 			},
 			messages:
 			{
-				boardId: {required: 'Please Choose Board'},
-				mediumId: {required: 'Please Choose Medium'},
-				className: {required: 'Please Choose Class'},
-				section: {required: 'Please Choose Section'},
-				admissionFee: {required: 'Please Enter AdmissionFee Amount', number: 'Please Enter Numeric Characters'},
-				tutionFee: {required: 'Please Enter Tution Fee Amount', number: 'Please Enter Numeric Characters'},
-				transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
-				hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
-				stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
+				boardId: {required: 'Choose Board'},
+				mediumId: {required: 'Choose Medium'},
+				className: {required: 'Choose Class'},
+				section: {required: 'Choose Section'},
+				admissionFee: {required: 'AdmissionFee Amount', number: 'Numeric Characters'},
+				tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
+				transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
+				hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
+				stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
 			},
 			errorPlacement: function(error, element)
 			{

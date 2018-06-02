@@ -13,9 +13,9 @@ $("#cls-form").validate(
 			},
 			messages:
 			{
-				boardId: {required: 'Please Choose Board'},
-				classId: {required: 'Please Choose Class'},
-				section: {required: 'Please Enter Section'},
+				boardId: {required: 'Choose Board'},
+				classId: {required: 'Choose Class'},
+				section: {required: ' Section Name'},
 			},
 			errorPlacement: function(error, element)
 			{
@@ -144,7 +144,7 @@ function displayTable(listOrders) {
 					success : function(response) {
 						displayTable(response);
 //						$('#loadAjax').hide();
-						window.location.href='HomeControl1';
+						window.location.href='sectionHome';
 					},
 					error : function(e) {
 //						$('#loadAjax').hide();

@@ -9,7 +9,7 @@ $(function(){
 				},
 				messages:
 				{
-					name: {required: 'Please Enter Medium'},
+					name: {required: 'Medium Name'},
 				},
 				errorPlacement: function(error, element)
 				{

@@ -8,7 +8,7 @@ $(function(){
 		},
 		messages:
 	   	{
-			excelfile2007:{required: 'Please Upload Excel File', extension: 'Please Choose Only .xls'}
+			excelfile2007:{required: 'Upload Excel File', extension: 'Choose Only .xls'}
 		},
 		errorPlacement: function(error, element){
 		      if(element.attr("name") == "excelfile2007")
