@@ -149,13 +149,14 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			<!-- Menu start -->
 			<div id='menu'>
 				<ul>
+				 <c:if test="${rolId=='1' }">
 					<li class="">
 						<a href='dashBoard'>
 							<i class="fa fa-tachometer"></i> <span>Dashboard</span>
 <!-- 							<span class="current-page"></span> -->
 						</a>
 					</li>
-					 <c:if test="${rolId=='1' }">
+					
 					<li class='has-sub'>
 						<a href='#'><i class="fa fa-cogs"></i><span>General Settings</span></a>
 						<ul>

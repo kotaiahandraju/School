@@ -492,11 +492,11 @@ width:200px !important;
 					.each(
 							listOrders,
 							function(i, orderObj) {
-								if (orderObj.dueFee == 0.00) {
+								/* if (orderObj.dueFee == 0.00) {
 									orderObj.dueFee = orderObj.netFee;
-								}
-
-								// 								contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
+								}*/
+ 
+								//contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
 								serviceUnitArray[orderObj.id] = orderObj;
 								var id = '"' + orderObj.id + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
