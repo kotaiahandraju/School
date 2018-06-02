@@ -372,13 +372,35 @@ width:200px !important;
 			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
 		},
 	});
+	//$("#maxValueError").remove();
+	 $('#fee').on('change', function(e) {
+		// var duefee = duefee123;
+		 $("#maxValueError").text("");
+		 if($(this).val() > duefee123){
+			 
+			 $(this).after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
+			 
+			 e.preventDefault();
+			 return false;
+		 }else{
+			 
+			 $("#maxValueError").text("");
+		 }
+		
+	
+		 
+		 
+	 });
+	
 	 $('#submitId').click(function(){
+		 $("#maxValueError").text("");
 	    	var admissionFee = $('#admissionFee').val();
 	    	var tutionFee   = $('#tutionFee').val();
 	    	var transportationFee = $('#transportationFee').val();
 	    	var hostelFee = $('#hostelFee').val();
 	    	var stationaryFee = $('#stationaryFee').val();
-	    		
+	    	var fee = $('#fee').val();
+	    	
 	    	if(admissionFee1 < admissionFee){
 	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
 		     return false;
@@ -394,13 +416,19 @@ width:200px !important;
 		     }else if(stationaryFee1 < stationaryFee){
 		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
 			     return false;
-		     }else {
+		     }else if( fee > duefee123){
+				 
+				 $('#fee').after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
+				 
+				 return false;
+			 } else {
 		    		$('#erroradmissionFee').text("");
 		    		$('#errortutionFee').text("");
 		    		$('#errortransportationFee').text("");
 		    		$('#errorhostelFee').text("");
 		    		$('#errorstationaryFee').text("");
-		    	 return true;
+		    		$("#maxValueError").text("");
+						    	 return true;
 		     }
 	    	
 	    });
@@ -601,9 +629,13 @@ width:200px !important;
 		}
 	}
 	function editPack(id) {
+	var duefee =	serviceUnitArray[id].dueFee
 		var transactionId = serviceUnitArray[id].id;
 		$("#id").val(serviceUnitArray[id].id);
-
+		$('#boardName').val(serviceUnitArray[id].boardId);
+		$('#className').val(serviceUnitArray[id].classId);
+		$('#section').val(serviceUnitArray[id].sectionId);
+		$('#medium').val(serviceUnitArray[id].mediumId);
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
 		$('#fee').val(serviceUnitArray[id].fee);
@@ -612,7 +644,9 @@ width:200px !important;
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
+		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
+		$(window).scrollTop($('.blog-body').offset().top);
 	}
 
 	function serviceFilter(id) {
@@ -802,6 +836,7 @@ width:200px !important;
 	var transportationFee1 = 0.00;
 	var hostelFee1 = 0.00;
 	var stationaryFee1 = 0.00;
+	var duefee123 = 0.00;
 	function getDueFee() {
 		var studentId = $("#studentId").val();
 		$.ajax({
@@ -814,7 +849,9 @@ width:200px !important;
 				
 				if (response.dueFee == null) {
 					$("#displayId").text("Due Fee: " + response.netFee);
+					duefee123= response.netFee;
 				} else {
+					duefee123= response.dueFee;
 					$("#displayId").text("Due Fee: " + response.dueFee);
 					$("#admissionFee").val(response.admissionFee);  
 					$("#tutionFee").val(response.tutionFee);

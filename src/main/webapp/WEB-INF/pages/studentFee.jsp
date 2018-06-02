@@ -459,15 +459,13 @@ width:200px !important;
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>'
 					+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
 			$('#basicTable').html(tableHead);
-			$
-					.each(
-							listOrders,
-							/* function(i, orderObj) {
-								if (orderObj.dueFee == 0.00) {
+			$.each(listOrders,
+							 function(i, orderObj) {
+				/*	if (orderObj.dueFee == 0.00) {
 									orderObj.dueFee = orderObj.netFee;
-								} */
-
-								// 								contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
+								}
+ */
+								// 	contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
 								serviceUnitArray[orderObj.id] = orderObj;
 								var id = '"' + orderObj.id + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
@@ -574,7 +572,10 @@ width:200px !important;
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].id;
 		$("#id").val(serviceUnitArray[id].id);
-
+		$('#boardName').val(serviceUnitArray[id].boardId);
+		$('#className').val(serviceUnitArray[id].classId);
+		$('#section').val(serviceUnitArray[id].sectionId);
+		$('#medium').val(serviceUnitArray[id].mediumId);
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
 		$('#fee').val(serviceUnitArray[id].fee);
@@ -583,7 +584,9 @@ width:200px !important;
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
+		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
+		$(window).scrollTop($('.blog-body').offset().top);
 	}
 
 	function serviceFilter(id) {
