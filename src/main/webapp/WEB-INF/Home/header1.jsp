@@ -179,12 +179,12 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 						
 						    <c:if test="${rolId=='2' }">
   						     <li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
-						     <li><a href='userStudentFeeHome' ><span>Student Fee</span></a></li>
+						     <li><a href='userStudentFeeHome' ><span>Fee Payment</span></a></li>
 						  </c:if>	
 						  <c:if test="${rolId=='1' }">					   
 							<li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
 							<li><a href='viewStudent' id="viewStudent" ><span>View Student</span></a></li>
-							<li><a href='studentFeeHome' ><span>Student Fee</span></a></li>
+							<li><a href='studentFeeHome' ><span>Fee Payment</span></a></li>
 							<li><a href='viewStudentFee' ><span> View Student Fee</span></a></li>
 							<li><a href='importStudent' ><span>Import Student</span></a></li>
 							<li><a href='exportStudent' ><span>Export Student</span></a></li>

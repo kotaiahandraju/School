@@ -36,7 +36,7 @@ width:200px !important;
 
 	<!-- Top Bar starts -->
 	<div class="top-bar">
-		<div class="page-title">Student Fee</div>
+		<div class="page-title">Fee Payment</div>
 	</div>
 	<!-- Top Bar ends -->
 
@@ -444,10 +444,10 @@ width:200px !important;
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
@@ -483,18 +483,18 @@ width:200px !important;
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mobile+"'>"
 										+ orderObj.mobile
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
 										+ orderObj.boardName
-										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
+										+ "</td>" */
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
 										+ orderObj.mediumName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.className+"'>"
 										+ orderObj.className
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs'>"
 										+ orderObj.admissionFee							
 										+ "</td>"																		    

@@ -36,7 +36,7 @@ width:200px !important;
 
 	<!-- Top Bar starts -->
 	<div class="top-bar">
-		<div class="page-title">Student Fee</div>
+		<div class="page-title">Fee Payment</div>
 	</div>
 	<!-- Top Bar ends -->
 

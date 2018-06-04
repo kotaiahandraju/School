@@ -374,7 +374,7 @@ $(function(){
 			
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Student");
-			
+			$(window).scrollTop($('.spacer').offset().top);
 		} 
 		
 		function serviceFilter(id){
