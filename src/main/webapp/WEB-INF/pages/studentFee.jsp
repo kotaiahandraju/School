@@ -74,7 +74,7 @@ width:200px !important;
 									</div> -->
 							<div class="blog-body">
 								<form:form id="fee-form" action="addStudentFee.htm"	commandName="packCmd" method="post" class="form-horizontal">
-
+										<input type="hidden" id="forFormValidation" required="required" /> 
 									<div class="row">
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -370,6 +370,7 @@ width:200px !important;
 			    transportationFee: {required: true, number: true},
 			    hostelFee: {required: true, number: true},
 			    stationaryFee: {required: true, number: true},
+			    forFormValidation:{required:true}
 		},
 		messages : {
 		    boardName:{required:'Please Choose Board'},
@@ -384,6 +385,7 @@ width:200px !important;
 			transportationFee: {required: 'Bus Fee Amount', number: 'Numeric Characters'},
 			hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
 			stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
+			forFormValidation:{required:''}
 		},
 	});
 	 $('#submitId').click(function(){
@@ -392,14 +394,16 @@ width:200px !important;
 	    	var transportationFee = $('#transportationFee').val();
 	    	var hostelFee = $('#hostelFee').val();
 	    	var stationaryFee = $('#stationaryFee').val();
-	    		
+	    	$('#forFormValidation').val();
 	    	if(  admissionFee == "0"  && tutionFee == "0" && transportationFee == "0"  && hostelFee == "0" &&  stationaryFee == "0"   ){
-	    		
+	    		$('#forFormValidation').val();
+	    		alert("insufficient fund");
 	    		return false;
 	    	}
-	    	if(admissionFee =='' && tutionFee=='' && transportationFee == '' &&  hostelFee == '' && stationaryFee == '' ){
-	    		return false;
-	    	}
+	    	/* if(admissionFee =='' && tutionFee=='' && transportationFee == '' &&  hostelFee == '' && stationaryFee == '' ){
+	    		//return false;
+	    		$('#forFormValidation').val();
+	    	} */
 	    	else{
 	    	if(admissionFee1 < admissionFee){
 	    		alert("Maximum AdmissionFee is : "+admissionFee1);
@@ -418,6 +422,7 @@ width:200px !important;
 		    	 alert("Maximum StationaryFee is : "+stationaryFee1);
 			     return false;
 		     }else {
+		    	 $('#forFormValidation').val(1);
 		    	 return true;
 		     }
 	    	}
@@ -434,10 +439,15 @@ width:200px !important;
 		$("#studentId").val('');
 		$("#fee").val('');
 		$("#admissionFee").val('');
+		$("#admissionNetFee").text('');
 		$("#tutionFee").val('');
+		$("#tutionNetFee").text('');
 		$("#transportationFee").val('');
+		$("#transportationNetFee").text('');
 		$("#hostelFee").val('');
+		$("#hostelNetFee").text('');
 		$("#stationaryFee").val('');
+		$("#stationaryNetFee").text('');
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
 		$("#submitId").val("Submit");
