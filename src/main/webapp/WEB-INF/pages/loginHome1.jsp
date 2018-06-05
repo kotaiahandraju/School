@@ -4,8 +4,8 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Vijnana Vihara Nutakki</title>
-		
+		<!-- <title>Vijnana Vihara Nutakki</title> -->
+		<title>GRETNALTES</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<link href="css/animate.css" rel="stylesheet" media="screen" />
 		<link href="css/main.css" rel="stylesheet" media="screen" />
@@ -66,8 +66,10 @@ span.has-error, #already_exist, .subjects_error
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 fadeInDown animated">
 								<div class="blog lf">
 									<div class="blog-header" style="background: #d66061;">
-										<img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
-										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b>
+										<!-- <img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
+										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b> -->
+										<img src="img/logo (1).png" align="middle" style="width: 65px;height: 65px;" alt="GRETNALTES">
+										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">GRETNALTES</b>
 									</div>
 									<div class="blog-body">
 

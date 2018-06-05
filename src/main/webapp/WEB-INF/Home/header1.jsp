@@ -10,8 +10,8 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Vijnana Vihara Nutakki</title>
-
+		<!-- <title>Vijnana Vihara Nutakki</title> -->
+		<title>GRETNALTES</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<link href="css/animate.css" rel="stylesheet" media="screen" />
 		<link href="css/main.css" rel="stylesheet" media="screen" />
@@ -164,14 +164,14 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 						<ul>
 						
 							<li><a href="boardHome"><span>Add Board</span></a></li>
-							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>
+							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
 							<li><a href="HomeControl1" id="addClass"><span>Class Fee</span></a></li>
-							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
-							<li><a href='facultySubject' id="addfacultySubjects" ><span>Add Faculty Subjects</span></a></li>
 							<li><a href='subjectHome' id="subjectHome" ><span>Add  Subjects</span></a></li>
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
+							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
+							<li><a href='facultySubject' id="addfacultySubjects" ><span>Add Faculty Subjects</span></a></li>
 						</ul>
 					</li>
 							 </c:if>

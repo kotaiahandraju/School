@@ -95,7 +95,7 @@
 											</div>
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-4 control-label">to (date):</label>
+												    <label for="inputEmail3" class="col-sm-4 control-label">To (date):</label>
 												    <div class="col-sm-5">
 														<input data-format="dd-MM-yyyy" placeholder="Select to Date" class="form-control" id="dob2" type="text" tabindex="6" readonly="readonly">
 														<span class="dob2_error" id="dob2_error"></span>

@@ -14,8 +14,17 @@
     top: -5em;
     display: block;
 }*/
+.mediu {
+width:200px;
+}
 .form-control {
 width:200px !important;
+}
+@media (min-width: 768px) {
+.modal-dialog {
+    width: 59%;
+    margin: 30px auto;
+}
 }
 </style>
 
@@ -48,7 +57,7 @@ width:200px !important;
 			<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
     	<li><a href="#">Student Details</a></li>
-		<li><a href="#">View Student</a></li>
+		<li><a href="#">Fee Payment</a></li>
 	    </ol>
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -208,7 +217,7 @@ width:200px !important;
 
 						<div class="modal-content">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<button type="button" class="close" data-dismiss="modal" style="color:#fff;">&times;</button>
 								<h4 class="modal-title">Fee Receipt</h4>
 							</div>
 							<div class="modal-body" id='printTab'></div>
@@ -834,16 +843,17 @@ width:200px !important;
 
 var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: 'Open Sans', arial, sans-serif;font-size: 16px;'>"
 
-+ "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>"
+/* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
++ "<tr><td colspan='2' align='center'><img src='img/logoprint.png' style='width:300px;'></td></tr>"
 + "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
 
 + "<tr style='height: 35px;'><td colspan='2'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
 + "<tr style='height: 35px;'><td colspan='2'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
 + "<tr style='height: 35px;'><td colspan='2'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
-+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
-+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
-+ "</td></tr>"
++ "<tr style='height: 35px;'><td colspan='2'><span class='mediu'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</span>&nbsp;&nbsp;"
++ 	"<span><b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</span>&nbsp;&nbsp;"+ "<span><b>Class: </b>&nbsp;&nbsp;"+ tests.className
++ 	"</span>&nbsp;&nbsp;"+ "<span><b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
++ "</span></td></tr>"
 
 + "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
 
@@ -856,7 +866,7 @@ var stockInformation1 = "<table align='center' class='table table-stripped table
 + "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
 // + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
 + "</table>"
-+ "<span><h3>Due Fee : "+ tests.dueFee+ "</h3></span>"
++ "<span><p><b>Due Fee : "+ tests.dueFee+ "</b></p></span>"
 + "<br>"
 + "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
 

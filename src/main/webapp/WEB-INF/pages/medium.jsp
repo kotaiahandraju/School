@@ -28,7 +28,6 @@
     	<li><a href="dashBoard">Home</a></li>
     	<li><a href="#">General Settings</a></li>
 		<li><a href="#">Medium Creation</a></li>
-		<li><a href="#"></a>Medium Creation</li>
 	</ol>
 				<div class="panel panel-default">
 					<div class="panel-heading">

@@ -35,24 +35,27 @@
 				<div class="container-fluid">
 
 					<!-- Spacer starts -->
-					<div class="spacer">
-						
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">View Student Fee</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>View Student Fee</h4>
+					</div>
+					<div class="panel-body collapse in">						
 						
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Student Fee</h5>
-									</div> -->
-									<div class="blog-body">
 										<form:form id="fee-form" commandName="packCmd" method="post" class="form-horizontal">
 										
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="boardName" tabindex="1" onchange="classNameFilter(),searchStudetnFee()" class="form-control" >
 															<form:option value=""  >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -61,10 +64,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="className" tabindex="2" onchange="sectionFilter(),searchStudetnFee()" class="form-control" >
 															<form:option value=""  >-- Choose Class --</form:option>
 															<form:options items="${allClasses}"></form:options>
@@ -73,10 +76,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-												    <div class="col-sm-8"> 
+												    <div class="col-sm-5"> 
 														<form:select path="section" tabindex="3" onchange="mediumFilter(),searchStudetnFee()" class="form-control" >
 															<form:option value=""  >-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -85,12 +88,11 @@
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-												    <div class="col-sm-8">	
+												    <div class="col-sm-5">	
 														<form:select path="medium" tabindex="4" onchange="studentFilterDropdown(),searchStudetnFee()" class="form-control" >
 															<form:option value=""  >-- Choose Medium --</form:option>
 															<form:options items="${mediam}"></form:options>
@@ -99,10 +101,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student</label>
-												    <div class="col-sm-8">	
+												    <div class="col-sm-5">	
 														<form:select path="studentId" tabindex="5" class="form-control" onchange="searchStudetnFee()" >
 															<form:option value=""  >-- Choose Student --</form:option>
 															<form:options items="${allStudents}"></form:options>
@@ -322,8 +324,8 @@ $(document).ready(function ()
 						
 						$('#myModal').modal();
 
-						var tableHead = "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>"
-							+ "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
+						var tableHead = /* "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>" */ "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/logoprint.png' style='height: 70px;'></div>" 	
+						    + "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
 							+ '<thead>'
 							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>'
 							+ '<tr id="tdata"></tr>'

@@ -15,7 +15,15 @@
 body, html {
   min-height: 100%;
   position: relative; }
-
+.modal-header {
+    padding: 8px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #006699;
+    color: #fff;
+}
+.close {
+	color:#fff;
+}
 body {
   margin: 0;
   font: normal 12px 'Open Sans', sans-serif;

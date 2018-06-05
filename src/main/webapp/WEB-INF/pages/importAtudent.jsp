@@ -43,7 +43,7 @@
 											<div class="form-group">
 												<label for="inputPassword3" class="col-sm-2 col-xs-12 control-label"><h5>Select File: <span style="color: red;">*</span></h5></label>
 												<div class="col-sm-4 col-xs-12">
-													<input class="form-control" name="excelfile2007" type="file" tabindex="1" required="required" style="margin-top:5px;">
+													<input class="form-control" name="excelfile2007" type="file" tabindex="1" required="required" style="margin-top:5px; border:none;">
 													<span class="excelfile2007-error" id="excelfile2007-error"></span>		
 												</div>
 											</div>
