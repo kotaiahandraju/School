@@ -56,16 +56,14 @@ width:200px !important;
 										<h5 class="blog-title">Student Fee</h5>
 									</div> -->
 							<div class="blog-body">
-								<form:form id="fee-form" action="addStudentFee.htm"
-									commandName="packCmd" method="post" class="form-horizontal">
+								<form:form id="fee-form" action="addStudentFee.htm"	commandName="packCmd" method="post" class="form-horizontal">
 
 									<div class="row">
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Board
-													Name</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 												<div class="col-sm-8">
-													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control">
+													<form:select path="boardName" tabindex="1"	onchange="classNameFilter()"	class="form-control" required="true" >
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -77,9 +75,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Class</label>
 												<div class="col-sm-8">
-													<form:select path="className" tabindex="2"
-														onchange="sectionFilter(),searchStudetnFee()"
-														class="form-control">
+													<form:select path="className" tabindex="2"	onchange="sectionFilter()" class="form-control" required="true" >
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
@@ -91,9 +87,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 												<div class="col-sm-8">
-													<form:select path="section" tabindex="3"
-														onchange="mediumFilter(),searchStudetnFee()"
-														class="form-control">
+													<form:select path="section" tabindex="3"	onchange="mediumFilter()"	class="form-control" required="true" >
 														<form:option value="">-- Choose Section --</form:option>
 <%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
@@ -107,9 +101,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
 												<div class="col-sm-8">
-													<form:select path="medium" tabindex="4"
-														onchange="studentFilterDropdown(),searchStudetnFee()"
-														class="form-control">
+													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown()"	class="form-control" required="true" >
 														<form:option value="">-- Choose Medium --</form:option>
 <%-- 														<form:options items="${mediam}"></form:options> --%>
 													</form:select>
@@ -121,9 +113,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Student</label>
 												<div class="col-sm-8">
-													<form:select path="studentId" tabindex="5"
-														class="form-control" required="true"
-														onchange="getDueFee(),searchStudetnFee()">
+													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee()">
 														<form:option value="">-- Choose Student --</form:option>
 <%-- 														<form:options items="${allStudents}"></form:options> --%>
 													</form:select>
@@ -133,9 +123,9 @@ width:200px !important;
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
+												<span id="admissionNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="admissionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="AdmissionFee Type" required="true" />
+													<form:input path="admissionFee" class="form-control numericOnly"	tabindex="6" placeholder="AdmissionFee Type" required="true" />
 												</div>
 											</div>
 										</div>
@@ -144,27 +134,27 @@ width:200px !important;
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
+												<span id="tutionNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="tutionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Tution Fee Type"  required="true" />
+													<form:input path="tutionFee" class="form-control numericOnly"	tabindex="6" placeholder="Tution Fee Type"  required="true" />
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
+												<span id="transportationNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="transportationFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Transportation Fee Type" required="true" />
+													<form:input path="transportationFee" class="form-control numericOnly"	tabindex="6" placeholder="Transportation Fee Type" required="true" />
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
+												<span id="hostelNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="hostelFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Hostel Fee Type" required="true" />
+													<form:input path="hostelFee" class="form-control numericOnly"	tabindex="6" placeholder="Hostel Fee Type" required="true" />
 												</div>
 											</div>
 										</div>
@@ -173,9 +163,9 @@ width:200px !important;
 									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
+												<span id="stationaryNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="stationaryFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Stationary Fee Type" required="true" />
+													<form:input path="stationaryFee" class="form-control numericOnly"	tabindex="6" placeholder="Stationary Fee Type" required="true" />
 												</div>
 											</div>
 										</div>
@@ -189,10 +179,8 @@ width:200px !important;
 											<form:hidden path="id" tabindex="1" />
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
-													<input type="submit" id="submitId" value="Submit" class="btn btn-success"
-														tabindex="8" />
-													<button type="button" class="btn btn-danger" id="cancel"
-														tabindex="9">Reset</button>
+													<input type="submit" id="submitId" value="Submit" class="btn btn-success"	tabindex="8" />
+													<button type="button" class="btn btn-danger" id="cancel"	tabindex="9">Reset</button>
 												</div>
 											</div>
 										</div>
@@ -267,9 +255,7 @@ width:200px !important;
 										<div class="row">
 											<div class="col-sm-12">
 												<div id="basicTable">
-													<table id="basicExample"
-														class="table table-striped table-condensed table-bordered no-margin dataTable"
-														role="grid" aria-describedby="basicExample_info">
+													<table id="basicExample"	class="table table-striped table-condensed table-bordered no-margin dataTable"	role="grid" aria-describedby="basicExample_info">
 														<thead>
 															<tr role="row">
 																<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>
@@ -346,10 +332,10 @@ width:200px !important;
 		errorElement : 'span',
 		errorClass : 'has-error',
 		rules : {
-			/* boardName:{required:true},
+			 boardName:{required:true},
 			className:{required:true},  
 			section:{required:true},
-			medium:{required:true}, */
+			medium:{required:true}, 
 			studentId : {
 				required : true
 			},
@@ -367,10 +353,10 @@ width:200px !important;
 			    stationaryFee: {required: true, number: true},
 		},
 		messages : {
-			/* boardName:{required:'Please Choose Board'},
+		    boardName:{required:'Please Choose Board'},
 			className:{required:'Please Choose Class'},
 			section:{required:'Please Choose Section'},
-			medium:{required:'Please Choose Medium'}, */
+			medium:{required:'Please Choose Medium'},
 			studentId : {required : 'Choose Student Name'},
 			fee : {required : 'Fee Amount',number : 'Fee Amount'},
 			feeType : {required : 'Fee Type'},
@@ -388,6 +374,14 @@ width:200px !important;
 	    	var hostelFee = $('#hostelFee').val();
 	    	var stationaryFee = $('#stationaryFee').val();
 	    		
+	    	if(  admissionFee == "0"  && tutionFee == "0" && transportationFee == "0"  && hostelFee == "0" &&  stationaryFee == "0"   ){
+	    		
+	    		return false;
+	    	}
+	    	if(admissionFee =='' && tutionFee=='' && transportationFee == '' &&  hostelFee == '' && stationaryFee == '' ){
+	    		return false;
+	    	}
+	    	else{
 	    	if(admissionFee1 < admissionFee){
 	    		alert("Maximum AdmissionFee is : "+admissionFee1);
 	    		//$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
@@ -407,6 +401,7 @@ width:200px !important;
 		     }else {
 		    	 return true;
 		     }
+	    	}
 	    	
 	    });
 	   
@@ -777,6 +772,8 @@ width:200px !important;
 	var hostelFee1 = 0.00;
 	var stationaryFee1 = 0.00;
 	function getDueFee() {
+		
+		
 		var studentId = $("#studentId").val();
 		$.ajax({
 			type : "POST",
@@ -790,11 +787,11 @@ width:200px !important;
 					$("#displayId").text("Due Fee: " + response.netFee);
 				} else {
 					$("#displayId").text("Due Fee: " + response.dueFee);
-					$("#admissionFee").val(response.admissionFee);  
-					$("#tutionFee").val(response.tutionFee);
-					$("#transportationFee").val(response.transportationFee);
-					$("#hostelFee").val(response.hostelFee);
-					$("#stationaryFee").val(response.stationaryFee);
+					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);  
+					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
 					
 					admissionFee1 = response.admissionFee;
 					tutionFee1 = response.tutionFee;
