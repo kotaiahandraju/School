@@ -28,26 +28,27 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Class Subjects</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Class Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-									<div class="blog-body">
-<%-- 									<%${message} %> --%>
-			
+							<div class="col-md-4">
 									<form:form action="saveClassSubject" commandName="classSubjectCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
@@ -55,11 +56,9 @@
 													<span class="boardId_error" id="boardId_error"></span>
 												</div>
 											</div>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class/Branch</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="classId" tabindex="3" class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
@@ -68,11 +67,9 @@
 													<span class="className_error" id="className_error"></span>
 												</div>
 											</div>
-										</div>
-																				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class Subjects</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="subjectId" tabindex="2" class="form-control" required="true">
 														<form:option value="">-- Choose Subject--</form:option>
 														<form:options items="${subject}" ></form:options>
@@ -80,17 +77,13 @@
 													<span class="mediumId_error" id="mediumId_error"></span>
 												</div>
 											</div>
-										</div>
-										
 									</div>
 									<div class="row">
-										<div class="col-sm-8 col-sm-offset-4">
+										<div class="col-sm-8 col-sm-offset-5">
 											<form:hidden path="id"/>
 											<div class="form-group">
-												<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="6"/>
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="7">Reset</button>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -112,22 +105,11 @@
 										</div>
 									</div>
 									</form:form>
-									
 									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row Ends -->
-						
-						<!-- Row Starts -->
-						<div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Class Subjects</h4>
-									</div>
+									<div class="col-md-8 gutter">
+									<div class="blog">
 									<div class="blog-body">
-										<div class="table-responsive">
+										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
@@ -153,11 +135,19 @@
 										</div>
 									</div>
 								</div>
+									</div>
+									
 							</div>
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+						<!-- Row Starts -->
+						<div class="row gutter">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								
+							</div>
+						</div>
+						<!-- Row Ends -->
 					<!-- Spacer ends -->
 
 				</div>
@@ -182,4 +172,3 @@
 	
 
 </script>
->>>>>>> branch 'master' of https://github.com/kotaiahandraju/School.git

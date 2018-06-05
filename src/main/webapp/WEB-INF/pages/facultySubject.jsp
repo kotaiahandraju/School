@@ -28,23 +28,28 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Add Faculty Subjects</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Faculty Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
+					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Add Faculty</h5>
-									</div> -->
-									<div class="blog-body">
+								
 										<form:form action="addFacultySubjects.htm" commandName="packCmd" method="post" class="form-horizontal" id="sub-form">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Faculty Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="facultyId" tabindex="1" onchange="serviceFilter()" class="form-control" required="true">
 															<form:option value="" >-- Choose Faculty --</form:option>
 															<form:options items="${faculty}"></form:options>
@@ -53,10 +58,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="boardName" tabindex="2" onchange="classNameFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -65,10 +70,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="className" tabindex="3" class="form-control" onchange="sectionFilter()" required="true">
 															<form:option value="">-- Choose Class --</form:option>
 <%-- 															<form:options items="${allClasses}"></form:options> --%>
@@ -77,12 +82,10 @@
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="section" tabindex="4" class="form-control" onchange="mediumFilter()" required="true">
 															<form:option value="">-- Choose Section --</form:option>
 <%-- 															<form:options items="${allSection}"></form:options> --%>
@@ -91,10 +94,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-												    <div class="col-sm-8">	
+												    <div class="col-sm-5">	
 														<form:select path="medium" tabindex="5" class="form-control"  required="true">
 															<form:option value="">-- Choose Medium --</form:option>
 <%-- 															<form:options items="${mediam}"></form:options> --%>
@@ -103,10 +106,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Subject</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="subject" tabindex="6" class="form-control" required="true">
 															<form:option value="">-- Choose Subject --</form:option>
 															<form:options items="${subject}"></form:options>
@@ -117,7 +120,7 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-4">
+											<div class="col-sm-6 col-sm-offset-4">
 												<form:hidden path="id"/>
 												<div class="form-group">
 													<div class="col-sm-8 col-sm-offset-2">
@@ -145,8 +148,6 @@
 											</div>
 										</div>
 										</form:form>
-									</div>
-								</div>
 							</div>
 						</div>
 						<!-- Row Ends -->

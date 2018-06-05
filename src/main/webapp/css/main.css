@@ -18,10 +18,43 @@ body, html {
 
 body {
   margin: 0;
-  font: normal 12px 'Open Sans', arial, sans-serif;
+  font: normal 12px 'Open Sans', sans-serif;
   color: #4d4d4d;
   background: #454545; }
-
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #ddd;
+    border-radius: 4px;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+.panel-success>.panel-heading {
+    color: #3c763d !important;
+    background-color: #dff0d8 !important;
+    border-color: #d6e9c6 !important;
+}
+.panel-primary>.panel-heading {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #337ab7 !important;
+}
+.panel-default>.panel-heading {
+    color: #000 !important;
+    background-color: #ddd !important;
+    border-color: #ddd !important;
+}
+.panel-primary {
+    border-color: #337ab7 !important;
+}
+.panel-default {
+    border-color: #ddd !important;
+}
 a {
   color: #000000;
   text-decoration: none;
@@ -1077,10 +1110,35 @@ footer {
   padding: 15px;
   position: relative;
   border: 0px solid #ededed; }
-
+#cls-form {
+	
+	margin-top:28px;
+}
+.btn {
+    display: inline-block;
+    padding: 4px 12px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 31px;
+    padding: 3px 9px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
 .panel-heading {
   position: relative;
-  padding: 12px 15px;
+  padding: 1px 15px;
   border: 1px solid #ededed;
   border-bottom: 0;
   -webkit-border-radius: 0px;
@@ -1945,7 +2003,8 @@ ul.recent-tweets {
   -webkit-box-shadow: none;
   border: 1px solid #d9d9d9; 
 /*    width:auto !important; */
-       border-radius: 7px;}
+       border-radius: 0px;
+       }
   .form-control:focus {
     border: 1px solid #a4c2dc;
     box-shadow: none;
