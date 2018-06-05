@@ -223,7 +223,7 @@ $(function(){
 
 		if ($(this).val() !== "Hostel") {
 
-			var fee = totalfee - $('#hostelFee').val();
+			var fee = $('#totalFee').val() - $('#hostelFee').val();
 
 			$('#totalFee').val(fee);
 
@@ -246,10 +246,13 @@ $(function(){
 
 				if ($(this).val() !== "Yes") {
 
-					var fee = totalfee - $('#transportationFee').val();
+					var fee =$('#totalFee').val()  - $('#transportationFee').val();
 
 					$('#totalFee').val(fee);
-
+						
+					$('#transportationFee').prop("disabled", true);
+					$('#busroute').prop("disabled", true);
+					
 					$('#transportationDiv').hide();
 					$('#busRouteDiv').hide();
 				} else {
