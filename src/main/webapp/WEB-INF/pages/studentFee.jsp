@@ -45,26 +45,29 @@ width:200px !important;
 
 		<!-- Container fluid Starts -->
 		<div class="container-fluid">
-
+			<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">View Student</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Filter Student</h4>
+					</div>
+					<div class="panel-body collapse in">
 			<!-- Spacer starts -->
-			<div class="spacer">
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog" style="border: 1px solid;">
-							<!-- <div class="blog-header">
-										<h5 class="blog-title">Student Fee</h5>
-									</div> -->
-							<div class="blog-body">
 								<form:form id="fee-form" action="addStudentFee.htm"
 									commandName="packCmd" method="post" class="form-horizontal">
 
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Board
 													Name</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
@@ -73,10 +76,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Class</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="className" tabindex="2"
 														onchange="sectionFilter(),searchStudetnFee()"
 														class="form-control">
@@ -87,10 +90,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="section" tabindex="3"
 														onchange="mediumFilter(),searchStudetnFee()"
 														class="form-control">
@@ -101,12 +104,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="medium" tabindex="4"
 														onchange="studentFilterDropdown(),searchStudetnFee()"
 														class="form-control">
@@ -117,10 +118,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Student</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="studentId" tabindex="5"
 														class="form-control" required="true"
 														onchange="getDueFee(),searchStudetnFee()">
@@ -130,52 +131,48 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:input path="admissionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="AdmissionFee Type" required="true" />
+														tabindex="6" placeholder="Admission Fee " required="true" />
 												</div>
 											</div>
 										</div>
-										</div>
-										<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:input path="tutionFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Tution Fee Type"  required="true" />
+														tabindex="6" placeholder="Tution Fee "  required="true" />
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
-												<div class="col-sm-8">
+												<label for="inputEmail3" class="col-sm-4 control-label">Bus Fees</label>
+												<div class="col-sm-5">
 													<form:input path="transportationFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Transportation Fee Type" required="true" />
+														tabindex="6" placeholder="Bus Fee " required="true" />
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:input path="hostelFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Hostel Fee Type" required="true" />
+														tabindex="6" placeholder="Hostel Fee " required="true" />
 												</div>
 											</div>
 										</div>
-										</div>
-									<div class="row">
-									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+									<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:input path="stationaryFee" class="form-control numericOnly"
-														tabindex="6" placeholder="Stationary Fee Type" required="true" />
+														tabindex="6" placeholder="Stationary Fee " required="true" />
 												</div>
 											</div>
 										</div>
@@ -258,7 +255,7 @@ width:200px !important;
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="blog">
 							<div class="blog-header">
-								<h4>List of Student Fees</h4>
+								<h4>List of Fee Payments</h4>
 							</div>
 							<div class="blog-body">
 								<div class="table-responsive">
@@ -281,7 +278,7 @@ width:200px !important;
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Bus Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>
@@ -305,7 +302,6 @@ width:200px !important;
 				</div>
 				<!-- Row Ends -->
 
-			</div>
 			<!-- Spacer ends -->
 
 		</div>
@@ -374,9 +370,9 @@ width:200px !important;
 			studentId : {required : 'Choose Student Name'},
 			fee : {required : 'Fee Amount',number : 'Fee Amount'},
 			feeType : {required : 'Fee Type'},
-		    admissionFee: {required: 'AdmissionFee Amount', number: 'Numeric Characters'},
+		    admissionFee: {required: 'Admission Fee Amount', number: 'Numeric Characters'},
 			tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
-			transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
+			transportationFee: {required: 'Bus Fee Amount', number: 'Numeric Characters'},
 			hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
 			stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
 		},
@@ -450,7 +446,7 @@ width:200px !important;
 // 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
+					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Bus Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Hostel Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Stationary Fees</th>'
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>'
@@ -853,7 +849,7 @@ var stockInformation1 = "<table align='center' class='table table-stripped table
 
 + "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
 + "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
++ "<tr style='height: 35px;'><td align='center'>Bus Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
 + "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
 + "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
 + "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"

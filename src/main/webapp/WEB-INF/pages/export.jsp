@@ -27,24 +27,29 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+				<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">Export Student</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of View Students</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
 					<div class="spacer">
 					
 						<!-- Row Starts -->
 						<div class="row" style="">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Export Students</h5>
-									</div> -->
-									<div class="blog-body">
+								
 										<form:form id="demo-form1" action="exportStudent1.htm" commandName="packCmd" method="post" class="form-horizontal">
 										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">  
 												<div class="form-group">
 													<label for="inputPassword3" class="col-sm-4 control-label">Board Name: </label>
-													<div class="col-sm-8">
+													<div class="col-sm-5">
 														<form:select path="boardName" class="form-control" tabindex="2" onchange="classNameFilter()">
 															<form:option value="" >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -52,10 +57,10 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Class: </label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="3" onchange="sectionFilter();">
 															<form:option value="">-- Choose Class --</form:option>
 															<form:options items="${allClasses}"></form:options>
@@ -65,10 +70,10 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Section: </label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="4" onchange="mediumFilter();">
 															<form:option value="">-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -76,10 +81,10 @@
 													</div>
 											  	</div>
 											</div>
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 											    	<label for="inputPassword3" class="col-sm-4 control-label">Medium: </label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="medium" class="form-control" tabindex="5" onchange="getFee();">
 															<form:option value="">-- Choose Medium --</form:option>
 															<form:options items="${mediam}"></form:options>

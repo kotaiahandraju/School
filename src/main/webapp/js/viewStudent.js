@@ -86,7 +86,7 @@ $(function(){
 											+ "<td title='"+orderObj.studentName+"'>"
 											+ orderObj.studentName
 											+ "</td>"
-											+ "<td  class='hidden-sm hidden-xs'><img style='width: 65px;height: 65px;' src='"+baseUrl2+"/"+orderObj.imagePath+"'/>"
+											+ "<td  class='hidden-sm hidden-xs'><img style='width: 25px;height: 25px;' src='"+baseUrl2+"/"+orderObj.imagePath+"'/>"
 											+ "</td>"
 											+ "<td class='hidden-sm hidden-xs' title='"+orderObj.rollNum+"'>"
 											+ orderObj.rollNum

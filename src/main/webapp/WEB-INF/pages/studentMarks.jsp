@@ -15,6 +15,12 @@
 .btnsm {
 	margin: 0.5px;
 }
+.form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+    margin-bottom: 8px;
+}
 </style>
 <!-- Dashboard Wrapper starts -->
 <div class="dashboard-wrapper">
@@ -32,23 +38,22 @@
 		<div class="container-fluid">
 
 			<!-- Spacer starts -->
-			<div class="spacer">
-
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">Student Marks</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Filter Students</h4>
+					</div>
+					<div class="panel-body collapse in">
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog" style="border: 1px solid;">
-							<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-							<div class="panel-heading heading">
-								<div class="heading" style="color: black; font-size: 14px;">Filters</div>
-							</div>
-							<div class="blog-body1">
 								<%-- 									<%${message} %> --%>
 
-								<form:form action="#" commandName="studentMarksCmd"
-									method="post" id="cls-form" class="form-horizontal">
+			<form:form action="#" commandName="studentMarksCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="form-group row">
 										<div class="col-md-2">
 											<label class="control-label">Board Name:</label>
@@ -101,7 +106,6 @@
 												</form:select>
 											</div>
 										</div>
-									</div>
 									
 									
 									
