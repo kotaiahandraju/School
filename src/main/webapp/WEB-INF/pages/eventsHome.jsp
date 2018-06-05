@@ -31,23 +31,26 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+					<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Message</a></li>
+		<li><a href="#">Notification</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Send  Notification</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<div class="blog-header">
-										<h5 class="blog-title">Send Notification</h5>
-									</div>
-									<div class="blog-body">
 										<form:form action="" commandName="packCmd" method="post" class="form-horizontal" id="msg-form1">
 										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="boardName"  tabindex="1" onchange="selectOrders(),classNameFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -56,10 +59,10 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="className" tabindex="2" onchange="selectOrders(),sectionFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Class --</form:option>
 															<form:options items="${allClasses}"></form:options>
@@ -68,12 +71,10 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="section" tabindex="3" onchange="selectOrders(),mediumFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -82,10 +83,10 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="medium" tabindex="4" onchange="selectOrders()" class="form-control" required="true">
 															<form:option value="">-- Choose Medium --</form:option>
 															<form:options items="${mediam}"></form:options>

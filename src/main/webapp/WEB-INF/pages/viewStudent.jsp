@@ -17,7 +17,14 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-	
+	<style>
+	.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 5px 10px;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    font-family: 'Open Sans', sans-serif; !important;
+}
+	</style>
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
