@@ -10,6 +10,7 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script type="text/javascript" src="js/medium.js"></script>
 		<!-- Dashboard Wrapper starts -->
+		
 		<div class="dashboard-wrapper">
 
 			<!-- Top Bar starts -->
@@ -27,6 +28,7 @@
     	<li><a href="dashBoard">Home</a></li>
     	<li><a href="#">General Settings</a></li>
 		<li><a href="#">Medium Creation</a></li>
+		<li><a href="#"></a>Medium Creation</li>
 	</ol>
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -120,6 +122,7 @@
 			</div>
 			<!-- Main Container ends -->
 
+		</div>
 		</div>
 		<!-- Dashboard Wrapper ends -->
 
