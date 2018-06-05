@@ -19,7 +19,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Class Creation</div>
+				<div class="page-title" id="headId">Class Fee</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -30,24 +30,27 @@
 				<div class="container-fluid">
 
 					<!-- Spacer starts -->
-					<div class="spacer">
+			<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Class Fee</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Fee</h4>
+					</div>
+					<div class="panel-body collapse in">
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-									<div class="blog-body">
-<%-- 									<%${message} %> --%>
-			
+							
 									<form:form action="addclass.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="boardId" tabindex="1" class="form-control" required="true"  onchange="classNameFilter(this.id);">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
@@ -56,10 +59,10 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="mediumId" tabindex="2" class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
 														<form:options items="${mediam}"></form:options>
@@ -69,10 +72,10 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class/Branch</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="className" tabindex="3" class="form-control" required="true" onchange="sectionFilter();">
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
@@ -82,12 +85,11 @@
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="section" tabindex="4" class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
 <%-- 														<form:options items="${allSection}"></form:options> --%>
@@ -97,53 +99,52 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Admission Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Tution Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Transportation Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Hostel Hostel Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Stationary Fee for the Class" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
+									
 										<div class="col-sm-8 col-sm-offset-4">
 											<form:hidden path="id"/>
 											<div class="form-group">
@@ -172,11 +173,10 @@
 										</div>
 									</div>
 									</form:form>
-									
-									</div>
-								</div>
+								
 							</div>
 						</div>
+						</div></div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
@@ -224,7 +224,7 @@
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+			
 					<!-- Spacer ends -->
 
 				</div>

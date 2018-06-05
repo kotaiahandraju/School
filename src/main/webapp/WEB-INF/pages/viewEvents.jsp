@@ -24,24 +24,26 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+				<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Message</a></li>
+		<li><a href="#">View Notification</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>View  Notification</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-
-				    					 <div class="blog-body">
 										<form:form  commandName="packCmd" method="post" class="form-horizontal" id="student-form" >
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">	
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">	
 										  		<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Board Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="boardName" class="form-control" tabindex="1" onchange="searchStudent(),classNameFilter()" >
 															<form:option value="" >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -49,10 +51,10 @@
 													</div>
 										  		</div>
 										  	</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Class Name</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="2" onchange="searchStudent(),sectionFilter()" >
 															<form:option value="" >-- Choose Class --</form:option>
 															<form:options items="${allClasses}"></form:options>
@@ -60,10 +62,10 @@
 													</div>
 										  		</div>
 										  	</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Section</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="3"  onchange="searchStudent(),mediumFilter()">
 															<form:option value="">-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -71,12 +73,10 @@
 													</div>
 										  		</div>
 										  	</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 											    	<label for="inputPassword3" class="col-sm-4 control-label">Medium</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="medium" class="form-control" tabindex="4" onchange="searchStudent()">
 															<form:option value="">-- Choose Medium --</form:option>
 															<form:options items="${mediam}"></form:options>
@@ -84,19 +84,19 @@
 													</div>
 											 	</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">From (date):</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<input data-format="dd-MM-yyyy" placeholder="Select from Date" class="form-control" id="dob1" type="text" tabindex="5" readonly="readonly">
 														<span class="dob1_error" id="dob1_error"></span>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">to (date):</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<input data-format="dd-MM-yyyy" placeholder="Select to Date" class="form-control" id="dob2" type="text" tabindex="6" readonly="readonly">
 														<span class="dob2_error" id="dob2_error"></span>
 													</div>
@@ -104,10 +104,10 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-4">
+											<div class="col-sm-8 col-sm-offset-2">
 											  	<form:hidden path="id" />
 												<div class="form-group">
-											  		<div class="col-sm-8 col-sm-offset-2">
+											  		<div class="col-sm-8 col-sm-offset-3">
 														<input type="button" class="btn btn-success" value="Search" onclick="searchStudent()" tabindex="7"/>
 <!-- 														<input type="reset" class="btn btn-danger" id="cancel" tabindex="9"/> -->
 														<a href="viewEvents" class="btn btn-danger" tabindex="9">Cancel</a>

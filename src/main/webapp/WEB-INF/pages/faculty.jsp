@@ -26,30 +26,32 @@
 				<div class="container-fluid">
 
 					<!-- Spacer starts -->
-					<div class="spacer">
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Add Faculty</h5>
-									</div> -->
-									<div class="blog-body">
+								<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Add Faculty</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Faculty</h4>
+					</div>
+					<div class="panel-body collapse in">
+										<div class="col-md-4">
 										<form:form action="facultySubmit.htm" commandName="packCmd" method="post" class="form-horizontal" id="fac-form">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Faculty Name</label>
-												    <div class="col-sm-8">											
+												    <div class="col-sm-6">											
 														<form:input path="name" tabindex="1" placeholder="Faculty Name" class="form-control  onlyCharacters" required="true"/>
 														<span class="name_error" id="name_error"></span>
 													</div>
 												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Gender</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-6">
 													    <form:select path="gender" tabindex="2" class="form-control" required="true">
 															<form:option value="">-- Choose Gender --</form:option>
 															<form:option value="Male"> Male</form:option>
@@ -58,36 +60,27 @@
 														<span class="gender_error" id="gender_error"></span>
 													</div>
 												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Qualification</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-6">
 														<form:input path="qualification" tabindex="3" placeholder="Qualification" class="form-control onlyCharacters" required="true"/>
 														<span class="qualification_error" id="qualification_error"></span>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Contact Number</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-6">
 														<form:input path="contactNumber" tabindex="4" placeholder="Contact Mobile Number" class="form-control numericOnly" required="true" maxlength="10"/>
 														<span class="contactNumber_error" id="contactNumber_error"></span>
 													</div>
 												</div>
 											</div>
-										</div>
 										<div class="row">
 											<div class="col-sm-8 col-sm-offset-4">
 												<form:hidden path="id"/>
 												<div class="form-group">
-												  	<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="5"/>
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="6">Reset</button>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -109,21 +102,11 @@
 										</div>
 									</div>
 										</form:form>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row Ends -->
-						
-						<!-- Row Starts -->
-						<div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Faculty</h4>
-									</div>
+										</div>
+										<div class="col-md-8 gutter">
+										<div class="blog">
 									<div class="blog-body">
-										<div class="table-responsive">
+										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
@@ -147,11 +130,21 @@
 										</div>
 									</div>
 								</div>
+										</div>
+										</div></div>
+									
 							</div>
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+						<!-- Row Starts -->
+						<div class="row gutter">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								
+							</div>
+						</div>
+						<!-- Row Ends -->
+				
 					<!-- Spacer ends -->
 
 				</div>

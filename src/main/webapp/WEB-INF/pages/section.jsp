@@ -28,26 +28,28 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Section Creation</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Sections</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Section Creation</h5>
-									</div> -->
-									<div class="blog-body">
-<%-- 									<%${message} %> --%>
-			
+								<div class="col-md-4">
 									<form:form action="addSection.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="boardId" tabindex="1" onchange="classNameFilter()" class="form-control" required="true">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
@@ -55,11 +57,9 @@
 													<span class="boardId_error" id="boardId_error"></span>
 												</div>
 											</div>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Class/Branch</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <form:select path="classId" tabindex="2" class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
@@ -68,11 +68,9 @@
 													<span class="classId_error" id="classId_error"></span>
 												</div>
 											</div>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
-											    <div class="col-sm-8">
+											    <div class="col-sm-6">
 												    <%-- <form:select path="section" tabindex="3" class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
 														<form:options items="${allSection}"></form:options>
@@ -81,7 +79,6 @@
 													<span class="section_error" id="section_error"></span>
 												</div>
 											</div>
-										</div>
 									</div>
 										<%-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -97,10 +94,8 @@
 										<div class="col-sm-8 col-sm-offset-4">
 											<form:hidden path="id"/>
 											<div class="form-group">
-												<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="4"/>
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="5">Reset</button>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -122,22 +117,12 @@
 										</div>
 									</div>
 									</form:form>
-									
-									</div>
 								</div>
-							</div>
-						</div>
-						<!-- Row Ends -->
-						
-						<!-- Row Starts -->
-						<div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-md-8 gutter">
 								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Sections</h4>
-									</div>
+									
 									<div class="blog-body">
-										<div class="table-responsive">
+										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
@@ -163,11 +148,20 @@
 										</div>
 									</div>
 								</div>
+								</div>
 							</div>
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+						<!-- Row Starts -->
+						<div class="row gutter">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								
+							</div>
+						</div>
+						<!-- Row Ends -->
+						
+					
 					<!-- Spacer ends -->
 
 				</div>

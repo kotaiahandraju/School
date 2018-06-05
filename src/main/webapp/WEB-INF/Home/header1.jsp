@@ -116,14 +116,16 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			<!-- Logo starts -->
 			<div class="logo">
 				<a href="#">
-					<a href="dashBoard" style="display:inline !important"><img src="img/VVN.png" style="width: 65px;height: 65px;" alt="AKSHARA BHARATHI VIDYALAYAM">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b></a>
+					<!-- <a href="dashBoard" style="display:inline !important"><img src="img/VVN.png" style="width: 65px;height: 65px;" alt="AKSHARA BHARATHI VIDYALAYAM">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b></a> -->
+					<a href="dashBoard" style="display:inline !important"><img src="img/logo (1).png" style="width: 65px;height: 65px;" alt="GRETNALTES">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important"></b></a>
 					<span class="menu-toggle hidden-xs">
 						<i class="fa fa-bars"></i>
 					</span>
 				</a>
 			</div>
 			<div class="pull-right hidden-sm hidden-xs">
-				<h1 style="color: white;font-family: sans-serif;margin: 10px;">Vijnana Vihara Nutakki</h1>
+				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">Vijnana Vihara Nutakki</h1> -->
+				<h1 style="color: white;font-family: sans-serif;margin: 10px;">GRETNALTES</h1>
 			</div>
 			<!-- Logo ends -->
 

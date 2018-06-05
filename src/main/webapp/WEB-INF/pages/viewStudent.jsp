@@ -17,7 +17,14 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-	
+	<style>
+	.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 5px 10px;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    font-family: 'Open Sans', sans-serif; !important;
+}
+	</style>
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
@@ -32,34 +39,36 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+				<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">View Student</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of View Students</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-
-
-				    					 <div class="blog-body" id="view_list">
+								
 										<form:form  commandName="packCmd" method="post" class="form-horizontal" id="student-form">
 										
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">	
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">	
 												<div class="form-group">
 											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Name</label>
-											    	<div class="col-sm-8">
+											    	<div class="col-sm-5">
 														<form:input path="name" placeholder="Student Name" class="form-control onlyCharacters" tabindex="1" />
 													</div>
 											  	</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Board Name</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:select path="boardName" class="form-control" tabindex="2"  onchange="searchStudent(),classNameFilter()">
 															<form:option value="" >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
@@ -67,10 +76,10 @@
 													</div>
 										  		</div>
 										  	</div>
-										  	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										  	<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 											    	<label for="inputPassword3" class="col-sm-4 control-label">Class</label>
-											    	<div class="col-sm-8">
+											    	<div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="3"   onchange="searchStudent(),sectionFilter()">
 															<form:option value="">-- Choose Class --</form:option>
 															<form:options items="${allClasses}"></form:options>
@@ -78,12 +87,11 @@
 													</div>
 											  	</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Section</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="4" onchange="searchStudent(),mediumFilter()" >
 															<form:option value="">-- Choose Section --</form:option>
 															<form:options items="${allSection}"></form:options>
@@ -91,10 +99,10 @@
 													</div>
 										  		</div>
 										  	</div>
-										  	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										  	<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Medium</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:select path="medium" class="form-control" tabindex="5"  onchange="searchStudent()">
 															<form:option value="">-- Choose Medium --</form:option>
 															<form:options items="${mediam}"></form:options>
@@ -102,46 +110,42 @@
 													</div>
 										  		</div>
 										  	</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:input path="rollNum" placeholder="Roll Number" class="form-control" tabindex="6" />
 													</div>
 										  		</div>
 										  	</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Admission No.</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:input path="admissionNum" placeholder="Admission Number" class="form-control" tabindex="7" />
 													</div>
 										  		</div>
 										  	</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 										    		<label for="inputPassword3" class="col-sm-4 control-label">Mobile</label>
-										    		<div class="col-sm-8">
+										    		<div class="col-sm-5">
 														<form:input path="mobile" placeholder="Contact Number" class="form-control numericOnly" maxlength="10" tabindex="8"/>
 													</div>
 										  		</div>
 										  	</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  		<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:input path="email" placeholder="Email-Id" class="form-control" tabindex="9"/>
 													</div>
 										  		</div>
 										  	</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Caste</label>
-												    <div class="col-sm-8">
+												    <div class="col-sm-5">
 														<form:select path="caste" tabindex="10" class="form-control">
 															<form:option value="">-- Choose Caste --</form:option>
 															<form:option value="OC">OC</form:option>
@@ -155,7 +159,7 @@
 										  	</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-4">
+											<div class="col-sm-8 col-sm-offset-5">
 												<form:hidden path="id" /><br>
 										  		<div class="form-group">
 												  	<div class="col-sm-8 col-sm-offset-2">
@@ -172,8 +176,7 @@
 									<input type ="hidden" value="${baseUrl }" id="baseUrl1">
 									</div>
 								</div>
-							</div>
-						</div>
+							</div></div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
@@ -216,7 +219,7 @@
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+					
 					<!-- Spacer ends -->
 
 				</div>

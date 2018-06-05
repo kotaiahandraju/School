@@ -86,7 +86,7 @@ $(function(){
 											+ "<td title='"+orderObj.studentName+"'>"
 											+ orderObj.studentName
 											+ "</td>"
-											+ "<td  class='hidden-sm hidden-xs'><img style='width: 65px;height: 65px;' src='"+baseUrl2+"/"+orderObj.imagePath+"'/>"
+											+ "<td  class='hidden-sm hidden-xs'><img style='width: 25px;height: 25px;' src='"+baseUrl2+"/"+orderObj.imagePath+"'/>"
 											+ "</td>"
 											+ "<td class='hidden-sm hidden-xs' title='"+orderObj.rollNum+"'>"
 											+ orderObj.rollNum
@@ -247,7 +247,7 @@ $('#basicExample').dataTable();
 		var busrt = null; busrt = serviceUnitArray[id].busroute;
 		if(busrt == null || busrt == ""){busrt = "---";}
 		
-		var tblRow = "<table class='table table-condensed' style='width: 100%;'>"
+		var tblRow = "<table class='table table-bordered table-striped' style='width: 100%;'>"
 				+"<tr>"
 				+	"<td style='border: none;'><input id='printbtn' style='float: left;' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#showData') /></td>"
 				+	"<td style='border: none;'></td>"
@@ -257,65 +257,65 @@ $('#basicExample').dataTable();
 				+	"</td>"
 				+"</tr>"
 				
-				+"<tr><td align='center' colspan='4' style='border: none;'><img src='img/ABV-header.png' style='width: 70%;height: 50px;' alt='AKSHARA BHARATHI VIDYALAYAM'></td></tr>"
-				
+/*				+"<tr><td align='center' colspan='4' style='border: none;'><img src='img/ABV-header.png' style='width: 70%;height: 50px;' alt='AKSHARA BHARATHI VIDYALAYAM'></td></tr>"*/
+				+"<tr><td align='center' colspan='4' style='border: none;'><img src='img/logoprint.png' style='' alt='GRETNALTES'></td></tr>"
 				+ "<tr><td colspan='4' style='border: none;'>"
 				+ "<h2 style='text-align: center;color: black;'>Application for Admission</h2>"
 //	 			+	"<h2 style='text-align: center;'><span style='text-align: center;border: 1px solid;border-radius: 5px;padding: 0.3em;background-color: black;color: white;'>Application for Admission</span></h2>"
 				+ "</td></tr>"
 				
 				+ "<tr>"
-				+ 	"<th align='left' style='border: none;font-family: Constantia;font-size: 20px;'>Name</th>"
-				+ 	"<td style='border: none;'>:</td>"
-				+ 	"<td style='border: none;font-family: Estrangelo Edessa;font-size: 20px;'>"+name+"</td>"
-				+ 	"<td rowspan='5' style='border: none;'>"
+				+ 	"<th align='left' >Name</th>"
+				+ 	"<td >:</td>"
+				+ 	"<td >"+name+"</td>"
+				+ 	"<td rowspan='5' style='border: none; width:100px;'>"
 				+ 		"<img style='float: right;width: 100px;height: 120px;' src='"+image+"'/>"
 				+ 	"</td>"
 				+ "</tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Type of Board</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+board+"</td></tr>"
+				+ "<tr><th align='left' >Type of Board</th><td align='center'>:</td><td >"+board+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Medium</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+medium+"</td></tr>"
+				+ "<tr><th align='left' >Medium</th><td align='center'>:</td><td >"+medium+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Class</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+clas+"</td></tr>"
+				+ "<tr><th align='left' >Class</th><td align='center'>:</td><td >"+clas+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Section</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+section+"</td></tr>"
+				+ "<tr><th align='left' >Section</th><td align='center'>:</td><td >"+section+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Roll No</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+rno+"</td></tr>"
+				+ "<tr><th align='left' >Roll No</th><td align='center'>:</td><td >"+rno+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Admission No</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+adno+"</td></tr>"
+				+ "<tr><th align='left' >Admission No</th><td align='center'>:</td><td >"+adno+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Father Name</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+fname+"</td></tr>"
+				+ "<tr><th align='left' >Father Name</th><td align='center'>:</td><td >"+fname+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Mobile No</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+mob+"</td></tr>"
+				+ "<tr><th align='left' >Mobile No</th><td align='center'>:</td><td >"+mob+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Alternative No</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+alt+"</td></tr>"
+				+ "<tr><th align='left' >Alternative No</th><td align='center'>:</td><td >"+alt+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Email</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+email+"</td></tr>"
+				+ "<tr><th align='left' >Email</th><td align='center'>:</td><td >"+email+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Blood Group</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+bg+"</td></tr>"
+				+ "<tr><th align='left' >Blood Group</th><td align='center'>:</td><td >"+bg+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Gender</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+gender+"</td></tr>"
+				+ "<tr><th align='left' >Gender</th><td align='center'>:</td><td >"+gender+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Date Of Birth</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+dob+"</td></tr>"
+				+ "<tr><th align='left' >Date Of Birth</th><td align='center'>:</td><td >"+dob+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Religion</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+rel+"</td></tr>"
+				+ "<tr><th align='left' >Religion</th><td align='center'>:</td><td >"+rel+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Address</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+add+"</td></tr>"
+				+ "<tr><th align='left' >Address</th><td align='center'>:</td><td >"+add+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Previous Institute</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+pre+"</td></tr>"
+				+ "<tr><th align='left' >Previous Institute</th><td align='center'>:</td><td >"+pre+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Caste</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+caste+"</td></tr>"
+				+ "<tr><th align='left' >Caste</th><td align='center'>:</td><td >"+caste+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Accommodation</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+acc+"</td></tr>"
+				+ "<tr><th align='left' >Accommodation</th><td align='center'>:</td><td >"+acc+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Bus facility</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+bus+"</td></tr>"
+				+ "<tr><th align='left' >Bus facility</th><td align='center'>:</td><td >"+bus+"</td></tr>"
 				
-				+ "<tr><th align='left' style='font-family: Constantia;font-size: 20px;'>Bus Route</th><td>:</td><td style='font-family: Estrangelo Edessa;font-size: 20px;'>"+busrt+"</td></tr>"
+				+ "<tr><th align='left' >Bus Route</th><td align='center'>:</td><td >"+busrt+"</td></tr>"
 				
-				+ "<tr style='height: 6em;'><th colspan='4' style='border: none;font-size: 20px;font-family: Constantia;font-size: 20px;' align='right'>Signature of the parent with date</th></tr>"
+				+ "<tr><th colspan='4'  align='right'>Signature of the parent with date</th></tr>"
 				
-				+ "<tr><th colspan='4' style='border: none;font-family: Constantia;font-size: 20px;' align='right'>Principal Signature</th></tr>"
+				+ "<tr><th colspan='4'  align='right'>Principal Signature</th></tr>"
 				
 				+"</table>"; 
 		$(tblRow).appendTo("#showData");

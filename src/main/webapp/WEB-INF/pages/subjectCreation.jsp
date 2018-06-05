@@ -23,31 +23,33 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">General Settings</a></li>
+		<li><a href="#">Subject Creation</a></li>
+	</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>List of Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-									<div class="blog-body">
-<%-- 									<%${message} %> --%>
-			
+							<div class="col-md-4">
 									<form:form action="addSubject.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Subject</label>
-											    <div class="col-lg-4 col-md-4 col-sm-8">
+											    <div class="col-lg-6 col-md-6 col-sm-8">
 													<form:input path="name" class="form-control onlyCharacters" tabindex="1" placeholder="Subject Name" required="true"/>
 													<span class="name_error" id="name_error"></span>
 												</div>
 											</div>
 											<form:hidden path="id"/>
 												<div class="form-group">
-												  	<div class="col-sm-8 col-sm-offset-4">
+												  	<div class="col-sm-8 col-sm-offset-5">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="2"/>
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
 													</div>
@@ -67,22 +69,10 @@
 												</div>
 									</form:form>
 									</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row Ends -->
-						
-						<!-- Row Starts -->
-						<div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Subjects</h4>
-									</div>
+									<div class="col-md-8 gutter">
+									<div class="blog">
 									<div class="blog-body">
-										<div class="table-responsive">
+										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
@@ -106,11 +96,22 @@
 										</div>
 									</div>
 								</div>
+									</div>
+								</div>
+							</div>
+							</div></div>
+						</div>
+						<!-- Row Ends -->
+						
+						<!-- Row Starts -->
+						<div class="row gutter">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								
 							</div>
 						</div>
 						<!-- Row Ends -->
 						
-					</div>
+					
 					<!-- Spacer ends -->
 
 				</div>

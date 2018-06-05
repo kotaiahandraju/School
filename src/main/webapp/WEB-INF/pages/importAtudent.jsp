@@ -24,23 +24,26 @@
 	
 			<!-- Container fluid Starts -->
 			<div class="container-fluid">
-
+			<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">Import Student</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Import Students</h4>
+					</div>
+					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
-					<div class="spacer">
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Import Students</h5>
-									</div> -->
-									<div class="blog-body">
 										<form:form id="mform" action="processExcel.htm" method="post" class="form-horizontal" enctype="multipart/form-data">
 											<div class="form-group">
 												<label for="inputPassword3" class="col-sm-2 col-xs-12 control-label"><h5>Select File: <span style="color: red;">*</span></h5></label>
 												<div class="col-sm-4 col-xs-12">
-													<input class="form-control" name="excelfile2007" type="file" tabindex="1" required="required">
+													<input class="form-control" name="excelfile2007" type="file" tabindex="1" required="required" style="margin-top:5px;">
 													<span class="excelfile2007-error" id="excelfile2007-error"></span>		
 												</div>
 											</div>
