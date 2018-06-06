@@ -53,6 +53,7 @@
 													<input type="reset" class="btn btn-danger" id="cancel" value="Reset" tabindex="3"/>
 												</div>
 											</div>
+											<p style="font-size:14px;">Sample File   <a href ="${url}/Excel.xls" style="color:#006699;">   Download</a></p>
 										</form:form>
 									</div>
 								</div>
