@@ -57,13 +57,13 @@ width:200px !important;
 									</div> -->
 							<div class="blog-body">
 								<form:form id="fee-form" action="userAddStudentFee.htm" commandName="userStudentFeeHome" method="post" class="form-horizontal">
-
+									<input type="hidden" id="forFormValidation" required="required" /> 
 									<div class="row">
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Board	Name</label>
 												<div class="col-sm-8">
-													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control">
+													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -75,7 +75,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Class</label>
 												<div class="col-sm-8">
-													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control">
+													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
 														<form:options items="${allClasses}"></form:options>
 													</form:select>
@@ -87,7 +87,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 												<div class="col-sm-8">
-													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control">
+													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
 														<form:options items="${allSection}"></form:options>
 													</form:select>
@@ -101,7 +101,7 @@ width:200px !important;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
 												<div class="col-sm-8">
-													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control">
+													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
 														<form:options items="${mediam}"></form:options>
 													</form:select>
@@ -337,10 +337,10 @@ width:200px !important;
 		errorElement : 'span',
 		errorClass : 'has-error',
 		rules : {
-			/* boardName:{required:true},
+			 boardName:{required:true},
 			className:{required:true},  
 			section:{required:true},
-			medium:{required:true}, */
+			medium:{required:true}, 
 			studentId : {
 				required : true
 			},
@@ -356,12 +356,13 @@ width:200px !important;
 			    transportationFee: {required: true, number: true},
 			    hostelFee: {required: true, number: true},
 			    stationaryFee: {required: true, number: true},
+			    forFormValidation:{required:true}
 		},
 		messages : {
-			/* boardName:{required:'Please Choose Board'},
+			boardName:{required:'Please Choose Board'},
 			className:{required:'Please Choose Class'},
 			section:{required:'Please Choose Section'},
-			medium:{required:'Please Choose Medium'}, */
+			medium:{required:'Please Choose Medium'}, 
 			studentId : {required : 'Please Choose Student Name'},
 			fee : {required : 'Please Enter Fee Amount',number : 'Please Enter Fee Amount'},
 			feeType : {required : 'Please Enter Fee Type'},
@@ -370,6 +371,7 @@ width:200px !important;
 			transportationFee: {required: 'Please Enter Transportation Fee Amount', number: 'Please Enter Numeric Characters'},
 			hostelFee: {required: 'Please Enter Hostel Fee Amount', number: 'Please Enter Numeric Characters'},
 			stationaryFee: {required: 'Please Enter Stationary Fee Amount', number: 'Please Enter Numeric Characters'},
+			forFormValidation:{required:''}
 		},
 	});
 	//$("#maxValueError").remove();
@@ -400,7 +402,12 @@ width:200px !important;
 	    	var hostelFee = $('#hostelFee').val();
 	    	var stationaryFee = $('#stationaryFee').val();
 	    	var fee = $('#fee').val();
-	    	
+	    	$('#forFormValidation').val();
+	    	if(  fee == "0"   ){
+	    		$('#forFormValidation').val();
+	    		alert("insufficient fund");
+	    		return false;
+	    	}else{
 	    	if(admissionFee1 < admissionFee){
 	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
 		     return false;
@@ -422,6 +429,7 @@ width:200px !important;
 				 
 				 return false;
 			 } else {
+				 $('#forFormValidation').val(1);
 		    		$('#erroradmissionFee').text("");
 		    		$('#errortutionFee').text("");
 		    		$('#errortransportationFee').text("");
@@ -430,6 +438,7 @@ width:200px !important;
 		    		$("#maxValueError").text("");
 						    	 return true;
 		     }
+	    	}
 	    	
 	    });
 	    function checkadmissionFee(){
