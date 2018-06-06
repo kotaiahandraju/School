@@ -68,17 +68,13 @@ width:200px !important;
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog" style="border: 1px solid;">
-							<!-- <div class="blog-header">
-										<h5 class="blog-title">Student Fee</h5>
-									</div> -->
-							<div class="blog-body">
+						
 								<form:form id="fee-form" action="addStudentFee.htm"	commandName="packCmd" method="post" class="form-horizontal">
 										<input type="hidden" id="forFormValidation" required="required" /> 
 									<div class="row">
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Board Name<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="boardName" tabindex="1"	onchange="classNameFilter()"	class="form-control" required="true" >
 
@@ -91,7 +87,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Class</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Class<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="className" tabindex="2"	onchange="sectionFilter()" class="form-control" required="true" >
 													<form:option value="">-- Choose Class --</form:option>
@@ -103,7 +99,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Section</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Section<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="section" tabindex="3"	onchange="mediumFilter()"	class="form-control" required="true" >
 
@@ -116,7 +112,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Medium<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown()"	class="form-control" required="true" >
 
@@ -129,7 +125,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Student</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Student<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee()">
 
@@ -281,10 +277,10 @@ width:200px !important;
 																<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
+																<!-- <th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>
+																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
+															<!--<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Bus Fees</th>
@@ -330,6 +326,10 @@ width:200px !important;
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#fee").val("");
+		$('.has-sub').trigger("click");
+
+		
+		
 	});
 	 $("#admissionFee").val("");
 	   $("#tutionFee").val("");
@@ -595,11 +595,17 @@ width:200px !important;
 	}
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].id;
+		
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
+		classNameFilter();
 		$('#className').val(serviceUnitArray[id].classId);
+// 		sectionFilter();
+		
 		$('#section').val(serviceUnitArray[id].sectionId);
+// 		mediumFilter();
 		$('#medium').val(serviceUnitArray[id].mediumId);
+		studentFilterDropdown();
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
 		$('#fee').val(serviceUnitArray[id].fee);
@@ -610,6 +616,7 @@ width:200px !important;
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
+		
 		$(window).scrollTop($('.blog-body').offset().top);
 	}
 
@@ -630,52 +637,34 @@ width:200px !important;
 					optionsForClass.append(new Option(name, id));
 				});
 				$('#medium').trigger("chosen:updated");
-			},
-			error : function(e) {
-			},
-			statusCode : {
-				406 : function() {
-
-				}
 			}
 		});
 	}
 
-	function classNameFilter(id) {
+	function classNameFilter() {
 		var boardId = $("#boardName").val();
-		if (boardId.length != 0) {
 			$.ajax({
 				type : "POST",
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
-				dataType : "json",
 				success : function(response) {
-					/* alert(response); */
+					
 					var optionsForClass = "";
 					optionsForClass = $("#className").empty();
-					optionsForClass
-							.append(new Option("-- Choose Class --", ""));
+					optionsForClass.append(new Option("-- Choose Class --", ""));
 					$.each(response, function(i, tests) {
 						var id = tests.id;
 						var className = tests.className;
 						optionsForClass.append(new Option(className, id));
 					});
-					$('#className').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
+					
 				}
 			});
-		}
 	}
 	function sectionFilter() {
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
-		if (boardId.length != 0 && classId.length != 0) {
+		if (boardId.length != 0 ) {
 			$.ajax({
 				type : "POST",
 				url : "getSectionFilter.json",
@@ -685,21 +674,12 @@ width:200px !important;
 					/* alert(response); */
 					var optionsForClass = "";
 					optionsForClass = $("#section").empty();
-					optionsForClass.append(new Option("-- Choose Section --",
-							""));
+					optionsForClass.append(new Option("-- Choose Section --",""));
 					$.each(response, function(i, tests) {
 						var id = tests.id;
 						var sectionName = tests.sectionName;
 						optionsForClass.append(new Option(sectionName, id));
 					});
-					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
 				}
 			});
 		}
@@ -708,7 +688,7 @@ width:200px !important;
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0) {
+		if (boardId.length != 0) {
 			$.ajax({
 				type : "POST",
 				url : "getMediumFilter.json",
@@ -726,14 +706,6 @@ width:200px !important;
 						var mediumName = tests.mediumName;
 						optionsForClass.append(new Option(mediumName, id));
 					});
-					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
 				}
 			});
 		}
@@ -743,8 +715,7 @@ width:200px !important;
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
 		var mediumId = $("#medium").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0
-				&& mediumId.length != 0) {
+		if (true) {
 			$.ajax({
 				type : "POST",
 				url : "studentFilterDropdown.json",
@@ -763,14 +734,7 @@ width:200px !important;
 						optionsForClass.append(new Option(studentName,
 								studentId));
 					});
-					$('#studentId').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
+					
 				}
 			});
 		}

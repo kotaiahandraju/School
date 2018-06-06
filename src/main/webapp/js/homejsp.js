@@ -27,7 +27,7 @@ $("#cls-form").validate(
 				mediumId: {required: 'Choose Medium'},
 				className: {required: 'Choose Class'},
 				section: {required: 'Choose Section'},
-				admissionFee: {required: 'AdmissionFee Amount', number: 'Numeric Characters'},
+				admissionFee: {required: 'Admission Fee Amount', number: 'Numeric Characters'},
 				tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
 				transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
 				hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
