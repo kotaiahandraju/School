@@ -353,7 +353,7 @@ $(document).ready(function ()
 								var tbody="<tr><td>"+ tests.createdate+ "</td><td> "+ tests.admissionFee+ " </td><td>"+ tests.tutionFee+ " </td><td>"+ tests.transportationFee+ "</td><td>"+ tests.hostelFee+ " </td><td> "+ tests.stationaryFee+ "</td><td>"+tests.fee+"</td></tr>"
 
 								if(i==0){
-								var tfoot= "<tr style='height: 35px;'><td><h3>DUE Amount : "+tests.dueFee+"</h3></td></tr>"
+								var tfoot= "<tr style='height: 35px;'><td><p>DUE Amount : "+tests.dueFee+"</p></td></tr>"
 								}
 								$(thead).appendTo("#printTab thead");
 								$(tbody).appendTo("#printTab tbody");

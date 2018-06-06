@@ -61,7 +61,7 @@ width:200px !important;
 									<div class="row">
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Board	Name</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Board Name<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Board --</form:option>
@@ -73,7 +73,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Class</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Class<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
@@ -85,7 +85,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Section</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Section<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
@@ -99,7 +99,7 @@ width:200px !important;
 									<div class="row">
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Medium<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
@@ -111,7 +111,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Student</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Student<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee(),searchStudetnFee()">
 														<form:option value="">-- Choose Student --</form:option>
@@ -122,7 +122,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Fee</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Fee<span style="color: red;">*</span></label>
 												<div class="col-sm-8">
 													<form:input path="fee" class="form-control numericOnly"	tabindex="6" placeholder="Amount" onkeyup="checkadmissionFee();" required="true" />
 														<span id="erroradmissionFee" style="color:red"></span>
