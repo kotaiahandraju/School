@@ -160,18 +160,18 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 					</li>
 					
 					<li class='has-sub'>
-						<a href='#'><i class="fa fa-cogs"></i><span>General Settings</span></a>
+						<a href='#'><i class="fa fa-cogs"></i><span>Configurations</span></a>
 						<ul>
 						
-							<li><a href="boardHome"><span>Add Board</span></a></li>
+							<li><a href="boardHome"><span>Board Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>
 							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
-							<li><a href="HomeControl1" id="addClass"><span>Class Fee</span></a></li>
-							<li><a href='subjectHome' id="subjectHome" ><span>Add  Subjects</span></a></li>
+							<li><a href="HomeControl1" id="addClass"><span>Fee Definition</span></a></li>
+							<li><a href='subjectHome' id="subjectHome" ><span> Subject Creation</span></a></li>
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
-							<li><a href='facultySubject' id="addfacultySubjects" ><span>Add Faculty Subjects</span></a></li>
+							<li><a href='facultySubject' id="addfacultySubjects" ><span>Assign Faculty Subjects</span></a></li>
 						</ul>
 					</li>
 							 </c:if>

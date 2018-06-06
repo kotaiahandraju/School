@@ -17,6 +17,10 @@
 .form-control {
 width:200px !important;
 }
+td, th {
+    padding: 0;
+    text-align: center;
+}
 </style>
 
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> -->
@@ -638,7 +642,7 @@ width:200px !important;
 						$('#myModal').modal();
 
 							$.each(response,function(i, tests) {
-								var tableHead = "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>"
+								var tableHead = /* "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>" */"<div style='margin-bottom:15px;' align='center' class='img'><img src='img/logoprint.png' style='height: 70px;'></div>"
 									+ "<h4 style='text-align:center;'>"+ tests.className+" <span style='color:red;'> "+tests.createdate+"</span></h4>"
 									+ "<h4 style='text-align:center;'>Hallticket</h4>"
 									/* + "<table style='font-size: 13px;'>"
@@ -649,30 +653,19 @@ width:200px !important;
 									+ "<tr><th style='float:left;'><h4>Address </h4></th><td style='color:green;'><h4>xxxxxxxxxx</h4></td></tr>"
 									+ "</tr></thead>"
 									+ "</table>" */
-									+ "<div class='col-md-3'>"
-									+ "<table style='font-size: 13px;'>"
-									+ "<thead>"
-									+ "<tr style='float:left;'><th><h4>Roll No</h4></th></tr>"
-									+ "<tr style='float:left;'><th><h4>Medium</h4></th></tr>"
-									+ "<tr style='float:left;'><th><h4>Student Name</h4></th></tr>"
-									+ "<tr style='float:left;'><th><h4>Father's  Name</h4></th></tr>"
-									+ "</thead>"
-									+ "</table>"
-									+ "</div>"
-									+ "<div class='col-md-6' style='border: 1px solid #188018;'>"
-									+ "<div class='bor'>"
-									+ "<table style='font-size: 13px;'>"
+									+ "<div class='col-md-9'>"
+									+ "<table class='table-bordered table-striped' style='width:100%'>"
 									+ "<tbody>"
-									+ "<tr><td><h4 style='color:green;'>"+tests.studentId+"</h4></td></tr>"
-									+ "<tr><td><h4 style='color:green;'>"+tests.mediumName+"</h4></td></tr>"
-									+ "<tr><td><h4 style='color:green;'>"+tests.name+"</h4></td></tr>"
-									+ "<tr><td><h4 style='color:green;'>"+tests.fatherName+"</h4></td></tr>"
+									+ "<tr><td>Roll No</td><td><p style='color:green;margin-top:5px;'>"+tests.studentId+"</p></td></tr>"
+									+ "<tr><td>Medium</td><td><p style='color:green;margin-top:5px;'>"+tests.mediumName+"</p></td></tr>"
+									+ "<tr><td>Student Name</td><td><p style='color:green;margin-top:5px;'>"+tests.name+"</p></td></tr>"
+									+ "<tr><td>Father's  Name</td><td><p style='color:green;margin-top:5px;'>"+tests.fatherName+"</p></td></tr>"
 									+ "</tbody>"
 									+ "</table>"
 									+ "</div>"
 									+ "</div>"
 									+ "<div class='col-md-3'>"
-									+ "<img style='width:138px; height:120px;' src='img/default.png' alt='Image' title='Student'>"
+									+ "<img style='height:121px;' src='img/default.png' alt='Image' title='Student'>"
 									+ "<div class='sign' style='background:#fff; boder='1px solid #000;'>"
 									+ "</div>"
 									+ "</div>"

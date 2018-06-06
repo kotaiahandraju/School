@@ -25,7 +25,7 @@
 				<div class="container-fluid">
 <ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="#">General Settings</a></li>
+    	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Subject Creation</a></li>
 	</ol>
 				<div class="panel panel-default">
