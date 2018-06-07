@@ -2223,9 +2223,17 @@ e.printStackTrace();
 			htmlBody = stringBuffer.toString();
 
 try {
+	
+	 String propertiespath = objContext.getRealPath("Resources" +File.separator+"DataBase.properties");
+
+		input = new FileInputStream(propertiespath);
+		// load a properties file
+		prop.load(input);
+	
 	String smsMessage = "Dear Parent,\n_smsMessage_.\nGRETNALTES.";
 	smsMessage = smsMessage.replace("_smsMessage_", message);
 	String messageBody =  prop.getProperty("messageBody");
+	System.out.println("notification------"+messageBody);
 	messageBody = messageBody.replace("_message_", message);
 		int nid= Integer.parseInt(notificatinId);
 		for(int i=0;i<array.length;i++){
@@ -2257,10 +2265,6 @@ try {
 				mobileNumber = objStudentBean.getMobile();
 				if(StringUtils.isNotBlank(mobileNumber)){
 					SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-                URL url = new URL(requestUrl);
-                HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-                System.out.println(uc.getResponseMessage());
-                uc.disconnect();
 				}
 				toAddress=  objStudentBean.getEmail();
 				if(StringUtils.isNotBlank(toAddress)){
