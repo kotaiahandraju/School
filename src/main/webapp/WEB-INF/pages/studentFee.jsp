@@ -593,17 +593,22 @@ width:200px !important;
 			//alert('no data to display..');
 		}
 	}
+	
+	var clsid='';
+	var secid='';
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].id;
 		
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
+		clsid=serviceUnitArray[id].classId;
 		classNameFilter();
 		$('#className').val(serviceUnitArray[id].classId);
-// 		sectionFilter();
+		secid=serviceUnitArray[id].sectionId;
+ 		sectionFilter();
 		
 		$('#section').val(serviceUnitArray[id].sectionId);
-// 		mediumFilter();
+ 		mediumFilter();
 		$('#medium').val(serviceUnitArray[id].mediumId);
 		studentFilterDropdown();
 		$('#studentId').val(serviceUnitArray[id].studentId);
@@ -617,7 +622,7 @@ width:200px !important;
 		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
 		
-		$(window).scrollTop($('.blog-body').offset().top);
+		$(window).scrollTop($('#boardName').offset().top);
 	}
 
 	function serviceFilter(id) {
@@ -660,6 +665,7 @@ width:200px !important;
 					
 				}
 			});
+			if(clsid!='') $("#className").val(clsid).trigger('change');
 	}
 	function sectionFilter() {
 		var boardId = $("#boardName").val();
@@ -682,6 +688,7 @@ width:200px !important;
 					});
 				}
 			});
+			if(secid!='') $("#section").val(secid).trigger('change');
 		}
 	}
 	function mediumFilter() {
