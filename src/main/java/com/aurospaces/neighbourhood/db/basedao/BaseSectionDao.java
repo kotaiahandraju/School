@@ -58,9 +58,9 @@ public class BaseSectionDao{
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
 	ps.setTimestamp(1, createdTime);
 ps.setTimestamp(2, updatedTime);
-ps.setString(3, objClassBean.getSection());
+ps.setString(3, objClassBean.getBoardId());
 ps.setString(4, objClassBean.getClassId());
-ps.setString(5, objClassBean.getBoardId());
+ps.setString(5, objClassBean.getSection());
 
 							return ps;
 						}
@@ -75,7 +75,7 @@ ps.setString(5, objClassBean.getBoardId());
 		else
 		{
 
-			String sql = "UPDATE sectiontable  set boardId = ? ,classId = ?,name=?  where id = ? ";
+			String sql = "UPDATE sectiontable  set boardid = ?,classid = ?, name= ?  where id = ? ";
 	
 			jdbcTemplate.update(sql, new Object[]{objClassBean.getBoardId(),objClassBean.getClassId(),objClassBean.getSection(),objClassBean.getId()});
 		}

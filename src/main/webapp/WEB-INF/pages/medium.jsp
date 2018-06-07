@@ -63,7 +63,7 @@
 														message=(String)session.getAttribute("message");
 												        if(message!=null)
 												        {
-															out.println("<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
+															out.println("<span class='animated fadeOut' style='animation-iteration-count:1;animation-duration: 8s;color: red;'>"+message+"</span>");
 															session.setAttribute("message", null);
 														}
 											        %>

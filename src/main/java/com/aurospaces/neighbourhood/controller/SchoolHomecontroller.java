@@ -306,12 +306,12 @@ e.printStackTrace();
 			 double totalfee = objClassBean.getAdmissionFee()+objClassBean.getTransportationFee()+objClassBean.getHostelFee()+objClassBean.getTutionFee()+objClassBean.getStationaryFee();
 			 objClassBean.setFee(totalfee);
 			 if(id != 0 ){
-				 session.setAttribute("message", "Successfully Class is Updated");
+				 session.setAttribute("message", "Successfully fee Updated");
 				 objClassCreation.save(objClassBean);
 			 }else{
 			if(classbean == null ){
 				objClassCreation.save(objClassBean);
-				session.setAttribute("message", "Successfully Class is Created");
+				session.setAttribute("message", "Successfully fee created");
 				 System.out.println("class not exist");
 			}else {
 				System.out.println("exist");
@@ -2340,6 +2340,7 @@ try {
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
+			System.out.println("addBoardaddBoardaddBoardaddBoard");
 			if(objAddBoardBean.getId() == 0){
 				listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
 				if(listOrderBeans1.size() == 0){

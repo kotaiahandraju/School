@@ -76,7 +76,7 @@
 												    <div class="col-sm-5">
 														<form:select path="className" tabindex="3" class="form-control" onchange="sectionFilter()" required="true">
 															<form:option value="">-- Choose Class --</form:option>
-<%-- 															<form:options items="${allClasses}"></form:options> --%>
+															<form:options items="${allClasses}"></form:options>
 														</form:select>
 														<span class="className_error" id="className_error"></span>
 													</div>
@@ -88,7 +88,7 @@
 												    <div class="col-sm-5">
 														<form:select path="section" tabindex="4" class="form-control" onchange="mediumFilter()" required="true">
 															<form:option value="">-- Choose Section --</form:option>
-<%-- 															<form:options items="${allSection}"></form:options> --%>
+															<form:options items="${allSection}"></form:options>
 														</form:select>
 														<span class="section_error" id="section_error"></span>
 													</div>
@@ -100,7 +100,7 @@
 												    <div class="col-sm-5">	
 														<form:select path="medium" tabindex="5" class="form-control"  required="true">
 															<form:option value="">-- Choose Medium --</form:option>
-<%-- 															<form:options items="${mediam}"></form:options> --%>
+															<form:options items="${mediam}"></form:options>
 														</form:select>
 														<span class="medium_error" id="medium_error"></span>
 													</div>
@@ -139,7 +139,7 @@
 															message=(String)session.getAttribute("message");
 													        if(message!=null)
 													        {
-																out.println("<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
+																out.println("<span class='animated fadeOut' style='animation-iteration-count:1;animation-duration:8s;color: red;'>"+message+"</span>");
 																session.setAttribute("message", null);
 															}
 												        %>

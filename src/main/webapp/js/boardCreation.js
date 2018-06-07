@@ -23,7 +23,9 @@ $(function(){
 				  $('#cancel').click(function () {
 				    $("#cls-form").validate().resetForm();
 				    $("#cls-form").removeClass("has-error");
+				    $("#id").val(0);
 				    $("#name").val('');
+				    $("#submitId").val("Submit");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 

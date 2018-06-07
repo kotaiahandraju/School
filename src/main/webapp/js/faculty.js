@@ -48,10 +48,13 @@ $(document).ready (function(){
 	  $('#cancel').click(function () {
 	    $("#fac-form").validate().resetForm();
 	    $("#fac-form").removeClass("has-error");
+	    $("#id").val(0);
 	    $("#name").val('');
+	    $("#gender").val('');
 	    $("#subject").val('');
 	    $("#qualification").val('');
 	    $("#contactNumber").val('');
+	    $("#submitId").val("Submit");
 	    $("#fac-form").addClass('form-horizontal');
 	     });
 });

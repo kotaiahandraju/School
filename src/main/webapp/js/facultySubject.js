@@ -36,12 +36,14 @@ $(function(){
 	  $('#cancel').click(function () {
 	    $("#sub-form").validate().resetForm();
 	    $("#sub-form").removeClass("has-error");
+	    $("#id").val(0);
 	    $("#facultyId").val('');
 	    $("#boardName").val('');
 	    $("#className").val('');
 	    $("#section").val('');
 	    $("#medium").val('');
 	    $("#subject").val('');
+	    $("#submitId").val("Submit");
 	    $("#sub-form").addClass('form-horizontal');
 	     });
 });

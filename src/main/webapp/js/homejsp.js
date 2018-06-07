@@ -52,6 +52,7 @@ $("#cls-form").validate(
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
 			    $("#cls-form").removeClass("has-error");
+			    $("#id").val(0);
 			    $("#boardId").val('');
 			    $("#mediumId").val('');
 			    $("#className").val('');
