@@ -28,7 +28,10 @@
 
 		<!-- Container fluid Starts -->
 		<div class="container-fluid">
-
+         <ol class="breadcrumb">
+    	<li><a href="parentDashboard">Home</a></li>
+    	<li><a href="#">View Notifications</a></li>
+     	</ol>
 			<!-- Spacer starts -->
 			<div class="spacer">
 				<!-- Row Starts -->
@@ -43,10 +46,10 @@
 								<form:form commandName="packCmd" method="post"
 									class="form-horizontal" id="student-form">
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Student:</label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="name" class="form-control" tabindex="5"
 														onchange="searchStudent();" required="true">
 														<form:option value="0">-- Choose Student--</form:option>
@@ -57,11 +60,11 @@
 											</div>
 										</div>
 
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">From
-													(date):</label>
-												<div class="col-sm-8">
+													(date) </label>
+												<div class="col-sm-5">
 													<input data-format="dd-MM-yyyy"
 														placeholder="Enter from Date" class="form-control"
 														id="dob1" type="text" tabindex="6"> <span
@@ -69,11 +72,11 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">to
-													(date):</label>
-												<div class="col-sm-8">
+												<label for="inputEmail3" class="col-sm-4 control-label">To
+													(date) </label>
+												<div class="col-sm-5">
 													<input data-format="dd-MM-yyyy" placeholder="Enter to Date"
 														class="form-control" id="dob2" type="text" tabindex="6">
 													<span class="dob2_error" id="dob2_error"></span>

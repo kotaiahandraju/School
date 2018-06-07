@@ -19,51 +19,54 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
+                <ol class="breadcrumb">
+    	<li><a href="parentDashboard">Home</a></li>
+    	<li><a href="#">Change Password</a></li>
+     	</ol>
+				
 					<!-- Spacer starts -->
-					<div class="spacer">
 						<!-- Row Starts -->
 						<div class="row">
+						
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
+								<div class="blog" style="border: 1px solid #f1f1f1;">
 									<!-- <div class="blog-header">
 										<h5 class="blog-title">Add Faculty</h5>
 									</div> -->
 									<div class="blog-body">
 										<form:form action="parentChangePassword" commandName="packCmd" method="post" class="form-horizontal" id="cp-form">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Current Password</label>
-												    <div class="col-sm-8">											
+												    <div class="col-sm-5">											
 														<form:input path="oldPassword" type ="password"  tabindex="1" placeholder="Enter Current Password" class="form-control" required="true"/>
 														<span class="oldPassword_error" id="oldPassword_error"></span>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-5 control-label">New Password</label>
-												    <div class="col-sm-7">											
+												    <label for="inputEmail3" class="col-sm-4 control-label">New Password</label>
+												    <div class="col-sm-5">											
 														<form:input path="password" type ="password" tabindex="2" placeholder="Enter New Password" class="form-control" required="true"/>
 														<span class="password_error" id="password_error"></span>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-5 control-label">Confirm Password</label>
-												    <div class="col-sm-7">
+												    <label for="inputEmail3" class="col-sm-4 control-label">Confirm Password</label>
+												    <div class="col-sm-5">
 														<form:input path="retypePassword" type ="password" tabindex="3" placeholder="Enter Confirm Password" class="form-control" required="true"/>
 														<span class="retypePassword_error" id="retypePassword_error"></span>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-7 col-sm-offset-4">
+										
+											<div class="col-lg-5 col-md-5 col-sm-7 col-sm-offset-4">
 												<div class="form-group">
-												  	<div class="col-sm-7 col-sm-offset-5">
+												  	<div class="col-sm-5 col-sm-offset-5">
 														<input type="submit" class="btn btn-success" tabindex="4"/>
 														<button type="button" class="btn btn-danger" id="cancel" tabindex="5">Reset</button>
 													</div>

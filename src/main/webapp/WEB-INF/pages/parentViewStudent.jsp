@@ -18,7 +18,10 @@
 				<div class="container-fluid">
 
 					<!-- Spacer starts -->
-					<div class="spacer">
+					<ol class="breadcrumb">
+    	<li><a href="parentDashboard">Home</a></li>
+    	<li><a href="#">View Student Details</a></li>
+     	</ol>
 						
 						<!-- Row Starts -->
 						<div class="row">

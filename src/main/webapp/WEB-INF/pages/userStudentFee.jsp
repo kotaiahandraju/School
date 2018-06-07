@@ -17,6 +17,9 @@
 .form-control {
 width:200px !important;
 }
+.ss {
+width:100px;
+}
 </style>
 
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> -->
@@ -45,24 +48,27 @@ width:200px !important;
 
 		<!-- Container fluid Starts -->
 		<div class="container-fluid">
-
+			<ol class="breadcrumb">
+    	<li><a href="dashBoard">Home</a></li>
+    	<li><a href="#">Student Details</a></li>
+		<li><a href="#">Fee Payment</a></li>
+	    </ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Filter Student</h4>
+					</div>
+					<div class="panel-body collapse in">
 			<!-- Spacer starts -->
-			<div class="spacer">
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog" style="border: 1px solid;">
-							<!-- <div class="blog-header">
-										<h5 class="blog-title">Student Fee</h5>
-									</div> -->
-							<div class="blog-body">
 								<form:form id="fee-form" action="userAddStudentFee.htm" commandName="userStudentFeeHome" method="post" class="form-horizontal">
 									<input type="hidden" id="forFormValidation" required="required" /> 
 									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Board Name<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
@@ -71,10 +77,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Class<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
 														<form:options items="${allClasses}"></form:options>
@@ -83,10 +89,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Section<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
 														<form:options items="${allSection}"></form:options>
@@ -95,12 +101,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Medium<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
 														<form:options items="${mediam}"></form:options>
@@ -109,10 +113,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Student<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee(),searchStudetnFee()">
 														<form:option value="">-- Choose Student --</form:option>
 														<form:options items="${allStudents}"></form:options>
@@ -120,10 +124,10 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Fee<span style="color: red;">*</span></label>
-												<div class="col-sm-8">
+												<div class="col-sm-5">
 													<form:input path="fee" class="form-control numericOnly"	tabindex="6" placeholder="Amount" onkeyup="checkadmissionFee();" required="true" />
 														<span id="erroradmissionFee" style="color:red"></span>
 												</div>
@@ -908,19 +912,16 @@ width:200px !important;
 										response,
 										function(i, tests) {
 
-var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: Baskerville Old Face, cursive;font-size: 20px;'>"
+var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
 
-+ "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>"
+/* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
++ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 70px;'></td></tr>"
 + "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
 
-+ "<tr style='height: 35px;'><td colspan='2'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ ",&nbsp;&nbsp;"
-+ 	"<b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ ",&nbsp;&nbsp;"+ "<b>Class: </b>&nbsp;&nbsp;"+ tests.className
-+ 	",&nbsp;&nbsp;"+ "<b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
-+ "</td></tr>"
-
++ "<tr style='height: 35px;'><td><b class='ss'>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td><td><b class='ss'>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
++ "<tr style='height: 35px;'><td><b class='ss'>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td><b class='ss'>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
++ "<tr style='height: 35px;'><td><b class='ss'>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</td><td><b class='ss'>Class: </b>&nbsp;&nbsp;"+ tests.className+ "</td></tr>"
++ "<tr style='height: 35px;'><td colspan='2'><b class='ss'>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+"</td></tr>"
 + "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
 
 + "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
