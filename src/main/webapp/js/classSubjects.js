@@ -87,11 +87,12 @@ function displayTable(listOrders) {
 	function editPack(id) {
 		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
+		$('#boardId').trigger("chosen:updated");
+		classNameFilter();
 		$('#classId').val(serviceUnitArray[id].classId);
+		$('#classId').trigger("chosen:updated");
 		$('#subjectId').val(serviceUnitArray[id].subjectId);
 		$('#subjectId').trigger("chosen:updated");
-		$('#boardId').trigger("chosen:updated");
-		$('#classId').trigger("chosen:updated");
 		$("#submitId").val("Update");
 		$("#headId").text("Edit Class");
 	}
@@ -122,7 +123,7 @@ function displayTable(listOrders) {
 	}
 	
 	
-	function classNameFilter(id){
+	function classNameFilter(){
 		var boardId = $("#boardId").val();
 		if(boardId.length !=0){
 			$('#loadAjax').show();
@@ -131,6 +132,7 @@ function displayTable(listOrders) {
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";

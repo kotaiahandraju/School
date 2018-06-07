@@ -9,8 +9,8 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>AKSHARA BHARATHI VIDYALAYAM</title>
-		
+		<!-- <title>AKSHARA BHARATHI VIDYALAYAM</title> -->
+			<title>GRETNALTES</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<link href="css/animate.css" rel="stylesheet" media="screen" />
 		<link href="css/main.css" rel="stylesheet" media="screen" />
@@ -102,14 +102,16 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			<!-- Logo starts -->
 			<div class="logo">
 				<a href="#">
-					<a href="dashBoard" style="display:inline !important"><img src="img/ABV.png" style="width: 65px;height: 65px;" alt="AKSHARA BHARATHI VIDYALAYAM">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">ABV</b></a>
+<!-- 					<a href="dashBoard" style="display:inline !important"><img src="img/ABV.png" style="width: 65px;height: 65px;" alt="AKSHARA BHARATHI VIDYALAYAM">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">ABV</b></a> -->
+					<a href="dashBoard" style="display:inline !important"><img src="img/logo (1).png" style="width: 65px;height: 65px;" alt="GRETNALTES">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important"></b></a>
 					<span class="menu-toggle hidden-xs" style="margin-top: 0px;">
 						<i class="fa fa-bars"></i>
 					</span>
 				</a>
 			</div>
 			<div class="pull-right hidden-sm hidden-xs">
-				<h1 style="color: white;font-family: sans-serif;margin: 10px;">Akshara Bharathi Vidyalayam</h1>
+				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">Akshara Bharathi Vidyalayam</h1> -->
+				<img src="img/logoprint.png" class="img-responsive" style="margin-top:5px;height: 61px;background: #fff;"/>
 			</div>
 			<!-- Logo ends -->
 
@@ -185,11 +187,11 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 						<li>
 							<i class="fa fa-circle-o text-success"></i>
 							<div class="details">
-								<a style="color: white;" href="http://www.stjohnsenglishmediumschool.com/" target="_blank">Visit Site</a>
+								<a style="color: white;" href="http://www.gretnaltes.org/" target="_blank">Visit Site</a>
 							</div>
 						</li>
 						<li>
-							<i class="fa fa-circle-o text-danger"></i>
+							<i style="color:#fff;" class="fa fa-power-off"></i>
 							<div class="details">
 								<a style="color: white;" href="#" onclick="logout()">Logout</a>
 							</div>

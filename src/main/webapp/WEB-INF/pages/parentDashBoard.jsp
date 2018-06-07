@@ -59,7 +59,7 @@
                                 </a>
 							</div>
 							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-                            <a href="http://www.stjohnsenglishmediumschool.com/" target="_blank">
+                            <a href="http://www.gretnaltes.org/" target="_blank">
 								<div class="brown-bg center-align-text">
 									<div class="spacer-xs">
 										<small class="text-white">Visit</small>

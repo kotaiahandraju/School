@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,6 +42,7 @@ public class ParentController {
 	EventDao  eventDao;
 	@Autowired
 	StudentDao studentDao;
+	@Autowired ServletContext objContext;
 	@Autowired HttpSession session1;
 	@RequestMapping(value = "/viewAttendanceParentHome")
 	public String viewAttendanceHome(@ModelAttribute("packCmd") StudentBean objStudentBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -299,7 +301,7 @@ e.printStackTrace();
 			
 //			toAddress=  objStudentBean.getEmail();
 //			if(StringUtils.isNotBlank(toAddress)){
-			MailSender.sendEmailWithAttachment("noreply2stjohns@gmail.com", "Regarding, FeedBack from "+objStudentBean.getFatherName() ,message,null);
+			MailSender.sendEmailWithAttachment("noreply2stjohns@gmail.com", "Regarding, FeedBack from "+objStudentBean.getFatherName() ,message,null,objContext);
 			session.setAttribute("message", "Successfully Mail has been Sended");
 //			}
 			

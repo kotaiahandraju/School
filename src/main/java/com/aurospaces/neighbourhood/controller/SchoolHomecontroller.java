@@ -94,6 +94,7 @@ import com.aurospaces.neighbourhood.util.MailSender;
 import com.aurospaces.neighbourhood.util.MiscUtils;
 import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
 import com.aurospaces.neighbourhood.util.SendAttachmentInEmail;
+import com.aurospaces.neighbourhood.util.SendSMS;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -805,9 +806,6 @@ e.printStackTrace();
 		String sDirPath = null;
 		UsersBean userBean = null;
 		UsersBean isexist = null;
-		 String username = "GNTCLUB";
-         String password = "Kotaiah@123";
-         String from = "GNTCLUB";
          String requestUrl = null;
 		String mobileNumber =null; 
 		String  toAddress= null;
@@ -920,13 +918,12 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		userBean.setRolId("3");
 		usesDao1.save(userBean);
 		mobileNumber = objStudentBean.getMobile();
-		String messageBody = "<table><tr>Dear Parent/Gaurdian,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Thanks for Registering with us.</td></tr><br></table><table ><tr><td style='padding-left:10px;'><b>Your Login Details:</b></td></tr><tr><td style='padding-left:30px;'>Username: _username_</td></tr><tr><td style='padding-left:30px;'>Password: _password_</td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vijnana Vihara Nutakki,<br/>Nutakki.</ul></div>";
+		String messageBody = "<table><tr>Dear Parent/Gaurdian,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Thanks for Registering with us.</td></tr><br></table><table ><tr><td style='padding-left:10px;'><b>Your Login Details:</b></td></tr><tr><td style='padding-left:30px;'>Username: _username_</td></tr><tr><td style='padding-left:30px;'>Password: _password_</td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>GRETNALTES.</ul></div>";
 		messageBody = messageBody.replace("_username_", objStudentBean.getFatherName());
 		messageBody = messageBody.replace("_password_", randomNum);
 		String smsMessage = "Dear Parent,\nThanks for Registering with us.\nYour Login details,\nUsername: "+objStudentBean.getFatherName()+"\nPassword: "+randomNum;
 		if(StringUtils.isNotBlank(mobileNumber)){
-		requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(smsMessage, "UTF-8")+"&sms_type=2";
-		System.out.println("----GNTCLUB----"+requestUrl);
+			SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
         URL url = new URL(requestUrl);
         HttpURLConnection uc = (HttpURLConnection)url.openConnection();
         System.out.println(uc.getResponseMessage());
@@ -934,7 +931,7 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		}
 		 toAddress=  objStudentBean.getEmail();
 		if(StringUtils.isNotBlank(toAddress)){
-		MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null);
+		MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
 		}
 		try{
 			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null);
@@ -1448,10 +1445,6 @@ e.printStackTrace();
 		String absentId = objRequest.getParameter("absentId");
 		String notificatinId = objRequest.getParameter("notificatinId");
 		String studentId = objRequest.getParameter("studentId");
-		   String username = "GNTCLUB";
-           String password = "Kotaiah@123";
-           String from = "GNTCLUB";
-           String requestUrl = null;
 		String[] array = studentId.split(",");
 		StudentBean objStudentBean = null;
 		String mobileNumber = null;
@@ -1471,11 +1464,17 @@ e.printStackTrace();
 htmlBody = stringBuffer.toString();
 
 try {
+	 String propertiespath = objContext.getRealPath("Resources" +File.separator+"DataBase.properties");
+
+		input = new FileInputStream(propertiespath);
+		// load a properties file
+		prop.load(input);
 	
 	int nid= Integer.parseInt(notificatinId);
 	for(int i=0;i<array.length;i++){
-		String smsMessage = "Dear Parent,\n_smsMessage_.\nVijnana Vihara Nutakki,\nNutakki";
-		String messageBody = "<table><tr>Dear Parent,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>_message_.</td></tr><br></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vijnana Vihara Nutakki,<br/>Nutakki.</ul></div>";
+		
+		String smsMessage = prop.getProperty("attendenceMessage");
+		String messageBody = prop.getProperty("messageBody");
 		AttendanceBean objAttendanceBean = new AttendanceBean();
 		studentIdInt = Integer.parseInt(array[i]);
 		objStudentBean = studentDao.getById(studentIdInt);
@@ -1492,18 +1491,14 @@ try {
 		if(nid ==1){
 			mobileNumber = objStudentBean.getMobile();
 			if(StringUtils.isNotBlank(mobileNumber)){
-			requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(smsMessage, "UTF-8")+"&sms_type=2";
-            URL url = new URL(requestUrl);
-            HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-            System.out.println(uc.getResponseMessage());
-            uc.disconnect();
+				SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
             session.setAttribute("message", "Successfully SMS has been Sended");
 			}
 		}
 		if(nid ==2){
 			toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
-			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null);
+			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null,objContext);
 			session.setAttribute("message", "Successfully Mail has been Sended");
 			}
 			
@@ -1511,15 +1506,11 @@ try {
 		if(nid ==3){
 			mobileNumber = objStudentBean.getMobile();
 			if(StringUtils.isNotBlank(mobileNumber)){
-			requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(smsMessage, "UTF-8")+"&sms_type=2";
-            URL url = new URL(requestUrl);
-            HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-            System.out.println(uc.getResponseMessage());
-            uc.disconnect();
+				SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
 			}
 			toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
-			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null);
+			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null,objContext);
 			}
 			session.setAttribute("message", "Successfully SMS+Email has been Sended");
 		}
@@ -1794,7 +1785,7 @@ e.printStackTrace();
            		}
            		 toAddress=  objStudentBean1.getEmail();
            		if(StringUtils.isNotBlank(toAddress)){
-           		MailSender.sendEmailWithAttachment(toAddress, "Thanks for Registering",message,null);
+           		MailSender.sendEmailWithAttachment(toAddress, "Thanks for Registering",message,null,objContext);
            		}
        		}
        		
@@ -2232,9 +2223,9 @@ e.printStackTrace();
 			htmlBody = stringBuffer.toString();
 
 try {
-	String smsMessage = "Dear Parent,\n_smsMessage_.\nVijnana Vihara Nutakki,\nNutakki";
+	String smsMessage = "Dear Parent,\n_smsMessage_.\nGRETNALTES.";
 	smsMessage = smsMessage.replace("_smsMessage_", message);
-	String messageBody = "<table><tr>Dear Parent,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>_message_.</td></tr><br></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vijnana Vihara Nutakki,<br/>Nutakki.</ul></div>";
+	String messageBody =  prop.getProperty("messageBody");
 	messageBody = messageBody.replace("_message_", message);
 		int nid= Integer.parseInt(notificatinId);
 		for(int i=0;i<array.length;i++){
@@ -2246,7 +2237,7 @@ try {
 			if(nid ==1){
 				mobileNumber = objStudentBean.getMobile();
 				if(StringUtils.isNotBlank(mobileNumber)){
-				requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(smsMessage, "UTF-8")+"&sms_type=2";
+					SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
                 URL url = new URL(requestUrl);
                 HttpURLConnection uc = (HttpURLConnection)url.openConnection();
                 System.out.println(uc.getResponseMessage());
@@ -2257,7 +2248,7 @@ try {
 			if(nid ==2){
 				toAddress=  objStudentBean.getEmail();
 				if(StringUtils.isNotBlank(toAddress)){
-				MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null);
+				MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
 				session.setAttribute("message", "Successfully Mail has been Sended");
 				}
 				
@@ -2265,7 +2256,7 @@ try {
 			if(nid ==3){
 				mobileNumber = objStudentBean.getMobile();
 				if(StringUtils.isNotBlank(mobileNumber)){
-				requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(smsMessage, "UTF-8")+"&sms_type=2";
+					SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
                 URL url = new URL(requestUrl);
                 HttpURLConnection uc = (HttpURLConnection)url.openConnection();
                 System.out.println(uc.getResponseMessage());
@@ -2273,7 +2264,7 @@ try {
 				}
 				toAddress=  objStudentBean.getEmail();
 				if(StringUtils.isNotBlank(toAddress)){
-				MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null);
+				MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
 				}
 				session.setAttribute("message", "Successfully SMS+Email has been Sended");
 			}

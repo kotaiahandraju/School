@@ -33,7 +33,7 @@
 	    </ol>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4> Attendance</h4>
+						<h4>View Attendance</h4>
 					</div>
 					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
@@ -68,7 +68,7 @@
 												    <div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="3" onchange="searchStudent(),sectionFilter()" >
 															<form:option value="" >-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 													</div>
 												</div>
@@ -80,7 +80,7 @@
 												    <div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="4"  onchange="searchStudent(),mediumFilter()">
 															<form:option value="">-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
 													</div>
 											  	</div>
@@ -91,7 +91,7 @@
 												    <div class="col-sm-5">
 														<form:select path="medium" tabindex="5" onchange="searchStudent();" class="form-control">
 															<form:option value="">-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 														<span class="medium_error" id="medium_error"></span>
 													</div>

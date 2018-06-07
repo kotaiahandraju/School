@@ -360,12 +360,15 @@ $(function(){
 			$('#name').val(serviceUnitArray[id].studentName);
 			$('#boardName').val(serviceUnitArray[id].boardId);
 			$('#boardName').trigger("chosen:updated");
-			$('#medium').val(serviceUnitArray[id].mediumId);
-			$('#medium').trigger("chosen:updated");
+			classNameFilter();
 			$('#className').val(serviceUnitArray[id].classId);
 			$('#className').trigger("chosen:updated");
+			sectionFilter();
 			$('#section').val(serviceUnitArray[id].sectionId);
 			$('#section').trigger("chosen:updated");
+			mediumFilter();
+			$('#medium').val(serviceUnitArray[id].mediumId);
+			$('#medium').trigger("chosen:updated");
 			$("#mobile").val(serviceUnitArray[id].mobile);
 			$("#totalFee").val(serviceUnitArray[id].totalFee);
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
@@ -751,6 +754,7 @@ var stationaryFee1 = 0.00;
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -788,6 +792,7 @@ var stationaryFee1 = 0.00;
 			url : "getSectionFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -825,6 +830,7 @@ var stationaryFee1 = 0.00;
 			url : "getMediumFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";

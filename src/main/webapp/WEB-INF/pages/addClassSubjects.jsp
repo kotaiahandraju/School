@@ -49,7 +49,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 											    <div class="col-sm-6">
-												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter(this.id);">
+												    <form:select path="boardId" tabindex="1" class="form-control" required="true" onchange="classNameFilter();">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
