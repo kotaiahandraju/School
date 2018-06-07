@@ -230,6 +230,10 @@ $(function(){
 			$('#hostelFee').prop("disabled", true);
 			$('#hostleDiv').hide();
 		} else {
+			var fee =  parseInt($('#totalFee').val()) +  parseInt($('#hostelFee').val());
+
+			$('#totalFee').val(fee);
+
 
 			$('#hostelFee').prop("disabled", false);
 			$('#hostleDiv').show();
@@ -256,6 +260,9 @@ $(function(){
 					$('#transportationDiv').hide();
 					$('#busRouteDiv').hide();
 				} else {
+					var fee = parseInt($('#totalFee').val())  + parseInt( $('#transportationFee').val());
+
+					$('#totalFee').val(fee);
 
 					$('#hostelFee').prop("disabled", false);
 					$('#transportationDiv').show();
@@ -377,7 +384,7 @@ $(function(){
 			
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Student");
-			$(window).scrollTop($('.spacer').offset().top);
+			$(window).scrollTop($('#name').offset().top);
 		} 
 		
 		function serviceFilter(id){
