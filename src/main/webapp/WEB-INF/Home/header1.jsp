@@ -128,8 +128,7 @@ session.setAttribute("url", url);
 			<div class="pull-right hidden-sm hidden-xs">
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">Vijnana Vihara Nutakki</h1> -->
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">GRETNALTES</h1> -->
-				<img src="img/logoprint.png" class="img-responsive" style="margin-top:5px;height: 61px;
-    background: #fff;"/>
+				<img src="img/logoprint.png" class="img-responsive" style="margin-top:5px;height: 61px;background: #fff;"/>
 			</div>
 			<!-- Logo ends -->
 
@@ -256,7 +255,7 @@ session.setAttribute("url", url);
 							</div>
 						</li> -->
 						<li>
-							<i class="fa fa-circle-o text-danger"></i>
+							<i style="color:#fff;" class="fa fa-power-off"></i>
 							<div class="details">
 								<a style="color: white;" href="#" onclick="logout()">Logout</a>
 							</div>

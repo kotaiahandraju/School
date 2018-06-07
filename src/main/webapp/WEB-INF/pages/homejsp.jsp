@@ -51,24 +51,11 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 											    <div class="col-sm-6">
-												    <form:select path="boardId" tabindex="1" class="form-control" required="true"  onchange="classNameFilter(this.id);">
+												    <form:select path="boardId" tabindex="1" class="form-control" required="true"  onchange="classNameFilter();">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
 													<span class="boardId_error" id="boardId_error"></span>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
-											    <div class="col-sm-6">
-												    <form:select path="mediumId" tabindex="2" class="form-control" required="true">
-														<form:option value="">-- Choose Medium --</form:option>
-														<form:options items="${mediam}"></form:options>
-													</form:select>
-<%-- 													<form:input path="mediumId" class="form-control onlyCharacters" tabindex="2" placeholder="Enter Medium" required="true"/> --%>
-													<span class="mediumId_error" id="mediumId_error"></span>
 												</div>
 											</div>
 										</div>
@@ -96,6 +83,19 @@
 													</form:select>
 <%-- 													<form:input path="section" class="form-control" tabindex="4" placeholder="Enter Section" required="true"/> --%>
 													<span class="section_error" id="section_error"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
+											    <div class="col-sm-6">
+												    <form:select path="mediumId" tabindex="2"  onchange="mediumFilter()" class="form-control" required="true">
+														<form:option value="">-- Choose Medium --</form:option>
+<%-- 														<form:options items="${mediam}"></form:options> --%>
+													</form:select>
+<%-- 													<form:input path="mediumId" class="form-control onlyCharacters" tabindex="2" placeholder="Enter Medium" required="true"/> --%>
+													<span class="mediumId_error" id="mediumId_error"></span>
 												</div>
 											</div>
 										</div>
