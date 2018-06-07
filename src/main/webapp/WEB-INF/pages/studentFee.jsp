@@ -135,7 +135,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divAdmissionFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 												<span id="admissionNetFee"></span>
@@ -145,7 +145,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divTutionFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
 												<span id="tutionNetFee"></span>
@@ -155,7 +155,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divTransportationFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 												<span id="transportationNetFee"></span>
@@ -165,7 +165,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divHostelFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 												<span id="hostelNetFee"></span>
@@ -175,7 +175,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-									<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+									<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divStationaryFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 												<span id="stationaryNetFee"></span>
@@ -785,15 +785,63 @@ width:200px !important;
 			success : function(response) {
 				// 				 alert(response.totalFee); 
 				
-				if (response.dueFee == null) {
+				if (response.dueFee == null || response.dueFee == 0) {
 					$("#displayId").text("Due Fee: " + response.netFee);
+															
+					$("#admissionFee").prop("disabled", true);
+					$("#tutionFee").prop("disabled", true);
+					$("#transportationFee").prop("disabled", true);
+					$("#hostelFee").prop("disabled", true);
+					$("#stationaryFee").prop("disabled", true);
+					
+					$("#divAdmissionFee").hide();  
+					$("#divTutionFee").hide();
+					$("#divTransportationFee").hide();
+					$("#divHostelFee").hide();
+					$("#divStationaryFee").hide();
+					
 				} else {
 					$("#displayId").text("Due Fee: " + response.dueFee);
-					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);  
+					
+					if(response.admissionFee == 0){
+						$("#admissionFee").prop("disabled", true);
+						$("#divAdmissionFee").hide();  
+					}
+					
+					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+					
+					if(response.tutionFee == 0){
+						
+						$("#tutionFee").prop("disabled", true);
+						$("#divTutionFee").hide();
+					}
+					
 					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+					
+					if(response.transportationFee == 0){
+						
+						$("#transportationFee").prop("disabled", true);
+						$("#divTransportationFee").hide();
+						
+					}
 					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+					
+					if(response.hostelFee == 0){
+						
+						$("#hostelFee").prop("disabled", true);
+						$("#divHostelFee").hide();
+					}
+					
 					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+					
+					if(response.stationaryFee == 0){
+						
+						$("#stationaryFee").prop("disabled", true);
+						$("#divStationaryFee").hide();
+					}
+					
 					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
+					
 					
 					admissionFee1 = response.admissionFee;
 					tutionFee1 = response.tutionFee;

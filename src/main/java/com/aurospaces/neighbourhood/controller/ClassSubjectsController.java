@@ -90,7 +90,7 @@ public class ClassSubjectsController {
 				System.out.println("------------------------"+classSubjectBean.getId());
 				if(classSubjectBean.getId()==0) {
 					objAddClassSubjectDao.save(classSubjectBean);
-					session.setAttribute("message", "Section Created Successfully.");
+					session.setAttribute("message", "Successfully subject  created for class");
 				}else {
 					objAddClassSubjectDao.save(classSubjectBean);
 					session.setAttribute("message", "Update sucessfully.");

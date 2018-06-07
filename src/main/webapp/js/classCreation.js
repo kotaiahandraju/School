@@ -28,8 +28,10 @@ $("#cls-form").validate(
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
 			    $("#cls-form").removeClass("has-error");
+			    $("#id").val(0);
 			    $("#boardId").val('');
 			    $("#className").val('');
+				$("#submitId").val("Submit");
 			    $("#cls-form").addClass('form-horizontal');
 			  });
 });

@@ -41,12 +41,12 @@ $("#cls-form").validate(
 
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
-			    $("#cls-form").removeClass("has-error");6
+			    $("#cls-form").removeClass("has-error");
+			    $("#id").val(0);
 			    $("#boardId").val('');
-			    $("#mediumId").val('');
-			    $("#className").val('');
-			    $("#section").val('');
-			    $("#fee").val('');
+			    $("#classId").val('');
+			    $("#subjectId").val('');
+			    $("#submitId").val("Submit");
 			    $("#cls-form").addClass('form-horizontal');
 			  });
 });

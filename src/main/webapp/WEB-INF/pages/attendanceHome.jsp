@@ -118,7 +118,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 														message=(String)session.getAttribute("message");
 												        if(message!=null)
 												        {
-															out.println("<span class='blog-title animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
+															out.println("<span class='blog-title animated fadeOut' style='animation-iteration-count:1;animation-duration:8s;color: red;'>"+message+"</span>");
 															session.setAttribute("message", null);
 														}
 											        %>
