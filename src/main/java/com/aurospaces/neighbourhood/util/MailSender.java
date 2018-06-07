@@ -36,70 +36,70 @@ public class MailSender {
             String subject, String message, List<File> attachedFiles, ServletContext objContext2)
                     throws AddressException, MessagingException, IOException {
     	InputStream input = null;
-    	 Properties properties = new Properties();
-    	 String propertiespath = objContext2.getRealPath("Resources" +File.separator+"DataBase.properties");
+   	 Properties properties = new Properties();
+   	 String propertiespath = objContext2.getRealPath("Resources" +File.separator+"DataBase.properties");
 			input = new FileInputStream(propertiespath);
 			// load a properties file
 			properties.load(input);
-		String username = properties.getProperty("usermail");
-		String password= properties.getProperty("mailpassword");
+		final String username = properties.getProperty("usermail");
+		final String password= properties.getProperty("mailpassword");
 		String host= properties.getProperty("host");
 		String port= properties.getProperty("port");
-        // sets SMTP server properties
-       
-        properties.put("mail.smtp.host",host);
-        properties.put("mail.smtp.port",port);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.user",username);
-        properties.put("mail.password",password);
- 
-        // creates a new session with an authenticator
-        Authenticator auth = new Authenticator() {
-            public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username,password);
-            }
-        };
-        Session session = Session.getInstance(properties, auth);
- 
-        // creates a new e-mail message
-        Message msg = new MimeMessage(session);
- 
-        msg.setFrom(new InternetAddress(username));
-        InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
-        msg.setRecipients(Message.RecipientType.TO, toAddresses);
-        msg.setSubject(subject);
-        msg.setSentDate(new Date());
- 
-        // creates message part
-        MimeBodyPart messageBodyPart = new MimeBodyPart();
-        messageBodyPart.setContent(message, "text/html");
- 
-        // creates multi-part
-        Multipart multipart = new MimeMultipart();
-        multipart.addBodyPart(messageBodyPart);
- 
-        // adds attachments
-        if (attachedFiles != null && attachedFiles.size() > 0) {
-            for (File aFile : attachedFiles) {
-                MimeBodyPart attachPart = new MimeBodyPart();
- 
-                try {
-                    attachPart.attachFile(aFile);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
- 
-                multipart.addBodyPart(attachPart);
-            }
-        }
- 
-        // sets the multi-part as e-mail's content
-        msg.setContent(multipart);
- 
-        // sends the e-mail
-        Transport.send(msg);
-    }
+       // sets SMTP server properties
+      
+       properties.put("mail.smtp.host",host);
+       properties.put("mail.smtp.port",port);
+       properties.put("mail.smtp.auth", "true");
+       properties.put("mail.smtp.starttls.enable", "true");
+       properties.put("mail.user",username);
+       properties.put("mail.password",password);
+
+       // creates a new session with an authenticator
+       Authenticator auth = new Authenticator() {
+           public PasswordAuthentication getPasswordAuthentication() {
+               return new PasswordAuthentication(username,password);
+           }
+       };
+       Session session = Session.getInstance(properties, auth);
+
+       // creates a new e-mail message
+       Message msg = new MimeMessage(session);
+
+       msg.setFrom(new InternetAddress(username));
+       InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
+       msg.setRecipients(Message.RecipientType.TO, toAddresses);
+       msg.setSubject(subject);
+       msg.setSentDate(new Date());
+
+       // creates message part
+       MimeBodyPart messageBodyPart = new MimeBodyPart();
+       messageBodyPart.setContent(message, "text/html");
+
+       // creates multi-part
+       Multipart multipart = new MimeMultipart();
+       multipart.addBodyPart(messageBodyPart);
+
+       // adds attachments
+       if (attachedFiles != null && attachedFiles.size() > 0) {
+           for (File aFile : attachedFiles) {
+               MimeBodyPart attachPart = new MimeBodyPart();
+
+               try {
+                   attachPart.attachFile(aFile);
+               } catch (IOException ex) {
+                   ex.printStackTrace();
+               }
+
+               multipart.addBodyPart(attachPart);
+           }
+       }
+
+       // sets the multi-part as e-mail's content
+       msg.setContent(multipart);
+
+       // sends the e-mail
+       Transport.send(msg);
+   }
     
 //   public static void main(String [] a)throws Exception
 //   {
