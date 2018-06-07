@@ -169,6 +169,7 @@ function displayTable(listOrders) {
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					 /* alert(response); */  
 					var optionsForClass = "";
@@ -200,6 +201,7 @@ function displayTable(listOrders) {
 				url : "getSectionFilter.json",
 				data : "boardId=" + boardId+"&classId="+classId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					 /* alert(response); */  
 					var optionsForClass = "";
@@ -232,6 +234,7 @@ function displayTable(listOrders) {
 				url : "getMediumFilter.json",
 				data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					 /* alert(response); */  
 					var optionsForClass = "";

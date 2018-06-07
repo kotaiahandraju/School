@@ -106,12 +106,15 @@ $(function(){
 			$('#facultyId').trigger("chosen:updated");
 			$('#boardName').val(serviceUnitArray[id].boardId);
 			$('#boardName').trigger("chosen:updated");
-			$('#medium').val(serviceUnitArray[id].mediumId);
-			$('#medium').trigger("chosen:updated");
+			classNameFilter();
 			$('#className').val(serviceUnitArray[id].classId);
 			$('#className').trigger("chosen:updated");
+			sectionFilter();
 			$('#section').val(serviceUnitArray[id].sectionId);
 			$('#section').trigger("chosen:updated");
+			mediumFilter();
+			$('#medium').val(serviceUnitArray[id].mediumId);
+			$('#medium').trigger("chosen:updated");
 			$('#subject').val(serviceUnitArray[id].subjectId);
 			$('#subject').trigger("chosen:updated");
 			$("#submitId").val("Update");
@@ -194,6 +197,7 @@ $(function(){
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 //	 				  alert(response);  
 					var optionsForClass = "";
@@ -230,6 +234,7 @@ $(function(){
 				url : "getSectionFilter.json",
 				data : "boardId=" + boardId+"&classId="+classId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					 /* alert(response); */  
 					var optionsForClass = "";
@@ -260,6 +265,7 @@ $(function(){
 			var boardId = $("#boardName").val();
 			var classId = $("#className").val();
 			var sectionId = $("#section").val();
+			
 			if(boardId.length !=0 && classId.length != 0 &&  sectionId.length != 0){
 //				 $('#loadAjax').show();
 			$.ajax({
@@ -267,6 +273,7 @@ $(function(){
 				url : "getMediumFilter.json",
 				data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					 /* alert(response); */  
 					var optionsForClass = "";

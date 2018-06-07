@@ -131,12 +131,16 @@ function displayTable(listOrders) {
 		$("#id").val(serviceUnitArray[id].classId)
 		$('#boardId').val(serviceUnitArray[id].borderId);
 		$('#boardId').trigger("chosen:updated");
+		classNameFilter();
 		$('#className').val(serviceUnitArray[id].className);
 		$('#className').trigger("chosen:updated");
-		$('#mediumId').val(serviceUnitArray[id].mediamId);
-		$('#mediumId').trigger("chosen:updated");
+		sectionFilter();
 		$('#section').val(serviceUnitArray[id].section);
 		$('#section').trigger("chosen:updated");
+		mediumFilter();
+		$('#mediumId').val(serviceUnitArray[id].mediamId);
+		$('#mediumId').trigger("chosen:updated");
+		
 		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
 		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
@@ -144,6 +148,7 @@ function displayTable(listOrders) {
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#submitId").val("Update");
 		$("#headId").text("Edit Class");
+		$(window).scrollTop($('#boardId').offset().top);
 	}
 	
 	
@@ -191,7 +196,7 @@ function displayTable(listOrders) {
 	}
 	
 	
-	function classNameFilter(id){
+	function classNameFilter(){
 		var boardId = $("#boardId").val();
 		if(boardId.length !=0){
 			$('#loadAjax').show();
@@ -200,6 +205,7 @@ function displayTable(listOrders) {
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -238,6 +244,7 @@ function displayTable(listOrders) {
 			url : "getSectionFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -264,3 +271,32 @@ function displayTable(listOrders) {
 		$('#loadAjax').hide();
 		}
 	} 
+	
+	function mediumFilter() {
+		var boardId = $("#boardId").val();
+		var classId = $("#className").val();
+		var sectionId = $("#section").val();
+		
+		if (boardId.length != 0) {
+			$.ajax({
+				type : "POST",
+				url : "getMediumFilter.json",
+				data : "boardId=" + boardId + "&classId=" + classId
+						+ "&sectionId=" + sectionId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					/* alert(response); */
+					var optionsForClass = "";
+					optionsForClass = $("#mediumId").empty();
+					optionsForClass
+							.append(new Option("-- Choose Medium --", ""));
+					$.each(response, function(i, tests) {
+						var id = tests.id;
+						var mediumName = tests.mediumName;
+						optionsForClass.append(new Option(mediumName, id));
+					});
+				}
+			});
+		}
+	}

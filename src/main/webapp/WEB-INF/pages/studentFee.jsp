@@ -594,8 +594,7 @@ width:200px !important;
 		}
 	}
 	
-	var clsid='';
-	var secid='';
+	
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].id;
 		
@@ -652,6 +651,7 @@ width:200px !important;
 				type : "POST",
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
+				async:false,
 				success : function(response) {
 					
 					var optionsForClass = "";
@@ -665,7 +665,6 @@ width:200px !important;
 					
 				}
 			});
-			if(clsid!='') $("#className").val(clsid).trigger('change');
 	}
 	function sectionFilter() {
 		var boardId = $("#boardName").val();
@@ -676,6 +675,7 @@ width:200px !important;
 				url : "getSectionFilter.json",
 				data : "boardId=" + boardId + "&classId=" + classId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -688,7 +688,6 @@ width:200px !important;
 					});
 				}
 			});
-			if(secid!='') $("#section").val(secid).trigger('change');
 		}
 	}
 	function mediumFilter() {
@@ -702,6 +701,7 @@ width:200px !important;
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -729,6 +729,7 @@ width:200px !important;
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId + "&mediumId=" + mediumId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					// 				 alert(response);  
 					var optionsForClass = "";
