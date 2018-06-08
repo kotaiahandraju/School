@@ -89,8 +89,7 @@ th{text-align: center;}
 	</head>  
 
 	<body>
-	<%-- 
-	<%-- <c:if test="${rolId=='2'}">
+	 <c:if test="${rolId=='2'}">
 	<script type="text/javascript">
 	var isClick = 'No';
 	window.setTimeout(function() {
@@ -98,9 +97,9 @@ th{text-align: center;}
 	        $(this).remove(); 
 	    });
 	}, 5000);</script>
+	</c:if>
 	
-	<c:if test="${rolId=='2'}">
->>>>>>> branch 'master' of https://github.com/kotaiahandraju/School.git
+	<%-- <c:if test="${rolId=='2'}">
  <div id='menu'>
 				<ul>
 					<li class="">
@@ -111,8 +110,8 @@ th{text-align: center;}
 					</li>
 				</ul>
 </div>				
-</c:if> 
---%>
+</c:if>  --%>
+
 <%
 String url =request.getScheme() + "://" + request.getServerName() +      ":" +   request.getServerPort() +  request.getContextPath();
 session.setAttribute("url", url);
