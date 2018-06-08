@@ -89,15 +89,16 @@ th{text-align: center;}
 	</head>  
 
 	<body>
-	 <c:if test="${rolId=='2'}">
+	
 	<script type="text/javascript">
 	var isClick = 'No';
 	window.setTimeout(function() {
 	    $(".msgcss").fadeTo(500, 0).slideUp(500, function(){
 	        $(this).remove(); 
 	    });
-	}, 5000);</script>
-	</c:if>
+	}, 5000);
+	</script>
+	
 	
 	<%-- <c:if test="${rolId=='2'}">
  <div id='menu'>
