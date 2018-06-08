@@ -58,9 +58,9 @@ public class BaseSectionDao{
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
 	ps.setTimestamp(1, createdTime);
 ps.setTimestamp(2, updatedTime);
-ps.setString(3, objClassBean.getBoardId());
+ps.setString(3, objClassBean.getSection());
 ps.setString(4, objClassBean.getClassId());
-ps.setString(5, objClassBean.getSection());
+ps.setString(5, objClassBean.getBoardId());
 
 							return ps;
 						}

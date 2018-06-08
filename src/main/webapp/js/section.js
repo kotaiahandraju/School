@@ -83,7 +83,7 @@ function displayTable(listOrders) {
 	}
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].classId;
-		$("#id").val(serviceUnitArray[id].classId)
+		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
 		$('#boardId').trigger("chosen:updated");
 		$('#classId').val(serviceUnitArray[id].classId);

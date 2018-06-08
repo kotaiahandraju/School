@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
@@ -65,34 +66,71 @@ public class FacultyController {
 	
 	
 	@RequestMapping(value = "/facultySubmit")
-	public String facultySubmit(@ModelAttribute("packCmd") FacultyBean facultybean, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String facultySubmit(@ModelAttribute("packCmd") FacultyBean facultybean, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans =null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		System.out.println(facultybean.getName());
-		FacultyBean objfacultyBean =null;
+		FacultyBean listOrderBeans1 =null;
 		try{
 		
 			
 			
 			int id = 0;
-			id = facultybean.getId();
-			objfacultyBean=	faculty.getExistingOrNot(facultybean);
-			 if(id != 0 ){
-				 session.setAttribute("message", "Sucessfully Faculty is Updated");
+			listOrderBeans1=faculty.getExistingOrNot(facultybean);
+			
+			
+			 int dummyId = 0;
+				if (listOrderBeans1 != null) {
+					dummyId = listOrderBeans1.getId();
+				}
+				if (facultybean.getId() != 0) {
+					id = facultybean.getId();
+					if (id == dummyId || listOrderBeans1 == null) {
+
+						faculty.save(facultybean);
+						redir.addFlashAttribute("msg", "Record Updated Successfully");
+						redir.addFlashAttribute("cssMsg", "warning");
+					} else {
+						redir.addFlashAttribute("msg", "Already Record Exist");
+						redir.addFlashAttribute("cssMsg", "danger");
+					}
+				}
+				if (facultybean.getId() == 0 && listOrderBeans1 == null) {
 					faculty.save(facultybean);
+
+					redir.addFlashAttribute("msg", "Record Inserted Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
+				}
+				if (facultybean.getId() == 0 && listOrderBeans1 != null) {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			
+			
+			
+			
+			/* if(id != 0 ){
+//				 session.setAttribute("message", "Sucessfully Faculty is Updated");
+				
+					faculty.save(facultybean);
+					 redir.addFlashAttribute("msg", " Successfully Faculty Updated");
+						redir.addFlashAttribute("cssMsg", "warning");
 			 }else{
 			if(objfacultyBean == null ){
 				faculty.save(facultybean);
-				session.setAttribute("message", "Successfully Faculty is Created");
-				 System.out.println("class not exist");
+//				session.setAttribute("message", "Successfully Faculty is Created");
+				 redir.addFlashAttribute("msg", " Successfully Faculty Created");
+					redir.addFlashAttribute("cssMsg", "success");
 			}else {
 				System.out.println("exist");
-				session.setAttribute("message", "Already Existed Record");
+//				session.setAttribute("message", "Already Existed Record");
+				 redir.addFlashAttribute("msg", "Faculty Already Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
 			}
 			
-			 }
+			 }*/
 			
 			
 			listOrderBeans = faculty.getallFaculty();
@@ -176,7 +214,7 @@ public class FacultyController {
 	
 	
 	@RequestMapping(value = "/addFacultySubjects")
-	public String addFacultySubjects(@ModelAttribute("packCmd") FacultySubjectsBean facultySubjectBean, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addFacultySubjects(@ModelAttribute("packCmd") FacultySubjectsBean facultySubjectBean, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -184,19 +222,55 @@ public class FacultyController {
 		System.out.println(facultySubjectBean.getName());
 		
 		try{
-			int id= facultySubjectBean.getId();
+			int id=0;
+			FacultySubjectsBean listOrderBeans1 = objfacultysubjectDao.facultySubjectExistOrNot(facultySubjectBean);
+			int dummyId = 0;
+			if (listOrderBeans1 != null) {
+				dummyId = listOrderBeans1.getId();
+			}
+			if (facultySubjectBean.getId() != 0) {
+				id = facultySubjectBean.getId();
+				if (id == dummyId || listOrderBeans1 == null) {
+
+					objfacultysubjectDao.save(facultySubjectBean);
+					redir.addFlashAttribute("msg", "Record Updated Successfully");
+					redir.addFlashAttribute("cssMsg", "warning");
+				} else {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			}
+			if (facultySubjectBean.getId() == 0 && listOrderBeans1 == null) {
+				objfacultysubjectDao.save(facultySubjectBean);
+
+				redir.addFlashAttribute("msg", "Record Inserted Successfully");
+				redir.addFlashAttribute("cssMsg", "success");
+			}
+			if (facultySubjectBean.getId() == 0 && listOrderBeans1 != null) {
+				redir.addFlashAttribute("msg", "Already Record Exist");
+				redir.addFlashAttribute("cssMsg", "danger");
+			}
+			
+			
+			/*int id= facultySubjectBean.getId();
 			if(id != 0){
 				objfacultysubjectDao.save(facultySubjectBean);
-				session.setAttribute("message", "Successfully Faculty-Subject is Updated");
+//				session.setAttribute("message", "Successfully Faculty-Subject is Updated");
+				 redir.addFlashAttribute("msg", " Successfully Faculty-Subject is Updated");
+					redir.addFlashAttribute("cssMsg", "warning");
 			}else{
 				FacultySubjectsBean bean = objfacultysubjectDao.facultySubjectExistOrNot(facultySubjectBean);
 				if(bean == null){
 				objfacultysubjectDao.save(facultySubjectBean);
-				session.setAttribute("message", "Successfully Faculty-Subject is Created");
+//				session.setAttribute("message", "Successfully Faculty-Subject is Created");
+				redir.addFlashAttribute("msg", " Successfully Faculty-Subject is Created");
+				redir.addFlashAttribute("cssMsg", "success");
 				}else{
-					session.setAttribute("message", "Already Faculty-Subject is Exist");
+//					session.setAttribute("message", "Already Faculty-Subject is Exist");
+					redir.addFlashAttribute("msg", "Faculty-Subject Already Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}
-			}
+			}*/
 			
 			listOrderBeans = objfacultysubjectDao.getallFacultySubjects(null, null, null, null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
