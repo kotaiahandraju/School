@@ -1492,14 +1492,14 @@ try {
 			mobileNumber = objStudentBean.getMobile();
 			if(StringUtils.isNotBlank(mobileNumber)){
 				SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-            session.setAttribute("message", "Successfully SMS has been Sended");
+            session.setAttribute("message", "Successfully SMS has been Sent");
 			}
 		}
 		if(nid ==2){
 			toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
 			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null,objContext);
-			session.setAttribute("message", "Successfully Mail has been Sended");
+			session.setAttribute("message", "Successfully Mail has been Sent");
 			}
 			
 		}
