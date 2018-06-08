@@ -3,8 +3,11 @@ package com.aurospaces.neighbourhood.db.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.aurospaces.neighbourhood.bean.AddBoardBean;
+import com.aurospaces.neighbourhood.bean.StudentBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseSubjectDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 @Repository(value="SubjectDao")
@@ -21,8 +24,18 @@ String sql = objStringBuffer.toString();
 			return result;
 			
 		}
-	public List<Map<String, String>> existingOrNot(String name ){
-		 StringBuffer objStringBuffer = new StringBuffer();
+	public StudentBean existingOrNot(String name ){
+		
+		String sql = "select id ,name from boardname where name =? ";
+		List<StudentBean> retlist = jdbcTemplate.query(sql,
+		new Object[]{name},
+		ParameterizedBeanPropertyRowMapper.newInstance(StudentBean.class));
+		if(retlist.size() > 0)
+			return retlist.get(0);
+		return null;
+		
+		
+		/* StringBuffer objStringBuffer = new StringBuffer();
 		 objStringBuffer.append("select id ,name from subject where name ='"+name + "'");
 		
 String sql = objStringBuffer.toString();
@@ -30,7 +43,7 @@ String sql = objStringBuffer.toString();
 			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
-			return result;
+			return result;*/
 			
 		}
 }

@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.ClassCreationBean;
@@ -74,7 +75,7 @@ public class ClassSubjectsController {
 	
 	
 	@RequestMapping(value = "/saveClassSubject")
-	public String saveClassSubject(@ModelAttribute("classSubjectCmd") ClassSubjectBean classSubjectBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException
+	public String saveClassSubject(@ModelAttribute("classSubjectCmd") ClassSubjectBean classSubjectBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException
 	{
 		ClassSubjectBean listOrderBeans = null;
 		try {
@@ -84,16 +85,22 @@ public class ClassSubjectsController {
 //			System.out.println("---list---"+listOrderBeans.size());
 			if(listOrderBeans !=null ) {
 				
-				session.setAttribute("message", "Record already exist.");
+//				session.setAttribute("message", "Record already exist.");
+				redir.addFlashAttribute("msg", " Record already exist");
+				redir.addFlashAttribute("cssMsg", "danger");
 				
 			}else {
 				System.out.println("------------------------"+classSubjectBean.getId());
 				if(classSubjectBean.getId()==0) {
 					objAddClassSubjectDao.save(classSubjectBean);
-					session.setAttribute("message", "Successfully subject  created for class");
+//					session.setAttribute("message", "Successfully subject  created for class");
+					redir.addFlashAttribute("msg", " Successfully subject  created for class");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}else {
 					objAddClassSubjectDao.save(classSubjectBean);
-					session.setAttribute("message", "Update sucessfully.");
+//					session.setAttribute("message", "Update sucessfully.");
+					redir.addFlashAttribute("msg", " Successfully Subject  Updated For Class");
+					redir.addFlashAttribute("cssMsg", "warning");
 				}
 			}
 			

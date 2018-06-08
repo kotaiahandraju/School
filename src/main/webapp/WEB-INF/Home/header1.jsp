@@ -39,6 +39,21 @@
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
 <style type="text/css">
+
+
+.msgcss
+{
+/* 	width: 50% !important; */
+/* 	font-weight: bold; */
+	margin: auto;
+	text-align: center;
+	top: 3px !important;
+	left:0;
+	right:0;
+	position: fixed;
+	font-size: 14px;
+	z-index:99999;
+}
 span.has-error, #already_exist, .subjects_error
 {
   font-weight:normal;
@@ -76,6 +91,16 @@ th{text-align: center;}
 	<body>
 	<%-- 
 	<%-- <c:if test="${rolId=='2'}">
+	<script type="text/javascript">
+	var isClick = 'No';
+	window.setTimeout(function() {
+	    $(".msgcss").fadeTo(500, 0).slideUp(500, function(){
+	        $(this).remove(); 
+	    });
+	}, 5000);</script>
+	
+	<c:if test="${rolId=='2'}">
+>>>>>>> branch 'master' of https://github.com/kotaiahandraju/School.git
  <div id='menu'>
 				<ul>
 					<li class="">
@@ -131,6 +156,16 @@ session.setAttribute("url", url);
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">GRETNALTES</h1> -->
 				<img src="img/logoprint.png" class="img-responsive" style="margin-top:5px;height: 61px;background: #fff;"/>
 			</div>
+			
+			<c:if test="${not empty msg}">
+		<div class="msgcss row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="form-group">
+					<div class="alert alert-${cssMsg} fadeIn animated">${msg}</div>
+				</div>
+			</div>
+		</div>
+		</c:if>
 			<!-- Logo ends -->
 
 			<!-- Mini right nav starts -->

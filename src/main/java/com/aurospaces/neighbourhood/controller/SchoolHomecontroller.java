@@ -59,6 +59,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.AddBoardBean;
 import com.aurospaces.neighbourhood.bean.AttendanceBean;
@@ -292,7 +293,7 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/addclass")
-	public String addclass(@ModelAttribute("packCmd") ClassBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addclass(@ModelAttribute("packCmd") ClassBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -307,16 +308,20 @@ e.printStackTrace();
 			 double totalfee = objClassBean.getAdmissionFee()+objClassBean.getTransportationFee()+objClassBean.getHostelFee()+objClassBean.getTutionFee()+objClassBean.getStationaryFee();
 			 objClassBean.setFee(totalfee);
 			 if(id != 0 ){
-				 session.setAttribute("message", "Successfully fee Updated");
+//				 session.setAttribute("message", "Successfully fee Updated");
 				 objClassCreation.save(objClassBean);
+				 redir.addFlashAttribute("msg", "Record Updated Successfully");
+					redir.addFlashAttribute("cssMsg", "warning");
 			 }else{
 			if(classbean == null ){
 				objClassCreation.save(objClassBean);
-				session.setAttribute("message", "Successfully fee created");
-				 System.out.println("class not exist");
+//				session.setAttribute("message", "Successfully fee created");
+				redir.addFlashAttribute("msg", "Record Inserted Successfully");
+				redir.addFlashAttribute("cssMsg", "success");
+				
 			}else {
-				System.out.println("exist");
-				session.setAttribute("message", "Already Existed Record");
+				redir.addFlashAttribute("msg", "Record Alredy Exist");
+				redir.addFlashAttribute("cssMsg", "danger");
 			}
 			 }
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -412,7 +417,7 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/createClass")
-	public String createClass(@ModelAttribute("packCmd") ClassCreationBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException
+	public String createClass(@ModelAttribute("packCmd") ClassCreationBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException
 	{
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -423,27 +428,36 @@ e.printStackTrace();
 			listOrderBeans = objAddedClass.getClassCreationData();
 			 
 			int id = 0;
-			id = objClassBean.getId();
 			classbean=	objAddedClass.getExistingOrNot(objClassBean);
-			if(id != 0 )
-			{
-				session.setAttribute("message", "Class Updated Successfully");
-				objAddedClass.save(objClassBean);
+			
+			int dummyId = 0;
+			if (classbean != null) {
+				dummyId = classbean.getId();
 			}
-			else
-			{
-				if(classbean == null )
-				{
+			if (objClassBean.getId() != 0) {
+				id = objClassBean.getId();
+				if (id == dummyId || classbean == null) {
+
 					objAddedClass.save(objClassBean);
-					session.setAttribute("message", "Class Created Successfully");
-					System.out.println("class not exist");
-				}
-				else
-				{
-					System.out.println("exist");
-					session.setAttribute("message", "Already Record Exists");
+					redir.addFlashAttribute("msg", "Record Updated Successfully");
+					redir.addFlashAttribute("cssMsg", "warning");
+				} else {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}
+			if (objClassBean.getId() == 0 && classbean == null) {
+				objAddedClass.save(objClassBean);
+
+				redir.addFlashAttribute("msg", "Record Inserted Successfully");
+				redir.addFlashAttribute("cssMsg", "success");
+			}
+			if (objClassBean.getId() == 0 && classbean != null) {
+				redir.addFlashAttribute("msg", "Already Record Exist");
+				redir.addFlashAttribute("cssMsg", "danger");
+			}
+			
+			
 			if(listOrderBeans != null && listOrderBeans.size() > 0)
 			{
 				objectMapper = new ObjectMapper(); 
@@ -530,7 +544,7 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/addSection")
-	public String addSection(@ModelAttribute("packCmd") SectionCreationBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addSection(@ModelAttribute("packCmd") SectionCreationBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session,RedirectAttributes redir ) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -540,21 +554,53 @@ e.printStackTrace();
 			listOrderBeans = objSectionDao.getSectionCreationData();
 			 
 			int id = 0;
-			id = objClassBean.getId();
+			System.out.println("--id--"+objClassBean.getId());
 			 classbean=	objSectionDao.getExistingOrNot(objClassBean);
-			 if(id != 0 ){
-				 session.setAttribute("message", "Section Updated Successfully");
+			 
+			 int dummyId = 0;
+				if (classbean != null) {
+					dummyId = classbean.getId();
+				}
+				if (objClassBean.getId() != 0) {
+					id = objClassBean.getId();
+					System.out.println("--id--"+id+"----dummyId---"+dummyId);
+					if (id == dummyId || classbean == null) {
+
+						 objSectionDao.save(objClassBean);
+						redir.addFlashAttribute("msg", "Record Updated Successfully");
+						redir.addFlashAttribute("cssMsg", "warning");
+					} else {
+						redir.addFlashAttribute("msg", "Already Record Exist");
+						redir.addFlashAttribute("cssMsg", "danger");
+					}
+				}
+				if (objClassBean.getId() == 0 && classbean == null) {
+					 objSectionDao.save(objClassBean);
+
+					redir.addFlashAttribute("msg", "Record Inserted Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
+				}
+				if (objClassBean.getId() == 0 && classbean != null) {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			 
+			 
+/*			 if(id != 0 ){
+//				 session.setAttribute("message", "Section Updated Successfully");
 				 objSectionDao.save(objClassBean);
+				 redir.addFlashAttribute("msg", "Record Updated Successfully");
+					redir.addFlashAttribute("cssMsg", "warning");
 			 }else{
 			if(classbean == null ){
 				objSectionDao.save(objClassBean);
-				session.setAttribute("message", "Section Created Successfully");
-				 System.out.println("Section not exist");
+				redir.addFlashAttribute("msg", "Record Inserted Successfully");
+				redir.addFlashAttribute("cssMsg", "success");
 			}else {
-				System.out.println("exist");
-				session.setAttribute("message", "Already Record Exists");
+				redir.addFlashAttribute("msg", "Record Alredy Exist");
+				redir.addFlashAttribute("cssMsg", "danger");
 			}
-			 }
+			 }*/
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
@@ -682,27 +728,64 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/addMedium")
-	public String addMedium(@ModelAttribute("packCmd") MediumBean objMediumBean,ModelMap model,HttpServletRequest request, HttpSession session) throws JsonGenerationException, JsonMappingException, IOException
+	public String addMedium(@ModelAttribute("packCmd") MediumBean objMediumBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException
 	{
 		List<Map<String, String>> listOrderBeans = null;
-		List<Map<String, String>> listOrderBeans1 = null;
+		MediumBean listOrderBeans1 = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try
 		{
-			if(objMediumBean.getId() == 0){
+			
+			listOrderBeans1 = objMediumDao.existingOrNot(objMediumBean.getName());
+			int id = 0;
+			 int dummyId = 0;
+				if (listOrderBeans1 != null) {
+					dummyId = listOrderBeans1.getId();
+				}
+				if (objMediumBean.getId() != 0) {
+					id = objMediumBean.getId();
+					if (id == dummyId || listOrderBeans1 == null) {
+
+						objMediumDao.save(objMediumBean);
+						redir.addFlashAttribute("msg", "Record Updated Successfully");
+						redir.addFlashAttribute("cssMsg", "warning");
+					} else {
+						redir.addFlashAttribute("msg", "Already Record Exist");
+						redir.addFlashAttribute("cssMsg", "danger");
+					}
+				}
+				if (objMediumBean.getId() == 0 && listOrderBeans1 == null) {
+					objMediumDao.save(objMediumBean);
+
+					redir.addFlashAttribute("msg", "Record Inserted Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
+				}
+				if (objMediumBean.getId() == 0 && listOrderBeans1 != null) {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			
+			
+			/*if(objMediumBean.getId() == 0){
 				listOrderBeans1 = objMediumDao.existingOrNot(objMediumBean.getName());
 				if(listOrderBeans1.size() == 0){
 					objMediumDao.save(objMediumBean);
-					session.setAttribute("message", "Medium Created Successfully");
+//					session.setAttribute("message", "Medium Created Successfully");
+					redir.addFlashAttribute("msg", " Medium Created Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
 				}
 				else{
 					session.setAttribute("message", "Already Record Exists");
+					redir.addFlashAttribute("msg", " Already Record Exists");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}else{
 				objMediumDao.save(objMediumBean);
-				session.setAttribute("message", "Medium Updated Successfully");
-			}
+//				session.setAttribute("message", "Medium Updated Successfully");
+				redir.addFlashAttribute("msg", "Medium Updated Successfully");
+				redir.addFlashAttribute("cssMsg", "warning");
+			}*/
 			
 			
 			listOrderBeans = objMediumDao.getMedium();
@@ -796,7 +879,7 @@ e.printStackTrace();
 	}
 
 	@RequestMapping(value = "/addStudent")
-	public String addStudent(@ModelAttribute("packCmd") StudentBean objStudentBean,@RequestParam("imageName") MultipartFile file, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException, ParseException, AddressException, MessagingException {
+	public String addStudent(@ModelAttribute("packCmd") StudentBean objStudentBean,@RequestParam("imageName") MultipartFile file, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException, ParseException, AddressException, MessagingException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -891,15 +974,20 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 			 }
 			}
 			studentDao.save(objStudentBean);
-			session.setAttribute("message", "Successfully Student Profile is Updated");
+//			session.setAttribute("message", "Successfully Student Profile is Updated");
+			
 		}else{
 			StudentBean sbean = studentDao.duplicateCheckStudent(objStudentBean.getAdmissionNum());
 			if(sbean == null){
 			studentDao.save(objStudentBean);
-			session.setAttribute("message", "Successfully Student is Added");
+//			session.setAttribute("message", "Successfully Student is Added");
+			redir.addFlashAttribute("msg", " Student Added  Successfully");
+			redir.addFlashAttribute("cssMsg", "success");
 		
 			}else{
-				session.setAttribute("message", "Already Existed Record");
+//				session.setAttribute("message", "Already Existed Record");
+				redir.addFlashAttribute("msg", " Student Already Exist");
+				redir.addFlashAttribute("cssMsg", "danger");
 				return "redirect:studentHome";  
 			}
 		} 
@@ -924,10 +1012,6 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		String smsMessage = "Dear Parent,\nThanks for Registering with us.\nYour Login details,\nUsername: "+objStudentBean.getFatherName()+"\nPassword: "+randomNum;
 		if(StringUtils.isNotBlank(mobileNumber)){
 			SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-        URL url = new URL(requestUrl);
-        HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-        System.out.println(uc.getResponseMessage());
-        uc.disconnect();
 		}
 		 toAddress=  objStudentBean.getEmail();
 		if(StringUtils.isNotBlank(toAddress)){
@@ -2328,27 +2412,63 @@ try {
 	}
 	
 	@RequestMapping(value = "/addBoard")
-	public String addBoard(@ModelAttribute("packCmd") AddBoardBean objAddBoardBean,ModelMap model,HttpServletRequest request, HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addBoard(@ModelAttribute("packCmd") AddBoardBean objAddBoardBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
-		List<Map<String, String>> listOrderBeans1 = null;
+		AddBoardBean listOrderBeans1 = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
 			System.out.println("addBoardaddBoardaddBoardaddBoard");
-			if(objAddBoardBean.getId() == 0){
+			listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
+			int id = 0;
+			 int dummyId = 0;
+				if (listOrderBeans1 != null) {
+					dummyId = listOrderBeans1.getId();
+				}
+				if (objAddBoardBean.getId() != 0) {
+					id = objAddBoardBean.getId();
+					if (id == dummyId || listOrderBeans1 == null) {
+
+						addBoardDao.save(objAddBoardBean);
+						redir.addFlashAttribute("msg", "Record Updated Successfully");
+						redir.addFlashAttribute("cssMsg", "warning");
+					} else {
+						redir.addFlashAttribute("msg", "Already Record Exist");
+						redir.addFlashAttribute("cssMsg", "danger");
+					}
+				}
+				if (objAddBoardBean.getId() == 0 && listOrderBeans1 == null) {
+					addBoardDao.save(objAddBoardBean);
+
+					redir.addFlashAttribute("msg", "Record Inserted Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
+				}
+				if (objAddBoardBean.getId() == 0 && listOrderBeans1 != null) {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			
+			
+			/*if(objAddBoardBean.getId() == 0){
 				listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
 				if(listOrderBeans1.size() == 0){
 					addBoardDao.save(objAddBoardBean);
-					session.setAttribute("message", "Successfully Board is Created");
+//					session.setAttribute("message", "Successfully Board is Created");
+					redir.addFlashAttribute("msg", " Board Created  Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
 				}
 				else{
-					session.setAttribute("message", "Already Existed Record");
+//					session.setAttribute("message", "Already Existed Record");
+					redir.addFlashAttribute("msg", " Board Already  Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}else{
 				addBoardDao.save(objAddBoardBean);
-				session.setAttribute("message", "Successfully Board is Updated");
-			}
+//				session.setAttribute("message", "Successfully Board is Updated");
+				redir.addFlashAttribute("msg", " Board Updated  Successfully");
+				redir.addFlashAttribute("cssMsg", "warning");
+			}*/
 			
 			
 			listOrderBeans = addBoardDao.getBoard();
@@ -2440,26 +2560,62 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/addSubject")
-	public String addSubject(@ModelAttribute("packCmd") StudentBean objStudentBean,ModelMap model,HttpServletRequest request, HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addSubject(@ModelAttribute("packCmd") StudentBean objStudentBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
-		List<Map<String, String>> listOrderBeans1 = null;
+		StudentBean listOrderBeans1 = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
-			if(objStudentBean.getId() == 0){
+			listOrderBeans1 = subjectDao.existingOrNot(objStudentBean.getName());
+			int id = 0;
+			 int dummyId = 0;
+				if (listOrderBeans1 != null) {
+					dummyId = listOrderBeans1.getId();
+				}
+				if (objStudentBean.getId() != 0) {
+					id = objStudentBean.getId();
+					if (id == dummyId || listOrderBeans1 == null) {
+
+						subjectDao.save(objStudentBean);
+						redir.addFlashAttribute("msg", "Record Updated Successfully");
+						redir.addFlashAttribute("cssMsg", "warning");
+					} else {
+						redir.addFlashAttribute("msg", "Already Record Exist");
+						redir.addFlashAttribute("cssMsg", "danger");
+					}
+				}
+				if (objStudentBean.getId() == 0 && listOrderBeans1 == null) {
+					subjectDao.save(objStudentBean);
+
+					redir.addFlashAttribute("msg", "Record Inserted Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
+				}
+				if (objStudentBean.getId() == 0 && listOrderBeans1 != null) {
+					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("cssMsg", "danger");
+				}
+			
+			
+			/*if(objStudentBean.getId() == 0){
 				listOrderBeans1 = subjectDao.existingOrNot(objStudentBean.getName());
 				if(listOrderBeans1.size() == 0){
 					subjectDao.save(objStudentBean);
-					session.setAttribute("message", "Successfully Subject is Created");
+//					session.setAttribute("message", "Successfully Subject is Created");
+					redir.addFlashAttribute("msg", " Subject Created  Successfully");
+					redir.addFlashAttribute("cssMsg", "success");
 				}
 				else{
-					session.setAttribute("message", "Already Existed Record");
+//					session.setAttribute("message", "Already Existed Record");
+					redir.addFlashAttribute("msg", "Already Existed Record");
+					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}else{
 				subjectDao.save(objStudentBean);
-				session.setAttribute("message", "Successfully Subject is Updated");
-			}
+//				session.setAttribute("message", "Successfully Subject is Updated");
+				redir.addFlashAttribute("msg", "Subject Updated Successfully");
+				redir.addFlashAttribute("cssMsg", "warning");
+			}*/
 			
 			
 			listOrderBeans = subjectDao.getSubjects();
