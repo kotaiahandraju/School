@@ -112,11 +112,11 @@ $(function(){
 		    altmobile:{number: 'only numbers'},
 		    email:{email: 'Valid Email'},
 		    previousInstitue:{lettersonly: 'Previous Institute Name'},
-		    admissionFee: {required: 'Admission Fee Amount', number: 'Numeric Characters'},
-			tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
-			transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
-			hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
-			stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
+		    admissionFee: {required: 'Admission Fee', number: 'Numeric Characters'},
+			tutionFee: {required: 'Tuition Fee', number: 'Numeric Characters'},
+			transportationFee: {required: 'Transportation Fee', number: 'Numeric Characters'},
+			hostelFee: {required: 'Hostel Fee', number: 'Numeric Characters'},
+			stationaryFee: {required: 'Stationary Fee', number: 'Numeric Characters'},
 //		    fileImage:{extension: 'Please Choose Only .png or .jpg'},
 	/* 		bgroup:{required: 'Please Enter Blood Group'},
 		    religion:{required: ' Choose Religion'},
@@ -249,6 +249,13 @@ $(function(){
 		 $('#buspesility').on('change', function() {
 
 				if ($(this).val() !== "Yes") {
+					
+					if($('#acomitation').val() !== "Hostel"){
+						
+						var fee =$('#totalFee').val()  - $('#transportationFee').val() -  $('#hostelFee').val();
+						$('#totalFee').val(fee);
+						
+					}else{
 
 					var fee =$('#totalFee').val()  - $('#transportationFee').val();
 
@@ -259,6 +266,7 @@ $(function(){
 					
 					$('#transportationDiv').hide();
 					$('#busRouteDiv').hide();
+					}
 				} else {
 					var fee = parseInt($('#totalFee').val())  + parseInt( $('#transportationFee').val());
 

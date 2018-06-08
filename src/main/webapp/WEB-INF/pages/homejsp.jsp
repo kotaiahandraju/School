@@ -65,7 +65,7 @@
 											    <div class="col-sm-6">
 												    <form:select path="className" tabindex="3" class="form-control" required="true" onchange="sectionFilter();">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="className" class="form-control" tabindex="3" placeholder="Enter Class/Branch" required="true"/> --%>
 													<span class="className_error" id="className_error"></span>
@@ -77,9 +77,9 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 											    <div class="col-sm-6">
-												    <form:select path="section" tabindex="4" class="form-control" required="true">
+												    <form:select path="section" tabindex="4"   class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-														<form:options items="${allSection}"></form:options>
+<%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
 <%-- 													<form:input path="section" class="form-control" tabindex="4" placeholder="Enter Section" required="true"/> --%>
 													<span class="section_error" id="section_error"></span>
@@ -90,9 +90,9 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
 											    <div class="col-sm-6">
-												    <form:select path="mediumId" tabindex="2"  onchange="mediumFilter()" class="form-control" required="true">
+												    <form:select path="mediumId" tabindex="2"  class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
-<%-- 														<form:options items="${mediam}"></form:options> --%>
+														<form:options items="${mediam}"></form:options>
 													</form:select>
 <%-- 													<form:input path="mediumId" class="form-control onlyCharacters" tabindex="2" placeholder="Enter Medium" required="true"/> --%>
 													<span class="mediumId_error" id="mediumId_error"></span>
@@ -103,16 +103,16 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 											    <div class="col-sm-6">
-													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Admission Fee for the Class" required="true"/>
+													<form:input path="admissionFee" class="form-control numericOnly" tabindex="5" placeholder="Admission Fee" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Tution Fees</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Tuition Fees</label>
 											    <div class="col-sm-6">
-													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Tution Fee for the Class" required="true"/>
+													<form:input path="tutionFee" class="form-control numericOnly" tabindex="5" placeholder="Tuition Fee" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -121,7 +121,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
 											    <div class="col-sm-6">
-													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Transportation Fee for the Class" required="true"/>
+													<form:input path="transportationFee" class="form-control numericOnly" tabindex="5" placeholder="Transportation Fee" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -130,7 +130,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 											    <div class="col-sm-6">
-													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Hostel Hostel Fee for the Class" required="true"/>
+													<form:input path="hostelFee" class="form-control numericOnly" tabindex="5" placeholder="Hostel Fee" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
@@ -139,7 +139,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 											    <div class="col-sm-6">
-													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Stationary Fee for the Class" required="true"/>
+													<form:input path="stationaryFee" class="form-control numericOnly" tabindex="5" placeholder="Stationary Fee" required="true"/>
 													<span class="fee_error" id="fee_error"></span>
 												</div>
 											</div>
