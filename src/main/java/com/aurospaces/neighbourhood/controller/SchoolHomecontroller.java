@@ -1012,10 +1012,6 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		String smsMessage = "Dear Parent,\nThanks for Registering with us.\nYour Login details,\nUsername: "+objStudentBean.getFatherName()+"\nPassword: "+randomNum;
 		if(StringUtils.isNotBlank(mobileNumber)){
 			SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-        URL url = new URL(requestUrl);
-        HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-        System.out.println(uc.getResponseMessage());
-        uc.disconnect();
 		}
 		 toAddress=  objStudentBean.getEmail();
 		if(StringUtils.isNotBlank(toAddress)){
