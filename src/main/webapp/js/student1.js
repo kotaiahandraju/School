@@ -225,21 +225,38 @@ $(function(){
 
 		if ($(this).val() !== "Hostel" && $('#buspesility').val() !== "Yes") {
 
-			var fee = totalFee - $('#hostelFee').val() - $('#transportationFee').val() ;
+			var fee = totalFee - $('#hostelFee').val() - $('#transportationFee').val();
 
 			$('#totalFee').val(fee);
 
 			$('#hostelFee').prop("disabled", true);
 			$('#hostleDiv').hide();
-			
 			$('#transportationFee').prop("disabled", true);
 			$('#busroute').prop("disabled", true);
 			
 			$('#transportationDiv').hide();
 			$('#busRouteDiv').hide();
+			
+			
 		} else {
 			
-			var fee =  totalfee ;
+			if( $('#buspesility').val() !== "Yes"){
+				
+				var fee = totalFee  - $('#transportationFee').val();
+				$('#totalFee').val(fee);
+				
+				$('#transportationFee').prop("disabled", true);
+				$('#busroute').prop("disabled", true);
+				
+				$('#transportationDiv').hide();
+				$('#busRouteDiv').hide();
+				
+				$('#hostelFee').prop("disabled", false);
+				$('#hostleDiv').show();
+				
+			}else{
+			
+			var fee =  totalFee ;
 
 			$('#totalFee').val(fee);
 
@@ -252,42 +269,12 @@ $(function(){
 			
 			$('#transportationDiv').show();
 			$('#busRouteDiv').show();
-
+			}
 			
+						
 		}
-		
-			 }else{
-				 
-				 if ($(this).val() !== "Hostel") {
-
-						var fee = totalFee - $('#hostelFee').val() ;
-
-						$('#totalFee').val(fee);
-
-						$('#hostelFee').prop("disabled", true);
-						$('#hostleDiv').hide();
-						
-						
-					} else {
-						
-						var fee =  totalfee ;
-
-						$('#totalFee').val(fee);
-
-
-						$('#hostelFee').prop("disabled", false);
-						$('#hostleDiv').show();
-						
-						$('#transportationFee').prop("disabled", false);
-						$('#busroute').prop("disabled", false);
-						
-						$('#transportationDiv').show();
-						$('#busRouteDiv').show();
-
-						
-					}
-				 
 			 }
+		
 		// alert("You have Selected :: "+$(this).val());
 	});
 
@@ -327,21 +314,24 @@ $(function(){
 						
 					}else{
 						
-						/*var fee =  parseInt(totalFee) - $('#transportationFee').val();
-						$('#totalFee').val(fee);
-						
-						$('#transportationFee').prop("disabled", true);
-						$('#busroute').prop("disabled", true);
-						
-						$('#transportationDiv').hide();
-						$('#busRouteDiv').hide();*/
-					
-					
-					if($('#acomitation').val() !== "Hostel" && $('#acomitation').val() !== ""){
+							if($(this).val() !== "Yes"){
+								
+								var fee = totalFee - $('#transportationFee').val();
+
+								$('#totalFee').val(fee);
+									
+								$('#transportationFee').prop("disabled", true);
+								$('#busroute').prop("disabled", true);
+								
+								$('#transportationDiv').hide();
+								$('#busRouteDiv').hide();
+								
+							}else if($('#acomitation').val() !== "Hostel" && $('#acomitation').val() !== ""){
 						
 						$('#transportationFee').prop("disabled", false);
 						$('#transportationDiv').show();
-						
+						$('#busroute').prop("disabled", false);
+						$('#busRouteDiv').show();
 						var fee = totalFee - $('#hostelFee').val();
 
 						$('#totalFee').val(fee);
@@ -353,8 +343,11 @@ $(function(){
 						
 						$('#transportationFee').prop("disabled", false);
 						$('#transportationDiv').show();
+						
+						$('#busroute').prop("disabled", false);
+						$('#busRouteDiv').show();
 					
-					var fee = totalFee
+					var fee = totalFee ;
 
 					$('#totalFee').val(fee);
 
