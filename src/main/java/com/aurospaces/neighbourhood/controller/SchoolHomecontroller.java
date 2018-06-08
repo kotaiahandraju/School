@@ -426,19 +426,13 @@ e.printStackTrace();
 		try
 		{
 			listOrderBeans = objAddedClass.getClassCreationData();
-			 
 			int id = 0;
 			classbean=	objAddedClass.getExistingOrNot(objClassBean);
-			if(id != 0 && classbean == null)
-			{
-				session.setAttribute("message", "Class Updated Successfully");
-				objAddedClass.save(objClassBean);
-			
 			int dummyId = 0;
 			if (classbean != null) {
 				dummyId = classbean.getId();
-
 			}
+			
 			if (objClassBean.getId() != 0) {
 				id = objClassBean.getId();
 				if (id == dummyId || classbean == null) {
@@ -469,7 +463,7 @@ e.printStackTrace();
 				sJson =objectMapper.writeValueAsString(listOrderBeans);
 				request.setAttribute("allOrders1", sJson);
 			}
-		}}
+		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
