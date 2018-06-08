@@ -302,3 +302,38 @@ $(function(){
 //			$('#loadAjax').hide();
 			}
 		} 
+	 	
+	 	
+	 	function subjectFilter(){
+			var boardId = $("#boardName").val();
+			var classId = $("#className").val();
+			
+			if(boardId.length !=0 && classId.length != 0){
+			$.ajax({
+				type : "POST",
+				url : "getSubjectFilter2.json",
+				data : "boardId=" + boardId+"&classId="+classId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					 /* alert(response); */  
+					var optionsForClass = "";
+					optionsForClass = $("#subject").empty();
+					optionsForClass.append(new Option("-- Choose Subject --", ""));
+					$.each(response, function(i, tests) {
+						var id=tests.id;
+						var subjectName=tests.subjectName;
+						optionsForClass.append(new Option(subjectName, id));
+					});
+					$('#subject').trigger("chosen:updated");
+				},
+				error : function(e) {
+				},
+				statusCode : {
+					406 : function() {
+				
+					}
+				}
+			});
+			}
+		} 

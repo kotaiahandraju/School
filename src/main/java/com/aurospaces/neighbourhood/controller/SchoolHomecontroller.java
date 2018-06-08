@@ -1963,9 +1963,10 @@ e.printStackTrace();
 		String boardId = null;
 		String classId = null;
 		try{
+			System.out.println("boardId----"+boardId+"--classId- "+classId);
 		 boardId = request.getParameter("boardId");
 		 classId = request.getParameter("classId");
-		
+		System.out.println("boardId----"+boardId+"--classId- "+classId);
 //		filterBean =  objClassCreation.getSectionFilter(boardId,classId);
 		 filterBean =  objAddClassSubjectDao.getAllClassSubjectsName(boardId,classId);
 		ObjectMapper objmapper=new ObjectMapper();

@@ -74,7 +74,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
 												    <div class="col-sm-5">
-														<form:select path="className" tabindex="3" class="form-control" onchange="sectionFilter()" required="true">
+														<form:select path="className" tabindex="3" class="form-control" onchange="sectionFilter();subjectFilter()" required="true">
 															<form:option value="">-- Choose Class --</form:option>
 <%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
