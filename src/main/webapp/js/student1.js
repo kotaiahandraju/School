@@ -255,6 +255,24 @@ $(function(){
 				$('#hostleDiv').show();
 				
 			}else{
+				
+				if($(this).val() !== "Hostel"){
+					
+					
+					var fee = totalFee - $('#hostelFee').val();
+
+					$('#totalFee').val(fee);
+
+					$('#hostelFee').prop("disabled", true);
+					$('#hostleDiv').hide();
+					
+					$('#transportationFee').prop("disabled", false);
+					$('#busroute').prop("disabled", false);
+					
+					$('#transportationDiv').show();
+					$('#busRouteDiv').show();
+					
+				}else{
 			
 			var fee =  totalFee ;
 
@@ -269,6 +287,7 @@ $(function(){
 			
 			$('#transportationDiv').show();
 			$('#busRouteDiv').show();
+				}
 			}
 			
 						
