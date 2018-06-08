@@ -249,6 +249,13 @@ $(function(){
 		 $('#buspesility').on('change', function() {
 
 				if ($(this).val() !== "Yes") {
+					
+					if($('#acomitation').val() !== "Hostel"){
+						
+						var fee =$('#totalFee').val()  - $('#transportationFee').val() -  $('#hostelFee').val();
+						$('#totalFee').val(fee);
+						
+					}else{
 
 					var fee =$('#totalFee').val()  - $('#transportationFee').val();
 
@@ -259,6 +266,7 @@ $(function(){
 					
 					$('#transportationDiv').hide();
 					$('#busRouteDiv').hide();
+					}
 				} else {
 					var fee = parseInt($('#totalFee').val())  + parseInt( $('#transportationFee').val());
 

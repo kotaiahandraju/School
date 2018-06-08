@@ -50,7 +50,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Faculty Name</label>
 												    <div class="col-sm-5">
-														<form:select path="facultyId" tabindex="1" onchange="serviceFilter()" class="form-control" required="true">
+														<form:select path="facultyId" tabindex="1"  class="form-control" required="true">
 															<form:option value="" >-- Choose Faculty --</form:option>
 															<form:options items="${faculty}"></form:options>
 														</form:select>
@@ -62,7 +62,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 												    <div class="col-sm-5">
-														<form:select path="boardName" tabindex="2" onchange="classNameFilter()" class="form-control" required="true">
+														<form:select path="boardName" tabindex="2" onchange="classNameFilter(),serviceFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
 														</form:select>
@@ -76,7 +76,7 @@
 												    <div class="col-sm-5">
 														<form:select path="className" tabindex="3" class="form-control" onchange="sectionFilter()" required="true">
 															<form:option value="">-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 														<span class="className_error" id="className_error"></span>
 													</div>
@@ -88,7 +88,7 @@
 												    <div class="col-sm-5">
 														<form:select path="section" tabindex="4" class="form-control" onchange="mediumFilter()" required="true">
 															<form:option value="">-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
 														<span class="section_error" id="section_error"></span>
 													</div>
@@ -100,7 +100,7 @@
 												    <div class="col-sm-5">	
 														<form:select path="medium" tabindex="5" class="form-control"  required="true">
 															<form:option value="">-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 														<span class="medium_error" id="medium_error"></span>
 													</div>
@@ -112,7 +112,7 @@
 												    <div class="col-sm-5">
 														<form:select path="subject" tabindex="6" class="form-control" required="true">
 															<form:option value="">-- Choose Subject --</form:option>
-															<form:options items="${subject}"></form:options>
+<%-- 															<form:options items="${subject}"></form:options> --%>
 														</form:select>
 														<span class="subject_error" id="subject_error"></span>
 													</div>
