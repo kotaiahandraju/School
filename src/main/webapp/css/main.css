@@ -43,6 +43,12 @@ label {
     margin-bottom: 5px;
     font-weight: normal;
 }
+div.dataTables_wrapper div.dataTables_length select {
+    width: 49px;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 0px;
+}
 .panel-success>.panel-heading {
     color: #3c763d !important;
     background-color: #dff0d8 !important;

@@ -429,10 +429,15 @@ e.printStackTrace();
 			 
 			int id = 0;
 			classbean=	objAddedClass.getExistingOrNot(objClassBean);
+			if(id != 0 && classbean == null)
+			{
+				session.setAttribute("message", "Class Updated Successfully");
+				objAddedClass.save(objClassBean);
 			
 			int dummyId = 0;
 			if (classbean != null) {
 				dummyId = classbean.getId();
+
 			}
 			if (objClassBean.getId() != 0) {
 				id = objClassBean.getId();
@@ -464,7 +469,7 @@ e.printStackTrace();
 				sJson =objectMapper.writeValueAsString(listOrderBeans);
 				request.setAttribute("allOrders1", sJson);
 			}
-		}
+		}}
 		catch(Exception e)
 		{
 			e.printStackTrace();
@@ -1576,14 +1581,14 @@ try {
 			mobileNumber = objStudentBean.getMobile();
 			if(StringUtils.isNotBlank(mobileNumber)){
 				SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-            session.setAttribute("message", "Successfully SMS has been Sended");
+            session.setAttribute("message", "Successfully SMS has been Sent");
 			}
 		}
 		if(nid ==2){
 			toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
 			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null,objContext);
-			session.setAttribute("message", "Successfully Mail has been Sended");
+			session.setAttribute("message", "Successfully Mail has been Sent");
 			}
 			
 		}
@@ -1740,7 +1745,7 @@ e.printStackTrace();
 	}
 
 	@RequestMapping(value = "/importStudent")
-	public String importStudent(ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+	public String importStudent(ModelMap model,HttpServletRequest request , HttpServletResponse response,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("alumini page...");
 	
 		try{
@@ -1750,12 +1755,14 @@ e.printStackTrace();
 	System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in userLogin method in school Homecontroller class importStudent method");
+			
+			
 		}
 		return "ImportStudent";
 	}
 	
 	@RequestMapping(value = "/processExcel", method = RequestMethod.POST)
-	public String processExcel(Model model, @RequestParam("excelfile2007") MultipartFile excelfile) {	
+	public String processExcel(Model model, @RequestParam("excelfile2007") MultipartFile excelfile,HttpServletRequest request,HttpServletResponse response,HttpSession session) {	
 		TransactionStatus objTransStatus = null;
 		TransactionDefinition objTransDef = null;
 		boolean isInsert =false;

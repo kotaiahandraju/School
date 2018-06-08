@@ -89,15 +89,18 @@ th{text-align: center;}
 	</head>  
 
 	<body>
+	
 	<script type="text/javascript">
 	var isClick = 'No';
 	window.setTimeout(function() {
 	    $(".msgcss").fadeTo(500, 0).slideUp(500, function(){
 	        $(this).remove(); 
 	    });
-	}, 5000);</script>
+	}, 5000);
+	</script>
 	
-	<c:if test="${rolId=='2'}">
+	
+	<%-- <c:if test="${rolId=='2'}">
  <div id='menu'>
 				<ul>
 					<li class="">
@@ -108,7 +111,8 @@ th{text-align: center;}
 					</li>
 				</ul>
 </div>				
-</c:if>
+</c:if>  --%>
+
 <%
 String url =request.getScheme() + "://" + request.getServerName() +      ":" +   request.getServerPort() +  request.getContextPath();
 session.setAttribute("url", url);
@@ -186,7 +190,7 @@ session.setAttribute("url", url);
 			<!-- Menu start -->
 			<div id='menu'>
 				<ul>
-				 <c:if test="${rolId=='1' }">
+				 <c:if test="${rolId == '1' }">
 					<li class="">
 						<a href='dashBoard'>
 							<i class="fa fa-tachometer"></i> <span>Dashboard</span>

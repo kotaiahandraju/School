@@ -40,10 +40,10 @@ $("#cls-form").validate(
 
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
-			    $("#cls-form").removeClass("has-error");6
+			    $("#cls-form").removeClass("has-error");
 			    $("#boardId").val('');
 			    $("#mediumId").val('');
-			    $("#className").val('');
+			    $("#classId").val('');
 			    $("#section").val('');
 			    $("#fee").val('');
 			    $("#cls-form").addClass('form-horizontal');
