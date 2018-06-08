@@ -24,6 +24,12 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 <style type="text/css">
+.blog-header {
+    position: relative;
+    padding: 2px 15px;
+    border: 1px solid #ededed;
+    border-bottom: 0;
+}
 span.has-error, #already_exist, .subjects_error
 {
   font-weight:normal;
@@ -69,8 +75,8 @@ span.has-error, #already_exist, .subjects_error
 									<div class="blog-header" style="background: #d66061;">
 										<!-- <img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
 										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b> -->
-										<img src="img/logo (1).png" align="middle" style="width: 65px;height: 65px;" alt="GRETNALTES">
-										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">GRETNALTES</b>
+										<img src="img/loginp.png" align="middle" style="height: 75px;" alt="GRETNALTES">
+										&nbsp; &nbsp; &nbsp; <!-- <b style="font-size: 25px;color: white !important">GRETNALTES</b> -->
 									</div>
 									<div class="blog-body">
 

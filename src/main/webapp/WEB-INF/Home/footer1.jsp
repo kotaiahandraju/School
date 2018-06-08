@@ -33,8 +33,11 @@
 		<script src="js/datatables/custom-datatables.js"></script>
 		
 <script type="text/javascript">
+var isClick = 'Yes'; 
+
 	$.fn.dataTableExt.sErrMode = 'console';
 	$('#basicExample').dataTable();
+
 </script>
 
 		<!-- Flot Charts -->

@@ -100,7 +100,7 @@ public class AddBaseBoardDao{
 			return null;
 		}
 	
-	 public List<Map<String, String>> existingOrNot(String name ){
+	 /*public AddBoardBean existingOrNot(String name ){
 		 StringBuffer objStringBuffer = new StringBuffer();
 		 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
 		
@@ -111,7 +111,7 @@ public class AddBaseBoardDao{
 			List<Map<String, String>> result = handler.getResult();
 			return result;
 			
-		}
+		}*/
 
 	
 
