@@ -327,7 +327,7 @@ $(document).ready(function ()
 						var tableHead = /* "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/ABV-header.png' style='height: 70px;'></div>" */ "<div style='margin-bottom:15px;' align='center' class='img'><img src='img/logoprint.png' style='height: 70px;'></div>" 	
 						    + "<table align='center' class='table table-stripped table-bordered table-condensed' style='font-size: 13px;'>"
 							+ '<thead>'
-							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tution Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>'
+							+ '</thead><tbody><tr style="height: 35px;"><th>Date</th><th>Admission Fee</th><th>Tuition Fee</th><th>Transportation Fee</th><th>Hostel Fee</th><th>Stationary Fee</th><th>Total</th></tr>'
 							+ '<tr id="tdata"></tr>'
 							+'</tbody></table>'
 							+ '<span id="tfoot"></span>'

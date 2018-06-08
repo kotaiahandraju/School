@@ -27,11 +27,11 @@ $("#cls-form").validate(
 				mediumId: {required: 'Choose Medium'},
 				className: {required: 'Choose Class'},
 				section: {required: 'Choose Section'},
-				admissionFee: {required: 'Admission Fee Amount', number: 'Numeric Characters'},
-				tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
-				transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
-				hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
-				stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
+				admissionFee: {required: 'Admission Fee', number: 'Numeric Characters'},
+				tutionFee: {required: 'Tuition Fee', number: 'Numeric Characters'},
+				transportationFee: {required: 'Transportation Fee', number: 'Numeric Characters'},
+				hostelFee: {required: 'Hostel Fee', number: 'Numeric Characters'},
+				stationaryFee: {required: 'Stationary Fee', number: 'Numeric Characters'},
 			},
 			errorPlacement: function(error, element)
 			{
@@ -278,12 +278,10 @@ function displayTable(listOrders) {
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
 		
-		if (boardId.length != 0) {
 			$.ajax({
 				type : "POST",
 				url : "getMediumFilter.json",
-				data : "boardId=" + boardId + "&classId=" + classId
-						+ "&sectionId=" + sectionId,
+				data : "boardId=" + boardId + "&classId=" + classId + "&sectionId=" + sectionId,
 				dataType : "json",
 				async:false,
 				success : function(response) {
@@ -299,5 +297,4 @@ function displayTable(listOrders) {
 					});
 				}
 			});
-		}
 	}

@@ -86,6 +86,7 @@ function displayTable(listOrders) {
 		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
 		$('#boardId').trigger("chosen:updated");
+		classNameFilter();
 		$('#classId').val(serviceUnitArray[id].classId);
 		$('#classId').trigger("chosen:updated");
 		$('#section').val(serviceUnitArray[id].sectionName);
@@ -103,6 +104,7 @@ function displayTable(listOrders) {
 			url : "getClassNameViaBoardName.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 //				  alert(response);   
 				var optionsForClass = "";
