@@ -300,7 +300,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="admissionFee" placeholder="Admission Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="admissionFee" placeholder="Admission Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -308,9 +308,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											    <div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
+												    <label for="inputPassword3" class="col-sm-4 control-label">Tuition Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="tutionFee" placeholder="Tution Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="tutionFee" placeholder="Tuition Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -318,7 +318,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="transportationFee" placeholder="Transportation Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="transportationFee" placeholder="Transportation Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -326,7 +326,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="hostelFee" placeholder="Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="hostelFee" placeholder="Hostel Fee" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -336,7 +336,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="stationaryFee" placeholder="Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="stationaryFee" placeholder="Stationary Fee" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>

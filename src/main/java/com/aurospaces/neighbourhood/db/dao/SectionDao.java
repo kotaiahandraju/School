@@ -18,7 +18,7 @@ public class SectionDao extends BaseSectionDao{
 			String sql ="select st.id as sectionId, st.name as sectionName, ct.id as classId, ct.name as className, bn.id as boardId, bn.name as boardName from sectiontable st, boardname bn, classtable ct where"
 					+ " st.Boardid = bn.id and st.Classid = ct.id" ;
 
-			//System.out.println(sql);
+			System.out.println("--sql-- "+sql);
 			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "sectionId","sectionName","classId","className","boardId","boardName"});
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
@@ -27,10 +27,11 @@ public class SectionDao extends BaseSectionDao{
 		}
 	  
 	  public SectionCreationBean getExistingOrNot(SectionCreationBean objClassBean) {
-			String sql = "SELECT * from sectiontable where Boardid = ? and Classid=? and name=? ";
+			String sql = "SELECT * from sectiontable where boardid = ? and classid=? and name=? ";
 			List<SectionCreationBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{objClassBean.getBoardId(),objClassBean.getClassId(),objClassBean.getSection()},
 			ParameterizedBeanPropertyRowMapper.newInstance(SectionCreationBean.class));
+			System.out.println("list size----"+retlist);
 			if(retlist.size() > 0)
 				return retlist.get(0);
 			return null;
