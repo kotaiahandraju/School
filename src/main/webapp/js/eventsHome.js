@@ -8,6 +8,7 @@ function classNameFilter(id){
 		url : "getClassNameFilter.json",
 		data : "boardId=" + boardId,
 		dataType : "json",
+		async:false,
 		success : function(response) {
 			 /* alert(response); */  
 			var optionsForClass = "";
@@ -39,6 +40,7 @@ function classNameFilter(id){
 		url : "getSectionFilter.json",
 		data : "boardId=" + boardId+"&classId="+classId,
 		dataType : "json",
+		async:false,
 		success : function(response) {
 			 /* alert(response); */  
 			var optionsForClass = "";
@@ -71,6 +73,7 @@ function classNameFilter(id){
 		url : "getMediumFilter.json",
 		data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 		dataType : "json",
+		async:false,
 		success : function(response) {
 			 /* alert(response); */  
 			var optionsForClass = "";

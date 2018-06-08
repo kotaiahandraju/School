@@ -33,9 +33,11 @@ $("#cls-form").validate(
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
 			    $("#cls-form").removeClass("has-error");
+			    $("#id").val(0);
 			    $("#boardId").val('');
 			    $("#classId").val('');
 			    $("#section").val('');
+				$("#submitId").val("Submit");
 			    $("#cls-form").addClass('form-horizontal');
 			  });
 });
@@ -81,9 +83,10 @@ function displayTable(listOrders) {
 	}
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].classId;
-		$("#id").val(serviceUnitArray[id].classId)
+		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
 		$('#boardId').trigger("chosen:updated");
+		classNameFilter();
 		$('#classId').val(serviceUnitArray[id].classId);
 		$('#classId').trigger("chosen:updated");
 		$('#section').val(serviceUnitArray[id].sectionName);
@@ -101,6 +104,7 @@ function displayTable(listOrders) {
 			url : "getClassNameViaBoardName.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 //				  alert(response);   
 				var optionsForClass = "";

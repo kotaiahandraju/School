@@ -66,7 +66,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 												    <div class="col-sm-5">
 														<form:select path="className" tabindex="2" onchange="selectOrders(),sectionFilter();" class="form-control" required="true">
 															<form:option value="">-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 														<span class="className_error" id="className_error"></span>
 													</div>
@@ -80,7 +80,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 												    <div class="col-sm-5">
 														<form:select path="section" tabindex="3" onchange="selectOrders()" class="form-control" required="true">
 															<form:option value="">-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
 														<span class="section_error" id="section_error"></span>
 													</div>
@@ -92,7 +92,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 												    <div class="col-sm-5">
 														<form:select path="medium" tabindex="4" onchange="selectOrders();" class="form-control" required="true">
 															<form:option value="">-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 														<span class="medium_error" id="medium_error"></span>
 													</div>
@@ -118,7 +118,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 														message=(String)session.getAttribute("message");
 												        if(message!=null)
 												        {
-															out.println("<span class='blog-title animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
+															out.println("<span class='blog-title animated fadeOut' style='animation-iteration-count:1;animation-duration:8s;color: red;'>"+message+"</span>");
 															session.setAttribute("message", null);
 														}
 											        %>

@@ -74,7 +74,7 @@
 												    <div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="3" onchange="sectionFilter();" required="true">
 															<form:option value="">-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 													</div>
 												</div>
@@ -85,7 +85,7 @@
 										    <div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="4"  onchange="mediumFilter();" quired="true">
 															<form:option value="">-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
 													</div>
 											  	</div>
@@ -96,7 +96,7 @@
 												    <div class="col-sm-5">
 														<form:select path="medium" class="form-control" tabindex="5" onchange="getFee();" required="true">
 															<form:option value="">-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 													</div>
 											  	</div>
@@ -300,7 +300,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="admissionFee" placeholder="Admission Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="admissionFee" placeholder="Admission Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -308,9 +308,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											    <div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Tution Fees <span style="color: red;">*</span></label>
+												    <label for="inputPassword3" class="col-sm-4 control-label">Tuition Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="tutionFee" placeholder="Tution Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="tutionFee" placeholder="Tuition Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -318,7 +318,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="transportationFee" placeholder="Transportation Fee Amount"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="transportationFee" placeholder="Transportation Fee"  class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -326,7 +326,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="hostelFee" placeholder="Hostel Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="hostelFee" placeholder="Hostel Fee" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -336,7 +336,7 @@
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="stationaryFee" placeholder="Stationary Fee Amount" class="form-control numericOnly" tabindex="6" />
+														<form:input path="stationaryFee" placeholder="Stationary Fee" class="form-control numericOnly" tabindex="6" />
 													</div>
 											  	</div>
 											</div>
@@ -371,7 +371,7 @@
 														message=(String)session.getAttribute("message");
 												        if(message!=null)
 												        {
-															out.println("<span class='animated fadeIn' style='animation-iteration-count: 7;animation-duration: 1s;color: red;'>"+message+"</span>");
+															out.println("<span class='animated fadeOut' style='animation-iteration-count:1;animation-duration:8s;color: red;'>"+message+"</span>");
 															session.setAttribute("message", null);
 														}
 											        %>

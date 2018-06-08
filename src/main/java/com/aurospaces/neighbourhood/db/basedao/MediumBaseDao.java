@@ -101,7 +101,7 @@ public class MediumBaseDao{
 			return null;
 		}
 	
-	 public List<Map<String, String>> existingOrNot(String name ){
+	 /*public List<Map<String, String>> existingOrNot(String name ){
 		 StringBuffer objStringBuffer = new StringBuffer();
 		 objStringBuffer.append("select id ,name from mediam where name ='"+name + "'");
 		
@@ -112,7 +112,7 @@ public class MediumBaseDao{
 			List<Map<String, String>> result = handler.getResult();
 			return result;
 			
-		}
+		}*/
 
 	
 

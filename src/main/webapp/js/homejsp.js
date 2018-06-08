@@ -27,11 +27,11 @@ $("#cls-form").validate(
 				mediumId: {required: 'Choose Medium'},
 				className: {required: 'Choose Class'},
 				section: {required: 'Choose Section'},
-				admissionFee: {required: 'Admission Fee Amount', number: 'Numeric Characters'},
-				tutionFee: {required: 'Tution Fee Amount', number: 'Numeric Characters'},
-				transportationFee: {required: 'Transportation Fee Amount', number: 'Numeric Characters'},
-				hostelFee: {required: 'Hostel Fee Amount', number: 'Numeric Characters'},
-				stationaryFee: {required: 'Stationary Fee Amount', number: 'Numeric Characters'},
+				admissionFee: {required: 'Admission Fee', number: 'Numeric Characters'},
+				tutionFee: {required: 'Tuition Fee', number: 'Numeric Characters'},
+				transportationFee: {required: 'Transportation Fee', number: 'Numeric Characters'},
+				hostelFee: {required: 'Hostel Fee', number: 'Numeric Characters'},
+				stationaryFee: {required: 'Stationary Fee', number: 'Numeric Characters'},
 			},
 			errorPlacement: function(error, element)
 			{
@@ -52,6 +52,7 @@ $("#cls-form").validate(
 			  $('#cancel').click(function () {
 			    $("#cls-form").validate().resetForm();
 			    $("#cls-form").removeClass("has-error");
+			    $("#id").val(0);
 			    $("#boardId").val('');
 			    $("#mediumId").val('');
 			    $("#className").val('');
@@ -131,12 +132,16 @@ function displayTable(listOrders) {
 		$("#id").val(serviceUnitArray[id].classId)
 		$('#boardId').val(serviceUnitArray[id].borderId);
 		$('#boardId').trigger("chosen:updated");
+		classNameFilter();
 		$('#className').val(serviceUnitArray[id].className);
 		$('#className').trigger("chosen:updated");
-		$('#mediumId').val(serviceUnitArray[id].mediamId);
-		$('#mediumId').trigger("chosen:updated");
+		sectionFilter();
 		$('#section').val(serviceUnitArray[id].section);
 		$('#section').trigger("chosen:updated");
+		mediumFilter();
+		$('#mediumId').val(serviceUnitArray[id].mediamId);
+		$('#mediumId').trigger("chosen:updated");
+		
 		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
 		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
@@ -144,6 +149,7 @@ function displayTable(listOrders) {
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#submitId").val("Update");
 		$("#headId").text("Edit Class");
+		$(window).scrollTop($('#boardId').offset().top);
 	}
 	
 	
@@ -191,7 +197,7 @@ function displayTable(listOrders) {
 	}
 	
 	
-	function classNameFilter(id){
+	function classNameFilter(){
 		var boardId = $("#boardId").val();
 		if(boardId.length !=0){
 			$('#loadAjax').show();
@@ -200,6 +206,7 @@ function displayTable(listOrders) {
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -238,6 +245,7 @@ function displayTable(listOrders) {
 			url : "getSectionFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -264,3 +272,29 @@ function displayTable(listOrders) {
 		$('#loadAjax').hide();
 		}
 	} 
+	
+	function mediumFilter() {
+		var boardId = $("#boardId").val();
+		var classId = $("#className").val();
+		var sectionId = $("#section").val();
+		
+			$.ajax({
+				type : "POST",
+				url : "getMediumFilter.json",
+				data : "boardId=" + boardId + "&classId=" + classId + "&sectionId=" + sectionId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					/* alert(response); */
+					var optionsForClass = "";
+					optionsForClass = $("#mediumId").empty();
+					optionsForClass
+							.append(new Option("-- Choose Medium --", ""));
+					$.each(response, function(i, tests) {
+						var id = tests.id;
+						var mediumName = tests.mediumName;
+						optionsForClass.append(new Option(mediumName, id));
+					});
+				}
+			});
+	}

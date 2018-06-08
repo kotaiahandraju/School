@@ -75,7 +75,7 @@ ps.setString(5, objClassBean.getBoardId());
 		else
 		{
 
-			String sql = "UPDATE sectiontable  set boardId = ? ,classId = ?,name=?  where id = ? ";
+			String sql = "UPDATE sectiontable  set boardid = ?,classid = ?, name= ?  where id = ? ";
 	
 			jdbcTemplate.update(sql, new Object[]{objClassBean.getBoardId(),objClassBean.getClassId(),objClassBean.getSection(),objClassBean.getId()});
 		}
