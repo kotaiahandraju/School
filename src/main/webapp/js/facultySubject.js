@@ -117,10 +117,14 @@ $(function(){
 			mediumFilter();
 			$('#medium').val(serviceUnitArray[id].mediumId);
 			$('#medium').trigger("chosen:updated");
+			 subjectFilter();
 			$('#subject').val(serviceUnitArray[id].subjectId);
 			$('#subject').trigger("chosen:updated");
+			
+			
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Faculty Subject");
+			$(window).scrollTop($('#facultyId').offset().top);
 		} 
 		
 		function serviceFilter(id){
@@ -314,7 +318,7 @@ $(function(){
 					optionsForClass = $("#subject").empty();
 					optionsForClass.append(new Option("-- Choose Subject --", ""));
 					$.each(response, function(i, tests) {
-						var id=tests.id;
+						var id=tests.subjectId;
 						var subjectName=tests.subjectName;
 						optionsForClass.append(new Option(subjectName, id));
 					});
