@@ -974,7 +974,8 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 			}
 			studentDao.save(objStudentBean);
 //			session.setAttribute("message", "Successfully Student Profile is Updated");
-			
+			redir.addFlashAttribute("msg", " Successfully Student Profile is Updated");
+			redir.addFlashAttribute("cssMsg", "success");
 		}else{
 			StudentBean sbean = studentDao.duplicateCheckStudent(objStudentBean.getAdmissionNum());
 			if(sbean == null){
