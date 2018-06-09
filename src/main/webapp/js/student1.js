@@ -181,6 +181,7 @@ $(function(){
 	   	$('#blah').attr("src","upload/default.png");
 	  	$("#student-form").validate().resetForm();
 	    $("#student-form").removeClass("has-error");
+	    $("#id").val(0);
 	    $('#name').val("");
 	    $('#boardName').val("");
 	    $('#medium').val("");
@@ -211,6 +212,7 @@ $(function(){
 		$("#stationaryFee").val('');
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
+	    $("#headId").text("Add Student");
 	    
 	});
 	
@@ -483,6 +485,7 @@ $(function(){
 		}  
 	 	function editPack(id) {
 			var transactionId = serviceUnitArray[id].studentId;
+			$("#student-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[id].studentId);
 			$("#acomitation").val(serviceUnitArray[id].acomitation);
 			$('#address').val(serviceUnitArray[id].address);

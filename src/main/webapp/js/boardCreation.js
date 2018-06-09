@@ -26,6 +26,7 @@ $(function(){
 				    $("#id").val(0);
 				    $("#name").val('');
 				    $("#submitId").val("Submit");
+				    $("#headId").text("Board Creation");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
@@ -59,6 +60,7 @@ $(function(){
 		}
 		function editPack(id1) {
 			var ids= id1;
+			$("#cls-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[ids].boardId);
 			$('#name').val(serviceUnitArray[ids].name);
 			$("#submitId").val("Update");

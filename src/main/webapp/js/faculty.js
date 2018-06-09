@@ -56,6 +56,7 @@ $(document).ready (function(){
 	    $("#contactNumber").val('');
 	    $("#submitId").val("Submit");
 	    $("#fac-form").addClass('form-horizontal');
+	    $("#headId").text("Add Faculty");
 	     });
 });
 		
@@ -104,6 +105,7 @@ $(document).ready (function(){
 	 	
 	 	function editPack(id) {
 			var transactionId = serviceUnitArray[id].id;
+			 $("#fac-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[id].id);
 			$("#name").val(serviceUnitArray[id].facutltyName);
 			$('#gender').val(serviceUnitArray[id].gender);

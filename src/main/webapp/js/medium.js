@@ -26,6 +26,7 @@ $(function(){
 				    $("#id").val(0);
 				    $("#name").val('');
 				    $("#submitId").val("Submit");
+				    $("#headId").text("Medium Creation");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
@@ -60,6 +61,7 @@ $(function(){
 		function editPack(id1) {
 			var ids= id1;
 			$("#id").val(serviceUnitArray[ids].mediumId);
+			   $("#cls-form").validate().resetForm();
 			$('#name').val(serviceUnitArray[ids].name);
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Medium");

@@ -36,6 +36,7 @@ public class BaseFacultySubjects{
 	public void save(final FacultySubjectsBean facultyBean) 
 	{
 	if(facultyBean.getId() == 0)	{
+		System.out.println("subject id "+facultyBean.getSubject());
 
 	KeyHolder keyHolder = new GeneratedKeyHolder();
 	int update = jdbcTemplate.update(
