@@ -45,6 +45,7 @@ $(function(){
 	    $("#subject").val('');
 	    $("#submitId").val("Submit");
 	    $("#sub-form").addClass('form-horizontal');
+	    $("#headId").text("Add Faculty Subject");
 	     });
 });
 		
@@ -103,15 +104,16 @@ $(function(){
 		}  
 	 	function editPack(id) {
 			var transactionId = serviceUnitArray[id].id;
+			$("#sub-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[id].id);
 			$("#facultyId").val(serviceUnitArray[id].facultyId);
 			$('#facultyId').trigger("chosen:updated");
 			$('#boardName').val(serviceUnitArray[id].boardId);
 			$('#boardName').trigger("chosen:updated");
 			classNameFilter();
+			sectionFilter();
 			$('#className').val(serviceUnitArray[id].classId);
 			$('#className').trigger("chosen:updated");
-			sectionFilter();
 			$('#section').val(serviceUnitArray[id].sectionId);
 			$('#section').trigger("chosen:updated");
 			mediumFilter();

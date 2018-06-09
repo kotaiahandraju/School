@@ -601,7 +601,7 @@ width:200px !important;
 	
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].id;
-		
+		$("#fee-form").validate().resetForm();
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
 		classNameFilter();

@@ -38,6 +38,7 @@ $("#cls-form").validate(
 			    $("#classId").val('');
 			    $("#section").val('');
 				$("#submitId").val("Submit");
+				$("#headId").text("Section Creation");
 			    $("#cls-form").addClass('form-horizontal');
 			  });
 });
@@ -83,6 +84,7 @@ function displayTable(listOrders) {
 	}
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].classId;
+		  $("#cls-form").validate().resetForm();
 		$("#id").val(id)
 		$('#boardId').val(serviceUnitArray[id].boardId);
 		$('#boardId').trigger("chosen:updated");
