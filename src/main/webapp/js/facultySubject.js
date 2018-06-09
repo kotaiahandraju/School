@@ -153,7 +153,6 @@ $(function(){
 					}
 				}
 			});
-//			$('#loadAjax').hide();
 		} 
 	 	function deletefacultysubject(id){
 	 		var facultySubject = id;
@@ -161,29 +160,23 @@ $(function(){
 			var checkstr =  confirm('Are you sure you want to delete this?');
 			if(checkstr == true){
 			  // do your code
-//				$('#loadAjax').show();
 			  
 			  $.ajax({
 						type : "POST",
 						url : "deleteFacultySubject.json",
 						data : "facultySubject=" + facultySubject ,
 						success : function(response) {
-//	 						alert(response);
 							displayTable(response);
-//							$('#loadAjax').hide();
 							window.location.href='facultySubject';
 						},
 						error : function(e) {
-//							$('#loadAjax').hide();
 						},
 						statusCode : {
 							406 : function() {
-//								$('#loadAjax').hide();
 						
 							}
 						}
 					});
-//			  $('#loadAjax').hide();
 				
 			}else{
 			return false;
