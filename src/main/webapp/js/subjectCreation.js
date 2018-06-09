@@ -27,6 +27,7 @@ $(function(){
 				    $("#name").val('');
 					$("#submitId").val("Submit");
 				    $("#cls-form").addClass('form-horizontal');
+				    $("#headId").text("Subject Creation");
 				  });
 
 });
@@ -59,6 +60,7 @@ $(function(){
 		}
 		function editPack(id1) {
 			var ids= id1;
+			 $("#cls-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[ids].subjectId);
 			$('#name').val(serviceUnitArray[ids].name);
 			$("#submitId").val("Update");
