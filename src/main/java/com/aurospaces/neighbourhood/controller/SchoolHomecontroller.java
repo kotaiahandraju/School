@@ -1712,7 +1712,7 @@ e.printStackTrace();
 				row.createCell((short) 19).setCellValue(list12.getAcomitation());
 				row.createCell((short) 20).setCellValue(list12.getBuspesility());
 				row.createCell((short) 21).setCellValue(list12.getBusroute());
-				row.createCell((short) 22).setCellValue(list12.getCreatedTime());
+				row.createCell((short) 22).setCellValue(list12.getCrTime());
 				i++;
 				}
 

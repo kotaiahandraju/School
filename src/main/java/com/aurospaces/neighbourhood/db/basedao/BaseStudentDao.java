@@ -157,7 +157,7 @@ System.out.println(ps);
 		}
 	 public List<StudentBean> getByIdAll(StudentBean objStudentBean) {
 		 StringBuffer buffer = new StringBuffer();
-		 buffer.append("SELECT s.*,Date(s.dob) as dob,m.name as medium,st.name as section,ct.name as className,bn.name as boardName from student s,classtable ct,sectiontable st,mediam m,boardname bn where "
+		 buffer.append("SELECT s.*,DATE_FORMAT(s.created_time,'%Y/%b/%d') AS CrTime,Date(s.dob) as dob,m.name as medium,st.name as section,ct.name as className,bn.name as boardName from student s,classtable ct,sectiontable st,mediam m,boardname bn where "
 					+ "st.id = s.section and ct.id =s.className and m.id = s.medium and bn.id = s.boardName ");
 		 if (StringUtils.isNotBlank(objStudentBean.getBoardName())) {
 			 buffer.append(" and bn.id=" + objStudentBean.getBoardName());
