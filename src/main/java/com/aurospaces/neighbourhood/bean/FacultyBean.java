@@ -13,6 +13,7 @@ public class FacultyBean {
 	private String boardName;
 	private String boardId;
 	
+	
 	private String facultyId;
 	public String getFacultyId() {
 		return facultyId;
