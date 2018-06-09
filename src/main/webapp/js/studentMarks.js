@@ -165,6 +165,7 @@ function displayTable(listOrders) {
 			url : "getClassNameFilter1.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
