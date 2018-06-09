@@ -276,7 +276,7 @@
 											</div>
 										
 										
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divBuspesility">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Facility<span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
