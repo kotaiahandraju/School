@@ -354,6 +354,7 @@ $('#basicExample').dataTable();
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -385,6 +386,7 @@ $('#basicExample').dataTable();
 			url : "getSectionFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
@@ -417,6 +419,7 @@ $('#basicExample').dataTable();
 			url : "getMediumFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";

@@ -82,7 +82,7 @@
 											    	<div class="col-sm-5">
 														<form:select path="className" class="form-control" tabindex="3"   onchange="searchStudent(),sectionFilter()">
 															<form:option value="">-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 													</div>
 											  	</div>
@@ -94,7 +94,7 @@
 										    		<div class="col-sm-5">
 														<form:select path="section" class="form-control" tabindex="4" onchange="searchStudent(),mediumFilter()" >
 															<form:option value="">-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
 													</div>
 										  		</div>
@@ -105,7 +105,7 @@
 										    		<div class="col-sm-5">
 														<form:select path="medium" class="form-control" tabindex="5"  onchange="searchStudent()">
 															<form:option value="">-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 													</div>
 										  		</div>

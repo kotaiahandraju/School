@@ -83,7 +83,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 													<span class="className_error" id="className_error"></span>
 												</div>
@@ -95,7 +95,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-														<form:options items="${allSection}"></form:options>
+<%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
 													<span class="section_error" id="section_error"></span>
 												</div>
@@ -107,7 +107,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
-														<form:options items="${mediam}"></form:options>
+<%-- 														<form:options items="${mediam}"></form:options> --%>
 													</form:select>
 													<span class="medium_error" id="medium_error"></span>
 												</div>
@@ -119,7 +119,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee(),searchStudetnFee()">
 														<form:option value="">-- Choose Student --</form:option>
-														<form:options items="${allStudents}"></form:options>
+<%-- 														<form:options items="${allStudents}"></form:options> --%>
 													</form:select>
 												</div>
 											</div>
@@ -270,10 +270,10 @@ width:100px;
 																<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th> -->
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>
@@ -493,11 +493,7 @@ width:100px;
 		$("#fee-form").addClass('form-horizontal');
 		$("#submitId").val("Submit");
 		$("#displayId").text('');
-		$('#erroradmissionFee').text("");
-  		$('#errortutionFee').text("");
-  		$('#errortransportationFee').text("");
-  		$('#errorhostelFee').text("");
-  		$('#errorstationaryFee').text("");
+		
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
@@ -514,10 +510,10 @@ width:100px;
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
@@ -555,18 +551,18 @@ width:100px;
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mobile+"'>"
 										+ orderObj.mobile
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
 										+ orderObj.boardName
-										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
+										+ "</td>" */
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
 										+ orderObj.mediumName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.className+"'>"
 										+ orderObj.className
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs'>"
 										+ orderObj.admissionFee							
 										+ "</td>"																		    
@@ -646,8 +642,11 @@ width:100px;
 		var transactionId = serviceUnitArray[id].id;
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
+		classNameFilter();
 		$('#className').val(serviceUnitArray[id].classId);
+		sectionFilter();
 		$('#section').val(serviceUnitArray[id].sectionId);
+		mediumFilter();
 		$('#medium').val(serviceUnitArray[id].mediumId);
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
@@ -659,7 +658,7 @@ width:100px;
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
-		$(window).scrollTop($('.blog-body').offset().top);
+		$(window).scrollTop($('#boardName').offset().top);
 	}
 
 	function serviceFilter(id) {
@@ -679,14 +678,8 @@ width:100px;
 					optionsForClass.append(new Option(name, id));
 				});
 				$('#medium').trigger("chosen:updated");
-			},
-			error : function(e) {
-			},
-			statusCode : {
-				406 : function() {
-
-				}
 			}
+			
 		});
 	}
 
@@ -698,6 +691,7 @@ width:100px;
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -730,6 +724,7 @@ width:100px;
 				url : "getSectionFilter.json",
 				data : "boardId=" + boardId + "&classId=" + classId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -742,14 +737,8 @@ width:100px;
 						optionsForClass.append(new Option(sectionName, id));
 					});
 					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
 				}
+				
 			});
 		}
 	}
@@ -757,13 +746,14 @@ width:100px;
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0) {
+		if (boardId.length != 0 ) {
 			$.ajax({
 				type : "POST",
 				url : "getMediumFilter.json",
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -776,13 +766,8 @@ width:100px;
 						optionsForClass.append(new Option(mediumName, id));
 					});
 					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
+				
+				
 				}
 			});
 		}
@@ -792,14 +777,14 @@ width:100px;
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
 		var mediumId = $("#medium").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0
-				&& mediumId.length != 0) {
+		
 			$.ajax({
 				type : "POST",
 				url : "studentFilterDropdown.json",
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId + "&mediumId=" + mediumId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					// 				 alert(response);  
 					var optionsForClass = "";
@@ -814,15 +799,9 @@ width:100px;
 					});
 					$('#studentId').trigger("chosen:updated");
 				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
-				}
+				
 			});
-		}
+		
 	}
 
 	/* $("#search").on("keyup", function() {
