@@ -181,6 +181,7 @@ $(function(){
 	   	$('#blah').attr("src","upload/default.png");
 	  	$("#student-form").validate().resetForm();
 	    $("#student-form").removeClass("has-error");
+	    $("#id").val(0);
 	    $('#name').val("");
 	    $('#boardName').val("");
 	    $('#medium').val("");
@@ -211,6 +212,7 @@ $(function(){
 		$("#stationaryFee").val('');
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
+	    $("#headId").text("Add Student");
 	    
 	});
 	
@@ -221,21 +223,28 @@ $(function(){
 
 		 $('#acomitation').on('change', function() {
 			 
-			 if($('#buspesility').val() !== " " && $(this).val() !== " "){
+			 if($('#buspesility').val() !== "" && $(this).val() !== ""){
+				 
 
 		if ($(this).val() !== "Hostel" && $('#buspesility').val() !== "Yes") {
+			
+			
+			$('#buspesility').val('');
+			$('#buspesility').attr("readonly", false);
+			$('#divBuspesility').show();
 
-			var fee = totalFee - $('#hostelFee').val() - $('#transportationFee').val();
+			var fee = totalFee - $('#hostelFee').val() ;
 
 			$('#totalFee').val(fee);
 
 			$('#hostelFee').prop("disabled", true);
 			$('#hostleDiv').hide();
-			$('#transportationFee').prop("disabled", true);
-			$('#busroute').prop("disabled", true);
 			
-			$('#transportationDiv').hide();
-			$('#busRouteDiv').hide();
+			$('#transportationFee').prop("disabled", false);
+			$('#busroute').prop("disabled", false);
+			
+			$('#transportationDiv').show();
+			$('#busRouteDiv').show();
 			
 			
 		} else {
@@ -255,6 +264,24 @@ $(function(){
 				$('#hostleDiv').show();
 				
 			}else{
+				
+				if($(this).val() !== "Hostel"){
+					
+					
+					var fee = totalFee - $('#hostelFee').val();
+
+					$('#totalFee').val(fee);
+
+					$('#hostelFee').prop("disabled", true);
+					$('#hostleDiv').hide();
+					
+					$('#transportationFee').prop("disabled", false);
+					$('#busroute').prop("disabled", false);
+					
+					$('#transportationDiv').show();
+					$('#busRouteDiv').show();
+					
+				}else{
 			
 			var fee =  totalFee ;
 
@@ -269,11 +296,59 @@ $(function(){
 			
 			$('#transportationDiv').show();
 			$('#busRouteDiv').show();
+				}
 			}
 			
 						
 		}
-			 }
+			 }else if ($(this).val() !== "Hostel" ){
+				 
+
+					//$('#buspesility').val('No');
+					$('#buspesility').attr("readonly", false);
+					$('#divBuspesility').show();
+					 
+					 
+					 var fee = totalFee - $('#hostelFee').val();
+
+						$('#totalFee').val(fee);
+
+						$('#hostelFee').prop("disabled", true);
+						$('#hostleDiv').hide();
+						
+						$('#transportationFee').prop("disabled", false);
+						$('#busroute').prop("disabled", false);
+						
+						$('#transportationDiv').show();
+						$('#busRouteDiv').show();
+					 
+				 }else{
+					 
+					 
+					 var fee =  totalFee -  $('#transportationFee').val(); ;
+
+						$('#totalFee').val(fee);
+
+
+						$('#hostelFee').prop("disabled", false);
+						$('#hostleDiv').show();
+						
+						$('#buspesility').val('No');
+						$('#buspesility').attr("readonly", true);
+						$('#divBuspesility').hide();
+						
+						$('#transportationFee').prop("disabled", true);
+						$('#busroute').prop("disabled", true);
+						
+						$('#transportationDiv').hide();
+						$('#busRouteDiv').hide();
+					 
+					 
+				 }
+				 
+				 
+				 
+			 
 		
 		// alert("You have Selected :: "+$(this).val());
 	});
@@ -283,7 +358,7 @@ $(function(){
 			 	console.log( parseInt(totalFee));
 			 	
 				if ($(this).val() !== "Yes" && $('#acomitation').val() !== "") {
-					
+					console.log($('#acomitation').val())	;				
 					
 						
 						if($('#acomitation').val() !== "Hostel" ){
@@ -424,6 +499,7 @@ $(function(){
 		}  
 	 	function editPack(id) {
 			var transactionId = serviceUnitArray[id].studentId;
+			$("#student-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[id].studentId);
 			$("#acomitation").val(serviceUnitArray[id].acomitation);
 			$('#address').val(serviceUnitArray[id].address);
@@ -438,7 +514,9 @@ $(function(){
 			$('#caste').trigger("chosen:updated");
 			$('#email').val(serviceUnitArray[id].email);
 			$('#fatherName').val(serviceUnitArray[id].fatherName);
+			
 			$('#fee').val(serviceUnitArray[id].fee);
+			
 			$('#gender').val(serviceUnitArray[id].gender);
 			$('#gender').trigger("chosen:updated");
 			$('#dob1').val(serviceUnitArray[id].dob);
@@ -459,6 +537,7 @@ $(function(){
 			$('#medium').val(serviceUnitArray[id].mediumId);
 			$('#medium').trigger("chosen:updated");
 			$("#mobile").val(serviceUnitArray[id].mobile);
+			totalFee = serviceUnitArray[id].totalFee;
 			$("#totalFee").val(serviceUnitArray[id].totalFee);
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
 			$('#blah').attr('src',''+serviceUnitArray[id].imagePath+'');

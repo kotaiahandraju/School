@@ -27,8 +27,8 @@ public class SendSMS {
     	//static String from = "AARNA-MATRIMONY";
          String requestUrl = null;
          String toAddress = null;
-    	InputStream input = null;
 		String body = null;
+		InputStream input = null;
 		 Properties prop = new Properties();
 		 String response = null;
 		 try{

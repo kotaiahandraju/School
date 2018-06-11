@@ -48,6 +48,7 @@ $("#cls-form").validate(
 			    $("#subjectId").val('');
 			    $("#submitId").val("Submit");
 			    $("#cls-form").addClass('form-horizontal');
+			    $("#headId").text("Class Subjects");
 			  });
 });
 
@@ -85,7 +86,8 @@ function displayTable(listOrders) {
 							});
 	}
 	function editPack(id) {
-		$("#id").val(id)
+		$("#id").val(id);
+		 $("#cls-form").validate().resetForm();
 		$('#boardId').val(serviceUnitArray[id].boardId);
 		$('#boardId').trigger("chosen:updated");
 		classNameFilter();

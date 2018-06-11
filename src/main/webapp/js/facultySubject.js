@@ -45,6 +45,7 @@ $(function(){
 	    $("#subject").val('');
 	    $("#submitId").val("Submit");
 	    $("#sub-form").addClass('form-horizontal');
+	    $("#headId").text("Add Faculty Subject");
 	     });
 });
 		
@@ -103,24 +104,30 @@ $(function(){
 		}  
 	 	function editPack(id) {
 			var transactionId = serviceUnitArray[id].id;
+			$("#sub-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[id].id);
 			$("#facultyId").val(serviceUnitArray[id].facultyId);
 			$('#facultyId').trigger("chosen:updated");
 			$('#boardName').val(serviceUnitArray[id].boardId);
 			$('#boardName').trigger("chosen:updated");
 			classNameFilter();
+			
 			$('#className').val(serviceUnitArray[id].classId);
 			$('#className').trigger("chosen:updated");
 			sectionFilter();
 			$('#section').val(serviceUnitArray[id].sectionId);
 			$('#section').trigger("chosen:updated");
-			mediumFilter();
+//			mediumFilter();
 			$('#medium').val(serviceUnitArray[id].mediumId);
 			$('#medium').trigger("chosen:updated");
+			 subjectFilter();
 			$('#subject').val(serviceUnitArray[id].subjectId);
 			$('#subject').trigger("chosen:updated");
+			
+			
 			$("#submitId").val("Update");
 			$("#headId").text("Edit Faculty Subject");
+			$(window).scrollTop($('#facultyId').offset().top);
 		} 
 		
 		function serviceFilter(id){
@@ -153,7 +160,6 @@ $(function(){
 					}
 				}
 			});
-//			$('#loadAjax').hide();
 		} 
 	 	function deletefacultysubject(id){
 	 		var facultySubject = id;
@@ -161,29 +167,23 @@ $(function(){
 			var checkstr =  confirm('Are you sure you want to delete this?');
 			if(checkstr == true){
 			  // do your code
-//				$('#loadAjax').show();
 			  
 			  $.ajax({
 						type : "POST",
 						url : "deleteFacultySubject.json",
 						data : "facultySubject=" + facultySubject ,
 						success : function(response) {
-//	 						alert(response);
 							displayTable(response);
-//							$('#loadAjax').hide();
 							window.location.href='facultySubject';
 						},
 						error : function(e) {
-//							$('#loadAjax').hide();
 						},
 						statusCode : {
 							406 : function() {
-//								$('#loadAjax').hide();
 						
 							}
 						}
 					});
-//			  $('#loadAjax').hide();
 				
 			}else{
 			return false;
@@ -300,5 +300,40 @@ $(function(){
 				}
 			});
 //			$('#loadAjax').hide();
+			}
+		} 
+	 	
+	 	
+	 	function subjectFilter(){
+			var boardId = $("#boardName").val();
+			var classId = $("#className").val();
+			
+			if(boardId.length !=0 && classId.length != 0){
+			$.ajax({
+				type : "POST",
+				url : "getSubjectFilter2.json",
+				data : "boardId=" + boardId+"&classId="+classId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					 /* alert(response); */  
+					var optionsForClass = "";
+					optionsForClass = $("#subject").empty();
+					optionsForClass.append(new Option("-- Choose Subject --", ""));
+					$.each(response, function(i, tests) {
+						var id=tests.subjectId;
+						var subjectName=tests.subjectName;
+						optionsForClass.append(new Option(subjectName, id));
+					});
+					$('#subject').trigger("chosen:updated");
+				},
+				error : function(e) {
+				},
+				statusCode : {
+					406 : function() {
+				
+					}
+				}
+			});
 			}
 		} 

@@ -64,6 +64,7 @@ $("#cls-form").validate(
 			    $("#stationaryFee").val('');
 			    $("#cls-form").addClass('form-horizontal');
 			    $("#submitId").val("Submit");
+			    $("#headId").text("Class Fee");
 			  });
 });
 
@@ -129,6 +130,7 @@ function displayTable(listOrders) {
 	}
 	function editPack(id) {
 		var transactionId = serviceUnitArray[id].classId;
+		 $("#cls-form").validate().resetForm();
 		$("#id").val(serviceUnitArray[id].classId)
 		$('#boardId').val(serviceUnitArray[id].borderId);
 		$('#boardId').trigger("chosen:updated");

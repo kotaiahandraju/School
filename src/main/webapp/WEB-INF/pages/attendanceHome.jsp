@@ -78,7 +78,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 												    <div class="col-sm-5">
-														<form:select path="section" tabindex="3" onchange="selectOrders()" class="form-control" required="true">
+														<form:select path="section" tabindex="3" onchange="selectOrders(),mediumFilter()" class="form-control" required="true">
 															<form:option value="">-- Choose Section --</form:option>
 <%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>

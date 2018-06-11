@@ -157,7 +157,7 @@ width:200px !important;
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divTransportationFee">
 											<div class="form-group">
-												<label for="inputEmail3" class="col-sm-4 control-label">Transportation Fees</label>
+												<label for="inputEmail3" class="col-sm-4 control-label">Bus Fees</label>
 												<span id="transportationNetFee"></span>
 												<div class="col-sm-8">
 													<form:input path="transportationFee" class="form-control numericOnly"	tabindex="6" placeholder="Transportation Fee" required="true" />
@@ -394,7 +394,10 @@ width:200px !important;
 	    	var transportationFee = $('#transportationFee').val();
 	    	var hostelFee = $('#hostelFee').val();
 	    	var stationaryFee = $('#stationaryFee').val();
-	    	$('#forFormValidation').val();
+	    	var stationaryFee = $('#stationaryFee').val();
+	    	$('#forFormValidation').val('');
+	    	
+	    	if( dueFee12 != 0){
 	    	if(  admissionFee == "0"  && tutionFee == "0" && transportationFee == "0"  && hostelFee == "0" &&  stationaryFee == "0"   ){
 	    		$('#forFormValidation').val();
 	    		alert("insufficient fund");
@@ -427,6 +430,13 @@ width:200px !important;
 		     }
 	    	}
 	    	
+	    	}else{
+	    		
+	    		$('#forFormValidation').val();
+	    		alert("There is no Due Amount");
+	    		return false;
+	    	}
+	    	
 	    });
 	   
 	$('#cancel').click(function() {
@@ -452,6 +462,11 @@ width:200px !important;
 		$("#fee-form").addClass('form-horizontal');
 		$("#submitId").val("Submit");
 		$("#displayId").text('');
+		$('#erroradmissionFee').text("");
+  		$('#errortutionFee').text("");
+  		$('#errortransportationFee').text("");
+  		$('#errorhostelFee').text("");
+  		$('#errorstationaryFee').text("");
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
@@ -595,14 +610,24 @@ width:200px !important;
 	}
 	
 	function editPack(id) {
-		var transactionId = serviceUnitArray[id].id;
 		
+		$("#admissionFee").prop("disabled", false);
+		$("#tutionFee").prop("disabled", false);
+		$("#transportationFee").prop("disabled", false);
+		$("#hostelFee").prop("disabled", false);
+		$("#stationaryFee").prop("disabled", false);
+		
+		$("#divAdmissionFee").show();  
+		$("#divTutionFee").show();
+		$("#divTransportationFee").show();
+		$("#divHostelFee").show();
+		$("#divStationaryFee").show();
+		var transactionId = serviceUnitArray[id].id;
+		$("#fee-form").validate().resetForm();
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
-		clsid=serviceUnitArray[id].classId;
 		classNameFilter();
 		$('#className').val(serviceUnitArray[id].classId);
-		secid=serviceUnitArray[id].sectionId;
  		sectionFilter();
 		
 		$('#section').val(serviceUnitArray[id].sectionId);
@@ -664,7 +689,6 @@ width:200px !important;
 					
 				}
 			});
-			if(clsid!='') $("#className").val(clsid).trigger('change');
 	}
 	function sectionFilter() {
 		var boardId = $("#boardName").val();
@@ -688,7 +712,6 @@ width:200px !important;
 					});
 				}
 			});
-			if(secid!='') $("#section").val(secid).trigger('change');
 		}
 	}
 	function mediumFilter() {
@@ -723,7 +746,7 @@ width:200px !important;
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
 		var mediumId = $("#medium").val();
-		if (true) {
+		
 			$.ajax({
 				type : "POST",
 				url : "studentFilterDropdown.json",
@@ -746,7 +769,7 @@ width:200px !important;
 					
 				}
 			});
-		}
+		
 	}
 
 	/* $("#search").on("keyup", function() {
@@ -773,6 +796,8 @@ width:200px !important;
 	var transportationFee1 = 0.00;
 	var hostelFee1 = 0.00;
 	var stationaryFee1 = 0.00;
+	
+	var dueFee12 ;
 	function getDueFee() {
 		
 		
@@ -786,6 +811,8 @@ width:200px !important;
 				// 				 alert(response.totalFee); 
 				
 				if (response.dueFee == null || response.dueFee == 0) {
+					
+					dueFee12=  response.netFee;
 					$("#displayId").text("Due Fee: " + response.netFee);
 															
 					$("#admissionFee").prop("disabled", true);
@@ -799,6 +826,10 @@ width:200px !important;
 					$("#divTransportationFee").hide();
 					$("#divHostelFee").hide();
 					$("#divStationaryFee").hide();
+					
+					 $('#forFormValidation').val('');
+					
+					
 					
 				} else {
 					$("#displayId").text("Due Fee: " + response.dueFee);

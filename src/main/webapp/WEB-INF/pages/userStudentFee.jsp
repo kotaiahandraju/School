@@ -83,7 +83,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
-														<form:options items="${allClasses}"></form:options>
+<%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
 													<span class="className_error" id="className_error"></span>
 												</div>
@@ -95,7 +95,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
-														<form:options items="${allSection}"></form:options>
+<%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
 													<span class="section_error" id="section_error"></span>
 												</div>
@@ -107,7 +107,7 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
-														<form:options items="${mediam}"></form:options>
+<%-- 														<form:options items="${mediam}"></form:options> --%>
 													</form:select>
 													<span class="medium_error" id="medium_error"></span>
 												</div>
@@ -119,12 +119,12 @@ width:100px;
 												<div class="col-sm-5">
 													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee(),searchStudetnFee()">
 														<form:option value="">-- Choose Student --</form:option>
-														<form:options items="${allStudents}"></form:options>
+<%-- 														<form:options items="${allStudents}"></form:options> --%>
 													</form:select>
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Fee<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
@@ -270,10 +270,10 @@ width:100px;
 																<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th> -->
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>
-																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>
+<!-- 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th> -->
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>
@@ -400,11 +400,6 @@ width:100px;
 	
 	 $('#submitId').click(function(){
 		 $("#maxValueError").text("");
-	    	var admissionFee = $('#admissionFee').val();
-	    	var tutionFee   = $('#tutionFee').val();
-	    	var transportationFee = $('#transportationFee').val();
-	    	var hostelFee = $('#hostelFee').val();
-	    	var stationaryFee = $('#stationaryFee').val();
 	    	var fee = $('#fee').val();
 	    	$('#forFormValidation').val();
 	    	if(  fee == "0"   ){
@@ -412,27 +407,19 @@ width:100px;
 	    		alert("insufficient fund");
 	    		return false;
 	    	}else{
-	    	if(admissionFee1 < admissionFee){
-	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
-		     return false;
-		     }else if(tutionFee1 < tutionFee){
-		    		$('#errortutionFee').text("Max Aoount is:"+tutionFee1);
-			     return false;
-		     }else if(transportationFee1 < transportationFee){
-		    		$('#errortransportationFee').text("Max Aoount is:"+transportationFee1);
-			     return false;
-		     }else if(hostelFee1 < hostelFee){
-		    		$('#errorhostelFee').text("Max Aoount is:"+hostelFee1);
-			     return false;
-		     }else if(stationaryFee1 < stationaryFee){
-		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
-			     return false;
-		     }else if( fee > duefee123){
+	    	
+		    		if( fee > duefee123){
 				 
 				 $('#fee').after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
 				 
 				 return false;
-			 } else {
+			 } else if(fee == ""){
+				 $('#forFormValidation').val('');
+				 return false;
+				 
+			 }
+				 
+				 else {
 				 $('#forFormValidation').val(1);
 		    		$('#erroradmissionFee').text("");
 		    		$('#errortutionFee').text("");
@@ -493,11 +480,7 @@ width:100px;
 		$("#fee-form").addClass('form-horizontal');
 		$("#submitId").val("Submit");
 		$("#displayId").text('');
-		$('#erroradmissionFee').text("");
-  		$('#errortutionFee').text("");
-  		$('#errortransportationFee').text("");
-  		$('#errorhostelFee').text("");
-  		$('#errorstationaryFee').text("");
+		
 	});
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
@@ -514,10 +497,10 @@ width:100px;
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Board</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Medium</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Class</th>'
-					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
+// 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Section</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Admission Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Tution Fees</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Transportation Fees</th>'
@@ -555,18 +538,18 @@ width:100px;
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mobile+"'>"
 										+ orderObj.mobile
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.boardName+"'>"
 										+ orderObj.boardName
-										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
+										+ "</td>" */
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.mediumName+"' >"
 										+ orderObj.mediumName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.className+"'>"
 										+ orderObj.className
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
+										/* + "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
-										+ "</td>"
+										+ "</td>" */
 										+ "<td class='hidden-sm hidden-xs'>"
 										+ orderObj.admissionFee							
 										+ "</td>"																		    
@@ -646,8 +629,11 @@ width:100px;
 		var transactionId = serviceUnitArray[id].id;
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
+		classNameFilter();
 		$('#className').val(serviceUnitArray[id].classId);
+		sectionFilter();
 		$('#section').val(serviceUnitArray[id].sectionId);
+		mediumFilter();
 		$('#medium').val(serviceUnitArray[id].mediumId);
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
@@ -659,7 +645,7 @@ width:100px;
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
 		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 		$("#submitId").val("Update");
-		$(window).scrollTop($('.blog-body').offset().top);
+		$(window).scrollTop($('#boardName').offset().top);
 	}
 
 	function serviceFilter(id) {
@@ -679,14 +665,8 @@ width:100px;
 					optionsForClass.append(new Option(name, id));
 				});
 				$('#medium').trigger("chosen:updated");
-			},
-			error : function(e) {
-			},
-			statusCode : {
-				406 : function() {
-
-				}
 			}
+			
 		});
 	}
 
@@ -698,6 +678,7 @@ width:100px;
 				url : "getClassNameFilter.json",
 				data : "boardId=" + boardId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -730,6 +711,7 @@ width:100px;
 				url : "getSectionFilter.json",
 				data : "boardId=" + boardId + "&classId=" + classId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -742,14 +724,8 @@ width:100px;
 						optionsForClass.append(new Option(sectionName, id));
 					});
 					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
 				}
+				
 			});
 		}
 	}
@@ -757,13 +733,14 @@ width:100px;
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0) {
+		if (boardId.length != 0 ) {
 			$.ajax({
 				type : "POST",
 				url : "getMediumFilter.json",
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					/* alert(response); */
 					var optionsForClass = "";
@@ -776,13 +753,8 @@ width:100px;
 						optionsForClass.append(new Option(mediumName, id));
 					});
 					$('#section').trigger("chosen:updated");
-				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
+				
+				
 				}
 			});
 		}
@@ -792,14 +764,14 @@ width:100px;
 		var classId = $("#className").val();
 		var sectionId = $("#section").val();
 		var mediumId = $("#medium").val();
-		if (boardId.length != 0 && classId.length != 0 && sectionId.length != 0
-				&& mediumId.length != 0) {
+		
 			$.ajax({
 				type : "POST",
 				url : "studentFilterDropdown.json",
 				data : "boardId=" + boardId + "&classId=" + classId
 						+ "&sectionId=" + sectionId + "&mediumId=" + mediumId,
 				dataType : "json",
+				async:false,
 				success : function(response) {
 					// 				 alert(response);  
 					var optionsForClass = "";
@@ -814,15 +786,9 @@ width:100px;
 					});
 					$('#studentId').trigger("chosen:updated");
 				},
-				error : function(e) {
-				},
-				statusCode : {
-					406 : function() {
-
-					}
-				}
+				
 			});
-		}
+		
 	}
 
 	/* $("#search").on("keyup", function() {
@@ -860,11 +826,23 @@ width:100px;
 			success : function(response) {
 				// 				 alert(response.totalFee); 
 				
-				if (response.dueFee == null) {
-					$("#displayId").text("Due Fee: " + response.netFee);
+				if (response.dueFee == null || response.dueFee == 0 ) {
+					
+					$("#fee").prop("disabled", true);
+					$("#divFee").hide();  
+					$("#displayId").text("No due amount.!");
+					//$("#displayId").text("Due Fee: "  + response.netFee +"There is no Due Amount");
+					 $('#forFormValidation').val('');
+					
 					duefee123= response.netFee;
 				} else {
+					$("fee").prop("disabled", false);
+					$("#divFee").show();  
 					duefee123= response.dueFee;
+					
+					$("#displayId").text("Due Fee: " + response.netFee);
+					
+					/* 
 					$("#displayId").text("Due Fee: " + response.dueFee);
 					$("#admissionFee").val(response.admissionFee);  
 					$("#tutionFee").val(response.tutionFee);
@@ -876,7 +854,7 @@ width:100px;
 					tutionFee1 = response.admissionFee;
 					transportationFee1 = response.admissionFee;
 					hostelFee1 = response.admissionFee;
-					stationaryFee1 = response.admissionFee;
+					stationaryFee1 = response.admissionFee; */
 				}
 			},
 			error : function(e) {

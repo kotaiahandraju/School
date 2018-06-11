@@ -426,19 +426,13 @@ e.printStackTrace();
 		try
 		{
 			listOrderBeans = objAddedClass.getClassCreationData();
-			 
 			int id = 0;
 			classbean=	objAddedClass.getExistingOrNot(objClassBean);
-			if(id != 0 && classbean == null)
-			{
-				session.setAttribute("message", "Class Updated Successfully");
-				objAddedClass.save(objClassBean);
-			
 			int dummyId = 0;
 			if (classbean != null) {
 				dummyId = classbean.getId();
-
 			}
+			
 			if (objClassBean.getId() != 0) {
 				id = objClassBean.getId();
 				if (id == dummyId || classbean == null) {
@@ -469,7 +463,7 @@ e.printStackTrace();
 				sJson =objectMapper.writeValueAsString(listOrderBeans);
 				request.setAttribute("allOrders1", sJson);
 			}
-		}}
+		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
@@ -980,7 +974,8 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 			}
 			studentDao.save(objStudentBean);
 //			session.setAttribute("message", "Successfully Student Profile is Updated");
-			
+			redir.addFlashAttribute("msg", " Successfully Student Profile is Updated");
+			redir.addFlashAttribute("cssMsg", "success");
 		}else{
 			StudentBean sbean = studentDao.duplicateCheckStudent(objStudentBean.getAdmissionNum());
 			if(sbean == null){
@@ -1581,14 +1576,14 @@ try {
 			mobileNumber = objStudentBean.getMobile();
 			if(StringUtils.isNotBlank(mobileNumber)){
 				SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-            session.setAttribute("message", "Successfully SMS has been Sended");
+            session.setAttribute("message", "Successfully SMS has been Sent");
 			}
 		}
 		if(nid ==2){
 			toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
 			MailSender.sendEmailWithAttachment(toAddress, "Regarding, Your Children Attendance",messageBody,null,objContext);
-			session.setAttribute("message", "Successfully Mail has been Sended");
+			session.setAttribute("message", "Successfully Mail has been Sent");
 			}
 			
 		}
@@ -1718,7 +1713,7 @@ e.printStackTrace();
 				row.createCell((short) 19).setCellValue(list12.getAcomitation());
 				row.createCell((short) 20).setCellValue(list12.getBuspesility());
 				row.createCell((short) 21).setCellValue(list12.getBusroute());
-				row.createCell((short) 22).setCellValue(list12.getCreatedTime());
+				row.createCell((short) 22).setCellValue(list12.getCrTime());
 				i++;
 				}
 
@@ -1970,9 +1965,10 @@ e.printStackTrace();
 		String boardId = null;
 		String classId = null;
 		try{
+			System.out.println("boardId----"+boardId+"--classId- "+classId);
 		 boardId = request.getParameter("boardId");
 		 classId = request.getParameter("classId");
-		
+		System.out.println("boardId----"+boardId+"--classId- "+classId);
 //		filterBean =  objClassCreation.getSectionFilter(boardId,classId);
 		 filterBean =  objAddClassSubjectDao.getAllClassSubjectsName(boardId,classId);
 		ObjectMapper objmapper=new ObjectMapper();

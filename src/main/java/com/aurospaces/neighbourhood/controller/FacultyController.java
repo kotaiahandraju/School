@@ -1,9 +1,13 @@
 package com.aurospaces.neighbourhood.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +26,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.FacultyBean;
 import com.aurospaces.neighbourhood.bean.FacultySubjectsBean;
+import com.aurospaces.neighbourhood.bean.UsersBean;
 import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
 import com.aurospaces.neighbourhood.db.dao.StudentDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.aurospaces.neighbourhood.db.model.Faculty;
+import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
+import com.aurospaces.neighbourhood.util.SendSMS;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -73,6 +80,9 @@ public class FacultyController {
 		String sJson = "";
 		System.out.println(facultybean.getName());
 		FacultyBean listOrderBeans1 =null;
+		String mobileNumber =null; 
+		InputStream input = null;
+		 Properties prop = new Properties();
 		try{
 		
 			
@@ -88,8 +98,10 @@ public class FacultyController {
 				if (facultybean.getId() != 0) {
 					id = facultybean.getId();
 					if (id == dummyId || listOrderBeans1 == null) {
-
+						
+						
 						faculty.save(facultybean);
+						
 						redir.addFlashAttribute("msg", "Record Updated Successfully");
 						redir.addFlashAttribute("cssMsg", "warning");
 					} else {
@@ -98,6 +110,30 @@ public class FacultyController {
 					}
 				}
 				if (facultybean.getId() == 0 && listOrderBeans1 == null) {
+					
+					
+					 String propertiespath = objContext.getRealPath("Resources" +File.separator+"DataBase.properties");
+						input = new FileInputStream(propertiespath);
+						// load a properties file
+						prop.load(input);
+						
+						NeighbourhoodUtil neighbour = new NeighbourhoodUtil();
+						String randomNum = neighbour.randNum();
+						
+						UsersBean userbean=new UsersBean();
+						userbean.setRolId("2");
+						userbean.setName(facultybean.getName());
+						userbean.setPassword(randomNum);
+						userbean.setMobile(facultybean.getContactNumber());
+						 usesDao1.save(userbean);
+						 mobileNumber = facultybean.getContactNumber();
+							String smsMessage ="Dear Faculty,\nThanks for Registering with us.\nYour Login details,\nUsername:"+facultybean.getName()+"\nPassword:"+userbean.getPassword();
+//							smsMessage.replace("_facultyName_", facultybean.getName());
+//							smsMessage.replace("_pass_",userbean.getPassword());
+							if(StringUtils.isNotBlank(mobileNumber)){
+								SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
+							}
+					
 					faculty.save(facultybean);
 
 					redir.addFlashAttribute("msg", "Record Inserted Successfully");
@@ -110,27 +146,7 @@ public class FacultyController {
 			
 			
 			
-			
-			/* if(id != 0 ){
-//				 session.setAttribute("message", "Sucessfully Faculty is Updated");
-				
-					faculty.save(facultybean);
-					 redir.addFlashAttribute("msg", " Successfully Faculty Updated");
-						redir.addFlashAttribute("cssMsg", "warning");
-			 }else{
-			if(objfacultyBean == null ){
-				faculty.save(facultybean);
-//				session.setAttribute("message", "Successfully Faculty is Created");
-				 redir.addFlashAttribute("msg", " Successfully Faculty Created");
-					redir.addFlashAttribute("cssMsg", "success");
-			}else {
-				System.out.println("exist");
-//				session.setAttribute("message", "Already Existed Record");
-				 redir.addFlashAttribute("msg", "Faculty Already Exist");
-					redir.addFlashAttribute("cssMsg", "danger");
-			}
-			
-			 }*/
+		
 			
 			
 			listOrderBeans = faculty.getallFaculty();

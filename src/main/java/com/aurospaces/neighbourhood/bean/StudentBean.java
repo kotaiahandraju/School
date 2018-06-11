@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class StudentBean {
  protected String  name,boardName,medium,className,section,rollNum,admissionNum,fatherName,mobile,alternativeMobile,email,blodgroup,gender,region,address,previousInstitue,caste,acomitation,buspesility,busroute,religion;
  protected int id   = 0;
- protected String imagePath;
+ protected String imagePath,CrTime;
 protected double totalFee;
 protected double discountFee;
 String discountFee1;
@@ -21,6 +21,14 @@ private double stationaryFee;
 
 
 
+
+public String getCrTime() {
+	return CrTime;
+}
+
+public void setCrTime(String crTime) {
+	CrTime = crTime;
+}
 
 public double getAdmissionFee() {
 	return admissionFee;

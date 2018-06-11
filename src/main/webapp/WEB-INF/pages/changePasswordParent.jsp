@@ -40,7 +40,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Current Password</label>
 												    <div class="col-sm-5">											
-														<form:input path="oldPassword" type ="password"  tabindex="1" placeholder="Enter Current Password" class="form-control" required="true"/>
+														<form:input path="oldPassword" type ="password"  tabindex="1" class="form-control" required="true"/>
 														<span class="oldPassword_error" id="oldPassword_error"></span>
 													</div>
 												</div>
@@ -49,7 +49,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">New Password</label>
 												    <div class="col-sm-5">											
-														<form:input path="password" type ="password" tabindex="2" placeholder="Enter New Password" class="form-control" required="true"/>
+														<form:input path="password" type ="password" tabindex="2" class="form-control" required="true"/>
 														<span class="password_error" id="password_error"></span>
 													</div>
 												</div>
@@ -58,7 +58,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Confirm Password</label>
 												    <div class="col-sm-5">
-														<form:input path="retypePassword" type ="password" tabindex="3" placeholder="Enter Confirm Password" class="form-control" required="true"/>
+														<form:input path="retypePassword" type ="password" tabindex="3" class="form-control" required="true"/>
 														<span class="retypePassword_error" id="retypePassword_error"></span>
 													</div>
 												</div>

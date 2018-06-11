@@ -33,7 +33,7 @@ public class AddClassSubjectDao extends AddClassSubjectBaseDao {
 	{
 		//This method is to get All Subject Names in examMarks.jsp field name "Subject" via Board and Class....
 
-		String query = "select cs.subjectId,sb.name as subjectName from classsubjects cs ,subject  sb  where  cs.subjectId = sb.id  and cs.classId = ? and cs.boardId = ? ";
+		String query = "select cs.subjectId,sb.name as subjectName from classsubjects cs ,subject  sb  where  cs.subjectId = sb.id  and  cs.boardId = ? and cs.classId = ? ";
 		System.out.println(query);
 		List<ExamMarksBean> handler = jdbcTemplate.query(query, new Object[]{boardId,classId},ParameterizedBeanPropertyRowMapper.newInstance(ExamMarksBean.class));
 		 System.out.println(query);
