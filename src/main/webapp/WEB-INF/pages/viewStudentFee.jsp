@@ -217,6 +217,11 @@
 $(document).ready(function () 
 		{
 			$("#fee").val("");
+			
+			var getTabName = window.location.pathname.split('/')[2];
+			$("#stu_li").addClass('active');
+			$("#stu_li ul").css('display','block');
+			$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 		});
 		
 	var listOrders1 = ${allOrders1};

@@ -219,10 +219,21 @@ $(function(){
 	
 	//$('#hostleDiv').hide();
 	//$('#hostelFee').prop("disabled",false);
-	
-
-		 $('#acomitation').on('change', function() {
+			 $('#acomitation').on('change', function() {
 			 
+			/* if( $('#acomitation').val() == "Hostel" && $('#acomitation').val() == ""){
+					
+					$('#buspesility').val('No');
+					$('#buspesility').attr("readonly", true);
+					$('#divBuspesility').hide();
+					
+					$('#transportationFee').prop("disabled", true);
+					$('#busroute').prop("disabled", true);
+					
+					$('#transportationDiv').hide();
+					$('#busRouteDiv').hide();
+				}else if( ){
+						}*/
 			 if($('#buspesility').val() !== "" && $(this).val() !== ""){
 				 
 
@@ -249,7 +260,11 @@ $(function(){
 			
 		} else {
 			
-			if( $('#buspesility').val() !== "Yes"){
+			$('#buspesility').val('No');
+			$('#buspesility').attr("readonly", true);
+			$('#divBuspesility').show();
+			
+			//if( $('#buspesility').val() !== "Yes"){
 				
 				var fee = totalFee  - $('#transportationFee').val();
 				$('#totalFee').val(fee);
@@ -263,7 +278,7 @@ $(function(){
 				$('#hostelFee').prop("disabled", false);
 				$('#hostleDiv').show();
 				
-			}else{
+			//}else{
 				
 				if($(this).val() !== "Hostel"){
 					
@@ -281,9 +296,10 @@ $(function(){
 					$('#transportationDiv').show();
 					$('#busRouteDiv').show();
 					
-				}else{
+				}/*else{
 			
-			var fee =  totalFee ;
+					$('#buspesility').val("No");
+			var fee =  totalFee - $('#transportationFee').val(); ;
 
 			$('#totalFee').val(fee);
 
@@ -291,13 +307,13 @@ $(function(){
 			$('#hostelFee').prop("disabled", false);
 			$('#hostleDiv').show();
 			
-			$('#transportationFee').prop("disabled", false);
-			$('#busroute').prop("disabled", false);
+			$('#transportationFee').prop("disabled", true);
+			$('#busroute').prop("disabled", true);
 			
-			$('#transportationDiv').show();
-			$('#busRouteDiv').show();
-				}
-			}
+			$('#transportationDiv').hide();
+			$('#busRouteDiv').hide();
+				}*/
+			//}
 			
 						
 		}
@@ -345,11 +361,7 @@ $(function(){
 					 
 					 
 				 }
-				 
-				 
-				 
-			 
-		
+				
 		// alert("You have Selected :: "+$(this).val());
 	});
 
@@ -418,6 +430,8 @@ $(function(){
 						
 						$('#transportationFee').prop("disabled", false);
 						$('#transportationDiv').show();
+						
+						
 						
 						$('#busroute').prop("disabled", false);
 						$('#busRouteDiv').show();

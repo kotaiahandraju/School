@@ -76,4 +76,10 @@
 <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 
+var getTabName = window.location.pathname.split('/')[2];
+$("#stu_li").addClass('active');
+$("#stu_li ul").css('display','block');
+$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+</script>

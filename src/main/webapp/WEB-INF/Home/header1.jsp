@@ -199,14 +199,14 @@ session.setAttribute("url", url);
 			<div id='menu'>
 				<ul>
 				 <c:if test="${rolId == '1' }">
-					<li class="">
+					<li class="" id="das_li">
 						<a href='dashBoard'>
 							<i class="fa fa-tachometer"></i> <span>Dashboard</span>
 <!-- 							<span class="current-page"></span> -->
 						</a>
 					</li>
 					
-					<li class='has-sub'>
+					<li class='has-sub' id="conf_li">
 						<a href='#'><i class="fa fa-cogs"></i><span>Configurations</span></a>
 						<ul>
 						
@@ -222,7 +222,7 @@ session.setAttribute("url", url);
 						</ul>
 					</li>
 							 </c:if>
-					<li class='has-sub'>
+					<li class='has-sub' id="stu_li">
 						<a href='#'><i class="fa fa-users"></i><span>Student Details </span></a>
 						<ul>
 						
@@ -250,7 +250,7 @@ session.setAttribute("url", url);
 						
 					</li>
 					<c:if test="${rolId=='1' }">
-					<li class='has-sub'>
+					<li class='has-sub' id="mes_li">
 						<a href='#'><i class="fa fa-envelope-open-o"></i><span>Message</span></a>
 						<ul>
 							<li><a href='attendanceHome' id="messageDisplayId" ><span>Attendance</span></a></li>

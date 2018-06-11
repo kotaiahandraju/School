@@ -239,11 +239,28 @@ overflow-x:hidden;}
 <!-- <script type="text/javascript" src="js/viewStudent.js"></script> -->
 <script type="text/javascript">
 // var serviceUnitArray = {};
+
+
+$( document ).ready(function() {
+
+	
+	
+	var getTabName = window.location.pathname.split('/')[2];
+	$("#stu_li").addClass('active');
+	$("#stu_li ul").css('display','block');
+	$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
+	
+});
+
+
 var baseUrl2 =$("#baseUrl1").val();
 
 	var listOrders1 = ${allOrders1};
 	if (listOrders1 != "") {
 		displayTable(listOrders1);
 	}
+	
+	
 
 </script>

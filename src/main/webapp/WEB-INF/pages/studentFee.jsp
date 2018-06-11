@@ -329,6 +329,10 @@ width:200px !important;
 		$('.has-sub').trigger("click");
 
 		
+		var getTabName = window.location.pathname.split('/')[2];
+		$("#stu_li").addClass('active');
+		$("#stu_li ul").css('display','block');
+		$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 		
 	});
 	 $("#admissionFee").val("");
