@@ -1765,9 +1765,6 @@ e.printStackTrace();
 		UsersBean userBean = null;
 		UsersBean isexist = null;
 		String mobileNumber = null;
-		 String username = "RKKIDS";
-         String password = "RK@kids987";
-         String from = "RKKIDS";
          String requestUrl = null;
          String toAddress = null;
 		try {
@@ -1862,12 +1859,11 @@ e.printStackTrace();
            		usesDao1.save(userBean);
            		mobileNumber = objStudentBean1.getMobile();
            		String message = "Dear Parent, thanks for Registering with us.\nYour Login details,\n Username: "+objStudentBean1.getFatherName()+"\n Password: "+randomNum;
+           		System.out.println("---mobileNO"+mobileNumber+"----mesage"+message);
            		if(StringUtils.isNotBlank(mobileNumber)){
-           		requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(message, "UTF-8")+"&sms_type=2";
-                   URL url = new URL(requestUrl);
-                   HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-                   System.out.println(uc.getResponseMessage());
-                   uc.disconnect();
+           			if(StringUtils.isNotBlank(mobileNumber)){
+           				SendSMS.sendSMS(message, mobileNumber, objContext);
+           			}
            		}
            		 toAddress=  objStudentBean1.getEmail();
            		if(StringUtils.isNotBlank(toAddress)){
@@ -2287,9 +2283,6 @@ e.printStackTrace();
 		String message = objRequest.getParameter("message");
 		String notificatinId = objRequest.getParameter("notificatinId");
 		String studentId = objRequest.getParameter("studentId");
-		 String username = "GNTCLUB";
-         String password = "Kotaiah@123";
-         String from = "GNTCLUB";
            String requestUrl = null;
 		String[] array = studentId.split(",");
 		StudentBean objStudentBean = null;
@@ -2317,10 +2310,10 @@ try {
 		// load a properties file
 		prop.load(input);
 	
-	String smsMessage = "Dear Parent,\n_smsMessage_.\nGRETNALTES.";
-	smsMessage = smsMessage.replace("_smsMessage_", message);
+	String smsMessage = message;
+//	smsMessage = smsMessage.replace("_smsMessage_", message);
 	String messageBody =  prop.getProperty("messageBody");
-	System.out.println("notification------"+messageBody);
+	System.out.println("notification------"+notificatinId);
 	messageBody = messageBody.replace("_message_", message);
 		int nid= Integer.parseInt(notificatinId);
 		for(int i=0;i<array.length;i++){
@@ -2333,10 +2326,6 @@ try {
 				mobileNumber = objStudentBean.getMobile();
 				if(StringUtils.isNotBlank(mobileNumber)){
 					SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
-                URL url = new URL(requestUrl);
-                HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-                System.out.println(uc.getResponseMessage());
-                uc.disconnect();
                 session.setAttribute("message", "Successfully SMS has been Sended");
 				}
 			}
