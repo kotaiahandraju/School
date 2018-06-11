@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 
+/MANIFEST.MF
+/.DS_Store
 -/bin/*
 -*.xml
 -/target/
