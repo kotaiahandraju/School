@@ -24,6 +24,8 @@
     font-weight: normal !important;
     font-family: 'Open Sans', sans-serif; !important;
 }
+.panel-default {
+overflow-x:hidden;}
 	</style>
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">

@@ -75,7 +75,7 @@ span.has-error, #already_exist, .subjects_error
 									<div class="blog-header" style="background: #d66061;">
 										<!-- <img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
 										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b> -->
-										<img src="img/loginp.png" align="middle" style="height: 75px;" alt="GRETNALTES">
+										<img src="img/loginp.png" align="middle" style="height: 75px;" alt="GRETNALTES" class="img-responsive">
 										&nbsp; &nbsp; &nbsp; <!-- <b style="font-size: 25px;color: white !important">GRETNALTES</b> -->
 									</div>
 									<div class="blog-body">

@@ -221,7 +221,10 @@ session.setAttribute("url", url);
 						    <c:if test="${rolId=='2' }">
   						     <li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
 						     <li><a href='userStudentFeeHome' ><span>Fee Payment</span></a></li>
+						     
 						  </c:if>	
+						  
+						  
 						  <c:if test="${rolId=='1' }">					   
 							<li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
 							<li><a href='viewStudent' id="viewStudent" ><span>View Student</span></a></li>
@@ -233,6 +236,10 @@ session.setAttribute("url", url);
 							<li><a href="hallticket"><span>Student Hallticket</span></a></li>
 							 </c:if>
 						</ul>
+																    <c:if test="${rolId=='2' }">
+													<li class=""><a style="" href="#" onclick="logout()"><i style="" class="fa fa-power-off"></i><span>Logout</span></a></li></c:if>	
+													
+						
 					</li>
 					<c:if test="${rolId=='1' }">
 					<li class='has-sub'>
@@ -245,6 +252,7 @@ session.setAttribute("url", url);
 							<li><a href='viewEvents' ><span>View Notifications</span></a></li> 
 						</ul>
 					</li>
+		    <li class=""><a style="" href="#" onclick="logout()"><i style="" class="fa fa-power-off"></i><span>Logout</span></a></li>
 					  </c:if>	
 					<!-- <li class='has-sub'>
 						<a href='#'><i class="fa fa-clipboard"></i><span>Exams</span></a>
@@ -279,17 +287,12 @@ session.setAttribute("url", url);
 			<!-- Menu End -->
 
 			<!-- Freebies Starts -->
-			<div class="freebies">
+		<!-- 	<div class="freebies">
 				
-				<!-- Sidebar Extras -->      
+				
 				<div class="sidebar-addons">
 					<ul class="views">
-						<!-- <li>
-							<i class="fa fa-circle-o text-success"></i>
-							<div class="details">
-								<a style="color: white;" href="">Review/Feedback</a>
-							</div>
-						</li> -->
+						
 						<li>
 							<i style="color:#fff;" class="fa fa-power-off"></i>
 							<div class="details">
@@ -299,7 +302,7 @@ session.setAttribute("url", url);
 					</ul>
 				</div>
 
-			</div>
+			</div> -->
 		</aside>
 		<!-- Left sidebar ends -->
 

@@ -9,7 +9,17 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-	
+	<style>
+	.main-container {
+    position: relative;
+    padding: 0;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+	.panel-default {
+overflow-x:hidden;}
+	</style>
 	<link href="css/datepicker1.css" rel="stylesheet">
 <!-- 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
