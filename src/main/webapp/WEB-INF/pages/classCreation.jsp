@@ -162,4 +162,8 @@
 	}
 	
 
+	var getTabName = window.location.pathname.split('/')[2];
+	$("#conf_li").addClass('active');
+	$("#conf_li ul").css('display','block');
+	$("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 </script>

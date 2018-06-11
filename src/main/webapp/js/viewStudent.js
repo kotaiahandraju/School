@@ -45,6 +45,9 @@ $(function(){
 	    $('#email').val("");
 	    $("#student-form").addClass('form-horizontal');
 	});
+	
+	
+	
 });
 	    
 	

@@ -165,5 +165,9 @@ var listOrders1 = ${allOrders1};
 if (listOrders1 != "") {
 	displayTable(listOrders1);
 }
+var getTabName = window.location.pathname.split('/')[2];
+$("#conf_li").addClass('active');
+$("#conf_li ul").css('display','block');
+$("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 
 </script>
