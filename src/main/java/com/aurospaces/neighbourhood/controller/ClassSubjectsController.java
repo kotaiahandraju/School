@@ -95,7 +95,7 @@ public class ClassSubjectsController {
 					objAddClassSubjectDao.save(classSubjectBean);
 //					session.setAttribute("message", "Successfully subject  created for class");
 					redir.addFlashAttribute("msg", " Successfully subject  created for class");
-					redir.addFlashAttribute("cssMsg", "danger");
+					redir.addFlashAttribute("cssMsg", "success");
 				}else {
 					objAddClassSubjectDao.save(classSubjectBean);
 //					session.setAttribute("message", "Update sucessfully.");
