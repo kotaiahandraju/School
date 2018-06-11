@@ -124,7 +124,7 @@ width:100px;
 												</div>
 											</div>
 										</div>
-										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divFee">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Fee<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
@@ -400,11 +400,6 @@ width:100px;
 	
 	 $('#submitId').click(function(){
 		 $("#maxValueError").text("");
-	    	var admissionFee = $('#admissionFee').val();
-	    	var tutionFee   = $('#tutionFee').val();
-	    	var transportationFee = $('#transportationFee').val();
-	    	var hostelFee = $('#hostelFee').val();
-	    	var stationaryFee = $('#stationaryFee').val();
 	    	var fee = $('#fee').val();
 	    	$('#forFormValidation').val();
 	    	if(  fee == "0"   ){
@@ -412,27 +407,19 @@ width:100px;
 	    		alert("insufficient fund");
 	    		return false;
 	    	}else{
-	    	if(admissionFee1 < admissionFee){
-	    		$('#erroradmissionFee').text("Max Aoount is:"+admissionFee1);
-		     return false;
-		     }else if(tutionFee1 < tutionFee){
-		    		$('#errortutionFee').text("Max Aoount is:"+tutionFee1);
-			     return false;
-		     }else if(transportationFee1 < transportationFee){
-		    		$('#errortransportationFee').text("Max Aoount is:"+transportationFee1);
-			     return false;
-		     }else if(hostelFee1 < hostelFee){
-		    		$('#errorhostelFee').text("Max Aoount is:"+hostelFee1);
-			     return false;
-		     }else if(stationaryFee1 < stationaryFee){
-		    		$('#errorstationaryFee').text("Max Aoount is:"+stationaryFee1);
-			     return false;
-		     }else if( fee > duefee123){
+	    	
+		    		if( fee > duefee123){
 				 
 				 $('#fee').after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
 				 
 				 return false;
-			 } else {
+			 } else if(fee == ""){
+				 $('#forFormValidation').val('');
+				 return false;
+				 
+			 }
+				 
+				 else {
 				 $('#forFormValidation').val(1);
 		    		$('#erroradmissionFee').text("");
 		    		$('#errortutionFee').text("");
@@ -839,11 +826,23 @@ width:100px;
 			success : function(response) {
 				// 				 alert(response.totalFee); 
 				
-				if (response.dueFee == null) {
-					$("#displayId").text("Due Fee: " + response.netFee);
+				if (response.dueFee == null || response.dueFee == 0 ) {
+					
+					$("#fee").prop("disabled", true);
+					$("#divFee").hide();  
+					$("#displayId").text("No due amount.!");
+					//$("#displayId").text("Due Fee: "  + response.netFee +"There is no Due Amount");
+					 $('#forFormValidation').val('');
+					
 					duefee123= response.netFee;
 				} else {
+					$("fee").prop("disabled", false);
+					$("#divFee").show();  
 					duefee123= response.dueFee;
+					
+					$("#displayId").text("Due Fee: " + response.netFee);
+					
+					/* 
 					$("#displayId").text("Due Fee: " + response.dueFee);
 					$("#admissionFee").val(response.admissionFee);  
 					$("#tutionFee").val(response.tutionFee);
@@ -855,7 +854,7 @@ width:100px;
 					tutionFee1 = response.admissionFee;
 					transportationFee1 = response.admissionFee;
 					hostelFee1 = response.admissionFee;
-					stationaryFee1 = response.admissionFee;
+					stationaryFee1 = response.admissionFee; */
 				}
 			},
 			error : function(e) {
