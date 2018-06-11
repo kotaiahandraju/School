@@ -85,6 +85,14 @@ th{text-align: center;}
     background-position: center;
     background-repeat: no-repeat;
 }
+.alert {
+    padding: 0px;
+    margin-bottom: 11px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: none;
+}
 </style>
 	</head>  
 
