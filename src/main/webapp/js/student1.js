@@ -225,21 +225,26 @@ $(function(){
 			 
 			 if($('#buspesility').val() !== "" && $(this).val() !== ""){
 				 
-				 console.log($('#buspesility').val())	;
 
 		if ($(this).val() !== "Hostel" && $('#buspesility').val() !== "Yes") {
+			
+			
+			$('#buspesility').val('');
+			$('#buspesility').attr("readonly", false);
+			$('#divBuspesility').show();
 
-			var fee = totalFee - $('#hostelFee').val() - $('#transportationFee').val();
+			var fee = totalFee - $('#hostelFee').val() ;
 
 			$('#totalFee').val(fee);
 
 			$('#hostelFee').prop("disabled", true);
 			$('#hostleDiv').hide();
-			$('#transportationFee').prop("disabled", true);
-			$('#busroute').prop("disabled", true);
 			
-			$('#transportationDiv').hide();
-			$('#busRouteDiv').hide();
+			$('#transportationFee').prop("disabled", false);
+			$('#busroute').prop("disabled", false);
+			
+			$('#transportationDiv').show();
+			$('#busRouteDiv').show();
 			
 			
 		} else {
@@ -297,6 +302,11 @@ $(function(){
 						
 		}
 			 }else if ($(this).val() !== "Hostel" ){
+				 
+
+					//$('#buspesility').val('No');
+					$('#buspesility').attr("readonly", false);
+					$('#divBuspesility').show();
 					 
 					 
 					 var fee = totalFee - $('#hostelFee').val();
@@ -315,7 +325,7 @@ $(function(){
 				 }else{
 					 
 					 
-					 var fee =  totalFee ;
+					 var fee =  totalFee -  $('#transportationFee').val(); ;
 
 						$('#totalFee').val(fee);
 
@@ -323,11 +333,15 @@ $(function(){
 						$('#hostelFee').prop("disabled", false);
 						$('#hostleDiv').show();
 						
-						$('#transportationFee').prop("disabled", false);
-						$('#busroute').prop("disabled", false);
+						$('#buspesility').val('No');
+						$('#buspesility').attr("readonly", true);
+						$('#divBuspesility').hide();
 						
-						$('#transportationDiv').show();
-						$('#busRouteDiv').show();
+						$('#transportationFee').prop("disabled", true);
+						$('#busroute').prop("disabled", true);
+						
+						$('#transportationDiv').hide();
+						$('#busRouteDiv').hide();
 					 
 					 
 				 }
@@ -500,7 +514,9 @@ $(function(){
 			$('#caste').trigger("chosen:updated");
 			$('#email').val(serviceUnitArray[id].email);
 			$('#fatherName').val(serviceUnitArray[id].fatherName);
+			
 			$('#fee').val(serviceUnitArray[id].fee);
+			
 			$('#gender').val(serviceUnitArray[id].gender);
 			$('#gender').trigger("chosen:updated");
 			$('#dob1').val(serviceUnitArray[id].dob);
@@ -521,6 +537,7 @@ $(function(){
 			$('#medium').val(serviceUnitArray[id].mediumId);
 			$('#medium').trigger("chosen:updated");
 			$("#mobile").val(serviceUnitArray[id].mobile);
+			totalFee = serviceUnitArray[id].totalFee;
 			$("#totalFee").val(serviceUnitArray[id].totalFee);
 			$("#discountFee1").val(serviceUnitArray[id].discountFee);
 			$('#blah').attr('src',''+serviceUnitArray[id].imagePath+'');

@@ -167,6 +167,9 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 <!-- 							<span class="current-page"></span> -->
 						</a>
 					</li>
+		<li><a style="" href="parentFeedback"><i class="fa fa-circle-o text-warning"></i><span>Send Feedback</span></a></li>
+		<li><a style="" href="http://www.gretnaltes.org/" target="_blank"><i class="fa fa-circle-o text-success"></i><span>Visit Site</span></a></li>
+		<li><a style="" href="#" onclick="logout()"><i style="" class="fa fa-power-off"></i><span>Logout</span></a></li>
 					
 				</ul>
 		  </div>
@@ -178,24 +181,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 				<!-- Sidebar Extras -->      
 				<div class="sidebar-addons">
 					<ul class="views">
-						<li>
-							<i class="fa fa-circle-o text-warning"></i>
-							<div class="details">
-								<a style="color: white;" href="parentFeedback">Send Feedback</a>
-							</div>
-						</li>
-						<li>
-							<i class="fa fa-circle-o text-success"></i>
-							<div class="details">
-								<a style="color: white;" href="http://www.gretnaltes.org/" target="_blank">Visit Site</a>
-							</div>
-						</li>
-						<li>
-							<i style="color:#fff;" class="fa fa-power-off"></i>
-							<div class="details">
-								<a style="color: white;" href="#" onclick="logout()">Logout</a>
-							</div>
-						</li>
+						
 					</ul>
 				</div>
 

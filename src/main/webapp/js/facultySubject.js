@@ -111,12 +111,13 @@ $(function(){
 			$('#boardName').val(serviceUnitArray[id].boardId);
 			$('#boardName').trigger("chosen:updated");
 			classNameFilter();
-			sectionFilter();
+			
 			$('#className').val(serviceUnitArray[id].classId);
 			$('#className').trigger("chosen:updated");
+			sectionFilter();
 			$('#section').val(serviceUnitArray[id].sectionId);
 			$('#section').trigger("chosen:updated");
-			mediumFilter();
+//			mediumFilter();
 			$('#medium').val(serviceUnitArray[id].mediumId);
 			$('#medium').trigger("chosen:updated");
 			 subjectFilter();
