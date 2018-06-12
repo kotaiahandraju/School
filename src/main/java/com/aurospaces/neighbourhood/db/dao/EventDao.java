@@ -3,15 +3,20 @@ package com.aurospaces.neighbourhood.db.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.StudentBean;
+import com.aurospaces.neighbourhood.bean.UsersBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseEventDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 
 @Repository(value = "EventDao")
 public class EventDao extends BaseEventDao {
+	@Autowired HttpSession session;
 	public List<Map<String, String>> getEvents(StudentBean objStudentBean ){
 		 StringBuffer objStringBuffer = new StringBuffer();
 		 objStringBuffer.append("select s.id as studentId,s.name as studentName,DATE_FORMAT( Date(nt.created_time),'%d-%M-%Y') as absentDate,nt.message ,"
@@ -40,6 +45,16 @@ public class EventDao extends BaseEventDao {
 		if (objStudentBean.getId() !=0) {
 			objStringBuffer.append(" and s.id=" + objStudentBean.getId());
 		}
+		
+		UsersBean objuserBean =(UsersBean) session.getAttribute("cacheUserBean");
+			if(objuserBean != null){
+				int rolId1 = Integer.parseInt(objuserBean.getRolId());
+				if(rolId1 == 3){
+					objStringBuffer.append(" and s.mobile='" + objuserBean.getMobile()+"'");
+				}
+			}
+		
+		
 		objStringBuffer.append("  order by nt.created_time desc limit 50");
 		
 String sql = objStringBuffer.toString();
