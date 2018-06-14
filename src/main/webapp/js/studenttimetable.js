@@ -256,7 +256,7 @@ function displayTable(listOrders) {
 			success : function(response) {
 				 /* alert(response); */  
 				var optionsForClass = "";
-				optionsForClass = $("#section").empty();
+				optionsForClass = $("#sectionId").empty();
 				optionsForClass.append(new Option("-- Choose Section --", ""));
 				$.each(response, function(i, tests) {
 					var id=tests.id;
@@ -264,7 +264,7 @@ function displayTable(listOrders) {
 					optionsForClass.append(new Option(sectionName, id));
 				});
 				$('#loadAjax').hide();
-				$('#section').trigger("chosen:updated");
+				$('#sectionId').trigger("chosen:updated");
 			},
 			error : function(e) {
 				$('#loadAjax').hide();

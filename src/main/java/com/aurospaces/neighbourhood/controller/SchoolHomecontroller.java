@@ -2023,7 +2023,7 @@ e.printStackTrace();
 		 boardId = request.getParameter("boardId");
 		 classId = request.getParameter("classId");
 		 sectionId = request.getParameter("sectionId");
-		
+		System.out.println("---boardId--"+boardId+"--classId---"+classId+"--sectionId----"+sectionId);
 		filterBean =  objClassCreation.getMediumFilter(boardId, classId, sectionId);
 		ObjectMapper objmapper=new ObjectMapper();
 		json=objmapper.writeValueAsString(filterBean);
