@@ -97,7 +97,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			%>  
 			
 		<!-- Header Start -->
-		<header style="height: 50px">
+		<header style="height: 50px;padding-top:5px;">
 
 			<!-- Logo starts -->
 			<div class="logo">
