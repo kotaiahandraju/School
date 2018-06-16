@@ -32,12 +32,11 @@
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-
-				    					 <div class="blog-body">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Send Feedback</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<form:form   method="post" action="parentSendFeedback" commandName="packCmd" class="form-horizontal" id="feedback-form" >
 										<div class="row">
 											

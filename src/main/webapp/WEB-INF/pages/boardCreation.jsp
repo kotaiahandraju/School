@@ -28,16 +28,18 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="boardHome"></a>Board Creation</a></li>
 	</ol>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>List of Boards</h4>
-					</div>
-					<div class="panel-body collapse in">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							
 <%-- 									<%${message} %> --%>
 			<div class="col-md-4">
+			<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Create Boards</h4>
+					</div>
+                    
+                    
+                     <div class="panel-body">
 									<form:form action="addBoard.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
@@ -66,9 +68,14 @@
 											        %>
 													</div>
 												</div>
-									</form:form>
+									</form:form></div></div>
 									</div>
 									<div class="col-md-8 gutter">
+									<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Boards</h4>
+					</div>  
+                      <div class="panel-body">
 									<div class="blog">
 									
 									<div class="blog-body">
@@ -95,13 +102,12 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div></div></div>
 									</div>
 									
 								</div>
 							</div>
 					
-						</div></div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->

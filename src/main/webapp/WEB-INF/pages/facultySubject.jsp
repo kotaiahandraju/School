@@ -33,9 +33,9 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Add Faculty Subjects</a></li>
 	</ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h4>List of Faculty Subjects</h4>
+						<h4>Create Faculty Subjects</h4>
 					</div>
 					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
@@ -149,17 +149,17 @@
 										</div>
 										</form:form>
 							</div>
-						</div>
+						</div></div></div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Faculty-Subjects</h4>
-									</div>
-									<div class="blog-body">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Faculty Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
@@ -189,11 +189,6 @@
 							</div>
 						</div>
 						<!-- Row Ends -->
-						
-					</div>
-					<!-- Spacer ends -->
-
-				</div>
 				<!-- Container fluid ends -->
 
 			</div>

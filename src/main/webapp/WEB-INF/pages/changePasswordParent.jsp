@@ -26,14 +26,15 @@
 				
 					<!-- Spacer starts -->
 						<!-- Row Starts -->
+						
 						<div class="row">
 						
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid #f1f1f1;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Add Faculty</h5>
-									</div> -->
-									<div class="blog-body">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Create Change Password</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<form:form action="parentChangePassword" commandName="packCmd" method="post" class="form-horizontal" id="cp-form">
 										<div class="row">
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">

@@ -59,7 +59,7 @@ width:200px !important;
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Fee Payment</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Filter Student</h4>
 					</div>
@@ -260,11 +260,11 @@ width:200px !important;
 				<!-- Row Starts -->
 				<div class="row gutter">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog">
-							<div class="blog-header">
-								<h4>List of Fee Payments</h4>
-							</div>
-							<div class="blog-body">
+					<div class="panel panel-info">
+					<div class="panel-heading">
+							<h4>List of Fee Payments</h4>
+					</div> 
+					<div class="panel-body collapse in">
 								<div class="table-responsive">
 									<div id="basicExample_wrapper"
 										class="dataTables_wrapper form-inline dt-bootstrap">
@@ -841,34 +841,39 @@ width:200px !important;
 					if(response.admissionFee == 0){
 						$("#admissionFee").prop("disabled", true);
 						$("#divAdmissionFee").hide();  
-					}
+					}else{
 					
 					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+					 $("#admissionFee").val(0);
 					
+					}
 					if(response.tutionFee == 0){
 						
 						$("#tutionFee").prop("disabled", true);
 						$("#divTutionFee").hide();
-					}
+					}else{
 					
 					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
-					
+					  $("#tutionFee").val(0);
+					}
 					if(response.transportationFee == 0){
 						
 						$("#transportationFee").prop("disabled", true);
 						$("#divTransportationFee").hide();
 						
-					}
+					}else{
 					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
-					
+					  $("#transportationFee").val(0);
+					}
 					if(response.hostelFee == 0){
 						
 						$("#hostelFee").prop("disabled", true);
 						$("#divHostelFee").hide();
-					}
+					}else{
 					
 					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
-					
+					 $("#hostelFee").val(0);
+					}
 					if(response.stationaryFee == 0){
 						
 						$("#stationaryFee").prop("disabled", true);
@@ -876,7 +881,7 @@ width:200px !important;
 					}
 					
 					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
-					
+					  $("#stationaryFee").val(0);
 					
 					admissionFee1 = response.admissionFee;
 					tutionFee1 = response.tutionFee;

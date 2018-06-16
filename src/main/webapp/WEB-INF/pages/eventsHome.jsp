@@ -36,7 +36,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
     	<li><a href="#">Message</a></li>
 		<li><a href="#">Notification</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Send  Notification</h4>
 					</div>

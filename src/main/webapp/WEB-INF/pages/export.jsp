@@ -32,9 +32,9 @@
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Export Student</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h4>List of View Students</h4>
+						<h4>Export Students</h4>
 					</div>
 					<div class="panel-body collapse in">
 					<!-- Spacer starts -->

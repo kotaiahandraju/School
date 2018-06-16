@@ -28,6 +28,8 @@ public class StudentMarksController {
 		model.addAttribute("examType", examTypeDao.getAllExamType()) ;
 		return "studentMarks";
 	}
+	
+	
 
 	@ModelAttribute("board")
 	public Map<String, String> populate() {

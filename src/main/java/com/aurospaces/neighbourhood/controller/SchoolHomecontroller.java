@@ -1175,7 +1175,7 @@ e.printStackTrace();
 			double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
 			
 			StudentBean objStudent = studentDao.getById(Integer.parseInt(objStudentFeeBean.getStudentId()));
-			StudentFeeBean studentfee = objStudentFeeDao.getTotalfee(objStudentFeeBean.getStudentId());
+			StudentFeeBean studentfee = objStudentFeeDao.getTotalfee(objStudentFeeBean.getStudentId(),objStudentFeeBean.getId());
 			objStudentFeeBean.setFee(fee);
 			
 				double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
@@ -1952,7 +1952,7 @@ e.printStackTrace();
 	
 
 	
-	@RequestMapping(value = "/getSubjectFilter2")
+	@RequestMapping(value = "/getSubjectFilter")
 	public @ResponseBody String getSubjectFilter(
 			HttpServletResponse response, HttpServletRequest request,
 			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {

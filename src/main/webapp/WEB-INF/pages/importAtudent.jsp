@@ -29,7 +29,7 @@
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Import Student</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Import Students</h4>
 					</div>

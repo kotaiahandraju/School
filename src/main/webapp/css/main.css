@@ -12,6 +12,8 @@
 /*  Box Shadow  */
 /*  Border Radius  */
 /*  Opacity  */
+
+
 body, html {
   min-height: 100%;
   position: relative; }
@@ -28,14 +30,14 @@ body {
   margin: 0;
   font: normal 12px 'Open Sans', sans-serif;
   color: #4d4d4d;
-  background: #454545;
-      font-family: 'Open Sans', sans-serif; !important; }
+  background: #13353F;
+      font-family: 'Open Sans', sans-serif; !important; 
+}
 .breadcrumb {
-    padding: 8px 15px;
+    padding: 8px 15px 0 15px;
     margin-bottom: 20px;
     list-style: none;
-    background-color: #ddd;
-    border-radius: 4px;
+    border-radius: 0;
 }
 label {
     display: inline-block;
@@ -145,7 +147,7 @@ a {
 .lg-padding {
   padding: 20px; }
 .subactive{
-	background:#000;
+	background:#005C77;
 	color:#fff;
 }
 .md-padding {
@@ -527,19 +529,17 @@ hr.sm-margin {
   width: 30%; }
 
 header {
-  background: #d66061;
-  height: 60px;
-  line-height: 60px;
+  background: #005C77;
   padding: 0 20px;
   vertical-align: middle; }
   header .logo {
-    width: 190px;
+    width: auto;
     float: left;
-     margin-top: 0px; }
+     margin-top: 10px; }
     header .logo a {
       display: block; }
       header .logo a img {
-        max-width: 180px; }
+        }
 
 @media (max-width: 767px) {
   header .logo {
@@ -702,7 +702,7 @@ ul#mini-nav {
   text-align: left;
   margin-left: 210px;
   min-height: 50em !important;
-  background: #f2f2f2; }
+  background: #ffffff; }
 
 @media (max-width: 767px) {
   .dashboard-wrapper {
@@ -994,12 +994,13 @@ aside#sidebar {
         padding: 0;
         border-bottom: none;
         border-top: none;
-        background: #2e2e2e;
+        background: #005C77;
         position: relative; }
         aside#sidebar #menu ul ul li:hover {
-          background: #383838; }
+          background: #005C77; }
         aside#sidebar #menu ul ul li .select {
           font-weight: bold;
+
           color: #ecf0f5 !important;
           position: relative; }
           aside#sidebar #menu ul ul li .select:after {
@@ -1015,9 +1016,10 @@ aside#sidebar {
       aside#sidebar #menu ul ul a {
         padding: 10px 10px 10px 33px;
         display: block;
-        color: #999999 !important;
-        font-size: 12px;
-        font-weight: normal;
+        color: #ffffff !important;
+        font-size: 13px;
+        font-weight: 400;
+letter-spacing:.5px;
         text-decoration: none; }
         aside#sidebar #menu ul ul a span {
           -webkit-transition: padding 0.5s ease;
@@ -1038,18 +1040,20 @@ aside#sidebar {
     height: 100%;
     background: #333; } }
 .top-bar {
-  padding: 12px 20px;
+  padding: 5px 20px 0 20px;
   vertical-align: middle;
-  height: 65px;
+  height: auto;
   line-height: 40px;
   background: #ffffff;
-  border-bottom: 1px solid #ededed; }
+display: inline-block;
+   }
   .top-bar .page-title {
     font-size: 24px;
     font-weight: 500;
     display: inline-block;
     float: left;
-    color: #2b3d51; }
+    color: #2b3d51; 
+}
   .top-bar ul.stats {
     margin: 0;
     padding: 0;
@@ -1311,6 +1315,7 @@ h3.panel-title {
   background: #4d4d4d;
   padding: 15px;
   color: #b3b3b3; }
+
   .panel-grey h4.heading {
     margin: 0;
     padding: 0 0 10px 0;

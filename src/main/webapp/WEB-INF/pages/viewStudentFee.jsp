@@ -40,7 +40,7 @@
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">View Student Fee</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>View Student Fee</h4>
 					</div>
@@ -56,7 +56,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 												    <div class="col-sm-5">
-														<form:select path="boardName" tabindex="1" onchange="classNameFilter(),searchStudetnFee()" class="form-control" >
+														<form:select path="boardName" tabindex="1" onchange="classNameFilter()" class="form-control" >
 															<form:option value=""  >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
 														</form:select>
@@ -68,9 +68,9 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
 												    <div class="col-sm-5">
-														<form:select path="className" tabindex="2" onchange="sectionFilter(),searchStudetnFee()" class="form-control" >
+														<form:select path="className" tabindex="2" onchange="sectionFilter()" class="form-control" >
 															<form:option value=""  >-- Choose Class --</form:option>
-															<form:options items="${allClasses}"></form:options>
+															<%-- <form:options items="${allClasses}"></form:options> --%>
 														</form:select>
 														<span class="className_error" id="className_error"></span>
 													</div>
@@ -80,9 +80,9 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 												    <div class="col-sm-5"> 
-														<form:select path="section" tabindex="3" onchange="mediumFilter(),searchStudetnFee()" class="form-control" >
+														<form:select path="section" tabindex="3" onchange="mediumFilter()" class="form-control" >
 															<form:option value=""  >-- Choose Section --</form:option>
-															<form:options items="${allSection}"></form:options>
+															<%-- <form:options items="${allSection}"></form:options> --%>
 														</form:select>
 														<span class="section_error" id="section_error"></span>
 													</div>
@@ -93,9 +93,9 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
 												    <div class="col-sm-5">	
-														<form:select path="medium" tabindex="4" onchange="studentFilterDropdown(),searchStudetnFee()" class="form-control" >
+														<form:select path="medium" tabindex="4" onchange="studentFilterDropdown()" class="form-control" >
 															<form:option value=""  >-- Choose Medium --</form:option>
-															<form:options items="${mediam}"></form:options>
+													<%--	<form:options items="${mediam}"></form:options> --%>
 														</form:select>
 														<span class="medium_error" id="medium_error"></span>
 													</div>
@@ -105,9 +105,9 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student</label>
 												    <div class="col-sm-5">	
-														<form:select path="studentId" tabindex="5" class="form-control" onchange="searchStudetnFee()" >
+														<form:select path="studentId" tabindex="5" class="form-control"  onchange="searchStudetnFee()" >
 															<form:option value=""  >-- Choose Student --</form:option>
-															<form:options items="${allStudents}"></form:options>
+														<%--<form:options items="${allStudents}"></form:options> --%>
 														</form:select>
 													</div>
 												</div>
@@ -155,11 +155,11 @@
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Student Fees</h4>
-									</div>
-									<div class="blog-body">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Student Fee</h4>
+					</div>
+					<div class="panel-body collapse in">	
 										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
@@ -493,6 +493,7 @@ $(document).ready(function ()
 			url : "getClassNameFilter.json",
 			data : "boardId=" + boardId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 // 				 alert(response);  
 				var optionsForClass = "";
@@ -524,6 +525,7 @@ $(document).ready(function ()
 			url : "getSectionFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 // 				 alert(response);  
 				var optionsForClass = "";
@@ -556,6 +558,7 @@ $(document).ready(function ()
 			url : "getMediumFilter.json",
 			data : "boardId=" + boardId+"&classId="+classId+"&sectionId="+sectionId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 // 				 alert(response);  
 				var optionsForClass = "";

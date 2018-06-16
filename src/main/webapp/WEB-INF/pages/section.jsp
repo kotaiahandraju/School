@@ -33,17 +33,17 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Section Creation</a></li>
 	</ol>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>List of Sections</h4>
-					</div>
-					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="col-md-4">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Section Creation</h4>
+					</div>
+                     <div class="panel-body">
 									<form:form action="addSection.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="row">
 										
@@ -116,9 +116,14 @@
 											</div>
 										</div>
 									</div>
-									</form:form>
+									</form:form></div></div>
 								</div>
 								<div class="col-md-8 gutter">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Section</h4>
+					</div>
+                     <div class="panel-body">
 								<div class="blog">
 									
 									<div class="blog-body">
@@ -147,7 +152,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div></div></div>
 								</div>
 							</div>
 						</div>
@@ -162,12 +167,7 @@
 						<!-- Row Ends -->
 						
 					
-					<!-- Spacer ends -->
 
-				</div>
-				<!-- Container fluid ends -->
-
-			</div>
 			<!-- Main Container ends -->
 
 		</div>
