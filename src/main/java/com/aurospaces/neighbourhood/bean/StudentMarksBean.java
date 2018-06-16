@@ -9,7 +9,18 @@ public class StudentMarksBean {
 	protected String examTypeId;
 	protected String classId;
 	protected String sectionId,sectionname;
+	
+	protected String medium;
 	protected int id;
+	
+	
+	public String getMedium() {
+		return medium;
+	}
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+	
 	
 	
 	public String getStudentname() {
@@ -74,8 +85,9 @@ public class StudentMarksBean {
 	}
 	@Override
 	public String toString() {
-		return "StudentMarksBean [studentId=" + studentId + ", subjectId=" + subjectId + ", boardId=" + boardId
-				+ ", examTypeId=" + examTypeId + ", classId=" + classId + ", sectionId=" + sectionId + "]";
+		return "StudentMarksBean [studentId=" + studentId + ", studentname=" + studentname + ", subjectId=" + subjectId
+				+ ", boardId=" + boardId + ", examTypeId=" + examTypeId + ", classId=" + classId + ", sectionId="
+				+ sectionId + ", sectionname=" + sectionname + ", medium=" + medium + ", id=" + id + "]";
 	}
 	
 	

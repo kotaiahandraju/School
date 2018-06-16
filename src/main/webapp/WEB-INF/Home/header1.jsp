@@ -219,6 +219,9 @@ session.setAttribute("url", url);
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
 							<li><a href='facultySubject' id="addfacultySubjects" ><span>Assign Faculty Subjects</span></a></li>
+							 <li><a href='examType' id="" onclick="examType()"><span>Exam Types</span></a></li>
+							 <li><a href='examPattern' id="""><span>Exam Pattern</span></a></li>
+							 
 						</ul>
 					</li>
 							 </c:if>
@@ -240,8 +243,8 @@ session.setAttribute("url", url);
 							<li><a href='viewStudentFee' ><span> View Student Fee</span></a></li>
 							<li><a href='importStudent' ><span>Import Student</span></a></li>
 							<li><a href='exportStudent' ><span>Export Student</span></a></li>
-							<!-- <li><a href='studentMarks'><span>Student Marks</span></a></li>
-							<li><a href="hallticket"><span>Student Hallticket</span></a></li> -->
+							<li><a href='studentMarks'><span>Student Marks</span></a></li>
+							<li><a href="hallticket"><span>Student Hallticket</span></a></li>
 							 </c:if>
 						</ul>
 																    <c:if test="${rolId=='2' }">
@@ -251,7 +254,7 @@ session.setAttribute("url", url);
 					</li>
 					<c:if test="${rolId=='1' }">
 					<li class='has-sub' id="mes_li">
-						<a href='#'><i class="fa fa-envelope-open-o"></i><span>Message</span></a>
+						<a href='#'><i class="fa fa-envelope"></i><span>Message</span></a>
 						<ul>
 							<li><a href='attendanceHome' id="messageDisplayId" ><span>Attendance</span></a></li>
 							

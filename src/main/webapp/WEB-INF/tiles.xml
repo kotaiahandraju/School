@@ -319,6 +319,9 @@
 	<definition name="examType" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/examType.jsp" />
 	</definition>
+	<definition name="examPattern" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examPattern.jsp" />
+	</definition>
 	
 	<definition name="boardHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/boardCreation.jsp" />

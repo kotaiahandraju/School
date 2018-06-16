@@ -133,9 +133,9 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 
 	}
 	
-	 public StudentFeeBean getTotalfee(String studentId) {
-			String sql = "select ifnull(sum(fee),0.00) as fee from studentfee where studentId =? "  ;
-			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
+	 public StudentFeeBean getTotalfee(String studentId,int id) {
+			String sql = "select ifnull(sum(fee),0.00) as fee from studentfee where studentId =? and id not in(?)"  ;
+			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId,id},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
 			if(retlist.size() > 0)
 				return retlist.get(0);
 			return null;

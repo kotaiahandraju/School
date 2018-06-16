@@ -193,17 +193,100 @@ function displayTable(listOrders) {
 
 		}
 	} 
+	function sectionFilter() {
+		var boardId = $("#boardId").val();
+		var classId = $("#classId").val();
+		if (boardId.length != 0 ) {
+			$.ajax({
+				type : "POST",
+				url : "getSectionFilter.json",
+				data : "boardId=" + boardId + "&classId=" + classId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					/* alert(response); */
+					var optionsForClass = "";
+					optionsForClass = $("#sectionId").empty();
+					optionsForClass.append(new Option("-- Choose Section --",""));
+					$.each(response, function(i, tests) {
+						var id = tests.id;
+						var sectionName = tests.sectionName;
+						optionsForClass.append(new Option(sectionName, id));
+					});
+				}
+			});
+		}
+	}
 	
-	function getSubjects(id){
+	function mediumFilter() {
+		var boardId = $("#boardId").val();
+		var classId = $("#classId").val();
+		var sectionId = $("#sectionId").val();
+		if (boardId.length != 0) {
+			$.ajax({
+				type : "POST",
+				url : "getMediumFilter.json",
+				data : "boardId=" + boardId + "&classId=" + classId
+						+ "&sectionId=" + sectionId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					/* alert(response); */
+					var optionsForClass = "";
+					optionsForClass = $("#medium").empty();
+					optionsForClass
+							.append(new Option("-- Choose Medium --", ""));
+					$.each(response, function(i, tests) {
+						var id = tests.id;
+						var mediumName = tests.mediumName;
+						optionsForClass.append(new Option(mediumName, id));
+					});
+				}
+			});
+		}
+	}
+	
+	function studentFilterDropdown() {
+		var boardId = $("#boardId").val();
+		var classId = $("#classId").val();
+		var sectionId = $("#sectionId").val();
+		var mediumId = $("#medium").val();
+		
+			$.ajax({
+				type : "POST",
+				url : "studentFilterDropdown.json",
+				data : "boardId=" + boardId + "&classId=" + classId
+						+ "&sectionId=" + sectionId + "&mediumId=" + mediumId,
+				dataType : "json",
+				async:false,
+				success : function(response) {
+					// 				 alert(response);  
+					var optionsForClass = "";
+					optionsForClass = $("#studentId").empty();
+					optionsForClass.append(new Option("-- Choose Student --",
+							""));
+					$.each(response, function(i, tests) {
+						var studentId = tests.studentId;
+						var studentName = tests.studentName;
+						optionsForClass.append(new Option(studentName,
+								studentId));
+					});
+					
+				}
+			});
+	}
+	
+	function getSubjects(){
 		var boardId = $("#boardId").val();
 		var classId = $("#classId").val();
 		if(boardId.length !=0 && classId.length != 0){
-			$('#loadAjax').show();
+			//$('#loadAjax').show();
 		$.ajax({
 			type : "POST",
 			url : "getSubjectFilter.json",
 			data : "boardId="+boardId+"&classId="+classId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				console.log(response);
 				 /* alert(response); */  
@@ -215,10 +298,12 @@ function displayTable(listOrders) {
 
 					var subjectName=tests.subjectName;
 					$('#subjectDiv').append(
-							'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
+							'<div class="col-md-2">'
+							+'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
 							+ ' </label>' 
-							+'<br>'
-							+'<input path=" '+ id+'" type="number" class="form-control" tabindex="1"	placeholder="Enter Maximum Marks"/>');
+							/*+'<br>'*/
+							+'<input path=" '+ id+'" type="number" class="form-control" tabindex="1"	placeholder="Enter Maximum Marks"/>'
+							+'</div>');
 						
 					$('#subjectDiv').append();
 					//optionsForClass.append(new Option(className, id));
@@ -236,7 +321,10 @@ function displayTable(listOrders) {
 				}
 			}
 		});
-		$('#loadAjax').hide();
+		//$('#loadAjax').hide();
 
-		}
+		
 	}
+	}
+	
+	
