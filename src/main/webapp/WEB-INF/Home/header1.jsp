@@ -245,6 +245,9 @@ session.setAttribute("url", url);
 							<li><a href='exportStudent' ><span>Export Student</span></a></li>
 							<li><a href='studentMarks'><span>Student Marks</span></a></li>
 							<li><a href="hallticket"><span>Student Hallticket</span></a></li>
+							<li><a href="studenttimetable"><span>Time Table</span></a></li>
+							
+							
 							 </c:if>
 						</ul>
 																    <c:if test="${rolId=='2' }">
