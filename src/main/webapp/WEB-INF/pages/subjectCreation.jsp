@@ -28,17 +28,17 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Subject Creation</a></li>
 	</ol>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>List of Subjects</h4>
-					</div>
-					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="col-md-4">
+							<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Create Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 									<form:form action="addSubject.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Subject</label>
@@ -67,11 +67,14 @@
 											        %>
 													</div>
 												</div>
-									</form:form>
+									</form:form></div></div>
 									</div>
 									<div class="col-md-8 gutter">
-									<div class="blog">
-									<div class="blog-body">
+									<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
@@ -99,7 +102,7 @@
 									</div>
 								</div>
 							</div>
-							</div></div>
+							
 						</div>
 						<!-- Row Ends -->
 						

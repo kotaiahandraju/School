@@ -34,12 +34,13 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Add Faculty</a></li>
 	</ol>
-				<div class="panel panel-default">
+				
+										<div class="col-md-4">
+										<div class="panel panel-info">
 					<div class="panel-heading">
-						<h4>List of Faculty</h4>
+						<h4>Create Faculty</h4>
 					</div>
 					<div class="panel-body collapse in">
-										<div class="col-md-4">
 										<form:form action="facultySubmit.htm" commandName="packCmd" method="post" class="form-horizontal" id="fac-form">
 										<div class="row">
 												<div class="form-group">
@@ -101,11 +102,14 @@
 											</div>
 										</div>
 									</div>
-										</form:form>
+										</form:form></div></div>
 										</div>
 										<div class="col-md-8 gutter">
-										<div class="blog">
-									<div class="blog-body">
+										<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Faculty</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
@@ -131,7 +135,6 @@
 									</div>
 								</div>
 										</div>
-										</div></div>
 									
 							</div>
 						</div>

@@ -40,7 +40,7 @@
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">View Student Fee</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>View Student Fee</h4>
 					</div>
@@ -155,11 +155,11 @@
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of Student Fees</h4>
-									</div>
-									<div class="blog-body">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Student Fee</h4>
+					</div>
+					<div class="panel-body collapse in">	
 										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">

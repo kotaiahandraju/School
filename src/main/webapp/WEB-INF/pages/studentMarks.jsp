@@ -1,4 +1,4 @@
-v5g<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
@@ -116,7 +116,7 @@ border:none !important;
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Student Marks</a></li>
 	    </ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Filter Students</h4>
 					</div>

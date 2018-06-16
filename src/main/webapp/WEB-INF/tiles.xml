@@ -349,6 +349,9 @@
 		<put-attribute name="body" value="/WEB-INF/pages/studentMarks.jsp" />
 	</definition>
 	
+	<definition name="studenttimetable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studenttimetable.jsp" />
+	</definition>
 </tiles-definitions>
 
 

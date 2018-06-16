@@ -32,24 +32,23 @@
 
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
-
-					<!-- Spacer starts -->
-					<div class="spacer">
-					
+				<ol class="breadcrumb">
+    				<li><a href="dashBoard">Home</a></li>
+    				<li><a href="#">Configurations</a></li>
+					<li><a href="#">Exam Type</a></li>
+				</ol>
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog" style="border: 1px solid;">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-									<div class="blog-body">
-<%-- 									<%${message} %> --%>
-			
+							<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Create Exam Type</h4>
+					</div>
+					<div class="panel-body collapse in">
 									<form:form action="savedata" commandName="examTypecmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Exam Type</label>
-											    <div class="col-lg-4 col-md-4 col-sm-8">
+											    <div class="col-lg-2 col-md-2 col-sm-8">
 													<form:input path="examType" class="form-control" tabindex="1" placeholder="Enter Type of Exam" required="true"/>
 													<span class="name_error" id="name_error"></span>
 												</div>
@@ -71,22 +70,20 @@
 												</div>
 											</c:if>
 									</form:form>
-									</div>
-									
-									</div>
+									</div></div>
 								</div>
 							</div>
-						</div>
+					
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>List of ExamType</h4>
-									</div>
-									<div class="blog-body">
+							<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Exam Type</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">

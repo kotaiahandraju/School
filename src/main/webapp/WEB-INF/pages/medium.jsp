@@ -29,11 +29,6 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Medium Creation</a></li>
 	</ol>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>List of Medium's</h4>
-					</div>
-					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
 						<!-- Row Starts -->
 						<div class="row">
@@ -41,6 +36,13 @@
 								
 <%-- 									<%${message} %> --%>
 			<div class="col-md-4">
+			<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Medium Creation</h4>
+					</div>
+                    
+                    
+                     <div class="panel-body">
 									<form:form action="addMedium.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
@@ -69,9 +71,14 @@
 											        %>
 													</div>
 												</div>
-									</form:form>
+									</form:form></div></div>
 									</div>
 									<div class="col-md-8 gutter">
+									<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Medium</h4>
+					</div>
+                     <div class="panel-body">
 									<div class="blog">
 									<div class="blog-body">
 										<div class="">
@@ -97,7 +104,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div></div></div>
 									</div>
 									</div>
 									
@@ -111,11 +118,7 @@
 							</div>
 						</div>
 						<!-- Row Ends -->
-						
-					</div>
-					<!-- Spacer ends -->
-
-				</div>
+				
 				<!-- Container fluid ends -->
 
 			</div>

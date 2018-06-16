@@ -29,16 +29,13 @@
     	<li><a href="parentDashboard">Home</a></li>
     	<li><a href="#">View Attendance</a></li>
      	</ol>
-					<!-- Spacer starts -->
-					<div class="spacer">
-						<!-- Row Starts -->
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-				    				<div class="blog-body">
+					
+							<div class="">
+								<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>View Attendance</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<form:form  commandName="packCmd" method="post" class="form-horizontal" id="student-form" >
 										<div class="row">
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -87,19 +84,22 @@
 										</div>
 									</div> 
 								</div>
-							</div>
-						</div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
 						<div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
-									<div class="blog-header">
-										<h4>Students Attendance List
+							<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Students Attendance List
 										&nbsp;&nbsp;
 											<button type="button" id="delbtn" onclick="multipledeleteStudent()" style="display: none;border: none;"><i class="fa fa-trash" style="color: red;"></i></button>
 										</h4>
+					</div>
+					<div class="panel-body collapse in">
+								<div class="blog">
+									<div class="blog-header">
+										
 									</div>
 									<div class="blog-body">
 										<div class="table-responsive systemView">
@@ -132,13 +132,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- Row Ends -->
-						
-					</div>
-					<!-- Spacer ends -->
-
-				</div>
+			
 				<!-- Container fluid ends -->
 
 			</div>

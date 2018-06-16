@@ -97,13 +97,13 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			%>  
 			
 		<!-- Header Start -->
-		<header style="height: 70px">
+		<header style="height: 50px;padding-top:5px;">
 
 			<!-- Logo starts -->
 			<div class="logo">
 				<a href="#">
 <!-- 					<a href="dashBoard" style="display:inline !important"><img src="img/ABV.png" style="width: 65px;height: 65px;" alt="AKSHARA BHARATHI VIDYALAYAM">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">ABV</b></a> -->
-					<a href="dashBoard" style="display:inline !important"><img src="img/logo (1).png" style="width: 65px;height: 65px;" alt="GRETNALTES">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important"></b></a>
+<!-- 					<a href="dashBoard" style="display:inline !important"><img src="img/logo (1).png" style="width: 65px;height: 65px;" alt="GRETNALTES">&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important"></b></a> -->
 					<span class="menu-toggle hidden-xs" style="margin-top: 0px;">
 						<i class="fa fa-bars"></i>
 					</span>
@@ -111,7 +111,7 @@ String url =request.getScheme() + "://" + request.getServerName() +      ":" +  
 			</div>
 			<div class="pull-right hidden-sm hidden-xs">
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">Akshara Bharathi Vidyalayam</h1> -->
-				<img src="img/logoprint.png" class="img-responsive" style="margin-top:5px;height: 61px;background: #fff;"/>
+				<img src="img/logo.png" class="img-responsive" />
 			</div>
 			<!-- Logo ends -->
 

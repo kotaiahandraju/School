@@ -37,12 +37,11 @@
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog">
-							<!-- <div class="blog-header">
-										<h5 class="blog-title">Class Creation</h5>
-									</div> -->
-
-							<div class="blog-body">
+					<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>View Notifiaction</h4>
+					</div>
+					<div class="panel-body collapse in">
 								<form:form commandName="packCmd" method="post"
 									class="form-horizontal" id="student-form">
 									<div class="row">
@@ -106,9 +105,9 @@
 				<!-- Row Starts -->
 				<div class="row gutter">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="blog">
-							<div class="blog-header">
-								<h4>
+					<div class="panel panel-info">
+					<div class="panel-heading">
+							<h4>
 									Students Notification List &nbsp;&nbsp;
 									<button type="button" id="delbtn"
 										onclick="multipledeleteStudent()"
@@ -116,8 +115,8 @@
 										<i class="fa fa-trash" style="color: red;"></i>
 									</button>
 								</h4>
-							</div>
-							<div class="blog-body">
+					</div>
+					<div class="panel-body collapse in">
 								<div class="table-responsive systemView">
 									<div id="basicExample_wrapper"
 										class="dataTables_wrapper form-inline dt-bootstrap">

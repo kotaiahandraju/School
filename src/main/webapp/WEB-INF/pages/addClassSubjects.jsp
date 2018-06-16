@@ -33,17 +33,18 @@
     	<li><a href="#">Configurations</a></li>
 		<li><a href="#">Class Subjects</a></li>
 	</ol>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>List of Class Subjects</h4>
-					</div>
-					<div class="panel-body collapse in">
+				
 					<!-- Spacer starts -->
 					
 						<!-- Row Starts -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="col-md-4">
+							<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>Create Class Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 									<form:form action="saveClassSubject" commandName="classSubjectCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="row">
 											<div class="form-group">
@@ -104,11 +105,14 @@
 											</div>
 										</div>
 									</div>
-									</form:form>
+									</form:form></div></div>
 									</div>
 									<div class="col-md-8 gutter">
-									<div class="blog">
-									<div class="blog-body">
+									<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>List of Class Subjects</h4>
+					</div>
+					<div class="panel-body collapse in">
 										<div class="">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
@@ -149,11 +153,6 @@
 						</div>
 						<!-- Row Ends -->
 					<!-- Spacer ends -->
-
-				</div>
-				<!-- Container fluid ends -->
-
-			</div>
 			<!-- Main Container ends -->
 
 		</div>

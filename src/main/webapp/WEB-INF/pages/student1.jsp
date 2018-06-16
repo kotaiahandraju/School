@@ -46,9 +46,9 @@ overflow-x:hidden;}
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Add Student</a></li>
 	</ol>
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h4>List of Students</h4>
+						<h4>Add Students</h4>
 					</div>
 					<div class="panel-body collapse in">
 					<!-- Spacer starts -->
@@ -396,20 +396,28 @@ overflow-x:hidden;}
 									<input type ="hidden" value="${baseUrl }" id="baseUrl1">
 									</div>
 								</div>
-							</div></div>
+							</div>
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
 						<div class="row gutter" id="view_list1">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="blog">
+							<div class="panel panel-info">
+					<div class="panel-heading">
+							<h4>List of Students
+										&nbsp;&nbsp;
+											<button type="button" id="delbtn" onclick="multipledeleteStudent()" style="display: none;border: none;"><i class="fa fa-trash" style="color: red;"></i></button>
+										</h4>
+					</div> 
+					<div class="panel-body collapse in">
+								<!-- <div class="blog">
 									<div class="blog-header">
 										<h4>List of Students
 										&nbsp;&nbsp;
 											<button type="button" id="delbtn" onclick="multipledeleteStudent()" style="display: none;border: none;"><i class="fa fa-trash" style="color: red;"></i></button>
 										</h4>
-									</div>
-									<div class="blog-body">
+									</div> 
+									<div class="blog-body">-->
 										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
