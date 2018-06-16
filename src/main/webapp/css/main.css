@@ -147,7 +147,7 @@ a {
 .lg-padding {
   padding: 20px; }
 .subactive{
-	background:#005C77;
+	background: linear-gradient(to right, #525252 2%, #525252 75%, #1a1a1a 100%);
 	color:#fff;
 }
 .md-padding {
