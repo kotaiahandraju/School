@@ -126,7 +126,7 @@ border:none !important;
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<%-- 									<%${message} %> --%>
 
-			<form:form action="#" commandName="studentMarksCmd" method="post" id="cls-form" class="form-horizontal">
+			<form:form action="savingStudentMarks" commandName="studentMarksCmd" method="post" id="cls-form" class="form-horizontal">
 									<div class="form-group row">
 										<div class="col-md-2">
 											<label class="control-label">Board Name:</label>
@@ -162,7 +162,7 @@ border:none !important;
 										</div>
 										<div class="col-md-2">
 											<label class="control-label">Student:</label>
-												<form:select path="studentId" tabindex="1"	class="form-control" required="true">	<%-- onchange="getClassBySectionByStudentByExamType(this.id);" --%>
+												<form:select path="studentId" tabindex="1"	class="form-control" required="true">	<%--  onchange= "getSubjects()"  --%>
 												<!-- 	<option value="">-- Select Student --</option> -->
 													<form:option value="">--Select Student--</form:option>
 										<%-- <form:options items="${allStudents}"></form:options> --%>
@@ -170,7 +170,7 @@ border:none !important;
 										</div>
 										<div class="col-md-2">
 											<label class="control-label">Exam Type:</label>
-												<form:select path="examTypeId" tabindex="1"	class="form-control" required="true" onchange= "getSubjects()" >
+												<form:select path="examTypeId" tabindex="1"	class="form-control" required="true" >
 													<form:option value="">-- Exam Type --</form:option>
 													<form:options items="${examType}"></form:options>
 													<%-- <c:forEach var="exampType" items="${exampType}">

@@ -1,17 +1,49 @@
 package com.aurospaces.neighbourhood.bean;
 
+import java.util.Date;
+
 public class StudentMarksBean {
 	
-	protected String studentId ,studentname;
+	protected String studentId ,studentname, studentMarks;
 	
-	protected String subjectId;
+	protected String subjectId, subjectMaxMarks;
 	protected String boardId;
 	protected String examTypeId;
 	protected String classId;
 	protected String sectionId,sectionname;
+	protected Date createdTime;
+	protected Date updatedTime;
 	
 	protected String medium;
 	protected int id;
+	
+	
+	
+	public Date getCreatedTime() {
+		return createdTime;
+	}
+	public Date getUpdatedTime() {
+		return updatedTime;
+	}
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
+	}
+	public String getStudentMarks() {
+		return studentMarks;
+	}
+	public String getSubjectMaxMarks() {
+		return subjectMaxMarks;
+	}
+	public void setStudentMarks(String studentMarks) {
+		this.studentMarks = studentMarks;
+	}
+	public void setSubjectMaxMarks(String subjectMaxMarks) {
+		this.subjectMaxMarks = subjectMaxMarks;
+	}
+	
 	
 	
 	public String getMedium() {
@@ -85,9 +117,10 @@ public class StudentMarksBean {
 	}
 	@Override
 	public String toString() {
-		return "StudentMarksBean [studentId=" + studentId + ", studentname=" + studentname + ", subjectId=" + subjectId
-				+ ", boardId=" + boardId + ", examTypeId=" + examTypeId + ", classId=" + classId + ", sectionId="
-				+ sectionId + ", sectionname=" + sectionname + ", medium=" + medium + ", id=" + id + "]";
+		return "StudentMarksBean [studentId=" + studentId + ", studentname=" + studentname + ", studentMarks="
+				+ studentMarks + ", subjectId=" + subjectId + ", subjectMaxMarks=" + subjectMaxMarks + ", boardId="
+				+ boardId + ", examTypeId=" + examTypeId + ", classId=" + classId + ", sectionId=" + sectionId
+				+ ", sectionname=" + sectionname + ", medium=" + medium + ", id=" + id + "]";
 	}
 	
 	

@@ -226,7 +226,7 @@ border:none !important;
 			</div>
 			<!-- Row Ends -->
 			<!-- Row Starts -->
-			<div class="row gutter">
+			<div class="row gutter" id="examPatternTableDiv">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="blog">
 						<div class="blog-header">

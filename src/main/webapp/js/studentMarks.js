@@ -48,8 +48,88 @@ $("#cls-form").validate(
 			    $("#fee").val('');
 			    $("#cls-form").addClass('form-horizontal');
 			  });
+			  
+			  
+			  
+			  
+			  
+			  
+			  $('#examTypeId').on('change' ,function(){
+					
+					$("#examPatternTableDiv").show();
+					var boardId = $("#boardId").val();
+					var classId = $("#classId").val();
+					var sectionId = $("#sectionId").val();
+					var mediumId = $("#medium").val();
+					var examTypeId = $("#examTypeId").val();
+					
+					
+					$.ajax({
+						type : "POST",
+						url : "examPatternList.json",
+						data : "boardId=" + boardId + "&classId=" + classId+ "&sectionId=" + sectionId + "&mediumId=" + mediumId + "&examTypeId="+ examTypeId,
+						dataType : "json",
+						async:false,
+						success : function(response) {
+							dynamicInputfields(response)
+							/*$.each(response, function(i, tests) {
+								var id=tests.subjectId;
+
+								var subjectName=tests.subjectName;
+								var maxMarks=tests.maxMarks;
+								var subjectId = tests.subjectId;
+								$('#subjectDiv').append(
+										'<div class="col-md-2">'
+										+'<input path="subjectId" type="hidden" class="form-control" tabindex="1"	value="'+subjectId+'"/>'
+										+'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
+										+ ' </label>' 
+										+'<br>'
+										+'<input path="studentMarks" type="number" class="form-control" tabindex="1"	max="'+maxMarks+'" placeholder="Enter Maximum Marks"/>'
+										+'<input path="subjectMaxMarks" type="hidden" class="form-control" tabindex="1"	value="'+maxMarks+'"/>'
+										+'</div>');
+									
+								$('#subjectDiv').append();
+								//optionsForClass.append(new Option(className, id));
+							});
+							$('#loadAjax').hide();
+							//$('#subjectId').trigger("chosen:updated");
+							
+							
+							
+						*/	
+						}
+						});
+			  });
+			  
+			  
 });
 
+
+function dynamicInputfields(listOfSubjects){
+	
+	$('#subjectDiv').empty();
+	$.each(listOfSubjects, function(i, tests) {
+
+		var subjectName=tests.subjectName;
+		var maxMarks=tests.maxMarks;
+		var subId = tests.subjectId;
+		$('#subjectDiv').append(
+				'<div class="col-md-2">'
+				+'<label for="inputEmail3" class="col-sm-4 control-label">'+ subjectName+':' 
+				+ ' </label>' 
+				+'<br>'
+				+'<input id="subjectId" name="subjectId" type="hidden" class="form-control" tabindex="1"	value="'+subId+'"/>'
+				+'<input id="studentMarks" name="studentMarks" type="number" class="form-control" tabindex="1"	max="'+maxMarks+'" placeholder="Enter Maximum Marks"/>'
+				+'<input id="subjectMaxMarks" name="subjectMaxMarks" type="hidden" class="form-control" tabindex="1"	value="'+maxMarks+'"/>'
+				+'</div>');
+			
+		$('#subjectDiv').append();
+		//optionsForClass.append(new Option(className, id));
+	});
+	$('#loadAjax').hide();
+	//$('#subjectId').trigger("chosen:updated");
+	
+}
 
 
 function displayTable(listOrders) {

@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+	
+	
+	$("#examPatternTableDiv").hide();
     $("#fee").val("");
 
 $("#cls-form").validate(
@@ -48,6 +51,117 @@ $("#cls-form").validate(
 			    $("#fee").val('');
 			    $("#cls-form").addClass('form-horizontal');
 			  });
+			  
+					$('#examTypeId').on('change' ,function(){
+					
+					$("#examPatternTableDiv").show();
+					var boardId = $("#boardId").val();
+					var classId = $("#classId").val();
+					var sectionId = $("#sectionId").val();
+					var mediumId = $("#medium").val();
+					var examTypeId = $("#examTypeId").val();
+					
+					
+					$.ajax({
+						type : "POST",
+						url : "examPatternList.json",
+						data : "boardId=" + boardId + "&classId=" + classId+ "&sectionId=" + sectionId + "&mediumId=" + mediumId + "&examTypeId="+ examTypeId,
+						dataType : "json",
+						async:false,
+						success : function(response) {
+							console.log(response);
+							
+								$('#examPatternTable').html('');
+								serviceUnitArray = {};
+								/*var tableHead = '<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
+										+ '<thead>'
+										+ '<tr role="row">'
+										+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Subject Name</th>'
+										+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Maximum Marks</th>'
+										+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Option</th>'
+										+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
+								$('#examPatternTable').html(tableHead);
+								$.each(response,
+												 function(i, orderObj) {
+										if (orderObj.dueFee == 0.00) {
+														orderObj.dueFee = orderObj.netFee;
+													}
+					 
+													// 	contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
+													serviceUnitArray[orderObj.id] = orderObj;
+													var id = '"' + orderObj.id + '"';
+													var tblRow = "<tr align='center' role='row' class='odd'>"
+															
+															+ "<td class='hidden-sm hidden-xs' title='"+orderObj.subjectName+"'>"
+															+ orderObj.subjectName
+															+ "</td>"
+															+ "<td class='hidden-sm hidden-xs' title='"+orderObj.maxMarks+"'>"
+															+ orderObj.maxMarks
+															+ "</td>"
+															+ "<td align='center'>"
+															+ '<a href="javascript:void(0)" onclick=editPack('
+															+ orderObj.id
+															+ ')'
+															+ '  ><i style="color: green;" class="fa fa-edit"></i></a>'
+															+ '</td>' + '</tr>';
+													$(tblRow).appendTo("#examPatternTable tbody");
+
+											
+
+												});
+								$('#examPatternTable').dataTable();*/
+								
+								
+								
+								var tableHead = '<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
+									+ '<thead>'
+									+ '<tr role="row"><th>Subjects</th></tr>'
+									+ '</thead><tbody><tr role="row"><th>Marks</th></tr></tbody></table>';
+								var objId='';
+								
+							$('#examPatternTable').html(tableHead);
+							allSubjects = response;
+							
+							/*var subMarks=	$.map(allSubjects, function(subject) {
+
+									
+									return subject.subjectName + ": " + subject.maxMarks;
+							});
+							console.log(subMarks);*/
+							
+						
+							$.each(allSubjects,
+											 function(i, orderObj) {
+								/*	if (orderObj.dueFee == 0.00) {
+													orderObj.dueFee = orderObj.netFee;
+												}
+				 */
+												// 	contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
+												serviceUnitArray[orderObj.subjectName] = orderObj.maxMarks;
+												var id = '"' + orderObj.id + '"';
+												var subjectRow = "<th class='hidden-sm hidden-xs' title='"+orderObj.subjectName+"'>"
+														+ orderObj.subjectName
+														+ "</th>";
+												var marksRow   =  "<td class='hidden-sm hidden-xs' title='"+orderObj.maxMarks+"'>"
+														+ orderObj.maxMarks
+														+ "</td>";
+												map.push(orderObj);
+												
+												$(subjectRow).appendTo("#basicExample thead tr");
+												$(marksRow).appendTo("#basicExample tbody tr");
+												objId=orderObj.id;
+											});
+							$('<th>Action</th>').appendTo("#basicExample thead tr");
+							$('<td><a href="javascript:void(0)" onclick="editPack()"><i style="color: green;" class="fa fa-edit"></i></a></td>').appendTo("#basicExample tbody tr");
+						}
+					
+					
+				});
+				
+					
+					
+				});
+			  
 });
 
 
@@ -359,117 +473,8 @@ function displayTable(listOrders) {
 		
 	}
 	}
-	var map = [];
 	
-	$('#examTypeId').on('change' ,function(){
-		
-
-		var boardId = $("#boardId").val();
-		var classId = $("#classId").val();
-		var sectionId = $("#sectionId").val();
-		var mediumId = $("#medium").val();
-		var examTypeId = $("#examTypeId").val();
-		
-		
-		$.ajax({
-			type : "POST",
-			url : "examPatternList.json",
-			data : "boardId=" + boardId + "&classId=" + classId+ "&sectionId=" + sectionId + "&mediumId=" + mediumId + "&examTypeId="+ examTypeId,
-			dataType : "json",
-			async:false,
-			success : function(response) {
-				console.log(response);
-				
-					$('#examPatternTable').html('');
-					serviceUnitArray = {};
-					/*var tableHead = '<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
-							+ '<thead>'
-							+ '<tr role="row">'
-							+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Subject Name</th>'
-							+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Maximum Marks</th>'
-							+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Option</th>'
-							+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
-					$('#examPatternTable').html(tableHead);
-					$.each(response,
-									 function(i, orderObj) {
-							if (orderObj.dueFee == 0.00) {
-											orderObj.dueFee = orderObj.netFee;
-										}
-		 
-										// 	contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
-										serviceUnitArray[orderObj.id] = orderObj;
-										var id = '"' + orderObj.id + '"';
-										var tblRow = "<tr align='center' role='row' class='odd'>"
-												
-												+ "<td class='hidden-sm hidden-xs' title='"+orderObj.subjectName+"'>"
-												+ orderObj.subjectName
-												+ "</td>"
-												+ "<td class='hidden-sm hidden-xs' title='"+orderObj.maxMarks+"'>"
-												+ orderObj.maxMarks
-												+ "</td>"
-												+ "<td align='center'>"
-												+ '<a href="javascript:void(0)" onclick=editPack('
-												+ orderObj.id
-												+ ')'
-												+ '  ><i style="color: green;" class="fa fa-edit"></i></a>'
-												+ '</td>' + '</tr>';
-										$(tblRow).appendTo("#examPatternTable tbody");
-
-								
-
-									});
-					$('#examPatternTable').dataTable();*/
-					
-					
-					
-					var tableHead = '<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
-						+ '<thead>'
-						+ '<tr role="row"><th>Subjects</th></tr>'
-						+ '</thead><tbody><tr role="row"><th>Marks</th></tr></tbody></table>';
-					var objId='';
-					
-				$('#examPatternTable').html(tableHead);
-				allSubjects = response;
-				
-				/*var subMarks=	$.map(allSubjects, function(subject) {
-
-						
-						return subject.subjectName + ": " + subject.maxMarks;
-				});
-				console.log(subMarks);*/
-				
-			
-				$.each(allSubjects,
-								 function(i, orderObj) {
-					/*	if (orderObj.dueFee == 0.00) {
-										orderObj.dueFee = orderObj.netFee;
-									}
-	 */
-									// 	contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
-									serviceUnitArray[orderObj.subjectName] = orderObj.maxMarks;
-									var id = '"' + orderObj.id + '"';
-									var subjectRow = "<th class='hidden-sm hidden-xs' title='"+orderObj.subjectName+"'>"
-											+ orderObj.subjectName
-											+ "</th>";
-									var marksRow   =  "<td class='hidden-sm hidden-xs' title='"+orderObj.maxMarks+"'>"
-											+ orderObj.maxMarks
-											+ "</td>";
-									map.push(orderObj);
-									
-									$(subjectRow).appendTo("#basicExample thead tr");
-									$(marksRow).appendTo("#basicExample tbody tr");
-									objId=orderObj.id;
-								});
-				$('<th>Action</th>').appendTo("#basicExample thead tr");
-				$('<td><a href="javascript:void(0)" onclick="editPack()"><i style="color: green;" class="fa fa-edit"></i></a></td>').appendTo("#basicExample tbody tr");
-			}
-		
-		
-	});
-	
-		
-	});
-	function getExamPatternList(){/*
+	/*function getExamPatternList(){
 		var boardId = $("#boardId").val();
 		var classId = $("#classId").val();
 		var sectionId = $("#sectionId").val();
@@ -572,8 +577,8 @@ function displayTable(listOrders) {
 		
 		
 	});
-	*/}
-	
+	}*/
+	  var map = [];
 	function editPack() {
 		console.log(map);
 		//getExamPatternList()
