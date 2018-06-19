@@ -231,9 +231,9 @@ e.printStackTrace();
 	
 	
 	
-	@RequestMapping(value = "/HomeControl1")
+	@RequestMapping(value = "/feeDefinationHome")
 	public String getaluminiHomePage(@ModelAttribute("packCmd") ClassBean objClassBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
-		System.out.println("HomeControl1...");
+		System.out.println("feeDefination...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = null;
@@ -257,7 +257,7 @@ e.printStackTrace();
 			logger.error(e);
 			logger.fatal("error in userLogin method in school Homecontroller class getaluminiHomePage method");
 		}
-		return "HomeControl2";
+		return "feeDefination";
 	}
 	
 	
@@ -342,7 +342,7 @@ e.printStackTrace();
 			session.setAttribute("message", "fail");
 		}
 
-		return "redirect:HomeControl1";
+		return "redirect:feeDefinationHome";
 	}
 	
 	@RequestMapping(value = "/deleteClass")

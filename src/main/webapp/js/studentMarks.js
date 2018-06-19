@@ -408,3 +408,39 @@ function displayTable(listOrders) {
 	}
 	
 	
+	/*function searchStudent(){
+		searchbtn=123;
+		var studentName = $("#name").val();
+		var boardName = $("#boardName").val();
+		var admissionNum = $('#admissionNum').val();
+		var medium = $('#medium').val();
+		var caste = $('#caste').val();
+		var email = $('#email').val();
+		var studentName = $('#name').val();
+		var className = $('#className').val();
+		var section = $('#section').val();
+		var mobile = $("#mobile").val();
+		$('#loadAjax').show();
+		$.ajax({
+			type : "POST",
+			url : "getStudetnDetails.json",
+			dataType : "json",
+			data : "boardName=" + boardName+"&admissionNum="+admissionNum +"&rollNum="+rollNum +"&medium="+medium+"&caste="+caste+"&email="+email+"&studentName="+studentName+"&className="+className+"&section="+section+"&mobile="+mobile+"&studentName="+studentName,
+			success : function(response) {
+// 				 alert(response); 
+				 displayTable(response);
+				 $('#loadAjax').hide();
+			},
+			error : function(e) {
+				$('#loadAjax').hide();
+			},
+			statusCode : {
+				406 : function() {
+					$('#loadAjax').hide();
+			
+				}
+			}
+		});
+		$('#loadAjax').hide();
+	}
+	*/

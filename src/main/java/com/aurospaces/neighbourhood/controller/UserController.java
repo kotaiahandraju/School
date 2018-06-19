@@ -1,12 +1,16 @@
 package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -16,6 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.StudentBean;
@@ -35,15 +41,14 @@ import com.aurospaces.neighbourhood.db.dao.SubjectDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.aurospaces.neighbourhood.db.model.Faculty;
 import com.aurospaces.neighbourhood.service.PopulateService;
+import com.aurospaces.neighbourhood.util.MiscUtils;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 @Controller
 public class UserController {
 	
-	@Autowired
-	PopulateService objPopulateService;
-	@Autowired
-	ClassCreationDao objClassCreation;
+	@Autowired PopulateService objPopulateService;
+	@Autowired ClassCreationDao objClassCreation;
 	Logger log = Logger.getLogger(SchoolHomecontroller.class);
 	@Autowired ServletContext objContext;
 	@Autowired Faculty faculty;
@@ -52,8 +57,7 @@ public class UserController {
 	@Autowired StudentFeeDao objStudentFeeDao;
 	@Autowired usersDao1 usesDao1;
 	@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao;
-	@Autowired
-	DataSourceTransactionManager transactionManager;
+	@Autowired DataSourceTransactionManager transactionManager;
 	@Autowired EventDao eventDao;
 	@Autowired BirthDayNotificationDao birthDayNotificationDao;
 	@Autowired SubjectDao subjectDao;
@@ -61,10 +65,59 @@ public class UserController {
 	@Autowired ClassCreation1Dao objAddedClass;
 	@Autowired SectionDao objSectionDao;
 	@Autowired MediumDao objMediumDao;
+	@Autowired SchoolHomecontroller schoolHomecontroller;
 	/*LoginHome1*/
 	@Autowired AddClassSubjectDao objAddClassSubjectDao;
 	private Logger logger = Logger.getLogger(UserController.class);
 
+	
+	
+	@RequestMapping(value = "/facultyAddStudentHome")
+	public String facultyAddStudentHome(@ModelAttribute("userStudentFeeHome") StudentBean objStudentBean, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException, AddressException, ParseException, MessagingException {
+		
+		
+	String facultyAddStudentObject=	schoolHomecontroller.studentHome(objStudentBean, model, request);
+		
+		/*System.out.println("Faculty controller Add Student...");
+		List<Map<String, String>> listOrderBeans = null;
+		ObjectMapper objectMapper = null;
+		String sJson = "";
+		System.out.println(objClassBean.getName());
+		String baseUrl = MiscUtils.getBaseUrl(request);
+		try{
+			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null);
+			if(listOrderBeans != null && listOrderBeans.size() > 0) {
+				  objectMapper = new ObjectMapper(); 
+				  sJson =objectMapper.writeValueAsString(listOrderBeans);
+				  request.setAttribute("allOrders1", sJson);
+				  request.setAttribute("baseUrl", baseUrl);
+				 // System.out.println(sJson); 
+			}else{
+				objectMapper = new ObjectMapper(); 
+				  sJson =objectMapper.writeValueAsString(listOrderBeans);
+				  request.setAttribute("allOrders1", "''");
+			}
+			//studentDao.save(objClassBean);
+		}catch(Exception e){
+e.printStackTrace();
+	System.out.println(e);
+			logger.error(e);
+			logger.fatal("error in userLogin method in school Homecontroller class studentHome method");*/
+		
+		//schoolHomecontroller.addStudent(objStudentBean, null, null, request, session, redir);
+
+		return "facultyAddStudent";  
+	}
+	
+	@RequestMapping(value = "/facultyAddStudent", method = RequestMethod.POST)
+	public String facultyAddStudent(@ModelAttribute("userStudentFeeHome") StudentBean objStudentBean, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException, AddressException, ParseException, MessagingException {
+		
+		
+		schoolHomecontroller.addStudent(objStudentBean, null, model, request, session, redir);
+
+		return "redirect:facultyAddStudentHome";  
+	}
+	
 	
 	@RequestMapping(value = "/userStudentFeeHome")
 	public String studentFeeHome(@ModelAttribute("userStudentFeeHome") StudentFeeBean objStudentFeeBean, ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {

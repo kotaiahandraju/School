@@ -185,7 +185,7 @@ width:200px !important;
 												</div>
 											</div>
 										</div>
-									
+									<div class="clearfix"></div>
 										<div class="col-sm-8 col-sm-offset-4">
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
@@ -199,7 +199,7 @@ width:200px !important;
 													<button type="button" class="btn btn-danger" id="cancel"	tabindex="9">Reset</button>
 												</div>
 											</div>
-										</div>
+										</div><div class="clearfix"></div>
 									</div>
 								</form:form>
 							</div>

@@ -102,10 +102,10 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 										<form:form id="mform" action="importtimetable" method="post" class="form-horizontal" enctype="multipart/form-data">
 											<div class="form-group">
-												<label for="inputPassword3" class="col-sm-2 col-xs-12 control-label"><h5>Select File: <span style="color: red;">*</span></h5></label>
+												<label for="inputPassword3" class="col-sm-2  control-label"><h5>Select File: <span style="color: red;">*</span></h5></label>
 												<div class="col-sm-4 col-xs-12">
 <!-- 													<input class="form-control" name="excelfile2007" type="file" tabindex="1" required="required" style="margin-top:5px; border:none;"> -->
-													<input type="file" name="file" class="col-md-8" style="margin-top: 2%;" id="filePath" onchange="" placeholder="">
+													<input type="file" name="file" class="col-md-8" style="margin-top: 4%;" id="filePath" onchange="" placeholder="">
 													<span class="excelfile2007-error" id="excelfile2007-error"></span>		
 												</div>
 											</div>

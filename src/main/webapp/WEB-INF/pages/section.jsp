@@ -45,7 +45,7 @@
 					</div>
                      <div class="panel-body">
 									<form:form action="addSection.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
-									<div class="row">
+									<div class="">
 										
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
@@ -90,7 +90,7 @@
 											</div>
 										</div>
 									</div> --%>
-									<div class="row">
+									<div class="">
 										<div class="col-sm-8 col-sm-offset-4">
 											<form:hidden path="id"/>
 											<div class="form-group">

@@ -19,7 +19,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Class Fee</div>
+				<div class="page-title" id="headId">Fee Defination</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -33,11 +33,11 @@
 			<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
     	<li><a href="#">Configurations</a></li>
-		<li><a href="#">Class Fee</a></li>
+		<li><a href="#">Fee Defination</a></li>
 	</ol>
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h4>Class Fee </h4>
+						<h4>Fee Defination </h4>
 					</div>
 					<div class="panel-body collapse in">
 					
@@ -144,7 +144,7 @@
 												</div>
 											</div>
 										</div>
-									
+									<div class="clearfix"></div>
 										<div class="col-sm-8 col-sm-offset-4">
 											<form:hidden path="id"/>
 											<div class="form-group">
@@ -155,6 +155,7 @@
 											</div>
 										</div>
 									</div>
+									<div class="clearfix"></div>
 									<div class="row">
 										<div class="col-sm-8 col-sm-offset-4">
 											<div class="form-group">
@@ -171,7 +172,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div><div class="clearfix"></div>
 									</form:form>
 								
 							</div>

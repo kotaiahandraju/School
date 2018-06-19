@@ -241,9 +241,6 @@ overflow-x:hidden;}
 
 
 $( document ).ready(function() {
-
-	
-	
 	var getTabName = window.location.pathname.split('/')[2];
 	$("#stu_li").addClass('active');
 	$("#stu_li ul").css('display','block');

@@ -68,7 +68,7 @@ function displayTable(listOrders) {
 										+ "<td title='"+orderObj.className+"'>"
 										+ orderObj.className
 										+ "</td>"
-										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.sectionName+"' >"
+										+ "<td title='"+orderObj.sectionName+"' >"
 										+ orderObj.sectionName
 										+ "<td>"
 										+ '<a href="javascript:void(0)" onclick=editPack('

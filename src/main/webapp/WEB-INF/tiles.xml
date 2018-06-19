@@ -266,7 +266,7 @@
 	<definition name="dashBoard" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/dashboard.jsp" />
 	</definition>
-	<definition name="HomeControl2" extends="base.definition">
+	<definition name="feeDefination" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/homejsp.jsp" />
 	</definition>
 	<definition name="addclass" extends="base.definition">
@@ -275,6 +275,10 @@
 	<definition name="facultyHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/faculty.jsp" />
 	</definition>
+	<definition name="facultyAddStudentHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/facultyAddStudent.jsp" />
+	</definition>
+	
 	<definition name="studentHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/student1.jsp" />
 	</definition>

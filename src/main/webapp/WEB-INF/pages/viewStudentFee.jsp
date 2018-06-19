@@ -144,7 +144,7 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">Student Fee History</h4>
 							</div>
-							<div class="modal-body" id='printTab'></div>
+							<div class="modal-body table-responsive" id='printTab'></div>
 							<!-- <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div> -->

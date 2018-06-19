@@ -273,6 +273,11 @@ td, th {
 <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script type="text/javascript">
 
+var getTabName = window.location.pathname.split('/')[2];
+$("#stu_li").addClass('active');
+$("#stu_li ul").css('display','block');
+$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
 	jQuery.validator.addMethod('lettersonly', function(value, element) {
 		return this.optional(element)
 				|| /^[a-z. בדגהאיךכטםמןלףץפצעתûüשחס]+$/i.test(value);

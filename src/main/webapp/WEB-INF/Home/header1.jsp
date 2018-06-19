@@ -39,7 +39,15 @@
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
 <style type="text/css">
-
+@media only screen and (max-width: 640px) and (min-width: 320px) {
+ul#mini-nav {
+ margin: -10px 0 15px -85px;
+}
+header {
+height: 60px !important;
+    margin-top: -15px;
+}
+}
 
 .msgcss
 {
@@ -159,7 +167,7 @@ session.setAttribute("url", url);
 					</span>
 				</a>
 			</div>
-			<div class="pull-right hidden-sm hidden-xs">
+			<div class="pull-right">
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">Vijnana Vihara Nutakki</h1> -->
 				<!-- <h1 style="color: white;font-family: sans-serif;margin: 10px;">GRETNALTES</h1> -->
 				<img src="img/logo.png" class="img-responsive"/>
@@ -214,7 +222,7 @@ session.setAttribute("url", url);
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>
 							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
-							<li><a href="HomeControl1" id="addClass"><span>Fee Definition</span></a></li>
+							<li><a href="feeDefinationHome" id="addClass"><span>Fee Definition</span></a></li>
 							<li><a href='subjectHome' id="subjectHome" ><span> Subject Creation</span></a></li>
 							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
 							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
@@ -230,7 +238,7 @@ session.setAttribute("url", url);
 						<ul>
 						
 						    <c:if test="${rolId=='2' }">
-  						     <li><a href='studentHome' id="addStudent" ><span>Add Student</span></a></li>
+  						     <li><a href='facultyAddStudentHome' id="addStudent" ><span>Add Student</span></a></li>
 						     <li><a href='userStudentFeeHome' ><span>Fee Payment</span></a></li>
 						     
 						  </c:if>	
