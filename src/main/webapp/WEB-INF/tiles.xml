@@ -275,7 +275,7 @@
 	<definition name="facultyHome" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/faculty.jsp" />
 	</definition>
-	<definition name="facultyAddStudentHome" extends="base.definition">
+	<definition name="facultyAddStudent" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/facultyAddStudent.jsp" />
 	</definition>
 	

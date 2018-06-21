@@ -715,6 +715,7 @@ console.log(totalFee);
 		var mediumId = $('#medium').val();
 		var section = $('#section').val();
 		$('#loadAjax').show();
+		if(boardId  != "" && className != "" && mediumId!= "" && section != ""){
 		 $.ajax({
 				type : "POST",
 				url : "getClassFee.json",
@@ -748,6 +749,10 @@ console.log(totalFee);
 				}
 			});
 		 $('#loadAjax').hide();
+		}else{
+			 $('#loadAjax').hide();
+			$("#totalFee").val('');
+		}
 	}
 
 	function getFee1(){

@@ -238,7 +238,7 @@ session.setAttribute("url", url);
 						<ul>
 						
 						    <c:if test="${rolId=='2' }">
-  						     <li><a href='facultyAddStudentHome' id="addStudent" ><span>Add Student</span></a></li>
+  						     <li><a href='facultyAddStudentHome'><span>Add Student</span></a></li>
 						     <li><a href='userStudentFeeHome' ><span>Fee Payment</span></a></li>
 						     
 						  </c:if>	

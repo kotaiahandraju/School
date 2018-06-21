@@ -806,6 +806,7 @@ width:200px !important;
 		
 		
 		var studentId = $("#studentId").val();
+		if(studentId != ""){
 		$.ajax({
 			type : "POST",
 			url : "getDueFee.json",
@@ -898,6 +899,10 @@ width:200px !important;
 				}
 			}
 		});
+		}else{
+			//$("#fee").val('');
+			$("#displayId").text('');
+		}
 	}
 
 	

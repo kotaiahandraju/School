@@ -143,9 +143,12 @@ public class SchoolHomecontroller {
 					if(Integer.parseInt(objuserBean.getRolId()) == 1){
 						return "redirect:dashBoard.htm";
 						}
+					
 						if(Integer.parseInt(objuserBean.getRolId()) == 3){
 							return "redirect:parentDashboard.htm";
-							}
+				
+						}
+						
 				}
 		}catch(Exception e){
 e.printStackTrace();
@@ -186,7 +189,7 @@ e.printStackTrace();
 						return "redirect:parentDashboard.htm";
 						}else {
 							
-							return "redirect:studentHome";
+							return "redirect:facultyAddStudentHome.htm";
 						}
 				}
 			}
@@ -1166,7 +1169,7 @@ e.printStackTrace();
 		return "studentFeeHome";  
 	}
 	@RequestMapping(value = "/addStudentFee")
-	public String addStudentFee(@ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean, ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+	public String addStudentFee(@ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
@@ -1180,6 +1183,8 @@ e.printStackTrace();
 			
 				double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
 				objStudentFeeBean.setDueFee1(dueFee1);
+				UsersBean userBean= (UsersBean) session.getAttribute("cacheUserBean");
+				objStudentFeeBean.setUserId(userBean.getId());
 			objStudentFeeDao.save(objStudentFeeBean);
 			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {

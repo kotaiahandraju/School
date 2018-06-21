@@ -26,8 +26,25 @@ public class StudentFeeBean {
 	private double stationaryFee;
 	private String feeType;
 	private double dueFee1;
+	private int userId;
 	
 	
+	@Override
+	public String toString() {
+		return "StudentFeeBean [id=" + id + ", createdTime=" + createdTime + ", updatedTime=" + updatedTime
+				+ ", studentId=" + studentId + ", totalFee=" + totalFee + ", discount=" + discount + ", netFee="
+				+ netFee + ", fee=" + fee + ", remaningFee=" + remaningFee + ", boardName=" + boardName + ", className="
+				+ className + ", medium=" + medium + ", section=" + section + ", dueFee=" + dueFee + ", admissionFee="
+				+ admissionFee + ", tutionFee=" + tutionFee + ", transportationFee=" + transportationFee
+				+ ", hostelFee=" + hostelFee + ", stationaryFee=" + stationaryFee + ", feeType=" + feeType
+				+ ", dueFee1=" + dueFee1 + ", userId=" + userId + "]";
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	public double getDueFee1() {
 		return dueFee1;
 	}

@@ -69,7 +69,7 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Board Name<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:select path="boardName" tabindex="1"	onchange="classNameFilter(),searchStudetnFee()"	class="form-control" required="true">
+													<form:select path="boardName" tabindex="1"	onchange="classNameFilter()"	class="form-control" required="true">
 														<form:option value="">-- Choose Board --</form:option>
 														<form:options items="${board}"></form:options>
 													</form:select>
@@ -81,7 +81,7 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Class<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:select path="className" tabindex="2"	onchange="sectionFilter(),searchStudetnFee()"	class="form-control" required="true">
+													<form:select path="className" tabindex="2"	onchange="sectionFilter()"	class="form-control" required="true">
 														<form:option value="">-- Choose Class --</form:option>
 <%-- 														<form:options items="${allClasses}"></form:options> --%>
 													</form:select>
@@ -93,7 +93,7 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Section<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:select path="section" tabindex="3"	onchange="mediumFilter(),searchStudetnFee()"	class="form-control" required="true">
+													<form:select path="section" tabindex="3"	onchange="mediumFilter()"	class="form-control" required="true">
 														<form:option value="">-- Choose Section --</form:option>
 <%-- 														<form:options items="${allSection}"></form:options> --%>
 													</form:select>
@@ -105,7 +105,7 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Medium<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown(),searchStudetnFee()"	class="form-control" required="true">
+													<form:select path="medium" tabindex="4"	onchange="studentFilterDropdown()"	class="form-control" required="true">
 														<form:option value="">-- Choose Medium --</form:option>
 <%-- 														<form:options items="${mediam}"></form:options> --%>
 													</form:select>
@@ -117,7 +117,7 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Student<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee(),searchStudetnFee()">
+													<form:select path="studentId" tabindex="5"	class="form-control" required="true" onchange="getDueFee()">
 														<form:option value="">-- Choose Student --</form:option>
 <%-- 														<form:options items="${allStudents}"></form:options> --%>
 													</form:select>
@@ -320,6 +320,11 @@ width:100px;
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#fee").val("");
+						
+		 var getTabName = window.location.pathname.split('/')[2];
+		 $("#stu_li").addClass('active');
+		 $("#stu_li ul").css('display','block');
+		 $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 	});
 	 $("#admissionFee").val("");
 	   $("#tutionFee").val("");
@@ -382,7 +387,8 @@ width:100px;
 	 $('#fee').on('change', function(e) {
 		// var duefee = duefee123;
 		 $("#maxValueError").text("");
-		 if($(this).val() > duefee123){
+		 console.log($(this).val());
+		 if($(this).val() >parseInt( duefee123)){
 			 
 			 $(this).after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
 			 
@@ -400,7 +406,7 @@ width:100px;
 	
 	 $('#submitId').click(function(){
 		 $("#maxValueError").text("");
-	    	var fee = $('#fee').val();
+	    	var fee =parseInt($('#fee').val());
 	    	$('#forFormValidation').val();
 	    	if(  fee == "0"   ){
 	    		$('#forFormValidation').val();
@@ -408,7 +414,7 @@ width:100px;
 	    		return false;
 	    	}else{
 	    	
-		    		if( fee > duefee123){
+		    		if( fee > parseInt(duefee123)){
 				 
 				 $('#fee').after('<span id="maxValueError" style="color:red"> Maximum Fee is: '+duefee123+'</span>');
 				 
@@ -521,8 +527,8 @@ width:100px;
 								}*/
  
 								//contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
-								serviceUnitArray[orderObj.id] = orderObj;
-								var id = '"' + orderObj.id + '"';
+								serviceUnitArray[orderObj.studentId] = orderObj;
+								var id = '"' + orderObj.studentId + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
 										+ "<td>"
 										+ '<a style="cursor: pointer;" title="View Fee Receipt" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('
@@ -576,7 +582,7 @@ width:100px;
 										+ "</td>"
 										+ "<td align='center'>"
 										+ '<a href="javascript:void(0)" onclick=editPack('
-										+ orderObj.id
+										+ id
 										+ ')'
 										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>'
 										+ '</td>' + '</tr>';
@@ -635,6 +641,7 @@ width:100px;
 		$('#section').val(serviceUnitArray[id].sectionId);
 		mediumFilter();
 		$('#medium').val(serviceUnitArray[id].mediumId);
+		studentFilterDropdown();
 		$('#studentId').val(serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
 		$('#fee').val(serviceUnitArray[id].fee);
@@ -643,12 +650,31 @@ width:100px;
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
-		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
+		
+		if (serviceUnitArray[id].dueFee == null || serviceUnitArray[id].dueFee == 0 ) {
+			
+			//$("#fee").prop("disabled", true);
+			$("#divFee").hide();  
+			$("#displayId").text("No due amount.!");
+			//$("#displayId").text("Due Fee: "  + response.netFee +"There is no Due Amount");
+			 $('#forFormValidation').val('');
+			
+			//duefee123= response.netFee;
+		} else {
+			//$("fee").prop("disabled", false);
+			//$("fee").removeAttr("disabled");
+			$("#divFee").show();  
+			//duefee123= response.dueFee;
+			
+			$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
+			
+		}
+		
 		$("#submitId").val("Update");
 		$(window).scrollTop($('#boardName').offset().top);
 	}
 
-	function serviceFilter(id) {
+	/* function serviceFilter(id) {
 		var borderId = $("#boardName").val();
 		$.ajax({
 			type : "POST",
@@ -668,7 +694,7 @@ width:100px;
 			}
 			
 		});
-	}
+	} */
 
 	function classNameFilter(id) {
 		var boardId = $("#boardName").val();
@@ -818,17 +844,24 @@ width:100px;
 	var duefee123 = 0.00;
 	function getDueFee() {
 		var studentId = $("#studentId").val();
+		
+		if(studentId != ""){
+			 
 		$.ajax({
 			type : "POST",
 			url : "getDueFee.json",
 			data : "studentId=" + studentId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
 				// 				 alert(response.totalFee); 
+				//$("fee").prop("disabled", false);
+			//$("fee").removeAttr("disabled");
+			$("#divFee").show(); 
 				
 				if (response.dueFee == null || response.dueFee == 0 ) {
 					
-					$("#fee").prop("disabled", true);
+					//$("#fee").prop("disabled", true);
 					$("#divFee").hide();  
 					$("#displayId").text("No due amount.!");
 					//$("#displayId").text("Due Fee: "  + response.netFee +"There is no Due Amount");
@@ -836,11 +869,13 @@ width:100px;
 					
 					duefee123= response.netFee;
 				} else {
-					$("fee").prop("disabled", false);
 					$("#divFee").show();  
+					//$("fee").prop("disabled", false);
+					//$("fee").removeAttr("disabled");
+					//console.log($("fee").is(":disabled"));
 					duefee123= response.dueFee;
 					
-					$("#displayId").text("Due Fee: " + response.netFee);
+					$("#displayId").text("Due Fee: " + response.dueFee);
 					
 					/* 
 					$("#displayId").text("Due Fee: " + response.dueFee);
@@ -865,6 +900,12 @@ width:100px;
 				}
 			}
 		});
+		}else{
+			
+			
+			$("#fee").val('');
+			$("#displayId").text('');
+		}
 	}
 
 	
@@ -885,10 +926,12 @@ width:100px;
 					success : function(response) {
 						// 						alert(response);
 						var popuptitle = null;
+						for(var j=1; j<=2;j++){
 						$
 								.each(
 										response,
 										function(i, tests) {
+											
 
 var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
 
@@ -911,15 +954,19 @@ var stockInformation1 = "<table align='center' class='table table-stripped table
 + "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
 // + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
 + "</table>"
-+ "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
+
 
 $(stockInformation1).appendTo("#printTab");
+var  horizontal="<hr size='+30+'>"
+$(horizontal).appendTo("#printTab");
 // toWords(tests.fee);
 
 										});
 						// 							 $(stockInformation2).appendTo("#stockInformationTable"); 
 						// 							 $('#dial').dialog({width:799,title:popuptitle,modal: true}).dialog('open');
-
+						}
+						var printbutton="<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
+							$(printbutton).appendTo("#printTab");
 					},
 					error : function(e) {
 						// 					alert('Error: ' + e);
@@ -1052,8 +1099,5 @@ $(stockInformation1).appendTo("#printTab");
 	 	} return str.replace(/\s+/g,' ');
 	 	}
 	 
-	 var getTabName = window.location.pathname.split('/')[2];
-	 $("#stu_li").addClass('active');
-	 $("#stu_li ul").css('display','block');
-	 $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+	
 </script>

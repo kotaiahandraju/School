@@ -21,7 +21,8 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 				.append("select sf.created_time as feeDate, s.boardName as boardId, s.medium as mediumId, s.className as classId, s.section as sectionId, sf.id,s.id as studentId, s.name as studentName,bn.name as boardName,st.name sectionName,m.name mediumName,"
 						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, sf.dueFee1 as dueFee,s.netFee"
 						+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.className=ct.id and st.id=s.section "
-						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id  ");
+						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id  and\n" + 
+						"sf.updated_time = (SELECT max(updated_time) FROM studentfee sf2 WHERE sf.studentId=sf2.studentId)");
 		if (StringUtils.isNotBlank(studetnId)) {
 			objStringBuffer.append(" and s.id=" + studetnId);
 		}
@@ -41,7 +42,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		String sql = objStringBuffer.toString();
 		System.out.println(sql);
 		RowValueCallbackHandler handler = new RowValueCallbackHandler(
-				new String[] { "feeDate","boardId","mediumId","boardId","classId","sectionId", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
+				new String[] { "feeDate","boardName","mediumId","boardId","classId","sectionId", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
 						"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile","dueFee","netFee" });
 		jdbcTemplate.query(sql, handler);
 		List<Map<String, String>> result = handler.getResult();
@@ -51,11 +52,11 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 
 	public List<Map<String, Object>> getViwStudentFee(String studentId,String boardId,String classId,String sectionId,String mediumId) {
 		StringBuffer objStringBuffer = new StringBuffer();
-		objStringBuffer.append("select s.id,ifnull(sf.created_time,'---') as feeDate,s.netFee,s.mobile,s.fatherName,s.totalFee,s.discountFee,bn.name as boardName,st.name as sectionName,m.name as mediumName,ct.name as className," + 
+		objStringBuffer.append("select s.id,ifnull(sf.created_time,'---') as feeDate,s.netFee,s.mobile,s.fatherName,s.totalFee,s.discountFee,s.boardName as boardId,bn.name as boardName,s.section as sectionId,st.name as sectionName,s.medium as mediumId,m.name as mediumName,s.className as classId,ct.name as className," + 
 				" sum(ifnull(sf.fee,0)) as fee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0)) as admissionFee," + 
 				"	s.tutionFee-sum(ifnull(sf.tutionFee,0)) as tutionFee,s.transportationFee-sum(ifnull(sf.transportationFee,0)) as transportationFee," + 
 				"	s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name as studentName" + 
-				"	from student s left join studentfee sf   on s.id =sf.studentId left join boardname bn on bn.id=s.boardName\r\n" + 
+				"	from student s left join studentfee sf   on s.id =sf.studentId left join boardname bn on bn.id=s.boardName" + 
 				"	left join sectiontable st on st.id=s.section left join classtable ct on s.className=ct.id left join mediam m on s.medium=m.id" + 
 				"	where  1=1 ");
 		if (StringUtils.isNotBlank(studentId)) {
