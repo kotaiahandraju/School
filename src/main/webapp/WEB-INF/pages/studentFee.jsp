@@ -334,6 +334,10 @@ width:200px !important;
 		$("#stu_li ul").css('display','block');
 		$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 		
+		
+		
+		
+		
 	});
 	 $("#admissionFee").val("");
 	   $("#tutionFee").val("");
@@ -815,14 +819,15 @@ width:200px !important;
 			dataType : "json",
 			async:false,
 			success : function(response) {
-							// console.log(response); 
-				
+					 console.log(response); 
+				console.log(parseInt(response.dueFee));
+				console.log(parseInt(response.netFee)); 
 				if (response.dueFee == null || response.dueFee == 0) {
 					
 					dueFee12=  response.netFee;
 					$("#displayId").text("Due Fee: " + response.netFee);
 															
-					$("#admissionFee").prop("disabled", true);
+					$("#admissionFee").prop("disabled", truresponsee);
 					$("#tutionFee").prop("disabled", true);
 					$("#transportationFee").prop("disabled", true);
 					$("#hostelFee").prop("disabled", true);
@@ -838,7 +843,8 @@ width:200px !important;
 					
 					
 					
-				} else {
+				} else if (parseInt(response.dueFee) != parseInt(response.netFee)) {
+					
 					$("#displayId").text("Due Fee: " + response.dueFee);
 					
 					if(response.admissionFee == 0){
@@ -886,11 +892,45 @@ width:200px !important;
 					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
 					  $("#stationaryFee").val(0);
 					
-					admissionFee1 = response.admissionFee;
+					 admissionFee1 = response.admissionFee;
 					tutionFee1 = response.tutionFee;
 					transportationFee1 = response.transportationFee;
 					hostelFee1 = response.hostelFee;
-					stationaryFee1 = response.stationaryFee;
+					stationaryFee1 = response.stationaryFee; 
+				}else{
+					
+					$("#admissionFee").prop("disabled", false);
+					$("#tutionFee").prop("disabled", false);
+					$("#transportationFee").prop("disabled", false);
+					$("#hostelFee").prop("disabled", false);
+					$("#stationaryFee").prop("disabled", false);
+					
+					$("#divAdmissionFee").show();  
+					$("#divTutionFee").show();
+					$("#divTransportationFee").show();
+					$("#divHostelFee").show();
+					$("#divStationaryFee").show();
+					
+					 $('#forFormValidation').val('');
+					
+					$("#displayId").text("Due Fee: " + response.dueFee);
+					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+					$("#admissionFee").val(0);
+					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+					$("#tutionFee").val(0);
+					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+					$("#transportationFee").val(0);
+					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+					$("#hostelFee").val(0);
+					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
+					$("#stationaryFee").val(0);	 
+					
+					 admissionFee1 = response.admissionFee;
+						tutionFee1 = response.tutionFee;
+						transportationFee1 = response.transportationFee;
+						hostelFee1 = response.hostelFee;
+						stationaryFee1 = response.stationaryFee; 
+					
 				}
 			},
 			error : function(e) {
@@ -990,11 +1030,11 @@ function editStudentFee(id,studentId) {
 					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
 					 $("#stationaryFee").val(0);
 					
-					/* admissionFee1 = response.admissionFee;
+					admissionFee1 = response.admissionFee;
 					tutionFee1 = response.tutionFee;
 					transportationFee1 = response.transportationFee;
 					hostelFee1 = response.hostelFee;
-					stationaryFee1 = response.stationaryFee; */
+					stationaryFee1 = response.stationaryFee; 
 				}
 			},
 			error : function(e) {
@@ -1061,7 +1101,7 @@ function getDueFeeUpdateTime() {
 						$("#divTutionFee").hide();
 					}else{ */
 					
-					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+				//	$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
 					  //$("#tutionFee").val(0);
 				//	}
 					/* if(response.transportationFee == 0){
@@ -1070,7 +1110,7 @@ function getDueFeeUpdateTime() {
 						$("#divTransportationFee").hide();
 						
 					}else{ */
-					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+				//	$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
 					 // $("#transportationFee").val(0);
 					//}
 					/* if(response.hostelFee == 0){

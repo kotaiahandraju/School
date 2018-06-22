@@ -89,7 +89,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 	}
 
 	public StudentFeeBean getDueFee(String studentId) {
-		String sql = "select s.id,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee, " + 
+		String sql = "select s.id,s.netFee as netFee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee, " + 
 				"s.tutionFee-sum(ifnull(sf.tutionFee,0)) as tutionFee,s.transportationFee-sum(ifnull(sf.transportationFee,0)) as transportationFee, " + 
 				"s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name " + 
 				"from student s left join studentfee sf   on s.id =sf.studentId where  s.id=? group by s.id ";
