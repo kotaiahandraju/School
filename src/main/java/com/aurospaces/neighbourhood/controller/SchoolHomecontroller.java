@@ -1203,6 +1203,35 @@ e.printStackTrace();
 
 		return "redirect:studentFeeHome";  
 	}
+	
+	@RequestMapping(value = "/editStudentFee")
+	public @ResponseBody String editStudentFee(@RequestParam int id,@RequestParam String studentId, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+		System.out.println("editStudentFee...");
+		StudentFeeBean listOrderBeans = null;
+		ObjectMapper objectMapper = null;
+		String sJson = "";
+		try{
+			
+			listOrderBeans = objStudentFeeDao.editStudentFee(studentId,id);
+			if(listOrderBeans != null ) {
+				  objectMapper = new ObjectMapper(); 
+				  sJson =objectMapper.writeValueAsString(listOrderBeans);
+				  //request.setAttribute("allOrders1", sJson);
+				 // System.out.println(sJson); 
+				  return sJson; 
+			}
+			//studentDao.save(objClassBean);
+		}catch(Exception e){
+e.printStackTrace();
+	System.out.println(e);
+			logger.error(e);
+			logger.fatal("error in userLogin method in school Homecontroller class addStudentFee method");
+		}
+
+		return "";  
+	}
+
+	
 	@RequestMapping(value = "/viewStudentFee")
 	public String viewStudentFee( @ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");

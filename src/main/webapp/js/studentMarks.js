@@ -119,8 +119,8 @@ function dynamicInputfields(listOfSubjects){
 				+ ' </label>' 
 				+'<br>'
 				+'<input id="subjectId" name="subjectId" type="hidden" class="form-control" tabindex="1"	value="'+subId+'"/>'
-				+'<input id="studentMarks" name="studentMarks" type="number" class="form-control" tabindex="1"	max="'+maxMarks+'" placeholder="Enter Maximum Marks"/>'
-				+'<input id="subjectMaxMarks" name="subjectMaxMarks" type="hidden" class="form-control" tabindex="1"	value="'+maxMarks+'"/>'
+				+'<input id="studentMarks" name="studentMarks" type="number" class="form-control" tabindex="1" min="'+0+'"	max="'+maxMarks+'" placeholder="Enter Maximum Marks"/>'
+				+'<input id="subjectMaxMarks" name="subjectMaxMarks" type="hidden" class="form-control" tabindex="1"	min="'+0+'" value="'+maxMarks+'"/>'
 				+'</div>');
 			
 		$('#subjectDiv').append();

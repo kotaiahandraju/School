@@ -140,7 +140,7 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Admission Fees</label>
 												<span id="admissionNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="admissionFee" class="form-control numericOnly"	tabindex="6" placeholder="Admission Fee" required="true" />
+													<form:input path="admissionFee" class="form-control numericOnly"	min="0" tabindex="6" placeholder="Admission Fee" required="true" />
 
 												</div>
 											</div>
@@ -150,7 +150,7 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Tuition Fees</label>
 												<span id="tutionNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="tutionFee" class="form-control numericOnly"	tabindex="6" placeholder="Tuition Fee"  required="true" />
+													<form:input path="tutionFee" class="form-control numericOnly"	min="0" tabindex="6" placeholder="Tuition Fee"  required="true" />
 
 												</div>
 											</div>
@@ -160,7 +160,7 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Bus Fees</label>
 												<span id="transportationNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="transportationFee" class="form-control numericOnly"	tabindex="6" placeholder="Transportation Fee" required="true" />
+													<form:input path="transportationFee" class="form-control numericOnly"	min="0"  tabindex="6" placeholder="Transportation Fee" required="true" />
 
 												</div>
 											</div>
@@ -170,7 +170,7 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Hostel Fees</label>
 												<span id="hostelNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="hostelFee" class="form-control numericOnly"	tabindex="6" placeholder="Hostel Fee" required="true" />
+													<form:input path="hostelFee" class="form-control numericOnly"	min="0"  tabindex="6" placeholder="Hostel Fee" required="true" />
 
 												</div>
 											</div>
@@ -180,7 +180,7 @@ width:200px !important;
 												<label for="inputEmail3" class="col-sm-4 control-label">Stationary Fees</label>
 												<span id="stationaryNetFee"></span>
 												<div class="col-sm-8">
-													<form:input path="stationaryFee" class="form-control numericOnly"	tabindex="6" placeholder="Stationary Fee" required="true" />
+													<form:input path="stationaryFee" class="form-control numericOnly"	min="0"  tabindex="6" placeholder="Stationary Fee" required="true" />
 
 												</div>
 											</div>
@@ -639,14 +639,15 @@ width:200px !important;
 		$('#medium').val(serviceUnitArray[id].mediumId);
 		studentFilterDropdown();
 		$('#studentId').val(serviceUnitArray[id].studentId);
+		editStudentFee(id,serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
-		$('#fee').val(serviceUnitArray[id].fee);
+		/* $('#fee').val(serviceUnitArray[id].fee);
 		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
 		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
-		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
+		$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee); */
 		$("#submitId").val("Update");
 		
 		$(window).scrollTop($('#boardName').offset().top);
@@ -812,8 +813,9 @@ width:200px !important;
 			url : "getDueFee.json",
 			data : "studentId=" + studentId,
 			dataType : "json",
+			async:false,
 			success : function(response) {
-				// 				 alert(response.totalFee); 
+							// console.log(response); 
 				
 				if (response.dueFee == null || response.dueFee == 0) {
 					
@@ -904,7 +906,212 @@ width:200px !important;
 			$("#displayId").text('');
 		}
 	}
+	
+	
+	
+function editStudentFee(id,studentId) {
+				
+		$.ajax({
+			type : "POST",
+			url : "editStudentFee.json",
+			data : "id=" + id +"&studentId=" + studentId,
+			dataType : "json",
+			async:false,
+			success : function(response) {
+							console.log(response); 
+				
+				if (response.dueFee == null || response.dueFee == 0) {
+					
+					dueFeeupdate=  response.netFee;
+					$("#displayId").text("Due Fee: " + response.netFee);
+															
+					$("#admissionFee").prop("disabled", true);
+					$("#tutionFee").prop("disabled", true);
+					$("#transportationFee").prop("disabled", true);
+					$("#hostelFee").prop("disabled", true);
+					$("#stationaryFee").prop("disabled", true);
+					
+					$("#divAdmissionFee").hide();  
+					$("#divTutionFee").hide();
+					$("#divTransportationFee").hide();
+					$("#divHostelFee").hide();
+					$("#divStationaryFee").hide();
+					
+					 $('#forFormValidation').val('');
+					
+					
+					
+				} else {
+					$("#displayId").text("Due Fee: " + response.dueFee);
+					
+					if(response.admissionFee == 0){
+						$("#admissionNetFee").text("No Due in Addmission Fee" );
+						$("#admissionFee").prop("disabled", true);
+						//$("#divAdmissionFee").hide();  
+					}else{ 
+				 	
+					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+					$("#admissionFee").val(0);
+					
+					}
+					 if(response.tutionFee == 0){
+						
+						$("#tutionFee").prop("disabled", true);
+						//$("#divTutionFee").hide();
+					}else{  
+					
+					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+					  $("#tutionFee").val(0);
+					}
+					 if(response.transportationFee == 0){
+						
+						$("#transportationFee").prop("disabled", true);
+						//$("#divTransportationFee").hide();
+						
+					}else{  
+					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+					$("#transportationFee").val(0);
+					}
+					 if(response.hostelFee == 0){
+						
+						$("#hostelFee").prop("disabled", true);
+						//$("#divHostelFee").hide();
+					}else{  
+					
+					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+				  $("#hostelFee").val(0);
+					}
+					if(response.stationaryFee == 0){
+						
+						$("#stationaryFee").prop("disabled", true);
+						//$("#divStationaryFee").hide();
+					} 
+					
+					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
+					 $("#stationaryFee").val(0);
+					
+					/* admissionFee1 = response.admissionFee;
+					tutionFee1 = response.tutionFee;
+					transportationFee1 = response.transportationFee;
+					hostelFee1 = response.hostelFee;
+					stationaryFee1 = response.stationaryFee; */
+				}
+			},
+			error : function(e) {
+			},
+			statusCode : {
+				406 : function() {
 
+				}
+			}
+		});
+		
+	}
+
+/* 	var dueFeeupdate;
+function getDueFeeUpdateTime() {
+		
+		var studentId = $("#studentId").val();
+		if(studentId != ""){
+		$.ajax({
+			type : "POST",
+			url : "getDueFee.json",
+			data : "studentId=" + studentId,
+			dataType : "json",
+			async:false,
+			success : function(response) {
+							// console.log(response); 
+				
+				if (response.dueFee == null || response.dueFee == 0) {
+					
+					dueFeeupdate=  response.netFee;
+					$("#displayId").text("Due Fee: " + response.netFee);
+															
+					$("#admissionFee").prop("disabled", true);
+					$("#tutionFee").prop("disabled", true);
+					$("#transportationFee").prop("disabled", true);
+					$("#hostelFee").prop("disabled", true);
+					$("#stationaryFee").prop("disabled", true);
+					
+					$("#divAdmissionFee").hide();  
+					$("#divTutionFee").hide();
+					$("#divTransportationFee").hide();
+					$("#divHostelFee").hide();
+					$("#divStationaryFee").hide();
+					
+					 $('#forFormValidation').val('');
+					
+					
+					
+				} else {
+					$("#displayId").text("Due Fee: " + response.dueFee);
+					
+				/* 	if(response.admissionFee == 0){
+						$("#admissionFee").prop("disabled", true);
+						$("#divAdmissionFee").hide();  
+					}else{
+				 	
+					$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+					// $("#admissionFee").val(0);
+					
+					//}
+					/* if(response.tutionFee == 0){
+						
+						$("#tutionFee").prop("disabled", true);
+						$("#divTutionFee").hide();
+					}else{ */
+					
+					$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+					  //$("#tutionFee").val(0);
+				//	}
+					/* if(response.transportationFee == 0){
+						
+						$("#transportationFee").prop("disabled", true);
+						$("#divTransportationFee").hide();
+						
+					}else{ */
+					$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+					 // $("#transportationFee").val(0);
+					//}
+					/* if(response.hostelFee == 0){
+						
+						$("#hostelFee").prop("disabled", true);
+						$("#divHostelFee").hide();
+					}else{ 
+					
+					$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+				/* 	 $("#hostelFee").val(0);
+					}
+					if(response.stationaryFee == 0){
+						
+						$("#stationaryFee").prop("disabled", true);
+						$("#divStationaryFee").hide();
+					}
+					
+					$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
+					//  $("#stationaryFee").val(0);
+					
+					admissionFee1 = response.admissionFee;
+					tutionFee1 = response.tutionFee;
+					transportationFee1 = response.transportationFee;
+					hostelFee1 = response.hostelFee;
+					stationaryFee1 = response.stationaryFee;
+				}
+			},
+			error : function(e) {
+			},
+			statusCode : {
+				406 : function() {
+
+				}
+			}
+		});
+		}else{
+			//$("#fee").val('');
+			$("#displayId").text('');
+		}
+	}
+ */
 	
 	 
 	/* $(document).ready(function(){
@@ -980,7 +1187,7 @@ $(stockInformation1).appendTo("#printTab");
 
 	    var is_chrome = Boolean(mywindow.chrome);
 	    var isPrinting = false;
-	    mywindow.document.write('<html><head><title>VVN School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write('<html><head><title>Greatnaltes School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
 	    mywindow.document.write(data);
 	   
 	    mywindow.document.write('</body></html>');

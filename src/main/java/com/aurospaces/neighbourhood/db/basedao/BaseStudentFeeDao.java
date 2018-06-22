@@ -75,16 +75,12 @@ System.out.println(ps);
 						}
 				},
 				keyHolder);
-				
 				Number unId = keyHolder.getKey();
 				studentFeeBean.setId(unId.intValue());
-				
-
-		}
+				}
 		else
 		{
-		 
-			String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =?"
+		 		String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =?"
 					+ " where id = ? ";
 	
 			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getAdmissionFee(),studentFeeBean.getTutionFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getHostelFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getDueFee1(),studentFeeBean.getId()});
