@@ -22,7 +22,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, sf.dueFee1 as dueFee,s.netFee"
 						+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.className=ct.id and st.id=s.section "
 						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id  and\n" + 
-						"sf.updated_time = (SELECT max(updated_time) FROM studentfee sf2 WHERE sf.studentId=sf2.studentId)");
+						"sf.created_time = (SELECT max(created_time) FROM studentfee sf2 WHERE sf.studentId=sf2.studentId)");
 		if (StringUtils.isNotBlank(studetnId)) {
 			objStringBuffer.append(" and s.id=" + studetnId);
 		}
@@ -135,10 +135,10 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 	}
 	
 	 public StudentFeeBean editStudentFee(String studentId,int id) {
-			String sql = "select ifnull(sum(sf.fee),0.00) as fee, s.admissionFee-ifnull(sum(sf.admissionFee),0.00) as admissionFee,s.tutionFee- ifnull(sum(sf.tutionFee),0.00) as tutionFee," 
-					+ " s.transportationFee-ifnull(sum(sf.transportationFee),0.00) as transportationFee,s.hostelFee- ifnull(sum(sf.hostelFee),0.00) as hostelFee," 
-					+ "s.stationaryFee-ifnull(sum(sf.stationaryFee),0.00) as stationaryFee, s.netFee-ifnull(sum(fee),0.00) as dueFee" 
-					+ " from studentfee sf, student s where sf.studentId=s.id and sf.studentId=? and sf.id not in(?)" ;
+			String sql = "select ifnull(sum(sf.fee),0.00) as fee, ifnull(s.admissionFee,0.00)-ifnull(sum(sf.admissionFee),0.00) as admissionFee,ifnull(s.tutionFee,0.00)- ifnull(sum(sf.tutionFee),0.00) as tutionFee," 
+					+ " ifnull(s.transportationFee,0.00)-ifnull(sum(sf.transportationFee),0.00) as transportationFee,ifnull(s.hostelFee,0.00)- ifnull(sum(sf.hostelFee),0.00) as hostelFee," 
+					+ "ifnull(s.stationaryFee,0.00)-ifnull(sum(sf.stationaryFee),0.00) as stationaryFee, ifnull(s.netFee,0.00)-ifnull(sum(fee),0.00) as dueFee" 
+					+ " from studentfee sf, student s where sf.studentId=s.id and s.id=? and sf.id not in(?)" ;
 			System.out.println(sql);
 			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId,id},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
 			if(retlist.size() > 0)

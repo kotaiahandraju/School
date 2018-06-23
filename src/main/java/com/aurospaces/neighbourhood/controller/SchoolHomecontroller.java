@@ -1207,7 +1207,7 @@ e.printStackTrace();
 	@RequestMapping(value = "/editStudentFee")
 	public @ResponseBody String editStudentFee(@RequestParam int id,@RequestParam String studentId, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("editStudentFee...");
-		StudentFeeBean listOrderBeans = null;
+		StudentFeeBean listOrderBeans;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
@@ -1230,7 +1230,6 @@ e.printStackTrace();
 
 		return "";  
 	}
-
 	
 	@RequestMapping(value = "/viewStudentFee")
 	public String viewStudentFee( @ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {

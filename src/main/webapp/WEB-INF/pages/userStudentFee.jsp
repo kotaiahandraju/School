@@ -643,13 +643,15 @@ width:100px;
 		$('#medium').val(serviceUnitArray[id].mediumId);
 		studentFilterDropdown();
 		$('#studentId').val(serviceUnitArray[id].studentId);
+		editStudentFee(id,serviceUnitArray[id].studentId);
 		$('#studentId').trigger("chosen:updated");
-		$('#fee').val(serviceUnitArray[id].fee);
+		
+		/* $('#fee').val(serviceUnitArray[id].fee);
 		$('#admissionFee').val(serviceUnitArray[id].admissionFee);
 		$('#tutionFee').val(serviceUnitArray[id].tutionFee);
 		$('#transportationFee').val(serviceUnitArray[id].transportationFee);
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
-		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee);
+		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee); */
 		
 		if (serviceUnitArray[id].dueFee == null || serviceUnitArray[id].dueFee == 0 ) {
 			
@@ -816,6 +818,9 @@ width:100px;
 			});
 		
 	}
+	
+	
+	
 
 	/* $("#search").on("keyup", function() {
 	    var value = $(this).val();
@@ -884,12 +889,12 @@ width:100px;
 					$("#transportationFee").val(response.transportationFee);
 					$("#hostelFee").val(response.hostelFee);
 					$("#stationaryFee").val(response.stationaryFee);
-					
+					*/
 					admissionFee1 = response.admissionFee;
 					tutionFee1 = response.admissionFee;
 					transportationFee1 = response.admissionFee;
 					hostelFee1 = response.admissionFee;
-					stationaryFee1 = response.admissionFee; */
+					stationaryFee1 = response.admissionFee; 
 				}
 			},
 			error : function(e) {
@@ -908,6 +913,93 @@ width:100px;
 		}
 	}
 
+	
+	function editStudentFee(id,studentId) {
+		
+		$.ajax({
+			type : "POST",
+			url : "editStudentFee.json",
+			data : "id=" + id +"&studentId="+studentId,
+			dataType : "json",
+			async:false,
+			success : function(response) {
+							console.log(response); 
+				
+				if (response.dueFee == null || response.dueFee == 0) {
+					
+					dueFeeupdate=  response.netFee;
+					$("#displayId").text("Due Fee: " + response.netFee);
+					
+					 $('#forFormValidation').val('');
+					
+					
+					
+				} else {
+						$("#displayId").text("Due Fee: " + response.dueFee);
+						
+						if(response.admissionFee == 0){
+							$("#admissionNetFee").text("No Due in Addmission Fee" );
+							$("#admissionFee").prop("disabled", true);
+							//$("#divAdmissionFee").hide();  
+						}else{ 
+					 	
+						$("#admissionNetFee").text("Net Fee: " +response.admissionFee);
+						$("#admissionFee").val(0);
+						
+						}
+						 if(response.tutionFee == 0){
+							
+							$("#tutionFee").prop("disabled", true);
+							//$("#divTutionFee").hide();
+						}else{  
+						
+						$("#tutionNetFee").text("Net Fee: " +response.tutionFee);
+						  $("#tutionFee").val(0);
+						}
+						 if(response.transportationFee == 0){
+							
+							$("#transportationFee").prop("disabled", true);
+							//$("#divTransportationFee").hide();
+							
+						}else{  
+						$("#transportationNetFee").text("Net Fee: " +response.transportationFee);
+						$("#transportationFee").val(0);
+						}
+						 if(response.hostelFee == 0){
+							
+							$("#hostelFee").prop("disabled", true);
+							//$("#divHostelFee").hide();
+						}else{  
+						
+						$("#hostelNetFee").text("Net Fee: " +response.hostelFee);
+					  $("#hostelFee").val(0);
+						}
+						if(response.stationaryFee == 0){
+							
+							$("#stationaryFee").prop("disabled", true);
+							//$("#divStationaryFee").hide();
+						} 
+						
+						$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
+						 $("#stationaryFee").val(0);
+						
+						admissionFee1 = response.admissionFee;
+						tutionFee1 = response.tutionFee;
+						transportationFee1 = response.transportationFee;
+						hostelFee1 = response.hostelFee;
+						stationaryFee1 = response.stationaryFee; 
+				}
+			},
+			error : function(e) {
+			},
+			statusCode : {
+				406 : function() {
+
+				}
+			}
+		});
+		
+	}
 	
 	 
 	/* $(document).ready(function(){
