@@ -27,8 +27,15 @@ public class StudentFeeBean {
 	private String feeType;
 	private double dueFee1;
 	private int userId;
+	private String cashier;
 	
 	
+	public String getCashier() {
+		return cashier;
+	}
+	public void setCashier(String cashier) {
+		this.cashier = cashier;
+	}
 	@Override
 	public String toString() {
 		return "StudentFeeBean [id=" + id + ", createdTime=" + createdTime + ", updatedTime=" + updatedTime
@@ -37,7 +44,7 @@ public class StudentFeeBean {
 				+ className + ", medium=" + medium + ", section=" + section + ", dueFee=" + dueFee + ", admissionFee="
 				+ admissionFee + ", tutionFee=" + tutionFee + ", transportationFee=" + transportationFee
 				+ ", hostelFee=" + hostelFee + ", stationaryFee=" + stationaryFee + ", feeType=" + feeType
-				+ ", dueFee1=" + dueFee1 + ", userId=" + userId + "]";
+				+ ", dueFee1=" + dueFee1 + ", userId=" + userId + ", cashier=" + cashier + "]";
 	}
 	public int getUserId() {
 		return userId;

@@ -14,8 +14,17 @@
     top: -5em;
     display: block;
 }*/
+hr {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    border: 0;
+    border-top: 1px dotted #eee;
+}
 .form-control {
 width:200px !important;
+}
+.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 2px 10px;
 }
 .ss {
 width:100px;
@@ -128,8 +137,8 @@ width:100px;
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Fee<span style="color: red;">*</span></label>
 												<div class="col-sm-5">
-													<form:input path="fee" class="form-control numericOnly"	tabindex="6" placeholder="Amount" onkeyup="checkadmissionFee();" required="true" />
-														<span id="erroradmissionFee" style="color:red"></span>
+													<form:input path="fee" class="form-control numericOnly"	 tabindex="6" placeholder="Amount" onkeyup="checkFeeValidation();" required="true" />
+														<span id="errorFee" style="color:red"></span>
 												</div>
 											</div>
 										</div>
@@ -406,6 +415,8 @@ width:100px;
 	
 	 $('#submitId').click(function(){
 		 $("#maxValueError").text("");
+		 $("#fee-error").text("");
+		 
 	    	var fee =parseInt($('#fee').val());
 	    	$('#forFormValidation').val();
 	    	if(  fee == "0"   ){
@@ -427,47 +438,20 @@ width:100px;
 				 
 				 else {
 				 $('#forFormValidation').val(1);
-		    		$('#erroradmissionFee').text("");
-		    		$('#errortutionFee').text("");
-		    		$('#errortransportationFee').text("");
-		    		$('#errorhostelFee').text("");
-		    		$('#errorstationaryFee').text("");
+		    		$('#errorFee').text("");
 		    		$("#maxValueError").text("");
 						    	 return true;
 		     }
 	    	}
 	    	
 	    });
-	    function checkadmissionFee(){
-	    	var admissionFee =$("#admissionFee").val().trim();
-	    	if(admissionFee!=''){
+	    function checkFeeValidation(){
+	    	var fee =$("#fee").val().trim();
+	    	if(fee!=''){
 	    	$('#erroradmissionFee').text("");
 	    		}
 	         }
-	    function checktutionFee(){
-	    	var admissionFee =$("#tutionFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errortutionFee').text("");
-	    		}
-	         }
-	    function checktransportationFee(){
-	    	var admissionFee =$("#transportationFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errortransportationFee').text("");
-	    		}
-	         }
-	    function checkhostelFee(){
-	    	var admissionFee =$("#hostelFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errorhostelFee').text("");
-	    		}
-	         }
-	    function checkstationaryFee(){
-	    	var admissionFee =$("#stationaryFee").val().trim();
-	    	if(admissionFee!=''){
-	    	$('#errorstationaryFee').text("");
-	    		}
-	         }
+	    
 	$('#cancel').click(function() {
 		$("#fee-form").validate().resetForm();
 		$("#fee-form").removeClass("has-error");
@@ -477,11 +461,6 @@ width:100px;
 		$("#medium").val('');
 		$("#studentId").val('');
 		$("#fee").val('');
-		$("#admissionFee").val('');
-		$("#tutionFee").val('');
-		$("#transportationFee").val('');
-		$("#hostelFee").val('');
-		$("#stationaryFee").val('');
 		$("#displayId").val('');
 		$("#fee-form").addClass('form-horizontal');
 		$("#submitId").val("Submit");
@@ -527,8 +506,8 @@ width:100px;
 								}*/
  
 								//contactNumber":"wertewrt","mediumId":"16","subjectId":"","name":"0","boardid":"1","gender":null,"className":"","qualifaction":"ewrt","section":""
-								serviceUnitArray[orderObj.studentId] = orderObj;
-								var id = '"' + orderObj.studentId + '"';
+								serviceUnitArray[orderObj.id] = orderObj;
+								var id = '"' + orderObj.id + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
 										+ "<td>"
 										+ '<a style="cursor: pointer;" title="View Fee Receipt" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('
@@ -631,8 +610,8 @@ width:100px;
 		}
 	}
 	function editPack(id) {
-	var duefee =	serviceUnitArray[id].dueFee
-		var transactionId = serviceUnitArray[id].id;
+	//var duefee =	serviceUnitArray[id].dueFee
+		//var transactionId = serviceUnitArray[id].id;
 		$("#id").val(serviceUnitArray[id].id);
 		$('#boardName').val(serviceUnitArray[id].boardId);
 		classNameFilter();
@@ -653,7 +632,7 @@ width:100px;
 		$('#hostelFee').val(serviceUnitArray[id].hostelFee);
 		$('#stationaryFee').val(serviceUnitArray[id].stationaryFee); */
 		
-		if (serviceUnitArray[id].dueFee == null || serviceUnitArray[id].dueFee == 0 ) {
+		/* if (dueFeeWhileEdit.dueFee == null || dueFeeWhileEdit.dueFee == 0 ) {
 			
 			//$("#fee").prop("disabled", true);
 			$("#divFee").hide();  
@@ -661,16 +640,16 @@ width:100px;
 			//$("#displayId").text("Due Fee: "  + response.netFee +"There is no Due Amount");
 			 $('#forFormValidation').val('');
 			
-			//duefee123= response.netFee;
+			duefee123= dueFeeWhileEdit.netFee;
 		} else {
 			//$("fee").prop("disabled", false);
 			//$("fee").removeAttr("disabled");
 			$("#divFee").show();  
-			//duefee123= response.dueFee;
+			duefee123= dueFeeWhileEdit.dueFee;
 			
 			$("#displayId").text("Due Fee: " + serviceUnitArray[id].dueFee);
 			
-		}
+		} */
 		
 		$("#submitId").val("Update");
 		$(window).scrollTop($('#boardName').offset().top);
@@ -913,7 +892,7 @@ width:100px;
 		}
 	}
 
-	
+	var dueFeeWhileEdit ;
 	function editStudentFee(id,studentId) {
 		
 		$.ajax({
@@ -923,12 +902,14 @@ width:100px;
 			dataType : "json",
 			async:false,
 			success : function(response) {
-							console.log(response); 
-				
+							//console.log(response); 
+			dueFeeWhileEdit = response;	
 				if (response.dueFee == null || response.dueFee == 0) {
 					
 					dueFeeupdate=  response.netFee;
 					$("#displayId").text("Due Fee: " + response.netFee);
+					$("#fee").val(0);
+					duefee123= response.netFee;
 					
 					 $('#forFormValidation').val('');
 					
@@ -936,8 +917,11 @@ width:100px;
 					
 				} else {
 						$("#displayId").text("Due Fee: " + response.dueFee);
-						
-						if(response.admissionFee == 0){
+						$("#fee").val(0);
+						 $('#forFormValidation').val('');
+						 dueFeeupdate=  response.dueFee;
+						 duefee123= response.dueFee;
+						/* if(response.admissionFee == 0){
 							$("#admissionNetFee").text("No Due in Addmission Fee" );
 							$("#admissionFee").prop("disabled", true);
 							//$("#divAdmissionFee").hide();  
@@ -981,13 +965,13 @@ width:100px;
 						} 
 						
 						$("#stationaryNetFee").text("Net Fee: " +response.stationaryFee);
-						 $("#stationaryFee").val(0);
+						 $("#stationaryFee").val(0); */
 						
-						admissionFee1 = response.admissionFee;
+						/* admissionFee1 = response.admissionFee;
 						tutionFee1 = response.tutionFee;
 						transportationFee1 = response.transportationFee;
 						hostelFee1 = response.hostelFee;
-						stationaryFee1 = response.stationaryFee; 
+						stationaryFee1 = response.stationaryFee;  */
 				}
 			},
 			error : function(e) {
@@ -1028,28 +1012,30 @@ width:100px;
 var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
 
 /* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
-+ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 70px;'></td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
++ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 50px;'></td></tr>"
++ "<tr style='height: 22px;'>"
++ "<td ><span style='font-size: normal;color: blue;'>Cashier Name: "+tests.cashier + "</span></td>"
++ "<td><span style='font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
 
-+ "<tr style='height: 35px;'><td><b class='ss'>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td><td><b class='ss'>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td><b class='ss'>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td><b class='ss'>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td><b class='ss'>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</td><td><b class='ss'>Class: </b>&nbsp;&nbsp;"+ tests.className+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b class='ss'>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+"</td></tr>"
-+ "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
++ "<tr style='height: 22px;'><td><b class='ss'>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td><td><b class='ss'>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
++ "<tr style='height: 22px;'><td><b class='ss'>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td><b class='ss'>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
++ "<tr style='height: 22px;'><td><b class='ss'>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</td><td><b class='ss'>Class: </b>&nbsp;&nbsp;"+ tests.className+ "</td></tr>"
++ "<tr style='height: 22px;'><td colspan='2'><b class='ss'>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+"</td></tr>"
++ "<tr style='height: 22px;'><th>Particulars</th><th>Amount</th></tr>"
 
-+ "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
-+ "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
++ "<tr style='height: 22px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
 // + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
 + "</table>"
 
 
 $(stockInformation1).appendTo("#printTab");
-var  horizontal="<hr size='+30+'>"
+var  horizontal="<hr size='+10+'>"
 $(horizontal).appendTo("#printTab");
 // toWords(tests.fee);
 
@@ -1071,14 +1057,32 @@ $(horizontal).appendTo("#printTab");
 	}
 
 	function Popup(data) {
-		var mywindow = window.open('', 'new div');
-		mywindow.document.write('<html><head><title>Fees Receipt</title>');
-		/*optional stylesheet*///mywindow.document.write('<link rel="stylesheet" href="css/main.css" type="text/css" />');
-		mywindow.document.write('</head><body >');
-		mywindow.document.write(data);
-		mywindow.document.write('</body></html>');
-		mywindow.print();
-		mywindow.close();
+		var mywindow = window.open('','new div');
+
+	    var is_chrome = Boolean(mywindow.chrome);
+	    var isPrinting = false;
+	    mywindow.document.write('<html><head><title>Greatnaltes School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"> <link rel="stylesheet" type="text/css" href="css/printcss.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write(data);
+	   
+	    mywindow.document.write('</body></html>');
+	    mywindow.document.close(); // necessary for IE >= 10 and necessary before onload for chrome
+		
+	    if (is_chrome) {
+	        mywindow.onload = function() { // wait until all resources loaded 
+	            mywindow.focus(); // necessary for IE >= 10
+	            mywindow.print();  // change window to mywindow
+	            mywindow.close();// change window to mywindow
+	        };
+	    
+	    
+	   } else {
+	        mywindow.document.close(); // necessary for IE >= 10
+	        mywindow.focus(); // necessary for IE >= 10
+
+	        mywindow.print();
+	        mywindow.close();
+	   }
+		
 		$("#printbtn").show();
 		return true;
 	}

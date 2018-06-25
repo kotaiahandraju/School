@@ -24,10 +24,15 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 <style type="text/css">
+.blog {
+    margin-bottom: 20px;
+    background: #eee;
+    position: relative;
+}
 .blog-header {
     position: relative;
     padding: 2px 15px;
-    border: 1px solid #ededed;
+    border: none !important;
     border-bottom: 0;
 }
 span.has-error, #already_exist, .subjects_error
@@ -56,7 +61,7 @@ span.has-error, #already_exist, .subjects_error
     history.forward();
 </script>
 	</head>
-<body style="background: aqua;">
+<body style="background: #8eb6c1;">
 
 			<!-- Main Container starts -->
 			<div class="main-container">
@@ -72,10 +77,10 @@ span.has-error, #already_exist, .subjects_error
 							
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 fadeInDown animated">
 								<div class="blog lf">
-									<div class="blog-header" style="background: #d66061;">
+									<div class="blog-header" align="center" style="padding-top: 10px;background: #005C77;">
 										<!-- <img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
 										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b> -->
-										<img src="img/loginp.png" align="middle" style="height: 75px;" alt="GRETNALTES" class="img-responsive">
+										<img src="img/logo.png" align="middle" style="height: ;" alt="GRETNALTES" class="img-responsive">
 										&nbsp; &nbsp; &nbsp; <!-- <b style="font-size: 25px;color: white !important">GRETNALTES</b> -->
 									</div>
 									<div class="blog-body">

@@ -1554,8 +1554,7 @@ e.printStackTrace();
 	}
 	
 	@RequestMapping(value = "/sendAttendance")
-	public @ResponseBody String sendAttendance(HttpServletRequest objRequest,
-			HttpServletResponse objResponse, HttpSession session)
+	public @ResponseBody String sendAttendance(HttpServletRequest objRequest,	HttpServletResponse objResponse, HttpSession session)
 					throws JsonGenerationException, JsonMappingException, IOException, AddressException, MessagingException {
 		objResponse.setCharacterEncoding("UTF-8");
 		String message = objRequest.getParameter("message");

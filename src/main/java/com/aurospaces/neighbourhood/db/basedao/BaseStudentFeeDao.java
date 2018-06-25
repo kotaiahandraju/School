@@ -25,11 +25,6 @@ public class BaseStudentFeeDao{
  
 	public final String INSERT_SQL = "INSERT INTO studentfee( created_time, updated_time, studentId, fee,admissionFee, tutionFee, transportationFee, hostelFee, stationaryFee,dueFee1,userID) values (?,?,?,?,?,?,?, ?, ?,?,?)";
  
-
-
-
-
-
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
 	public void save(final StudentFeeBean studentFeeBean) 
@@ -81,10 +76,9 @@ System.out.println(ps);
 				}
 		else
 		{
-		 		String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =?,userId"
-					+ " where id = ? ";
+		 		String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =? ,userId =?  where id = ? ";
 	
-			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getAdmissionFee(),studentFeeBean.getTutionFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getHostelFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getDueFee1(),studentFeeBean.getId()});
+			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getAdmissionFee(),studentFeeBean.getTutionFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getHostelFee(),studentFeeBean.getStationaryFee(),studentFeeBean.getDueFee1(),studentFeeBean.getUserId(),studentFeeBean.getId()});
 		}
 	}
 		

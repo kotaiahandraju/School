@@ -76,7 +76,7 @@ public class UserController {
 	@Autowired ClassCreation1Dao objAddedClass;
 	@Autowired SectionDao objSectionDao;
 	@Autowired MediumDao objMediumDao;
-	@Autowired SchoolHomecontroller schoolHomecontroller;
+	//@Autowired SchoolHomecontroller schoolHomecontroller;
 	/*LoginHome1*/
 	@Autowired AddClassSubjectDao objAddClassSubjectDao;
 	private Logger logger = Logger.getLogger(UserController.class);
@@ -338,15 +338,16 @@ e.printStackTrace();
 			//double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
 			int studentId =Integer.parseInt(objStudentFeeBean.getStudentId());
 			StudentBean objStudent = studentDao.getById(studentId);
-			StudentFeeBean individualTotalFeeBean = objStudentFeeDao.getTotalIndividualfeeByStudentId(studentId);
+			StudentFeeBean individualTotalFeeBean = objStudentFeeDao.editStudentFee(objStudentFeeBean.getStudentId(),objStudentFeeBean.getId());
+			//StudentFeeBean individualTotalFeeBean = objStudentFeeDao.getTotalIndividualfeeByStudentId(studentId);
 			
-			double dueAdmissionFee = objStudent.getAdmissionFee()-individualTotalFeeBean.getAdmissionFee();
-			double dueTutionFee = objStudent.getTutionFee() - individualTotalFeeBean.getTutionFee();
-			double dueTransportationFee = objStudent.getTransportationFee() - individualTotalFeeBean.getTransportationFee();
-			double dueHostelFee = objStudent.getHostelFee()- individualTotalFeeBean.getHostelFee();
-			double dueStationaryFee = objStudent.getStationaryFee() - individualTotalFeeBean.getStationaryFee();
+			double dueAdmissionFee = individualTotalFeeBean.getAdmissionFee();
+			double dueTutionFee = individualTotalFeeBean.getTutionFee();
+			double dueTransportationFee =  individualTotalFeeBean.getTransportationFee();
+			double dueHostelFee =  individualTotalFeeBean.getHostelFee();
+			double dueStationaryFee = individualTotalFeeBean.getStationaryFee();
 			double previousPaidAmount = individualTotalFeeBean.getFee();
-			double totalDue = objStudent.getNetFee() - previousPaidAmount ;
+			double totalDue =Double.parseDouble(individualTotalFeeBean.getDueFee() );
 			double restAmount = 0.0;
 			
 			if(totalDue >= totalPaidAmount) {

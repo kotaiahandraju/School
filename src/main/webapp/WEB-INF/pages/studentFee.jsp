@@ -14,8 +14,21 @@
     top: -5em;
     display: block;
 }*/
+hr {
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+    border-top-style: dotted;
+    border-color:1px #000;
+}
+hr {
+   
+    border-top: 1px dotted #333 !important;
+}
 .mediu {
 width:200px;
+}
+.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 2px 10px;
 }
 .form-control {
 width:200px !important;
@@ -995,7 +1008,7 @@ function editStudentFee(id,studentId) {
 						
 						}
 						 if(response.tutionFee == 0){
-							
+							 $("#tutionFee").text("No Due in Tution Fee" );
 							$("#tutionFee").prop("disabled", true);
 							//$("#divTutionFee").hide();
 						}else{  
@@ -1004,7 +1017,7 @@ function editStudentFee(id,studentId) {
 						  $("#tutionFee").val(0);
 						}
 						 if(response.transportationFee == 0){
-							
+							 $("#transportationFee").text("No Due in Transportation Fee" );
 							$("#transportationFee").prop("disabled", true);
 							//$("#divTransportationFee").hide();
 							
@@ -1013,7 +1026,7 @@ function editStudentFee(id,studentId) {
 						$("#transportationFee").val(0);
 						}
 						 if(response.hostelFee == 0){
-							
+							 $("#hostelFee").text("No Due in Hostel Fee" );
 							$("#hostelFee").prop("disabled", true);
 							//$("#divHostelFee").hide();
 						}else{  
@@ -1022,7 +1035,7 @@ function editStudentFee(id,studentId) {
 					  $("#hostelFee").val(0);
 						}
 						if(response.stationaryFee == 0){
-							
+							$("#stationaryFee").text("No Due in Stationary Fee" );
 							$("#stationaryFee").prop("disabled", true);
 							//$("#divStationaryFee").hide();
 						} 
@@ -1168,46 +1181,56 @@ function getDueFeeUpdateTime() {
 					data : "studentFeeId=" + studentFeeId,
 					dataType : "json",
 					success : function(response) {
-						// 						alert(response);
+						console.log(response);
 						var popuptitle = null;
+						for(var j=1; j<=2;j++){
 						$
 								.each(
 										response,
 										function(i, tests) {
-
+										//var	schoolCopy = "<span>-----School Copy---------</span>"
 var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable' style='font-family: 'Open Sans', arial, sans-serif;font-size: 16px;'>"
 
 /* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
-+ "<tr><td colspan='2' align='center'><img src='img/logoprint.png' style='width:300px;'></td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><span style='float: right;font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
++ "<tr><td colspan='2' align='center'><img src='img/logoprint.png' style='height:38px;'></td></tr>"
++ "<tr style='height: 22px;'>"
++"<td ><span style='font-size: normal;color: blue;'>Cashier Name: "+tests.cashier + "</span></td>"
++"<td ><span style='font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
 
-+ "<tr style='height: 35px;'><td colspan='2'><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
-+ "<tr style='height: 35px;'><td colspan='2'><span class='mediu'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</span>&nbsp;&nbsp;"
++ "<tr style='height: 22px;'>"
++"<td><b>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td>"
++ "<td><b>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
++ "<tr style='height: 22px;'><td colspan='2'><b>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td></tr>"
++ "<tr style='height: 22px;'><td colspan='2'><span class='mediu'><b>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</span>&nbsp;&nbsp;"
 + 	"<span><b>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</span>&nbsp;&nbsp;"+ "<span><b>Class: </b>&nbsp;&nbsp;"+ tests.className
 + 	"</span>&nbsp;&nbsp;"+ "<span><b>Section: </b>&nbsp;&nbsp;"+ tests.sectionName
 + "</span></td></tr>"
 
-+ "<tr style='height: 35px;'><th>Particulars</th><th>Amount</th></tr>"
++ "<tr style='height: 22px;'><th>Particulars</th><th>Amount</th></tr>"
 
-+ "<tr style='height: 35px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Tuition Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Bus Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
-+ "<tr style='height: 35px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
-+ "<tr style='height: 35px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Tuition Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Bus Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
++ "<tr style='height: 22px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
++ "<tr style='height: 22px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
 // + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
 + "</table>"
 + "<span><p><b>Due Fee : "+ tests.dueFee+ "</b></p></span>"
-+ "<br>"
-+ "<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
 
+//$(schoolCopy).appendTo("#printTab");
 $(stockInformation1).appendTo("#printTab");
+ var  horizontal="<hr size='+30+'>"
+	$(horizontal).appendTo("#printTab"); 
+/* var	parentCopy = "<span>-----Parent Copy---------</span>"
+	$(parentCopy).appendTo("#printTab"); */
 // toWords(tests.fee);
 
 										});
+						}
+						var printbutton="<input id='printbtn' style='' class='btn btn-default' type='button' value='Print' onclick=PrintElem('#printTab') />"
+							$(printbutton).appendTo("#printTab");
 						// 							 $(stockInformation2).appendTo("#stockInformationTable"); 
 						// 							 $('#dial').dialog({width:799,title:popuptitle,modal: true}).dialog('open');
 
@@ -1227,7 +1250,7 @@ $(stockInformation1).appendTo("#printTab");
 
 	    var is_chrome = Boolean(mywindow.chrome);
 	    var isPrinting = false;
-	    mywindow.document.write('<html><head><title>Greatnaltes School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
+	    mywindow.document.write('<html><head><title>Greatnaltes School</title> <link rel="stylesheet" type="text/css" href="../assets/css/img.css"> <link rel="stylesheet" type="text/css" href="css/printcss.css"><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head><body>');
 	    mywindow.document.write(data);
 	   
 	    mywindow.document.write('</body></html>');

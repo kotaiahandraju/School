@@ -19,10 +19,10 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		StringBuffer objStringBuffer = new StringBuffer();
 		objStringBuffer
 				.append("select sf.created_time as feeDate, s.boardName as boardId, s.medium as mediumId, s.className as classId, s.section as sectionId, sf.id,s.id as studentId, s.name as studentName,bn.name as boardName,st.name sectionName,m.name mediumName,"
-						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, sf.dueFee1 as dueFee,s.netFee"
-						+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.className=ct.id and st.id=s.section "
-						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id  and\n" + 
-						"sf.created_time = (SELECT max(created_time) FROM studentfee sf2 WHERE sf.studentId=sf2.studentId)");
+						+ "sf.fee,sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,ct.name as className ,s.fatherName,s.mobile, sf.dueFee1 as dueFee,s.netFee, u.name as cashier"
+						+ " from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf, users u where s.className=ct.id and st.id=s.section "
+						+ " and s.medium=m.id and bn.id=s.boardName and sf.studentId=s.id and sf.userId = u.id  and" 
+						+ " sf.created_time = (SELECT max(created_time) FROM studentfee sf2 WHERE sf.studentId=sf2.studentId)");
 		if (StringUtils.isNotBlank(studetnId)) {
 			objStringBuffer.append(" and s.id=" + studetnId);
 		}
@@ -43,7 +43,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		System.out.println(sql);
 		RowValueCallbackHandler handler = new RowValueCallbackHandler(
 				new String[] { "feeDate","boardName","mediumId","boardId","classId","sectionId", "id", "studentId", "studentName", "boardName", "sectionName", "mediumName",
-						"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile","dueFee","netFee" });
+						"fee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","className", "fatherName", "mobile","dueFee","netFee","cashier" });
 		jdbcTemplate.query(sql, handler);
 		List<Map<String, String>> result = handler.getResult();
 		return result;
@@ -104,8 +104,8 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		StringBuffer objStringBuffer = new StringBuffer();
 		objStringBuffer
 				.append("select  s.id,s.name as studentName,ct.name as className,st.name as sectionName,bn.name as boardName,m.name as medium,sf.fee,sf.created_time,s.totalfee, s.discountfee,s.netfee "
-						+ ",sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,s.fatherName,s.mobile,sf.dueFee1 as dueFee from studentfee sf,boardname bn ,classtable ct,sectiontable st,mediam m ,student s where s.id=sf.studentId and ct.id = s.className and st.id=s.section "
-						+ " and m.id=s.medium and s.boardName =bn.id   ");
+						+ ",sf.admissionFee,sf.tutionFee,sf.transportationFee,sf.hostelFee,sf.stationaryFee,s.fatherName,s.mobile,sf.dueFee1 as dueFee, u.name as cashier from studentfee sf,boardname bn ,classtable ct,sectiontable st,mediam m ,student s, users u where s.id=sf.studentId and ct.id = s.className and st.id=s.section "
+						+ " and m.id=s.medium and s.boardName =bn.id and sf.userId = u.id   ");
 		if (studentfeeId != 0) {
 			objStringBuffer.append(" and sf.id=" + studentfeeId);
 		}
@@ -114,7 +114,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		// System.out.println(sql);
 		RowValueCallbackHandler handler = new RowValueCallbackHandler(
 				new String[] { "id", "studentName", "className", "boardName", "sectionName", "medium", "fee",
-						"created_time", "totalfee", "discountfee", "netfee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","fatherName", "mobile","dueFee" });
+						"created_time", "totalfee", "discountfee", "netfee","admissionFee","tutionFee","transportationFee","hostelFee","stationaryFee","fatherName", "mobile","dueFee", "cashier" });
 		jdbcTemplate.query(sql, handler);
 		List<Map<String, String>> result = handler.getResult();
 		return result;
@@ -145,7 +145,19 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 				return retlist.get(0);
 			return null;
 		}
-	
+	 
+	/* public StudentFeeBean editUserStudentFee(String studentId,int id) {
+			String sql = "select ifnull(sum(sf.fee),0.00) as fee, ifnull(s.admissionFee,0.00)-ifnull(sum(sf.admissionFee),0.00) as admissionFee,ifnull(s.tutionFee,0.00)- ifnull(sum(sf.tutionFee),0.00) as tutionFee," 
+					+ " ifnull(s.transportationFee,0.00)-ifnull(sum(sf.transportationFee),0.00) as transportationFee,ifnull(s.hostelFee,0.00)- ifnull(sum(sf.hostelFee),0.00) as hostelFee," 
+					+ "ifnull(s.stationaryFee,0.00)-ifnull(sum(sf.stationaryFee),0.00) as stationaryFee, ifnull(s.netFee,0.00)-ifnull(sum(fee),0.00) as dueFee" 
+					+ " from studentfee sf, student s where sf.studentId=s.id and s.id=? and sf.id not in(?)" ;
+			System.out.println(sql);
+			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId,id},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
+			if(retlist.size() > 0)
+				return retlist.get(0);
+			return null;
+		}
+	*/
 	 public StudentFeeBean getTotalfee(String studentId,int id) {
 			String sql = "select ifnull(sum(fee),0.00) as fee from studentfee where studentId =? and id not in(?)"  ;
 			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId,id},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
