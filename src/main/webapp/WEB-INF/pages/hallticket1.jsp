@@ -63,8 +63,7 @@ td, th {
 				<!-- Row Starts -->
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<form:form id="fee-form" action="addStudentFee.htm"
-									commandName="packCmd" method="post" class="form-horizontal">
+								<form:form id="fee-form" action="addStudentFee.htm"	commandName="packCmd" method="post" class="form-horizontal">
 
 									<div class="row">
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -357,6 +356,7 @@ $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 					.each(
 							listOrders,
 							function(i, orderObj) {
+								console.log(orderObj);
 								if (orderObj.dueFee == 0.00) {
 									orderObj.dueFee = orderObj.netFee;
 								}
@@ -367,7 +367,7 @@ $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 								var tblRow = "<tr align='center' role='row' class='odd'>"
 										+ "<td>"
 										+ '<b>'
-										+ orderObj.name
+										+ orderObj.studentName
 										+ '</b></a>'
 										+ '</td>'
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fatherName+"'>"

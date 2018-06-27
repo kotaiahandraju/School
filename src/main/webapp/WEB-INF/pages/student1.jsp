@@ -19,6 +19,46 @@
 }
 	.panel-default {
 overflow-x:hidden;}
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #eef3f8;
+    background-color: #eef3f8;
+    margin-top:10px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: 0.3s;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .5px;
+}
+.tabcontent {
+	margin-top:30px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #13353f;
+    color:#fff;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #005c77;
+    color: #fff;
+}
+
+
+
 	</style>
 	<link href="css/datepicker1.css" rel="stylesheet">
 <!-- 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
@@ -50,7 +90,16 @@ overflow-x:hidden;}
 					<div class="panel-heading">
 						<h4>Add Students</h4>
 					</div>
-					<div class="panel-body collapse in">
+					<div class="tab">
+  						<button class="tablinks" onclick="openCity(event, 'generalInfo')" id="defaultOpen">General Information</button>
+  						<button class="tablinks"  onclick="openCity(event, 'educationInfo')" id="educationInfoId">Educational Information</button>
+  						<button class="tablinks" onclick="openCity(event, 'feesInfo')"  id="feesInfoId">Fees</button>
+					</div>
+					<!-- <ul class="pagination">
+  						<li><a href="#generalInfo">General Information</a></li>
+  						<li><a href="#educationInfo">Educational Information</a></li>
+  						<li><a href="#feesInfo">Fees</a></li>
+					</ul> -->
 					<!-- Spacer starts -->
 						<!-- Row Starts -->
 						<div class="row">
@@ -59,98 +108,34 @@ overflow-x:hidden;}
 										<form:form action="addStudent.htm" commandName="packCmd" method="post" class="form-horizontal" id="student-form" enctype="multipart/form-data">
 											
 										<div class="row">
+										<fieldset id="general_information" class="">
+								<div id="generalInfo" class="tabcontent">
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="name" placeholder="Student Name" class="form-control onlyCharacters" tabindex="1" required="true"/>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-												<div class="form-group">
-											    	<label for="inputPassword3" class="col-sm-4 control-label">Board Name <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:select path="boardName" class="form-control" tabindex="2" onchange="classNameFilter()" required="true">
-															<form:option value="" >-- Choose Board --</form:option>
-															<form:options items="${board}"></form:options>
-														</form:select>
-													</div>
-											  	</div>
-											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Class <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:select path="className" class="form-control" tabindex="3" onchange="sectionFilter();" required="true">
-															<form:option value="">-- Choose Class --</form:option>
-<%-- 															<form:options items="${allClasses}"></form:options> --%>
-														</form:select>
+														<form:input path="name" placeholder="Student Name" class="form-control validate onlyCharacters" tabindex="1" required="true"/>
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Section <span style="color: red;">*</span></label>
-										    <div class="col-sm-5">
-														<form:select path="section" class="form-control" tabindex="4"  onchange="mediumFilter();" quired="true">
-															<form:option value="">-- Choose Section --</form:option>
-<%-- 															<form:options items="${allSection}"></form:options> --%>
+												    <label for="inputPassword3" class="col-sm-4 control-label">Gender <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:select path="gender" tabindex="15" class="form-control validate" required="true" onfocus="removeBorder(this.id)">
+															<form:option value="">-- Choose Gender --</form:option>
+															<form:option value="Male"> Male</form:option>
+															<form:option value="Female">Female</form:option>
 														</form:select>
+														<span class="gender_error" id="gender_error"></span>
 													</div>
 											  	</div>
 											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											  	<div class="form-group">
-											    	<label for="inputPassword3" class="col-sm-4 control-label">Medium <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:select path="medium" class="form-control" tabindex="5" onchange="getFee();" required="true">
-															<form:option value="">-- Choose Medium --</form:option>
-<%-- 															<form:options items="${mediam}"></form:options> --%>
-														</form:select>
-													</div>
-											  	</div>
-											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											    <div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Fees <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:input path="totalFee" placeholder="Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
-													</div>
-											  	</div>
-											</div>
-										
-											<%-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-											   	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Discount </label>
-												    <div class="col-sm-8">
-														<form:input path="discountFee1" placeholder="Enter Discount Fee Amount" class="form-control numericOnly" tabindex="7"/>
-													</div>
-											  	</div>
-											</div> --%>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
-												    <div class="col-sm-5">
-														<form:input path="rollNum" placeholder="Roll Number" class="form-control nospecialCharacter" tabindex="8"/>
-													</div>
-											  	</div>
-											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Admission No. <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:input path="admissionNum" placeholder="Admission Number" class="form-control nospecialCharacter" tabindex="9" required="true"/>
-													</div>
-											  	</div>
-											</div>
-									
-									
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Father Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="fatherName" placeholder="Father Name" class="form-control onlyCharacters" tabindex="10" required="true"/>
+														<form:input path="fatherName" placeholder="Father Name" class="form-control validate onlyCharacters" tabindex="10" required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -158,7 +143,7 @@ overflow-x:hidden;}
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Mobile <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="mobile" placeholder="Contact Number" class="form-control numericOnly" maxlength="10" tabindex="11"/>
+														<form:input path="mobile" placeholder="Contact Number" class="form-control validate numericOnly" maxlength="10" tabindex="11"/>
 													</div>
 											  	</div>
 											</div>
@@ -170,12 +155,11 @@ overflow-x:hidden;}
 													</div>
 											  	</div>
 											</div>
-										
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
 												    <div class="col-sm-5">
-														<form:input path="email" placeholder="Email-Id" class="form-control" tabindex="13"/>
+														<form:input path="email" placeholder="Email-Id" class="form-control validate" tabindex="13"/>
 													</div>
 											  	</div>
 											</div>
@@ -197,26 +181,13 @@ overflow-x:hidden;}
 													</div>
 											  	</div>
 											</div>
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Gender <span style="color: red;">*</span></label>
-												    <div class="col-sm-5">
-														<form:select path="gender" tabindex="15" class="form-control" required="true">
-															<form:option value="">-- Choose Gender --</form:option>
-															<form:option value="Male"> Male</form:option>
-															<form:option value="Female">Female</form:option>
-														</form:select>
-														<span class="gender_error" id="gender_error"></span>
-													</div>
-											  	</div>
-											</div>
 									
 									
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Date of Birth <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Date of Birth" class="form-control" tabindex="16" required="true" readonly="true"/>
+														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Date of Birth" class="form-control validate" tabindex="16" required="true" readonly="true" onfocus="removeBorder(this.id)" />
 														<span class="dob1_error" id="dob1_error"></span>
 													</div>
 											  	</div>
@@ -243,12 +214,104 @@ overflow-x:hidden;}
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Address <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="address" placeholder="Address" class="form-control" tabindex="18" required="true"/>
+														<form:textarea path="address" placeholder="Address" class="form-control validate" tabindex="18" required="true"></form:textarea>
 													</div>
 											  	</div>
 											</div>
-									
-									
+												<div class="clearfix"></div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+												<div class="form-group">
+											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Image</label>
+											    	<div class="col-sm-5">
+														<img id="blah" src='upload/default.png' alt="Student Image" align="middle" style="border-style: solid;height: 100px;width: 100px;border-bottom-style: none;border-left-style: none;border-top-style: none;">
+														<input type="file" name="imageName" tabindex="24" id="imageName" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" accept="image/jpg,image/png,image/jpeg,image/gif">
+											    	</div>
+											  	</div>
+											</div>
+											<div class="col-sm-8 col-sm-offset-5">
+												<form:hidden path="id" /><br>
+											  	<div class="form-group">
+												  	<div class="col-sm-8 col-sm-offset-2">
+												  		
+														<input type="button" id="generalInfoContinue" class="btn btn-success" value="Next >" tabindex=""/>
+														<input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/>
+													</div>
+											  	</div>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset id="education_information" class="">
+								<div id="educationInfo" class="tabcontent">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+												<div class="form-group">
+											    	<label for="inputPassword3" class="col-sm-4 control-label">Board Name <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:select path="boardName" class="form-control validate1" tabindex="2" onchange="classNameFilter()"  required="true">
+															<form:option value="" >-- Choose Board --</form:option>
+															<form:options items="${board}"></form:options>
+														</form:select>
+													</div>
+											  	</div>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Class <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:select path="className" class="form-control validate1" tabindex="3" onchange="sectionFilter();" required="true">
+															<form:option value="">-- Choose Class --</form:option>
+<%-- 															<form:options items="${allClasses}"></form:options> --%>
+														</form:select>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Section <span style="color: red;">*</span></label>
+										    <div class="col-sm-5">
+														<form:select path="section" class="form-control validate1" tabindex="4"  onchange="mediumFilter();" quired="true">
+															<form:option value="">-- Choose Section --</form:option>
+<%-- 															<form:options items="${allSection}"></form:options> --%>
+														</form:select>
+													</div>
+											  	</div>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+											    	<label for="inputPassword3" class="col-sm-4 control-label">Medium <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:select path="medium" class="form-control validate1" tabindex="5" onchange="getFee();" required="true">
+															<form:option value="">-- Choose Medium --</form:option>
+<%-- 															<form:options items="${mediam}"></form:options> --%>
+														</form:select>
+													</div>
+											  	</div>
+											</div>
+										
+											<%-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+											   	<div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Discount </label>
+												    <div class="col-sm-8">
+														<form:input path="discountFee1" placeholder="Enter Discount Fee Amount" class="form-control numericOnly" tabindex="7"/>
+													</div>
+											  	</div>
+											</div> --%>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
+												    <div class="col-sm-5">
+														<form:input path="rollNum" placeholder="Roll Number" class="form-control nospecialCharacter" tabindex="8"/>
+													</div>
+											  	</div>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label ">Admission No. <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:input path="admissionNum" placeholder="Admission Number" class="form-control  validate1 nospecialCharacter" tabindex="9" required="true"/>
+													</div>
+											  	</div>
+											</div>
+							
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Previous Institute</label>
@@ -276,7 +339,7 @@ overflow-x:hidden;}
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Accommodation<span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="acomitation" tabindex="21" class="form-control">
+														<form:select path="acomitation" tabindex="21" class="form-control validate1">
 															<form:option value="">-- Choose Accommodation --</form:option>
 															<form:option value="Hostel">Hostel</form:option>
 															<form:option value="Day-Scholar">Day-Scholar</form:option>
@@ -288,9 +351,9 @@ overflow-x:hidden;}
 										
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="divBuspesility">
 											  	<div class="form-group">
-												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Facility<span style="color: red;">*</span></label>
+												    <label for="inputPassword3" class="col-sm-4 control-label ">Bus Facility<span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="buspesility" tabindex="22" class="form-control" >
+														<form:select path="buspesility" tabindex="22" class="form-control validate1" >
 															<form:option value="">-- Choose Bus Facility --</form:option>
 															<form:option value="Yes"> Yes</form:option>
 															<form:option value="No">No</form:option>
@@ -306,6 +369,21 @@ overflow-x:hidden;}
 													</div>
 											  	</div>
 											</div>
+											<div class="col-sm-8 col-sm-offset-5">
+												<form:hidden path="id" /><br>
+											  	<div class="form-group">
+												  	<div class="col-sm-8 col-sm-offset-2">
+												  	    <input type="button" id="educationPrevious" class="btn btn-success" value="< Previous" tabindex=""/>
+														<input type="button" id="educationInfoContinue" class="btn btn-success" value="Next >" tabindex=""/>
+<!-- 														<input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/> -->
+													</div>
+											  	</div>
+											</div>
+								</div>
+								</fieldset>
+								<fieldset id="fees_information" class="">
+								<div id="feesInfo" class="tabcontent">
+									
 												<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
@@ -350,27 +428,29 @@ overflow-x:hidden;}
 													</div>
 											  	</div>
 											</div>
-												<div class="clearfix"></div>
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-												<div class="form-group">
-											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Image</label>
-											    	<div class="col-sm-5">
-														<img id="blah" src='upload/default.png' alt="Student Image" align="middle" style="border-style: solid;height: 100px;width: 100px;border-bottom-style: none;border-left-style: none;border-top-style: none;">
-														<input type="file" name="imageName" tabindex="24" id="imageName" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" accept="image/jpg,image/png,image/jpeg,image/gif">
-											    	</div>
+											    <div class="form-group">
+												    <label for="inputPassword3" class="col-sm-4 control-label">Total Fees <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:input path="totalFee" placeholder="Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
+													</div>
 											  	</div>
 											</div>
-										</div>
+										
+										
 										
 											<div class="col-sm-8 col-sm-offset-5">
 												<form:hidden path="id" /><br>
 											  	<div class="form-group">
 												  	<div class="col-sm-8 col-sm-offset-2">
+												  	    <input type="button" id="feesPrevious" class="btn btn-success" value="< Previous" tabindex=""/>
 														<input type="submit" id="submitId" class="btn btn-success" value="Register" tabindex="25"/>
-														<input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/>
+													<!-- <input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/> -->
 													</div>
 											  	</div>
 											</div>
+								</div>
+								</fieldset>
 										</div>
 										<div class="row">
 											<div class="col-sm-8 col-sm-offset-4">
@@ -389,6 +469,7 @@ overflow-x:hidden;}
 												</div>
 											</div>
 										</div>
+									
 										</form:form>
 					
 									</div>
@@ -475,4 +556,28 @@ var getTabName = window.location.pathname.split('/')[2];
 $("#stu_li").addClass('active');
 $("#stu_li ul").css('display','block');
 $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
+
+
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    if(evt.currentTarget){
+    evt.currentTarget.className += " active";
+    }else{
+    	
+    	evt.target.className += " active"
+    }
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
 </script>

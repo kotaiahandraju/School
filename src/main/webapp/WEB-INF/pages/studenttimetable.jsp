@@ -213,6 +213,11 @@
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script type="text/javascript">
 
+var getTabName = window.location.pathname.split('/')[2];
+$("#stu_li").addClass('active');
+$("#stu_li ul").css('display','block');
+$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
 	var filepath1='${filepath}';
 	console.log(filepath1);
 	

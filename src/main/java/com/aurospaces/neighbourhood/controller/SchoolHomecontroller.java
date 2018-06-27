@@ -1670,8 +1670,9 @@ e.printStackTrace();
 		}
 		return "ExportStudent";
 	}
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/exportStudent1")
-	public ModelAndView exportStudent(@ModelAttribute("packCmd") StudentBean objStudentBean, ModelMap model,HttpServletRequest request,HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
+	public String exportStudent(@ModelAttribute("packCmd") StudentBean objStudentBean, ModelMap model,HttpServletRequest request,HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		ObjectMapper objectMapper = null;
 		String sJson = "";
@@ -1760,6 +1761,7 @@ e.printStackTrace();
 				OutputStream outStream = response.getOutputStream();
 				outStream.write(outArray);
 				outStream.flush();
+				return "redirect:exportStudent.htm";
 			}
 		}catch(Exception e){
 e.printStackTrace();

@@ -49,8 +49,21 @@ $(function(){
 	 return this.optional(element) || phone_number.length > 9 &&
 	   phone_number.match(/^[7-9]\d+$/);
 	}, "Invalid Mobile Number");
-
-
+	   
+	   $("#educationPrevious").click(function(e){
+		   $("#educationInfoId").removeClass("active");
+		   $("#defaultOpen").click();
+		   
+	   });
+	   
+	   $("#feesPrevious").click(function(e){
+		   $("#feesInfoId").removeClass("active");
+		   $("#educationInfoId").click();
+		   
+	   });
+	   $("#generalInfoContinue, #educationInfoContinue").click(function(e){
+		   
+	   
 	    $("#student-form").validate({
 	    errorElement: 'span',
 	    errorClass: 'has-error',
@@ -146,34 +159,31 @@ $(function(){
 	      }
     	
 	});
-	    
-	    $('#submitId').click(function(){
-	    	var admissionFee = $('#admissionFee').val();
-	    	var tutionFee   = $('#tutionFee').val();
-	    	var transportationFee = $('#transportationFee').val();
-	    	var hostelFee = $('#hostelFee').val();
-	    	var stationaryFee = $('#stationaryFee').val();
-	    		
-	    	if(admissionFee1 < admissionFee){
-	    		alert("Maximum AdmissionFee is : "+admissionFee1);
-		     return false;
-		     }else if(tutionFee1 < tutionFee){
-		    	 alert("Maximum TutionFee is : "+tutionFee1);
-			     return false;
-		     }else if(transportationFee1 < transportationFee){
-		    	 alert("Maximum TransportationFee is : "+transportationFee1);
-			     return false;
-		     }else if(hostelFee1 < hostelFee){
-		    	 alert("Maximum HostelFee is : "+hostelFee1);
-			     return false;
-		     }else if(stationaryFee1 < stationaryFee){
-		    	 alert("Maximum StationaryFee is : "+stationaryFee1);
-			     return false;
-		     }else {
-		    	 return true;
-		     }
+	    if ( $("#student-form").valid() == true){
 	    	
-	    });
+	    	if(this.id != "educationInfoContinue" ){
+			current_fs = $('#general_information');
+			next_fs = $('#education_information');
+			
+			$("#defaultOpen").removeClass( "active" )
+			e.currentTarget.className += " active";
+			$("#educationInfoId").addClass('active');
+			$("#educationInfoId").click();
+			
+			//next_fs.show(); 
+			//current_fs.hide();
+	    	}else{
+	    		$("#defaultOpen").removeClass( "active" )
+	    		$("#educationInfoId").removeClass( "active" )
+	    		e.currentTarget.className += " active";
+	    		$("#feesInfoId").addClass('active');
+	    		$("#feesInfoId").click();
+	    		
+	    	}
+		}
+	    
+	   });
+	 
 	  
 
 	$('#cancel').click(function () {
@@ -192,7 +202,7 @@ $(function(){
 	    $('#admissionNum').val("");
 	    $('#fatherName').val("");
 	    $('#mobile').val("");
-	    $('#altmobile').val("");
+	    $('#alternativeMobile').val("");
 	    $('#email').val("");
 	    $('#blodgroup').val("");
 	    $('#gender').val("");
@@ -455,6 +465,8 @@ $(function(){
 
 
 });
+
+
 	 	function displayTable(listOrders) {
 			if (listOrders != null) {
 				$("#basicExample tr td").remove();
