@@ -92,7 +92,7 @@ span.has-error, #already_exist, .subjects_error
 										      		<select name="rolId" id="rolId" class="form-control" tabindex="1" required>
 														<option value="">-- Choose Role --</option>
 														<option value="1">Administrator</option>
-														<option value="2">Faculty</option>
+														<option value="2">Accountant</option>
 														<option value="3">Parent</option>
 													</select>
 												</div>

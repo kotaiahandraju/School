@@ -68,6 +68,13 @@ $(function(){
 	    
 	   $("#generalInfoContinue, #educationInfoContinue, #submitId").click(function(e){
 		   
+		   if(this.id == "submitId"){
+			   
+			   $("#defaultOpen").click();
+				$("#generalInfoContinue").click();
+				$("#educationInfoContinue").click();
+		   }
+		   
 	   var isValid= false;
 	   
 	    $("#student-form").validate({
@@ -199,6 +206,8 @@ $(function(){
 	    		
 	    	}
 	    	}else{
+	    		
+	    		
 	    		var istrue = $( "#defaultOpen" ).hasClass( "isValid" );
 	    		var isfalse = $( "#educationInfoId" ).hasClass( "isValid" );
 	    		
@@ -211,13 +220,15 @@ $(function(){
 	    				$("#educationInfoId").click();
 	    				$("#educationInfoContinue").click();
 	    				return false;
-	    			}else{
+	    			}else if($( "#educationInfoId" ).hasClass( "isValid" )){
 	    				
 	    				$("#defaultOpen").click();
 	    				$("#generalInfoContinue").click();
 	    				return false;
 	    			}
-	    			
+	    			$("#defaultOpen").click();
+    				$("#generalInfoContinue").click();
+    				$("#educationInfoContinue").click();
 	    			return false;
 	    		}
 	    		
