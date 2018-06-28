@@ -1288,6 +1288,22 @@ h3.panel-title {
       color: #e08989; }
       .panel-danger > .panel-footer a:hover {
         color: #ebb1b2; }
+span.has-error{
+	
+	font-style: italic;
+}  
+
+
+
+/* bottom border in student fee*/
+.border{
+	border-bottom:1px solid #bfcee3;
+	border-left:1px solid #bfcee3;
+	border-right:1px solid #bfcee3;
+}
+/* bottom border in student fee*/
+
+
 
 .panel-info {
   border: 1px solid #b7cee3; }

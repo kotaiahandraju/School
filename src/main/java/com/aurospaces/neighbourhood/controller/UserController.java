@@ -444,13 +444,13 @@ e.printStackTrace();
 				/*double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
 				objStudentFeeBean.setDueFee1(dueFee1);*/
 			//objStudentFeeDao.save(objStudentFeeBean);
-			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
+			/*listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
-			}
+			}*/
 			//studentDao.save(objClassBean);
 		}catch(Exception e){
 e.printStackTrace();

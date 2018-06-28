@@ -61,8 +61,14 @@ $(function(){
 		   $("#educationInfoId").click();
 		   
 	   });
-	   $("#generalInfoContinue, #educationInfoContinue").click(function(e){
+	   
+	   // To step form validation 
+	    $("#defaultOpen").removeClass( "isValid" );
+	    $("#educationInfoId").removeClass( "isValid" );
+	    
+	   $("#generalInfoContinue, #educationInfoContinue, #submitId").click(function(e){
 		   
+	   var isValid= false;
 	   
 	    $("#student-form").validate({
 	    errorElement: 'span',
@@ -161,10 +167,21 @@ $(function(){
 	});
 	    if ( $("#student-form").valid() == true){
 	    	
+	    	isValid=true;
+	    	
+	    	if(this.id != "submitId"){
+	    		if(this.id=="generalInfoContinue"){
+	    			
+	    			$("#defaultOpen").addClass('isValid');
+	    		}
+	    	
 	    	if(this.id != "educationInfoContinue" ){
+	    		
 			current_fs = $('#general_information');
 			next_fs = $('#education_information');
 			
+			$("#educationInfoId").addClass('isValid');
+
 			$("#defaultOpen").removeClass( "active" )
 			e.currentTarget.className += " active";
 			$("#educationInfoId").addClass('active');
@@ -173,11 +190,36 @@ $(function(){
 			//next_fs.show(); 
 			//current_fs.hide();
 	    	}else{
+	    		$("#educationInfoId").addClass('isValid');
 	    		$("#defaultOpen").removeClass( "active" )
 	    		$("#educationInfoId").removeClass( "active" )
 	    		e.currentTarget.className += " active";
 	    		$("#feesInfoId").addClass('active');
 	    		$("#feesInfoId").click();
+	    		
+	    	}
+	    	}else{
+	    		var istrue = $( "#defaultOpen" ).hasClass( "isValid" );
+	    		var isfalse = $( "#educationInfoId" ).hasClass( "isValid" );
+	    		
+	    		if( $( "#defaultOpen" ).hasClass( "isValid" )  && $( "#educationInfoId" ).hasClass( "isValid" ) ){
+	    			
+	    			return true;
+	    		}else{
+	    			if( $( "#defaultOpen" ).hasClass( "isValid" )){
+	    				
+	    				$("#educationInfoId").click();
+	    				$("#educationInfoContinue").click();
+	    				return false;
+	    			}else{
+	    				
+	    				$("#defaultOpen").click();
+	    				$("#generalInfoContinue").click();
+	    				return false;
+	    			}
+	    			
+	    			return false;
+	    		}
 	    		
 	    	}
 		}
@@ -223,6 +265,9 @@ $(function(){
 	    $("#student-form").addClass('form-horizontal');
 	    $("#submitId").val("Register");
 	    $("#headId").text("Add Student");
+	    // To step form validation 
+	    $("#defaultOpen").removeClass( "isValid" );
+	    $("#educationInfoId").removeClass( "isValid" );
 	    
 	});
 	
@@ -1063,7 +1108,6 @@ console.log(totalFee);
 		 		$("select").chosen({allow_single_deselect:true});
 		 }); */
 
-		
 		
 		
 		

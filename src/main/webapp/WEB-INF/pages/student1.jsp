@@ -57,7 +57,60 @@ overflow-x:hidden;}
     color: #fff;
 }
 
+/* Step Bar Start */
 
+.steps-form-2 {
+    display: table;
+    width: 100%;
+    position: relative; }
+.steps-form-2 .steps-row-2 {
+    display: table-row; }
+.steps-form-2 .steps-row-2:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 2px;
+    background-color: #7283a7;
+    margin-top:40px; }
+.steps-form-2 .steps-row-2 .steps-step-2 {
+    display: table-cell;
+    text-align: center;
+    position: relative; }
+.steps-form-2 .steps-row-2 .steps-step-2 p { }
+.steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #59698D;
+    background-color: white;
+    color: #59698D !important;
+    border-radius: 50%;
+    padding: 22px 18px 15px 18px;
+    margin-top: 20px; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+    border: 2px solid #4285F4;
+    color: #005C77 !important;
+     }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+    font-size: 1.7rem;
+    }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa:hover {
+    color:#005c77 !important; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+    color: #13353f !important;}
+.steps-row-2 .active
+{
+background-color: #005c77 !important;
+}
+.steps-row-2 .active .fa
+{
+   color: #fff !important;
+}
+/* Step Bar End */
 
 	</style>
 	<link href="css/datepicker1.css" rel="stylesheet">
@@ -86,14 +139,27 @@ overflow-x:hidden;}
     	<li><a href="#">Student Details</a></li>
 		<li><a href="#">Add Student</a></li>
 	</ol>
-				<div class="panel panel-info">
-					<div class="panel-heading">
+				<div class="panel panel-info" style="border:none !important;">
+					<!-- <div class="panel-heading">
 						<h4>Add Students</h4>
-					</div>
-					<div class="tab">
+					</div> -->
+					<!-- <div class="tab">
   						<button class="tablinks" onclick="openCity(event, 'generalInfo')" id="defaultOpen">General Information</button>
   						<button class="tablinks"  onclick="openCity(event, 'educationInfo')" id="educationInfoId">Educational Information</button>
   						<button class="tablinks" onclick="openCity(event, 'feesInfo')"  id="feesInfoId">Fees</button>
+					</div> -->
+					<div class="steps-form-2">
+					    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between border">
+					        <div class="steps-step-2">
+					            <a href="#" onclick="openCity(event, 'generalInfo')" id="defaultOpen" type="button" class=" tablinks btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="Personal Information"><i class="fa fa-user" aria-hidden="true"></i></a>
+					        </div>
+					        <div class="steps-step-2">
+					            <a href="#" onclick="openCity(event, 'educationInfo')" id="educationInfoId" type="button" class=" tablinks btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Educational Information"><i class="fa fa-book" aria-hidden="true"></i></a>
+					        </div>
+					        <div class="steps-step-2">
+					            <a href="#" onclick="openCity(event, 'feesInfo')"  id="feesInfoId" type="button" class="tablinks btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Fees"><i class="fa fa-check" aria-hidden="true"></i></a>
+					        </div>
+					    </div>
 					</div>
 					<!-- <ul class="pagination">
   						<li><a href="#generalInfo">General Information</a></li>
@@ -105,7 +171,7 @@ overflow-x:hidden;}
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							
-										<form:form action="addStudent.htm" commandName="packCmd" method="post" class="form-horizontal" id="student-form" enctype="multipart/form-data">
+										<form:form action="addStudent.htm" commandName="packCmd" method="post" class="form-horizontal border" id="student-form" enctype="multipart/form-data">
 											
 										<div class="row">
 										<fieldset id="general_information" class="">

@@ -327,6 +327,7 @@ width:100px;
 <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$("#fee").val("");
 						
@@ -334,6 +335,9 @@ width:100px;
 		 $("#stu_li").addClass('active');
 		 $("#stu_li ul").css('display','block');
 		 $("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+		 
+		 
+		 
 	});
 	 $("#admissionFee").val("");
 	   $("#tutionFee").val("");
@@ -494,7 +498,7 @@ width:100px;
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>'
 					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>'
-					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>'
+					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Pay Fee</th>'
 					+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
 			$('#basicTable').html(tableHead);
 			$
@@ -560,10 +564,15 @@ width:100px;
 										+ orderObj.feeDate
 										+ "</td>"
 										+ "<td align='center'>"
-										+ '<a href="javascript:void(0)" onclick=editPack('
+										/* + '<a href="javascript:void(0)" onclick=editPack('
 										+ id
 										+ ')'
-										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>'
+										+ '  ><i style="color: green;" class="fa fa-edit"></i></a>' */
+										+ '<a href="javascript:void(0)" onclick=studentPayment('
+										+ id
+										+ ') >'
+										+'<b style="color: green;">Pay Fee</b>'
+										+ '</a>'
 										+ '</td>' + '</tr>';
 								$(tblRow).appendTo("#basicExample tbody");
 
@@ -654,6 +663,26 @@ width:100px;
 		$("#submitId").val("Update");
 		$(window).scrollTop($('#boardName').offset().top);
 	}
+	
+	function studentPayment(id){
+		// id should be zero, to pay fee here , otherwise update
+		//$("#id").val(serviceUnitArray[id].id);
+		$('#boardName').val(serviceUnitArray[id].boardId);
+		classNameFilter();
+		$('#className').val(serviceUnitArray[id].classId);
+		sectionFilter();
+		$('#section').val(serviceUnitArray[id].sectionId);
+		mediumFilter();
+		$('#medium').val(serviceUnitArray[id].mediumId);
+		studentFilterDropdown();
+		$('#studentId').val(serviceUnitArray[id].studentId);
+		$('#studentId').trigger("chosen:updated");
+		
+		 getDueFee();
+		
+		 $(window).scrollTop($('#boardName').offset().top);
+	}
+	
 
 	/* function serviceFilter(id) {
 		var borderId = $("#boardName").val();
@@ -993,8 +1022,7 @@ width:100px;
 		$('#printTab').text("");
 		var studentFeeId = id;
 
-		$
-				.ajax({
+		$.ajax({
 					type : "POST",
 					url : "getPrintFee.json",
 					data : "studentFeeId=" + studentFeeId,
@@ -1009,35 +1037,35 @@ width:100px;
 										function(i, tests) {
 											
 
-var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
+												var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
+												
+												/* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
+												+ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 50px;'></td></tr>"
+												+ "<tr style='height: 22px;'>"
+												+ "<td ><span style='font-size: normal;color: blue;'>Cashier Name: "+tests.cashier + "</span></td>"
+												+ "<td><span style='font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
+												
+												+ "<tr style='height: 22px;'><td><b class='ss'>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td><td><b class='ss'>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td><b class='ss'>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td><b class='ss'>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td><b class='ss'>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</td><td><b class='ss'>Class: </b>&nbsp;&nbsp;"+ tests.className+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td colspan='2'><b class='ss'>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+"</td></tr>"
+												+ "<tr style='height: 22px;'><th>Particulars</th><th>Amount</th></tr>"
+												
+												+ "<tr style='height: 22px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
+												+ "<tr style='height: 22px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
+												+ "<tr style='height: 22px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
+												// + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
+												+ "</table>"
+												
 
-/* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
-+ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 50px;'></td></tr>"
-+ "<tr style='height: 22px;'>"
-+ "<td ><span style='font-size: normal;color: blue;'>Cashier Name: "+tests.cashier + "</span></td>"
-+ "<td><span style='font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"
-
-+ "<tr style='height: 22px;'><td><b class='ss'>Student Name: </b>&nbsp;&nbsp;"+ tests.studentName+ "</td><td><b class='ss'>Father Name: </b>&nbsp;&nbsp;"+ tests.fatherName+ "</td></tr>"
-+ "<tr style='height: 22px;'><td><b class='ss'>Mobile: </b>&nbsp;&nbsp;"+ tests.mobile+ "</td><td><b class='ss'>Board: </b>&nbsp;&nbsp;"+ tests.boardName+ "</td></tr>"
-+ "<tr style='height: 22px;'><td><b class='ss'>Medium: </b>&nbsp;&nbsp;"+ tests.medium+ "</td><td><b class='ss'>Class: </b>&nbsp;&nbsp;"+ tests.className+ "</td></tr>"
-+ "<tr style='height: 22px;'><td colspan='2'><b class='ss'>Section: </b>&nbsp;&nbsp;"+ tests.sectionName+"</td></tr>"
-+ "<tr style='height: 22px;'><th>Particulars</th><th>Amount</th></tr>"
-
-+ "<tr style='height: 22px;'><td align='center'>Admission Fee</td><td align='center'>"+ tests.admissionFee+ "</td></tr>"
-+ "<tr style='height: 22px;'><td align='center'>Tution Fee</td><td align='center'>"+ tests.tutionFee+ "</td></tr>"
-+ "<tr style='height: 22px;'><td align='center'>Transportation Fee</td><td align='center'>"+ tests.transportationFee+ "</td></tr>"
-+ "<tr style='height: 22px;'><td align='center'>Hostel Fee</td><td align='center'>"+ tests.hostelFee+ "</td></tr>"
-+ "<tr style='height: 22px;'><td align='center'>Stationary Fee</td><td align='center'>"+ tests.stationaryFee+ "</td></tr>"
-+ "<tr style='height: 22px;'><td align='center'>Amount Paid</td><td align='center'>"+ tests.fee+ "/-</td></tr>"
-+ "<tr style='height: 22px;'><td align='right'><b>Total Amount:</b></td><td align=''>"+ tests.fee+ "/-</td></tr>"
-// + "<tr style='height: 35px;'><td colspan='2' id='totalId'><b>(Amount) in words: </b>"+ toWords(Math.round(tests.fee))+ "</td></tr>"
-+ "</table>"
-
-
-$(stockInformation1).appendTo("#printTab");
-var  horizontal="<hr size='+10+'>"
-$(horizontal).appendTo("#printTab");
-// toWords(tests.fee);
+												$(stockInformation1).appendTo("#printTab");
+												var  horizontal="<hr size='+10+'>"
+												$(horizontal).appendTo("#printTab");
+												// toWords(tests.fee);
 
 										});
 						// 							 $(stockInformation2).appendTo("#stockInformationTable"); 

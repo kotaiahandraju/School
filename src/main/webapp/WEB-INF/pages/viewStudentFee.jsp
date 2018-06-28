@@ -56,7 +56,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Board Name</label>
 												    <div class="col-sm-5">
-														<form:select path="boardName" tabindex="1" onchange="classNameFilter()" class="form-control" >
+														<form:select path="boardName" tabindex="1" onchange="classNameFilter(),searchStudetnFee();" class="form-control" >
 															<form:option value=""  >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
 														</form:select>
@@ -68,7 +68,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Class</label>
 												    <div class="col-sm-5">
-														<form:select path="className" tabindex="2" onchange="sectionFilter()" class="form-control" >
+														<form:select path="className" tabindex="2" onchange="sectionFilter(),searchStudetnFee();" class="form-control" >
 															<form:option value=""  >-- Choose Class --</form:option>
 															<%-- <form:options items="${allClasses}"></form:options> --%>
 														</form:select>
@@ -80,7 +80,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Section</label>
 												    <div class="col-sm-5"> 
-														<form:select path="section" tabindex="3" onchange="mediumFilter()" class="form-control" >
+														<form:select path="section" tabindex="3" onchange="mediumFilter(),searchStudetnFee();" class="form-control" >
 															<form:option value=""  >-- Choose Section --</form:option>
 															<%-- <form:options items="${allSection}"></form:options> --%>
 														</form:select>
@@ -93,7 +93,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Medium</label>
 												    <div class="col-sm-5">	
-														<form:select path="medium" tabindex="4" onchange="studentFilterDropdown()" class="form-control" >
+														<form:select path="medium" tabindex="4" onchange="studentFilterDropdown(),searchStudetnFee();" class="form-control" >
 															<form:option value=""  >-- Choose Medium --</form:option>
 													<%--	<form:options items="${mediam}"></form:options> --%>
 														</form:select>
@@ -105,7 +105,7 @@
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student</label>
 												    <div class="col-sm-5">	
-														<form:select path="studentId" tabindex="5" class="form-control"  onchange="searchStudetnFee()" >
+														<form:select path="studentId" tabindex="5" class="form-control"  onchange="searchStudetnFee(),searchStudetnFee();" >
 															<form:option value=""  >-- Choose Student --</form:option>
 														<%--<form:options items="${allStudents}"></form:options> --%>
 														</form:select>

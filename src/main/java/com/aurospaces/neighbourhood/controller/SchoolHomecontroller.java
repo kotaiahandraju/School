@@ -189,7 +189,7 @@ e.printStackTrace();
 						return "redirect:parentDashboard.htm";
 						}else {
 							
-							return "redirect:facultyAddStudentHome.htm";
+							return "redirect:userStudentFeeHome.htm";
 						}
 				}
 			}
