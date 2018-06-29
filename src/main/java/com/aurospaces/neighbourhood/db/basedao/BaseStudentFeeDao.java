@@ -23,7 +23,7 @@ public class BaseStudentFeeDao{
 @Autowired public JdbcTemplate jdbcTemplate;
 
  
-	public final String INSERT_SQL = "INSERT INTO studentfee( created_time, updated_time, studentId, fee,admissionFee, tutionFee, transportationFee, hostelFee, stationaryFee,dueFee1,userID) values (?,?,?,?,?,?,?, ?, ?,?,?)";
+	public final String INSERT_SQL = "INSERT INTO studentfee( created_time, updated_time, studentId, fee,admissionFee, tutionFee, transportationFee, hostelFee, stationaryFee,dueFee1,userId,invoiceId) values (?,?,?,?,?,?,?, ?, ?,?,?,?)";
  
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
@@ -66,6 +66,7 @@ ps.setDouble(8, studentFeeBean.getHostelFee());
 ps.setDouble(9, studentFeeBean.getStationaryFee());
 ps.setDouble(10, studentFeeBean.getDueFee1());
 ps.setDouble(11, studentFeeBean.getUserId());
+ps.setDouble(12, studentFeeBean.getInvoiceId());
 System.out.println(ps);
 							return ps;
 						}
@@ -76,9 +77,9 @@ System.out.println(ps);
 				}
 		else
 		{
-		 		String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =? ,userId =?  where id = ? ";
+		 		String sql = "UPDATE studentfee  set studentId = ?, fee = ?, admissionFee= ?, tutionFee= ?, transportationFee= ?, hostelFee= ?, stationaryFee= ? ,dueFee1 =? ,userId =?, invoiceId  where id = ? ";
 	
-			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getAdmissionFee(),studentFeeBean.getTutionFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getHostelFee(),studentFeeBean.getStationaryFee(),studentFeeBean.getDueFee1(),studentFeeBean.getUserId(),studentFeeBean.getId()});
+			jdbcTemplate.update(sql, new Object[]{studentFeeBean.getStudentId(),studentFeeBean.getFee(),studentFeeBean.getAdmissionFee(),studentFeeBean.getTutionFee(),studentFeeBean.getTransportationFee(),studentFeeBean.getHostelFee(),studentFeeBean.getStationaryFee(),studentFeeBean.getDueFee1(),studentFeeBean.getUserId(),studentFeeBean.getInvoiceId(),studentFeeBean.getId()});
 		}
 	}
 		

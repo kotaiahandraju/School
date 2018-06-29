@@ -10,9 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -58,7 +56,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.AddBoardBean;
@@ -1185,6 +1182,11 @@ e.printStackTrace();
 				objStudentFeeBean.setDueFee1(dueFee1);
 				UsersBean userBean= (UsersBean) session.getAttribute("cacheUserBean");
 				objStudentFeeBean.setUserId(userBean.getId());
+				 Random rand = new Random();
+				 
+			        // Generate random integers in range 0 to 999
+			        int rand_int1 = rand.nextInt(100000);
+			        objStudentFeeBean.setInvoiceId(rand_int1);
 			objStudentFeeDao.save(objStudentFeeBean);
 			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {

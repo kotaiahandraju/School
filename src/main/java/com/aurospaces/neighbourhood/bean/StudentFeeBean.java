@@ -28,8 +28,16 @@ public class StudentFeeBean {
 	private double dueFee1;
 	private int userId;
 	private String cashier;
+	private int invoiceId;
 	
 	
+	
+	public int getInvoiceId() {
+		return invoiceId;
+	}
+	public void setInvoiceId(int invoiceId) {
+		this.invoiceId = invoiceId;
+	}
 	public String getCashier() {
 		return cashier;
 	}
@@ -44,7 +52,8 @@ public class StudentFeeBean {
 				+ className + ", medium=" + medium + ", section=" + section + ", dueFee=" + dueFee + ", admissionFee="
 				+ admissionFee + ", tutionFee=" + tutionFee + ", transportationFee=" + transportationFee
 				+ ", hostelFee=" + hostelFee + ", stationaryFee=" + stationaryFee + ", feeType=" + feeType
-				+ ", dueFee1=" + dueFee1 + ", userId=" + userId + ", cashier=" + cashier + "]";
+				+ ", dueFee1=" + dueFee1 + ", userId=" + userId + ", cashier=" + cashier + ", invoiceId=" + invoiceId
+				+ "]";
 	}
 	public int getUserId() {
 		return userId;

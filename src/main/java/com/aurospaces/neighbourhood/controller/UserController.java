@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -431,6 +432,11 @@ e.printStackTrace();
 					objStudentFeeBean.setFee(totalPaidAmount1);
 					UsersBean userBean= (UsersBean) session.getAttribute("cacheUserBean");
 					objStudentFeeBean.setUserId(userBean.getId());
+					Random rand = new Random();
+					 
+			        // Generate random integers in range 0 to 999
+			        int rand_int1 = rand.nextInt(100000);
+			        objStudentFeeBean.setInvoiceId(rand_int1);
 					
 					objStudentFeeDao.save(objStudentFeeBean);
 				

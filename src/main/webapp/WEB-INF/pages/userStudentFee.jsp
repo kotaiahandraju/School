@@ -276,6 +276,7 @@ width:100px;
 														role="grid" aria-describedby="basicExample_info">
 														<thead>
 															<tr role="row">
+																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Invoice</th>
 																<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>
@@ -291,7 +292,7 @@ width:100px;
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Paid Fee</th>
 																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Due Fee</th>
 																<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Fee Date</th>
-																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
+																<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Pay Fee</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -483,6 +484,7 @@ width:100px;
 			var tableHead = '<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
 					+ '<thead>'
 					+ '<tr role="row">'
+					+ '<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Invoice</th>'
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Father Name</th>'
 					+ '<th class="sorting hidden-sm hidden-xs" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Mobile Number</th>'
@@ -513,14 +515,15 @@ width:100px;
 								serviceUnitArray[orderObj.id] = orderObj;
 								var id = '"' + orderObj.id + '"';
 								var tblRow = "<tr align='center' role='row' class='odd'>"
-										+ "<td>"
-										+ '<a style="cursor: pointer;" title="View Fee Receipt" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('
-										+ orderObj.id
-										+ ')>'
+										+ "<td >"
+										+'<a style="cursor: pointer;" title="View Fee Receipt" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" onclick=popupOpen('+ orderObj.id+ ')>'
 										+ '<b>'
-										+ orderObj.studentName
+										+ orderObj.invoiceId
 										+ '</b></a>'
-										+ '</td>'
+										+ "</td>"
+										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.studentName+"'>"
+										+ orderObj.studentName
+										+ "</td>"
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.fatherName+"'>"
 										+ orderObj.fatherName
 										+ "</td>"
@@ -563,6 +566,8 @@ width:100px;
 										+ "<td class='hidden-sm hidden-xs' title='"+orderObj.feeDate+"' >"
 										+ orderObj.feeDate
 										+ "</td>"
+										+ "</td>"
+										
 										+ "<td align='center'>"
 										/* + '<a href="javascript:void(0)" onclick=editPack('
 										+ id
@@ -1027,6 +1032,7 @@ width:100px;
 					url : "getPrintFee.json",
 					data : "studentFeeId=" + studentFeeId,
 					dataType : "json",
+					async:false,
 					success : function(response) {
 						// 						alert(response);
 						var popuptitle = null;
@@ -1040,7 +1046,9 @@ width:100px;
 												var stockInformation1 = "<table align='center' class='table table-stripped table-bordered table-condensed' id='stockInformationTable'>"
 												
 												/* + "<tr><td colspan='2'><img src='img/ABV-header.png' style='width: 100%;height: 70px;'></td></tr>" */
-												+ "<tr align='center'><td colspan='2'><img src='img/logoprint.png' style='height: 50px;'></td></tr>"
+												+ "<tr align='left'><td><img src='img/logoprint.png' style='height: 50px;'>"
+												+"<td><span style='font-size: normal;color: black;'> Invoice Number : <b> "+ tests.invoiceId+"</b></span></td>"
+												+"</td></tr>"
 												+ "<tr style='height: 22px;'>"
 												+ "<td ><span style='font-size: normal;color: blue;'>Cashier Name: "+tests.cashier + "</span></td>"
 												+ "<td><span style='font-size: normal;color: blue;'>Date: "+ tests.created_time+ "</span></td></tr>"

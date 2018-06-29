@@ -180,7 +180,7 @@ background-color: #005c77 !important;
 												<div class="form-group">
 												    <label for="inputEmail3" class="col-sm-4 control-label">Student Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="name" placeholder="Student Name" class="form-control validate onlyCharacters" tabindex="1" required="true"/>
+														<form:input path="name" placeholder="Student Name" class="form-control validate onlyCharacters"  required="true"/>
 													</div>
 												</div>
 											</div>
@@ -201,7 +201,15 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Father Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="fatherName" placeholder="Father Name" class="form-control validate onlyCharacters" tabindex="10" required="true"/>
+														<form:input path="fatherName" placeholder="Father Name" class="form-control validate onlyCharacters"  required="true"/>
+													</div>
+											  	</div>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											  	<div class="form-group">
+												    <label  class="col-sm-4 control-label ">Adhar Number <span style="color: red;">*</span></label>
+												    <div class="col-sm-5">
+														<form:input path="adharNumber" placeholder="Adhar Number" class="form-control  validate numericOnly nospecialCharacter"  maxlength="16" required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -209,7 +217,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Mobile <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="mobile" placeholder="Contact Number" class="form-control validate numericOnly" maxlength="10" tabindex="11"/>
+														<form:input path="mobile" placeholder="Contact Number" class="form-control validate numericOnly" maxlength="10" />
 													</div>
 											  	</div>
 											</div>
@@ -217,7 +225,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Alternative Mobile</label>
 												    <div class="col-sm-5">
-														<form:input path="alternativeMobile" placeholder="Alternate Contact Number" class="form-control numericOnly" tabindex="12"/>
+														<form:input path="alternativeMobile" placeholder="Alternate Contact Number" class="form-control numericOnly" />
 													</div>
 											  	</div>
 											</div>
@@ -225,7 +233,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
 												    <div class="col-sm-5">
-														<form:input path="email" placeholder="Email-Id" class="form-control validate" tabindex="13"/>
+														<form:input path="email" placeholder="Email-Id" class="form-control validate" />
 													</div>
 											  	</div>
 											</div>
@@ -233,7 +241,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Blood Group</label>
 												    <div class="col-sm-5">
-														<form:select path="blodgroup" tabindex="14" class="form-control">
+														<form:select path="blodgroup"  class="form-control">
 															<form:option value="">-- Choose Blood Group --</form:option>
 															<form:option value="A+">A+</form:option>
 															<form:option value="B+">B+</form:option>
@@ -253,7 +261,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Date of Birth <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Date of Birth" class="form-control validate" tabindex="16" required="true" readonly="true" onfocus="removeBorder(this.id)" />
+														<form:input path="dob1" data-format="dd-MM-yyyy" placeholder="Date of Birth" class="form-control validate"  required="true" readonly="true" onfocus="removeBorder(this.id)" />
 														<span class="dob1_error" id="dob1_error"></span>
 													</div>
 											  	</div>
@@ -262,7 +270,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Religion</label>
 												    <div class="col-sm-5">
-														<form:select path="religion" tabindex="17" class="form-control">
+														<form:select path="religion"  class="form-control">
 															<form:option value="">-- Choose Religion --</form:option>
 															<form:option value="Hindu">Hindu</form:option>
 															<form:option value="Muslim">Muslim</form:option>
@@ -280,7 +288,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Address <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:textarea path="address" placeholder="Address" class="form-control validate" tabindex="18" required="true"></form:textarea>
+														<form:textarea path="address" placeholder="Address" class="form-control validate"  required="true"></form:textarea>
 													</div>
 											  	</div>
 											</div>
@@ -290,7 +298,7 @@ background-color: #005c77 !important;
 											    	<label for="inputEmail3" class="col-sm-4 control-label">Student Image</label>
 											    	<div class="col-sm-5">
 														<img id="blah" src='upload/default.png' alt="Student Image" align="middle" style="border-style: solid;height: 100px;width: 100px;border-bottom-style: none;border-left-style: none;border-top-style: none;">
-														<input type="file" name="imageName" tabindex="24" id="imageName" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" accept="image/jpg,image/png,image/jpeg,image/gif">
+														<input type="file" name="imageName"  id="imageName" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" accept="image/jpg,image/png,image/jpeg,image/gif">
 											    	</div>
 											  	</div>
 											</div>
@@ -300,7 +308,7 @@ background-color: #005c77 !important;
 												  	<div class="col-sm-8 col-sm-offset-2">
 												  		
 														<input type="button" id="generalInfoContinue" class="btn btn-success" value="Next >" tabindex=""/>
-														<input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/>
+														<input type="button" class="btn btn-danger" id="cancel" value="Reset" />
 													</div>
 											  	</div>
 											</div>
@@ -312,7 +320,7 @@ background-color: #005c77 !important;
 												<div class="form-group">
 											    	<label for="inputPassword3" class="col-sm-4 control-label">Board Name <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="boardName" class="form-control validate1" tabindex="2" onchange="classNameFilter()"  required="true">
+														<form:select path="boardName" class="form-control validate1"  onchange="classNameFilter()"  required="true">
 															<form:option value="" >-- Choose Board --</form:option>
 															<form:options items="${board}"></form:options>
 														</form:select>
@@ -323,7 +331,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Class <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="className" class="form-control validate1" tabindex="3" onchange="sectionFilter();" required="true">
+														<form:select path="className" class="form-control validate1"  onchange="sectionFilter();" required="true">
 															<form:option value="">-- Choose Class --</form:option>
 <%-- 															<form:options items="${allClasses}"></form:options> --%>
 														</form:select>
@@ -334,7 +342,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Section <span style="color: red;">*</span></label>
 										    <div class="col-sm-5">
-														<form:select path="section" class="form-control validate1" tabindex="4"  onchange="mediumFilter();" quired="true">
+														<form:select path="section" class="form-control validate1"   onchange="mediumFilter();" quired="true">
 															<form:option value="">-- Choose Section --</form:option>
 <%-- 															<form:options items="${allSection}"></form:options> --%>
 														</form:select>
@@ -345,7 +353,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 											    	<label for="inputPassword3" class="col-sm-4 control-label">Medium <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="medium" class="form-control validate1" tabindex="5" onchange="getFee();" required="true">
+														<form:select path="medium" class="form-control validate1"  onchange="getFee();" required="true">
 															<form:option value="">-- Choose Medium --</form:option>
 <%-- 															<form:options items="${mediam}"></form:options> --%>
 														</form:select>
@@ -361,11 +369,12 @@ background-color: #005c77 !important;
 													</div>
 											  	</div>
 											</div> --%>
+											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Roll Number</label>
 												    <div class="col-sm-5">
-														<form:input path="rollNum" placeholder="Roll Number" class="form-control nospecialCharacter" tabindex="8"/>
+														<form:input path="rollNum" placeholder="Roll Number" class="form-control nospecialCharacter" />
 													</div>
 											  	</div>
 											</div>
@@ -373,7 +382,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label ">Admission No. <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="admissionNum" placeholder="Admission Number" class="form-control  validate1 nospecialCharacter" tabindex="9" required="true"/>
+														<form:input path="admissionNum" placeholder="Admission Number" class="form-control  validate1 nospecialCharacter"  required="true"/>
 													</div>
 											  	</div>
 											</div>
@@ -382,7 +391,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Previous Institute</label>
 												    <div class="col-sm-5">
-														<form:input path="previousInstitue" placeholder="Previous Institute Name" class="form-control  onlyCharacters" tabindex="19" />
+														<form:input path="previousInstitue" placeholder="Previous Institute Name" class="form-control  onlyCharacters"  />
 													</div>
 											  	</div>
 											</div>
@@ -390,7 +399,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Caste</label>
 												    <div class="col-sm-5">
-														<form:select path="caste" tabindex="20" class="form-control">
+														<form:select path="caste"  class="form-control">
 															<form:option value="">-- Choose Caste --</form:option>
 															<form:option value="OC">OC</form:option>
 															<form:option value="BC">BC</form:option>
@@ -405,7 +414,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Accommodation<span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="acomitation" tabindex="21" class="form-control validate1">
+														<form:select path="acomitation"  class="form-control validate1">
 															<form:option value="">-- Choose Accommodation --</form:option>
 															<form:option value="Hostel">Hostel</form:option>
 															<form:option value="Day-Scholar">Day-Scholar</form:option>
@@ -419,7 +428,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label ">Bus Facility<span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:select path="buspesility" tabindex="22" class="form-control validate1" >
+														<form:select path="buspesility"  class="form-control validate1" >
 															<form:option value="">-- Choose Bus Facility --</form:option>
 															<form:option value="Yes"> Yes</form:option>
 															<form:option value="No">No</form:option>
@@ -431,7 +440,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Bus Route</label>
 												    <div class="col-sm-5">
-														<form:input path="busroute" placeholder="Bus Route" class="form-control" tabindex="23" />
+														<form:input path="busroute" placeholder="Bus Route" class="form-control"  />
 													</div>
 											  	</div>
 											</div>
@@ -454,7 +463,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Admission Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="admissionFee" placeholder="Admission Fee"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="admissionFee" placeholder="Admission Fee"  class="form-control numericOnly"  />
 													</div>
 											  	</div>
 											</div>
@@ -464,7 +473,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Tuition Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="tutionFee" placeholder="Tuition Fee"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="tutionFee" placeholder="Tuition Fee"  class="form-control numericOnly"  />
 													</div>
 											  	</div>
 											</div>
@@ -472,7 +481,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Transportation Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="transportationFee" placeholder="Transportation Fee"  class="form-control numericOnly" tabindex="6" />
+														<form:input path="transportationFee" placeholder="Transportation Fee"  class="form-control numericOnly"  />
 													</div>
 											  	</div>
 											</div>
@@ -480,7 +489,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Hostel Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="hostelFee" placeholder="Hostel Fee" class="form-control numericOnly" tabindex="6" />
+														<form:input path="hostelFee" placeholder="Hostel Fee" class="form-control numericOnly"  />
 													</div>
 											  	</div>
 											</div>
@@ -490,7 +499,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Stationary Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="stationaryFee" placeholder="Stationary Fee" class="form-control numericOnly" tabindex="6" />
+														<form:input path="stationaryFee" placeholder="Stationary Fee" class="form-control numericOnly"  />
 													</div>
 											  	</div>
 											</div>
@@ -498,7 +507,7 @@ background-color: #005c77 !important;
 											    <div class="form-group">
 												    <label for="inputPassword3" class="col-sm-4 control-label">Total Fees <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
-														<form:input path="totalFee" placeholder="Fee Amount" class="form-control numericOnly" tabindex="6" readonly="true" />
+														<form:input path="totalFee" placeholder="Fee Amount" class="form-control numericOnly"  readonly="true" />
 													</div>
 											  	</div>
 											</div>
@@ -510,7 +519,7 @@ background-color: #005c77 !important;
 											  	<div class="form-group">
 												  	<div class="col-sm-8 col-sm-offset-2">
 												  	    <input type="button" id="feesPrevious" class="btn btn-success" value="< Previous" tabindex=""/>
-														<input type="submit" id="submitId" class="btn btn-success" value="Register" tabindex="25"/>
+														<input type="submit" id="submitId" class="btn btn-success" value="Register" />
 													<!-- <input type="button" class="btn btn-danger" id="cancel" value="Reset" tabindex="26"/> -->
 													</div>
 											  	</div>

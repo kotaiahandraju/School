@@ -18,9 +18,34 @@ private double tutionFee;
 private double transportationFee;
 private double hostelFee;
 private double stationaryFee;
+private String adharNumber;
 
 
 
+
+@Override
+public String toString() {
+	return "StudentBean [name=" + name + ", boardName=" + boardName + ", medium=" + medium + ", className=" + className
+			+ ", section=" + section + ", rollNum=" + rollNum + ", admissionNum=" + admissionNum + ", fatherName="
+			+ fatherName + ", mobile=" + mobile + ", alternativeMobile=" + alternativeMobile + ", email=" + email
+			+ ", blodgroup=" + blodgroup + ", gender=" + gender + ", region=" + region + ", address=" + address
+			+ ", previousInstitue=" + previousInstitue + ", caste=" + caste + ", acomitation=" + acomitation
+			+ ", buspesility=" + buspesility + ", busroute=" + busroute + ", religion=" + religion + ", id=" + id
+			+ ", imagePath=" + imagePath + ", CrTime=" + CrTime + ", totalFee=" + totalFee + ", discountFee="
+			+ discountFee + ", discountFee1=" + discountFee1 + ", dob2=" + dob2 + ", dob3=" + dob3 + ", admissionFee="
+			+ admissionFee + ", tutionFee=" + tutionFee + ", transportationFee=" + transportationFee + ", hostelFee="
+			+ hostelFee + ", stationaryFee=" + stationaryFee + ", adharNumber=" + adharNumber + ", netFee=" + netFee
+			+ ", imageName=" + imageName + ", createdTime=" + createdTime + ", updatedTime=" + updatedTime + ", dob="
+			+ dob + ", dob1=" + dob1 + "]";
+}
+
+public String getAdharNumber() {
+	return adharNumber;
+}
+
+public void setAdharNumber(String adharNumber) {
+	this.adharNumber = adharNumber;
+}
 
 public String getCrTime() {
 	return CrTime;
