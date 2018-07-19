@@ -1,5 +1,6 @@
 package com.aurospaces.neighbourhood.db.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.aurospaces.neighbourhood.bean.StudentBean;
+import com.aurospaces.neighbourhood.bean.DFCBean;
 import com.aurospaces.neighbourhood.bean.StudentFeeBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseStudentFeeDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
@@ -89,7 +90,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 	}
 
 	public StudentFeeBean getDueFee(String studentId) {
-		String sql = "select s.id,s.netFee as netFee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee, " + 
+		String sql = "select s.id,s.netFee as netFee,s.netFee-sum(ifnull(sf.fee,0)) as dueFee,sum(ifnull(sf.fee,0)) as totalPaidFee,s.admissionFee-sum(ifnull(sf.admissionFee,0))   as admissionFee, " + 
 				"s.tutionFee-sum(ifnull(sf.tutionFee,0)) as tutionFee,s.transportationFee-sum(ifnull(sf.transportationFee,0)) as transportationFee, " + 
 				"s.hostelFee-sum(ifnull(sf.hostelFee,0)) AS hostelFee,s.stationaryFee-sum(ifnull(sf.stationaryFee,0)) AS stationaryFee,s.name " + 
 				"from student s left join studentfee sf   on s.id =sf.studentId where  s.id=? group by s.id ";
@@ -173,4 +174,25 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 				return retlist.get(0);
 			return null;
 		}
+
+	public DFCBean dfCollection() {
+		/* 
+		 * date wise query
+		 * select DATE(created_time),sum(sf.fee) as Fee from studentfee sf where date(created_time) between '2018-06-29' AND '2018-07-29' group by daTE(created_time)
+		 *
+		 */
+		String sql = " select ifnull(sum(sf.fee),0.00) as total,DATE_format(now(),'%d-%M-%Y') as createdTime from studentfee sf where DATE(updated_time)=DATE(now())"  ;
+		List<DFCBean> retlist = jdbcTemplate.query(sql,	ParameterizedBeanPropertyRowMapper.newInstance(DFCBean.class));
+		if(retlist.size() > 0)
+			return retlist.get(0);
+		return null;
+	}
+
+	public List<DFCBean> dfCollectionBetweenTwoDates(Date from, Date to) {
+		String sql = " select DATE(created_time),sum(sf.fee) as Fee from studentfee sf where date(created_time) between ? AND ? group by daTE(created_time)"  ;
+		List<DFCBean> retlist = jdbcTemplate.query(sql,new Object[]{from,to},	ParameterizedBeanPropertyRowMapper.newInstance(DFCBean.class));
+		if(retlist.size() > 0)
+			return retlist;
+		return null;
+	}
 }

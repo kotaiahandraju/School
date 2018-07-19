@@ -1215,6 +1215,18 @@ width:100px;
 		});
 
 	}
+	
+	//remove borders
+	function removeBorder(el){	
+		  $("#"+el).css("border", "");
+		  $("#"+el).css('color','black');
+		  $('#'+el).addClass('default-class');
+		  if ($("#" + el+"_chosen").length)
+			{
+				$("#" +el+"_chosen").children('a').css('border-color','black');
+			}
+	}
+	
 	var th = ['','Thousand','million', 'billion','trillion'];
 	 //uncomment this line for English Number System
 	 //var th = ['','thousand','million', 'milliard','billion'];

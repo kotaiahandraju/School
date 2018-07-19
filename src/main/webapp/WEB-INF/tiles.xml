@@ -181,6 +181,11 @@
 	<definition name="partnerReg" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/partnerReg.jsp" />
 	</definition>
+	
+	<definition name= "dailyFeesCollection" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/dailyFeesCollection.jsp" />
+	</definition>
+	
 
 	<!-- un assigned order home monthlyOrdersHome -->
 	<definition name="unassignedOrederHome" extends="base.definition">

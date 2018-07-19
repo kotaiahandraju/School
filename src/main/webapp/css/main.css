@@ -244,7 +244,13 @@ a {
 .info-bg {
   color: #ffffff;
   background: #5B90BF !important; }
+  
   .info-bg:hover {
+    background: #4177a6 !important; }
+    .dfc-bg {
+  color: #ffffff;
+  background: #5B90BF !important; }
+  .dfc-bg:hover {
     background: #4177a6 !important; }
 
 .warning-bg {

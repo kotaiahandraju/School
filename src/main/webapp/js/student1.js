@@ -131,7 +131,7 @@ $(function(){
 //	 	    rollNum:{required: 'Please Enter Roll Number'},
 		    admissionNum:{required: 'Admission Number'},
 		    fatherName:{required: 'Father Name'},
-		    adharNumber:{required: 'Adhar Name'},
+		    adharNumber:{required: 'Adhar Card Number'},
 		    gender:{required: 'Choose Gender'},
 		    dob1:{required: 'Date Of Birth'},
 		    mobile:{required: 'Mobile Number', number: '10 digit mobile number'},
@@ -1116,6 +1116,17 @@ console.log(totalFee);
 		$('#loadAjax').hide();
 		}
 	} 
+		
+		//remove borders
+		function removeBorder(el){	
+			  $("#"+el).css("border", "");
+			  $("#"+el).css('color','black');
+			  $('#'+el).addClass('default-class');
+			  if ($("#" + el+"_chosen").length)
+				{
+					$("#" +el+"_chosen").children('a').css('border-color','black');
+				}
+		}
 		
 		 /* $(document).ready(function(){
 		 		$("select").chosen({allow_single_deselect:true});

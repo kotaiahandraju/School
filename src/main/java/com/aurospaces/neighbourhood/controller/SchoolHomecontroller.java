@@ -518,6 +518,7 @@ e.printStackTrace();
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = null;
+		
 		try{
 			listOrderBeans = objSectionDao.getSectionCreationData();
 			
@@ -1009,7 +1010,7 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		String messageBody = "<table><tr>Dear Parent/Gaurdian,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Thanks for Registering with us.</td></tr><br></table><table ><tr><td style='padding-left:10px;'><b>Your Login Details:</b></td></tr><tr><td style='padding-left:30px;'>Username: _username_</td></tr><tr><td style='padding-left:30px;'>Password: _password_</td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>GRETNALTES.</ul></div>";
 		messageBody = messageBody.replace("_username_", objStudentBean.getFatherName());
 		messageBody = messageBody.replace("_password_", randomNum);
-		String smsMessage = "Dear Parent,\nThanks for Registering with us.\nYour Login details,\nUsername: "+objStudentBean.getFatherName()+"\nPassword: "+randomNum;
+		String smsMessage = "Dear Parent,\n Your Child "+ objStudentBean.getName() +" Addmission Successfully Completed.\n Thanks for Registering with us.\nYour Login details,\nUsername: "+objStudentBean.getFatherName()+"\nPassword: "+randomNum;
 		if(StringUtils.isNotBlank(mobileNumber)){
 			SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
 		}

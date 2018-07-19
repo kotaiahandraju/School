@@ -114,7 +114,6 @@ background-color: #005c77 !important;
 
 	</style>
 	<link href="css/datepicker1.css" rel="stylesheet">
-<!-- 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 
 <!-- 	<script src="js/chosen.jquery.js"></script> -->
@@ -402,7 +401,11 @@ background-color: #005c77 !important;
 														<form:select path="caste"  class="form-control">
 															<form:option value="">-- Choose Caste --</form:option>
 															<form:option value="OC">OC</form:option>
-															<form:option value="BC">BC</form:option>
+															<form:option value="BC-A">BC-A</form:option>
+															<form:option value="BC-B">BC-B</form:option>
+															<form:option value="BC-C">BC-C</form:option>
+															<form:option value="BC-D">BC-D</form:option>
+															<form:option value="BC-E">BC-E</form:option>
 															<form:option value="SC/ST">SC/ST</form:option>
 															<form:option value="OBC">OBC</form:option>
 															<form:option value="Others">Others</form:option>

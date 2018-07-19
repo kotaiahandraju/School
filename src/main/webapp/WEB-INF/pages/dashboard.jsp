@@ -67,6 +67,26 @@
 								</div>
                                 </a>
 							</div>
+							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
+                            <a href="exportStudent">
+								<div class="success-bg center-align-text">
+									<div class="spacer-xs">
+										<small class="text-white">Ledger</small>
+										<h4 class="no-margin no-padding">Ledger</h4>
+									</div>
+								</div>
+                                </a>
+							</div>
+							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
+                            <a href="dailyFeesCollection">
+								<div class="info-bg center-align-text">
+									<div class="spacer-xs">
+									<small class="text-white">Daily Fees</small>
+										<h4 class="no-margin no-padding" title="Daily Fees Collection">Collection</h4>
+									</div>
+								</div>
+                                </a>
+							</div>
 						</div>
 					</div>
 					<!-- Current Stats End -->

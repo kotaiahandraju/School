@@ -12,14 +12,14 @@
 		<script src="js/scrollup/jquery.scrollUp.js"></script>
 		<script src="js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
 
-		<!-- Data Tables -->
+		  <!-- Data Tables -->
 		<script src="js/datatables/dataTables.min.js"></script>
 		<script src="js/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="js/datatables/dataTables.tableTools.js"></script>
 		<script src="js/datatables/autoFill.min.js"></script>
 		<script src="js/datatables/autoFill.bootstrap.min.js"></script>
-		<script src="js/datatables/fixedHeader.min.js"></script>
-	
+		<script src="js/datatables/fixedHeader.min.js"></script> -->
+	 
 		<!-- Download / CSV / Copy / Print -->
 		<script src="js/datatables/buttons.min.js"></script>
 		<script src="js/datatables/flash.min.js"></script>

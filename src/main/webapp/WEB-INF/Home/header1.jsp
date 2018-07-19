@@ -30,6 +30,7 @@
 		<link href="css/datatables/fixedHeader.bs.css" rel="stylesheet"/>
 		<link href="css/datatables/buttons.bs.css" rel="stylesheet"/>
 		
+	
 <!-- 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
 		<script src="js/jquery.js"></script> 
@@ -328,6 +329,7 @@ session.setAttribute("url", url);
 			</div> -->
 		</aside>
 		<!-- Left sidebar ends -->
+		
 
 
 	<script type="text/javascript">
@@ -452,5 +454,6 @@ session.setAttribute("url", url);
  	    }
  	}
 	</script>
+	
 	 
 	
